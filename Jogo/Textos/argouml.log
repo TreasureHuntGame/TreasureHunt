@@ -1,0 +1,4 @@
+2016-04-27 14:52:43,539 ERROR: Failed to find any loadable ArgoUML modules in jar /home/usuario/Downloads/argouml-0.34/ext/antlr-runtime-3.1.1.jar (ModuleLoader2.java:652)
+2016-04-27 14:52:43,743 ERROR: Failed to find any loadable ArgoUML modules in jar /home/usuario/Downloads/argouml-0.34/ext/antlr-2.7.7.jar (ModuleLoader2.java:652)
+2016-04-27 14:52:43,936 ERROR: Failed to find any loadable ArgoUML modules in jar /home/usuario/Downloads/argouml-0.34/ext/anarres-cpp-no-dependencies-1.2.3.jar (ModuleLoader2.java:652)
+2016-04-27 14:52:44,324  WARN: No class name translation found for panel: Primitive (MetaDataCache.java:129)

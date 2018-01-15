@@ -1,0 +1,13 @@
+Empregado supervisiona Empregado
+Pessoa casa com Pessoa
+Pessoa namora Pessoa
+Pessoa conversa com Pessoa
+Pessoa interage com Pessoa
+Peça compõe Peça
+Aplicativo compõe Aplicativo
+Protocolo compõe Protocolo
+Servidor gerencia Servidor
+Disciplina é pré-requisito de Disciplina
+Usuário gerencia Usuário
+Usuário comunica com Usuário
+Usuário joga com Usuário

@@ -1,0 +1,17 @@
+Delay A Command In Seconds
+
+To execute a command after 10 seconds, for example, then use this command:
+
+sleep 10 ; sudo command
+
+Replace "command" with the command you want to execute. Here is an example:
+
+sleep 10 ; dir
+
+To execute a command as root, then use this command:
+
+sleep 10 ; sudo command
+
+Here is an example:
+
+sleep 10 ; sudo apt-get update
