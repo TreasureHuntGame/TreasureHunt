@@ -73,5 +73,6 @@ Para solucionar os desafios do jogo, sugere-se pelo menos as seguintes ferrament
 3. Digite bash Jogo.sh
 4. Siga as instruções do jogo e crie os exercícios
 
-*Nota_1*: Necessário obter privilégio de administrador no diretorio /var/www/TreasureHunt/ do apache2.
-*Nota_2*: Considera que o MySQL será utilizado com usuário _root_ e sem senha. O organizador pode alterar isso manipulando a chamada ao script ConfiguraBD.sh no arquivo Jogo.sh.
+*Nota 1*: Necessário obter privilégio de administrador no diretorio /var/www/TreasureHunt/ do apache2.
+
+*Nota 2*: Considera que o MySQL será utilizado com usuário _root_ e sem senha. O organizador pode alterar isso manipulando a chamada ao script ConfiguraBD.sh no arquivo Jogo.sh.
