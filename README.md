@@ -69,3 +69,10 @@ Para solucionar os desafios, sugere-se, no mínimo, o uso das seguintes ferramen
 - uncompyle2
 - Editor de texto
 - Navegador web
+
+
+## Como usar?
+1. Faça o download dos arquivos
+2. Entre no diretório Problemas (cd ~/TreasureHunt/Jogo/Problemas/)
+3. Digite bash Jogo.sh
+4. Siga as instruções do jogo e crie os exercícios
