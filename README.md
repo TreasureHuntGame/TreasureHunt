@@ -1,7 +1,7 @@
 # TreasureHunt
 TreasureHunt Cybersecurity Game
 
-## Necessario instalar as ferramentas:
+## Exige instalação das seguintes ferramentas:
 - apache2
 - awk
 - base64
@@ -55,16 +55,14 @@ TreasureHunt Cybersecurity Game
 - xxd
 - zip
 
-Para solucionar os desafios, sugere-se, no mínimo, o uso das seguintes ferramentas:
+Para solucionar os desafios do jogo, sugere-se pelo menos as seguintes ferramentas:
 - awk
 - base64
 - caesar
-- jd-cli.jar
 - outguess
 - sed
 - sh
 - strings
-- uncompyle2
 - Editor de texto
 - Navegador web
 
