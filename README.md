@@ -1,7 +1,7 @@
 # TreasureHunt
 TreasureHunt Cybersecurity Game
 
-Necessario obter privilegio de administrador no diretorio /var/www/TreasureHunt/ do apache2.
+*Nota*: Necessário obter privilégio de administrador no diretorio /var/www/TreasureHunt/ do apache2.
 
 ## Necessario instalar as ferramentas:
 - apache2
