@@ -69,7 +69,7 @@ Para solucionar os desafios do jogo, sugere-se pelo menos as seguintes ferrament
 
 ## Como usar?
 ### Criando os desafios
-1. Faça o download dos arquivos
+1. Faça o download dos arquivos deste repositório
 2. Entre no diretório Problemas (cd ~/TreasureHunt/Jogo/Problemas/)
 3. Digite bash Jogo.sh
 4. Siga as instruções do jogo e crie os exercícios
