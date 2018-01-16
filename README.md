@@ -68,10 +68,19 @@ Para solucionar os desafios do jogo, sugere-se pelo menos as seguintes ferrament
 
 
 ## Como usar?
+### Criando os desafios
 1. Faça o download dos arquivos
 2. Entre no diretório Problemas (cd ~/TreasureHunt/Jogo/Problemas/)
 3. Digite bash Jogo.sh
 4. Siga as instruções do jogo e crie os exercícios
+### Utilizando o sistema web
+1. Copie o diretório TreasureHunt para o apache2 (coloque em /var/www/TreasureHunt/)
+2. Inicie o apache2 (sudo service apache2 start)
+3. Forneça seu IP aos jogadores (verifique em sua interface de rede, por exemplo, digitando ifconfig)
+4. Forneça nome de usuário (ID) e senha aos jogadores
+5. Quando desejar finalizar a competição, desligue o servidor (sudo service apache2 stop)
+
+Ao finalizar o jogo, as submissões estarão armazenadas na base de dados TreasureHunt no MySQL.
 
 *Nota 1*: Necessário obter privilégio de administrador no diretorio /var/www/TreasureHunt/ do apache2.
 
