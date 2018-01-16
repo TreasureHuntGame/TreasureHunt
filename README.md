@@ -85,3 +85,5 @@ Ao finalizar o jogo, as submissões estarão armazenadas na base de dados Treasu
 *Nota 1*: Necessário obter privilégio de administrador no diretorio /var/www/TreasureHunt/ do apache2.
 
 *Nota 2*: Considera que o MySQL será utilizado com usuário _root_ e sem senha. O organizador pode alterar isso manipulando a chamada ao script ConfiguraBD.sh no arquivo Jogo.sh.
+
+*Nota 3*: O arquivo apache2.conf, disponível no diretório TreasureHunt/TreasureHunt serve apenas como exemplo de configuração do servidor web. O organizador pode configurá-lo de maneira diferente, a seu critério.
