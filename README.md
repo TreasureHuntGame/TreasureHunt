@@ -3,6 +3,35 @@
 # TreasureHunt
 TreasureHunt Cybersecurity Game
 
+## Objetivos
+
+### Prioridades
+- [ ] Criar um instalador para os pacotes necessários.
+- [ ] Adicionar pontuação ao jogo.
+
+### Outras tarefas
+- [ ] Organizar código das soluções.
+- [ ] ID da Competição.
+- [ ] Tempo de duração da competição (iniciar/pausar).
+- [ ] Parametrizar user/senha do mysql.
+- [ ] Checagem de parametros com numero negativo (robots)
+- [ ] Readme.
+- [ ] Armazenar flag para id não numérico no sistema web?
+- [ ] Validar entradas char quando espera int.
+- [ ] Impedir que o jogador 1 pegue o Desafio 2.
+- [ ] Verificar de tempos em tempos se o usuário existe.
+- [ ] Script de pausa no jogo, stopping apache e armazenando os dados do mysql num arquivo em BD/ ou alguma pasta assim.
+- [ ] Proteção contra força bruta.
+- [ ] Possibilitar o limite de tentativas por problema.
+- [ ] Trocar input do ID na submissão por select.
+- [ ] Isolar trafego?
+- [ ] IP do emissor de flag.
+- [ ] Identificador da máquina que enviou a resposta.
+- [ ] Ofuscar nomes das tabelas? Parametrizar?
+- [ ] Contar número de linhas dos arquivos de resposta para identificar erros.
+- [ ] Alterar a ordem dos problemas (colocar em alfabética).
+- [ ] Remover imagens, adicionar script que faça download delas.
+
 ## Exige instalação das seguintes ferramentas:
 - apache2
 - awk
