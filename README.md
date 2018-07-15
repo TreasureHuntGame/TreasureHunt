@@ -6,7 +6,13 @@ TreasureHunt Cybersecurity Game
 ## Objetivos
 
 ### Prioridades
-- [ ] Criar um instalador para os pacotes necessários.
+- [x] Criar um instalador para os pacotes necessários.
+	 - [ ] Criar 'sintaxe' no ``requirements.txt`` de forma que, pacotes com GUI tenham output no terminal para o usuário interagir.
+	 - [ ] Encontrar o pacote ``php7.0-opcache``
+	 - Pacotes removidos do ``requirements.txt``, mas precisam ser instalados:
+	   - php-opcache [não encontrado]
+	   - oracle-java8-installer [instalador GUI]
+	   - mysql-server [instalador GUI]
 - [ ] Adicionar pontuação ao jogo.
 
 ### Outras tarefas
@@ -15,7 +21,7 @@ TreasureHunt Cybersecurity Game
 - [ ] Tempo de duração da competição (iniciar/pausar).
 - [ ] Parametrizar user/senha do mysql.
 - [ ] Checagem de parametros com numero negativo (robots)
-- [ ] Readme.
+- [x] Readme.
 - [ ] Armazenar flag para id não numérico no sistema web?
 - [ ] Validar entradas char quando espera int.
 - [ ] Impedir que o jogador 1 pegue o Desafio 2.
@@ -32,59 +38,32 @@ TreasureHunt Cybersecurity Game
 - [ ] Alterar a ordem dos problemas (colocar em alfabética).
 - [ ] Remover imagens, adicionar script que faça download delas.
 
-## Exige instalação das seguintes ferramentas:
-- apache2
-- awk
-- base64
-- bash
-- bsdgames (pacote que contém a ferramenta caesar)
-- cat
-- cp
-- cut
-- default-jre
-- default-jdk
-- echo
-- expr
-- grep
-- head
-- libapache2-mod-php
-- libapache2-mod-php7.0
-- ls
-- mkdir
-- mv
-- mysql-server-5.5
-- mysql-client-5.5
-- oracle-java8-installer
-- outguess
-- php
-- php-common
-- php-mysql
-- php7.0
-- php7.0-cli
-- php7.0-common
-- php7.0-fpm
-- php7.0-json
-- php7.0-mysql
-- php7.0-opcache
-- php7.0-readline
-- printf
-- pyc
-- python
-- read
-- rev
-- rm
-- sed
-- seq
-- sh (dash)
-- shuf
-- sleep
-- sort
-- strings
-- tail
-- tr
-- wc
-- xxd
-- zip
+## Exige instalação dos seguintes pacotes:
+apache2
+coreutils
+bash
+bsdgames
+default-jre
+default-jdk
+grep
+libapache2-mod-php
+oracle-java8-installer
+mysql-client
+mysql-server
+outguess
+php
+php-common
+php-mysql
+php7.0
+php-cli
+php-common
+php-fpm
+php-json
+php-mysql
+php-opcache
+php-readline
+xxd
+zip
 
 Para solucionar os desafios do jogo, sugere-se pelo menos as seguintes ferramentas:
 - awk
