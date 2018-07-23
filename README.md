@@ -7,12 +7,6 @@ TreasureHunt Cybersecurity Game
 
 ### Prioridades
 - [x] Criar um instalador para os pacotes necessários.
-	 - [ ] Criar 'sintaxe' no ``requirements.txt`` de forma que, pacotes com GUI tenham output no terminal para o usuário interagir.
-	 - [ ] Encontrar o pacote ``php7.0-opcache``
-	 - Pacotes removidos do ``requirements.txt``, mas precisam ser instalados:
-	   - php-opcache [não encontrado]
-	   - oracle-java8-installer [instalador GUI]
-	   - mysql-server [instalador GUI]
 - [ ] Adicionar pontuação ao jogo.
 
 ### Outras tarefas
