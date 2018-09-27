@@ -94,3 +94,5 @@ sql_mode = "ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,ERROR_FOR_DIV
 Depois, reinicie o mysql (sudo service mysql restart) e tente novamente. Você tambm pode verificar se a diretiva foi removida entrando no mysql e digitando no console: SHOW VARIABLES LIKE 'sql_mode';
 
 *Nota 4*: O arquivo apache2.conf, disponível no diretório TreasureHunt/TreasureHunt, serve apenas como exemplo de configuração do servidor web. O organizador pode configurá-lo de maneira diferente, a seu critério.
+
+*Nota 5*: Arquivos de texto podem apresentar problemas se codificados com iso 8859-1. Prefira utf-8 ou us-ascii.
