@@ -16,8 +16,9 @@ $flagPura = filter_input(INPUT_POST, 'flag');
 $flag = hash("sha256", $flagPura);
 $usuario = $_SESSION['usuario'];
 
-// Insere idUser, idResposta e flagPura na tabela submissão
-$sql = "INSERT INTO Submissao VALUES ($usuario, $problema, '$flagPura', date('Y-m-d H:i:s'))";
+// Insere idUsuario, idResposta e flagPura na tabela submissão
+//$sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', date('Y-m-d H:i:s'))";
+$sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', CURRENT_TIMESTAMP)";
 $stmt = $conexao->prepare($sql);
 $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 $stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
@@ -25,7 +26,7 @@ $stmt->bindParam(':flag', $flag, PDO::PARAM_STR);
 $stmt->execute();
 
 // Verifica se o usuário já acertou a questão
-$sql = "SELECT * FROM Resposta WHERE idUser='$usuario' AND idProblema='$problema' AND acertou=true";
+$sql = "SELECT * FROM TreasureHunt.Resposta WHERE idUsuario='$usuario' AND idProblema='$problema' AND acertou=true";
 $stmt = $conexao->prepare($sql);
 $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 $stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
@@ -46,7 +47,7 @@ if ($stmt->rowCount() > 0) {
 
 	// Poderia informar quando a resposta correta já foi submetida
 	// e o usuário segue submetendo para o mesmo problema
-	$sql = "SELECT * FROM Resposta WHERE idUser='$usuario' AND idProblema='$problema' AND resposta='$flag'";
+	$sql = "SELECT * FROM TreasureHunt.Resposta WHERE idUsuario='$usuario' AND idProblema='$problema' AND resposta='$flag'";
 	$stmt = $conexao->prepare($sql);
 	$stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 	$stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
@@ -58,11 +59,11 @@ if ($stmt->rowCount() > 0) {
 		$acertou = true;
 		atualiza($acertou, $usuario, $problema);
 
-		$stmt = $conexao->prepare("SELECT COUNT(*) AS Total FROM 	Resposta WHERE idUser=$usuario");
+		$stmt = $conexao->prepare("SELECT COUNT(*) AS Total FROM TreasureHunt.Resposta WHERE idUsuario=$usuario");
 		$stmt->execute();
 		$linhaTotal = $stmt->fetch(PDO::FETCH_OBJ);
 
-		$stmt = $conexao->prepare("SELECT COUNT(*) AS Acertos FROM Resposta WHERE idUser=$usuario and acertou=1");
+		$stmt = $conexao->prepare("SELECT COUNT(*) AS Acertos FROM TreasureHunt.Resposta WHERE idUsuario=$usuario and acertou=1");
 		$stmt->execute();
 		$linhaAcertos = $stmt->fetch(PDO::FETCH_OBJ);
 ?>
@@ -71,7 +72,7 @@ if ($stmt->rowCount() > 0) {
 </script>
 <?php
 	} else {
-		$stmt = $conexao->prepare("SELECT MAX(idProblema) AS Max FROM Resposta");
+		$stmt = $conexao->prepare("SELECT MAX(idProblema) AS Max FROM TreasureHunt.Resposta");
 		$stmt->execute();
 		$linhaTotal = $stmt->fetch(PDO::FETCH_OBJ);
 		if ($problema < 1 or $problema > $linhaTotal->Max) {
@@ -112,7 +113,7 @@ function atualiza($resposta, $usuario, $problema) {
 		//$param = "acertou=1,";
 	}
 
-	$sql = "UPDATE Resposta SET $param tentativas=tentativas+1 WHERE idUser='$usuario' AND idProblema='$problema' AND acertou=0";
+	$sql = "UPDATE TreasureHunt.Resposta SET $param tentativas=tentativas+1 WHERE idUsuario='$usuario' AND idProblema='$problema' AND acertou=0";
 	$stmt = $conexao->prepare($sql);
 	$stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 	$stmt->bindParam(':problema', $problema, PDO::PARAM_STR);

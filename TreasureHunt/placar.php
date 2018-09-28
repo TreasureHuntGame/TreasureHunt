@@ -34,13 +34,13 @@ if (!isset($_SESSION['usuario']) == true) {
 			<th>Hora do Último Acerto</th>
 		</tr>
 <?php
-	$stmt = $conexao->query("SELECT idUser, SUM(acertou) AS acertos, MAX(hora) AS hora FROM TreasureHunt.Resposta GROUP BY idUser ORDER BY acertos DESC, hora ASC");
+	$stmt = $conexao->query("SELECT idUsuario, SUM(acertou) AS acertos, MAX(hora) AS hora FROM TreasureHunt.Resposta GROUP BY idUsuario ORDER BY acertos DESC, hora ASC");
 	$i=0;
 	while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
 		?>
 				<tr>
 					<td><?php echo ++$i."º"; ?></td>
-					<td><?php echo $linha->idUser; ?></td>
+					<td><?php echo $linha->idUsuario; ?></td>
 					<td><?php echo $linha->acertos; ?></td>
 					<td><?php echo $linha->hora; ?></td>
 				</tr>

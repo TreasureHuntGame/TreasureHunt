@@ -4,7 +4,8 @@ require_once 'conexao.php';
 ob_start();
 @session_start();
 
-if (!isset($_SESSION['usuario']) == true) {
+//if (!isset($_SESSION['usuario']) == true) {
+if (!isset($_SESSION['usuario'])) {
 	unset($_SESSION['usuario']);
 	header('location:index.php');
 }
@@ -37,7 +38,7 @@ if (!isset($_SESSION['usuario']) == true) {
 	  	<h1>Prin<span class="destaque">cipal</span>{<span>!</span>}</h1>
 	  	<h2>Prob<span class="destaque">lemas</span>{<span>!</span>}</h2>
 	  	<label>Seu ID:</label> <span><?php $usuario=$_SESSION['usuario']; echo $usuario ?></span><br>
-	  	<label>Seu arquivo:</label> <a href="<?php print_r("Desafios/Jogador".$usuario.".zip") ?>"><?php print_r("Jogador".$usuario.".zip") ?></a>
+	  	<label>Seu arquivo:</label> <a id="arquivo" href="<?php print_r("Desafios/Jogador".$usuario.".zip") ?>"><?php print_r("Jogador".$usuario.".zip") ?></a>
 	  	<h2>Submeta sua <span class="destaque">palavra secreta</span>{<span>!</span>}</h2>
 	  	<form id="interno" action="checkflag.php" method="POST">
 	  		<input type="text" name="problema" placeholder="Informe o ID do problema" required autofocus><br>
@@ -53,7 +54,7 @@ if (!isset($_SESSION['usuario']) == true) {
 		</tr>
 <?php
 	$usuario = $_SESSION['usuario'];
-	$stmt = $conexao->query("SELECT idProblema, acertou, tentativas FROM TreasureHunt.Resposta WHERE idUser='$usuario'");
+	$stmt = $conexao->query("SELECT idProblema, acertou, tentativas FROM TreasureHunt.Resposta WHERE idUsuario='$usuario'");
 	$i=0;
 	while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
 		?>

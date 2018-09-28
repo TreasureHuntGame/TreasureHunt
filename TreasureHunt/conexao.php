@@ -14,3 +14,4 @@ TRY {
     echo 'Erro ao conectar com MySQL: ' . $e->getMessage();
 }
 
+?>

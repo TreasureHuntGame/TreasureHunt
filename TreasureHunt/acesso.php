@@ -5,7 +5,7 @@ require_once 'conexao.php';
 
 $usuario = filter_input(INPUT_POST, 'usuario');
 
-$sql = "SELECT * FROM User where id='$usuario'";
+$sql = "SELECT * FROM Usuario where id='$usuario'";
 
 $stmt = $conexao->prepare($sql);
 $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
@@ -17,7 +17,8 @@ if ($stmt->rowCount() > 0) {
 	while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
 		$senha = hash("sha256", filter_input(INPUT_POST, 'senha').$linha->saltpass);
 	}
-	$sql = "SELECT * FROM User where id='$usuario' and pass='$senha'";
+	// Rever o bind com :
+	$sql = "SELECT * FROM Usuario where id='$usuario' and pass='$senha'";
 	$stmt = $conexao->prepare($sql);
 	$stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
 	$stmt->execute();
