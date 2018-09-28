@@ -7,10 +7,14 @@
 	border: 0;
 }
 body {
-	background: #222;
+	background-color: #555;
 	font-size: 22px;
 	font-family: 'Muli', sans-serif;
 	text-align: center;
+}
+#arquivo {
+	color: black;
+	font-weight: bold;
 }
 p, span, label{
 	color: yellow;
@@ -43,7 +47,7 @@ td {
 	margin-top: 30px;
 }
 #modal-regras, #modal-contato, #modal-placar, #modal-logout {
-	background-color: #222;
+	background-color: #555;
 	display: none;
 	font-size: 16px;
 	height: 83%;
@@ -139,7 +143,7 @@ a:active {
 	color: black;
 }
 input, button {
-	background-color: #222;
+	background-color: #444;
 	border-color: black;	
 	font-size: 16px;
 }
