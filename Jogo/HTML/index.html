@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Seja bem-vindo</title>
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+		<script type="text/javascript">
+function foodel() {
+	var flag1 = "U2FsdGVkX1/JjCaQUS4z0Ld5X8l+03MwEEzbwM/K";
+	var flag2 = "2E46tqnS1/FGjcUhOatEjgN4";
+	var flagTotal = flag1.concat(flag2);
+
+	var decrypted = CryptoJS.AES.decrypt(flagTotal, "Flag");
+
+	window.alert(decrypted.toString(CryptoJS.enc.Utf8));
+}
+		</script>
+	</head>
+	<body>
+		<h1>Desafio</h1>
+		<p>Uma imagem vale mais que mil palavras?</p>
+		<img src="" alt="Imagem do desafio">
+		<img alt="Como resolver esse desafio?">
+		<ul>
+			<li>Nao caia em pegadinhas</li>
+			<li>Fique atento</li>
+			<li>Procure nao se distrair</li>
+			<li>Nao leia este item</li>
+			<li>Cuidado para nao perder tempo lendo textos vazios</li>
+			<li>Redobre este cuidado</li>
+		</ul>
+		<form>
+			<label style="display: none;">Caixa de texto que nao serve para nada:</label><input type="text" name="flag" autofocus required>
+			<br>
+			<br>
+			<input type="submit" value="Limpar">
+			<input type="reset" value="Enviar">
+			<button type="button" style="display: none;" onclick="foodel()">Enviar</button>
+		</form>
+	</body>
+</html>
