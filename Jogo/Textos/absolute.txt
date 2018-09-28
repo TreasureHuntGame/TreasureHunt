@@ -1,0 +1,25 @@
+<html>
+ <head>
+ <title>Posicionamento com CSS</title>
+ </head>
+<style>
+#relative1 {
+  position: absolute;
+  width: 600px;
+  height: 400px;
+border: 2px solid red;
+}
+#absolute1 {
+  position: relative;
+  top: 120px;
+  right: 0;
+  width: 300px;
+  height: 200px;
+border: 2px solid green;
+}
+</style>
+ <body>
+ <div id="relative1">Testando<br> a<br> primeira<br> div</div>
+ <div id="absolute1">Testando<br> a<br> segunda<br> div</div>
+ </body>
+</html>

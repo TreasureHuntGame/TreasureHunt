@@ -1,0 +1,105 @@
+Lista de Exercícios sobre VETORES uni- e bi-dimensionais
+========================================================
+
+Todos os exercícios abaixo devem ser feitos em linguagem C++.
+
+Exceto em casos em que seja explicitamente informado o contrário,
+os números lidos e escritos devem ser do tipo 'int'.
+
+A quantidade de elementos, linhas ou colunas utilizado deve ser
+definido como constante, utilizando o comando #define.
+
+Os exercícios não precisam ser entregues. O objetivo desta lista é
+possibilitar a prática dos conceitos já vistos na disciplina.
+
+Exercícios que devem ler uma quantidade arbitrária de números devem
+considerar que, para parar de ler os números, deve-se informar um
+caractere não numérico.
+
+Não há necessidade de terminar todos os exercícios nesta aula, mas
+você é encorajado a tentar concluir a lista como forma de estudo da
+disciplina.
+
+Crie um programa que leia uma matriz de 3 linhas e 4 colunas e
+   imprima a mesma matriz lida.
+
+Crie um programa que leia uma matriz de 3 linhas e 4 colunas e
+   imprima a matriz transposta da matriz lida.
+
+Crie um programa que leia uma matriz de 4 linhas e 4 colunas e
+   imprima os elementos da diagonal principal da matriz lida.
+
+Crie um programa que leia uma matriz de 4 linhas e 4 colunas e
+   imprima os elementos da diagonal secundária da matriz lida.
+
+Crie um programa que leia dez números e imprima esses dez números
+   na mesma ordem em que foram lidos.
+
+Crie um programa que leia dez caracteres, correspondentes a uma
+   palavra, e imprima os caracteres na ordem inversa da ordem lida
+   (exercício feito em sala).
+
+Crie um programa que leia uma quantidade arbitrária de números e
+   imprima, para cada número entre 0 e 100, a quantidade de vezes que
+   o número foi lido.
+
+Crie um programa que leia uma quantidade arbitrária de números
+   entre 0 e 100 e imprima cada número encontrado a mesma quantidade
+   de vezes em que foi encontrado. Exemplo: se o número 5 foi
+   encontrado 4 vezes, então imprima o número 5 quatro vezes. Observe
+   o resultado e compare com os números lidos (esse comportamento
+   corresponde a um algoritmo de ordenação e é chamado de count-sort).
+
+Crie um programa que leia vinte números com vírgula, e imprima a
+   média e o desvio-padrão entre os números.
+
+Crie um programa que leia dois vetores de 20 posições cada, e
+   imprima o resultado do produto escalar entre os dois vetores. O
+   produto escalar entre dois vetores x e y é dado por:
+
+   x y  + x y  + x y  + x y  + x y  + ...
+    0 0    1 1    2 2    3 3    4 4
+
+Crie um programa que leia uma quantidade arbitrária (no máximo 100)
+   de números com vírgula, e armazene-os em um vetor. Em seguida o
+   programa deve ordenar o vetor, utilizando o algoritmo que segue
+   (conhecido como select-sort ou algoritmo de seleção). Varrendo
+   todos os números, encontre o menor número. Após encontrá-lo, troque
+   o primeiro número (posição zero) com a posição encontrada. Repita o
+   procedimento, mas desprezando a primeira posição. Continue
+   repetindo até que o último elemento seja encontrado.  Após a
+   ordenação, imprima os números ordenados.
+
+Crie um programa que leia uma palavra com até 20 caracteres
+   (utilizando scanf com %s, conforme explicado pelo professor). Em
+   seguida, para cada letra da palavra, altere a letra para a letra
+   seguinte no alfabeto. Após alterar a palavra, imprima a palavra
+   encontrada.
+
+Crie um programa que leia uma palavra com até 20 caracteres. Em
+   seguida, imprima o tamanho da palavra, ou seja, o número de
+   caracteres lidos.
+
+(difícil) Crie um programa que leia duas palavras com até 20
+   caracteres cada. Em seguida, informe qual das duas palavras seria
+   impressa antes no dicionário. Você pode fazer isso da seguinte
+   forma: compare os primeiros elementos dos vetores. Se o caractere
+   do primeiro vetor for menor, a primeira palavra é impressa antes no
+   dicionário. Se o caractere do segundo vetor for menor, a segunda
+   palavra é impressa antes. Se os dois caracteres forem iguais,
+   avança para o próximo caractere e faz a mesma comparação. Se
+   alcançar o fim das duas palavras, as duas palavras são iguais.
+   Exemplos: ABACO é impresso antes de BALEIA. CACHORRO é impresso
+   antes de CURITIBA. JOAO é impresso antes de JOSE. JAPAO é impresso
+   antes de JAPONES. E assim por diante.
+
+(difícil) Crie um programa que leia uma palavra com até 100
+   caracteres. Em seguida, leia uma segunda palavra com até 10
+   caracteres. O programa deve imprimir a posição em que a segunda
+   palavra foi encontrada dentro da primeira. Exemplo: se a primeira
+   palavra for OTORRINOLARINGOLOGISTA, e a segunda palavra for GOL,
+   então deve imprimir 13 (GOL é encontrado na posição 13 na palavra
+   OTORRINOLARINGOLOGISTA). Informar ao usuário o caso em que a
+   segunda palavra não está contida na primeira (ou porque a segunda
+   palavra é maior ou porque não tem letras coincidentes).
+

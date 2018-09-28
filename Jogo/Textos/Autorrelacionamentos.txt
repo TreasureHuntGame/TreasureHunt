@@ -3,11 +3,11 @@ Pessoa casa com Pessoa
 Pessoa namora Pessoa
 Pessoa conversa com Pessoa
 Pessoa interage com Pessoa
-PeÁa compıe PeÁa
-Aplicativo compıe Aplicativo
-Protocolo compıe Protocolo
+Pe√ßa comp√µe Pe√ßa
+Aplicativo comp√µe Aplicativo
+Protocolo comp√µe Protocolo
 Servidor gerencia Servidor
-Disciplina È prÈ-requisito de Disciplina
-Usu·rio gerencia Usu·rio
-Usu·rio comunica com Usu·rio
-Usu·rio joga com Usu·rio
+Disciplina √© pr√©-requisito de Disciplina
+Usu√°rio gerencia Usu√°rio
+Usu√°rio comunica com Usu√°rio
+Usu√°rio joga com Usu√°rio

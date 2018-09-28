@@ -1,0 +1,101 @@
+Cargo			Nome	Unidade	Telefone	Endereço	Andar	
+Diretoria Colegiada								
+	Presidente			Alexandre Antonio TOMBINI	PRESI	(61) 3414.1000	SBS, Q.3 Bl.B - Brasília - DF	20º
+	Diretor de Administração			ALTAMIR Lopes	DIRAD	(61) 3414.1100	SBS, Q.3 Bl.B - Brasília - DF	21º
+	Diretor de Assuntos Internacionais e de Gestão de Riscos Corporativos			LUIZ Awazu PEREIRA da Silva	DIREX	(61) 3414.1500	SBS, Q.3 Bl.B - Brasília - DF	20°
+	Diretor de Fiscalização			ANTHERO de Moraes Meirelles	DIFIS	(61) 3414.2442	SBS, Q.3 Bl.B - Brasília - DF	21º
+	Diretor de Organização do Sistema Financeiro e Controle de Operações do Crédito Rural 			SIDNEI Correa Marques	DIORF	(61) 3414.3500	SBS, Q.3 Bl.B - Brasília - DF	21º
+	Diretor de Política Econômica			Carlos HAMILTON Vasconcelos Araújo	DIPEC	(61) 3414.3231	SBS, Q.3 Bl.B - Brasília - DF	20º
+	Diretor de Política Monetária 			ALDO Luiz MENDES	DIPOM	(61) 3414.1700	SBS, Q.3 Bl.B - Brasília - DF	20º
+	Diretor de Regulação do Sistema Financeiro			LUIZ Awazu PEREIRA da Silva	DINOR	(61) 3414.1900	SBS, Q.3 Bl.B - Brasília - DF	20º
+	Diretor de Relacionamento Institucional e Cidadania			Luiz Edson FELTRIM	DIREC	(61) 3414.1941	SBS, Q.3 Bl.B - Brasília - DF	21º
+								
+Unidades Vinculadas ao Presidente								
+	Secretaria-Executiva			GERALDO MAGELA Siqueira	SECRE	(61) 3414.3452	SBS, Q.3 Bl.B - Brasília - DF	21°
+		Secretaria da Diretoria e do Conselho Monetário Nacional 		Henrique Balduino MACHADO Moreira	SUCON	(61) 3414.1945	SBS, Q.3 Bl.B - Brasília - DF	21°
+		Gerência-Executiva de Apoio Administrativo e Tecnológico 		José Augusto VARANDA	GEATE	(61) 3414.2580	SBS, Q.3 Bl.B - Brasília - DF	21°
+		Gerência-Executiva de Comunicação 		José LINALDO Gomes de Aguiar	COMUN	(61) 3414.1955	SBS, Q.3 Bl.B - Brasília - DF	1°
+		Assessoria de Imprensa 		Enildo AMARAL	ASIMP	(61) 3414.2808	SBS, Q.3 Bl.B - Brasília - DF	2°ss
+		Assessor de Imprensa		GUSTAVO Paul Kurrle	ASIMP	(61) 3414.2808	SBS, Q.3 Bl.B - Brasília - DF	2°ss
+		Conselho de Recursos do Sistema Financeiro Nacional		MARCOS M. de Souza	CRSFN	(61) 2025.4200	"Esp. Ministérios - Bl. ""P"" -"	8º 
+							Brasília - DF	
+	Chefias de Gabinete de Diretor							
+		Chefe de Gabinete do Diretor de Administração		CAROLINA de Assis Barros	DIRAD	(61) 3414.1100	SBS, Q.3 Bl.B - Brasília - DF	21º
+		Chefe de Gabinete do Diretor de Assuntos Internacionais e de Gestão de Riscos Corporativos 		WAGNER Thomaz de Aquino Guerra Junior	DIREX	(61) 3414.1500	SBS, Q.3 Bl.B - Brasília - DF	20°
+		Chefe de Gabinete do Diretor de Fiscalização		ANDRÉIA Laís de Melo Silva Vargas	DIFIS	(61) 3414.2442	SBS, Q.3 Bl.B - Brasília - DF	21º
+		Chefe de Gabinete do Diretor de Organização do Sistema Financeiro e Controle de Operações do Crédito Rural 		MAURÍCIO Costa de Moura	DIORF	(61) 3414.3500	SBS, Q.3 Bl.B - Brasília - DF	21º
+		Chefe de Gabinete do Diretor de Política Econômica 		EUGÊNIO Pacceli Ribeiro	DIPEC	(61) 3414.3231	SBS, Q.3 Bl.B - Brasília - DF	20º
+		Chefe de Gabinete do Diretor de Política Monetária 		EMANUEL Di Stefano Bezerra Freire	DIPOM	(61) 3414.1700	SBS, Q.3 Bl.B - Brasília - DF	20º
+		Chefe de Gabinete do Diretor de Regulação do Sistema Financeiro 		ALOÍSIO Tupinambá Gomes Neto	DINOR	(61) 3414.1900	SBS, Q.3 Bl.B - Brasília - DF	20º
+	Procuradoria-Geral do Banco Central 			ISAAC Sidney Menezes Ferreira	PGBC	(61) 3414.1084	SBS, Q.3 Bl.B - Brasília - DF	20°
+	Gabinete do Presidente			OTÁVIO Ribeiro Damaso	GAPRE	(61) 3414.1010	SBS, Q.3 Bl.B - Brasília - DF	20°
+		Assessoria Econômica 		ÂNGELO José Mon'tAlverne Duarte	ASSEC	(61) 3414.4060	SBS, Q.3 Bl.B - Brasília - DF	18°
+		Assessoria Econômica 		PEDRO Calhman de Miranda	ASSEC	(61) 3414.4060	SBS, Q.3 Bl.B - Brasília - DF	18°
+		Assessoria Parlamentar		DAVID Falcão	ASPAR	(61) 3414.2928	SBS, Q.3 Bl.B - Brasília - DF	19°
+		Auditoria Interna do Banco Central do Brasil 		OSMANE Bonincontro	AUDIT	(61) 3414.2557	SBS, Q.3 Bl.B - Brasília - DF	18°
+		Corregedoria-Geral do Banco Central do Brasil 		JAIME Alves de Freitas	COGER	(61) 3414.2500	SBS, Q.3 Bl.B - Brasília - DF	12°
+		Ouvidoria do Banco Central do Brasil 		HÉLIO José Ferreira	OUVID	(61) 3414.2793	SBS, Q.3 Bl.B - Brasília - DF	21°
+								
+Unidades Vinculadas ao Diretor de Fiscalização								
+	Departamento de Prevenção a Ilícitos Financeiros e de Atendimento de Demandas de Informações do Sistema Financeiro 			RICARDO LIÁO	DECIC	(61) 3414.2618	SBS, Q.3 Bl.B - Brasília - DF	7°
+	Departamento de Controle de Gestão e de Planejamento da Supervisão 			HAROLD P. Espinola Filho	DECOP	(61) 3414.1512	SBS, Q.3 Bl.B - Brasília - DF	6°
+	Departamento de Monitoramento do Sistema Financeiro 			LUCIO R. Capelletto	DESIG	(61) 3414.1528	SBS, Q.3 Bl.B - Brasília - DF	4°
+	Departamento de Supervisão de Cooperativas e de Instituições Não Bancárias 			José ANGELO Mazzillo Junior	DESUC	(61) 3414.1380	SBS, Q.3 Bl.B - Brasília - DF	6°
+	Departamento de Supervisão de Bancos e Conglomerados Bancários 			Carlos DONIZETI Macedo Maia	DESUP (SP)	(11) 3491.6273	Av. Paulista, 1804 -	14°
+							São Paulo/SP	
+								
+Unidades vinculadas ao Diretor de Regulação do Sistema Financeiro								
+	Departamento de Normas do Sistema Financeiro 			SERGIO ODILON dos Anjos	DENOR	(61) 3414.1503	SBS, Q.3 Bl.B - Brasília - DF	9°
+	Gerência-Executiva de Normatização de Câmbio e Capitais Estrangeiros 			PAULO MARCELO Cavalcanti Muniz	GENCE	(61) 3414.1360	SBS, Q.3 Bl.B - Brasília - DF	3°
+								
+Unidades vinculadas ao Diretor de Organização do Sistema Financeiro e Controle de Operações do Crédito Rural								
+	Departamento de Controle e Análise de Processos Administrativos Punitivos 			CLÁUDIO Jaloretto	DECAP	(61) 3414.2672	SBS, Q.3 Bl.B - Brasília - DF	7°
+	Departamento de Liquidações Extrajudiciais 			DAWILSON Sacramento	DELIQ	(61) 3414.1330	SBS, Q.3 Bl.B - Brasília - DF	13°
+	Departamento de Organização do Sistema Financeiro 			ADALBERTO Gomes da Rocha	DEORF	(61) 3414.1350	SBS, Q.3 Bl.B - Brasília - DF	19°
+	Departamento de Regulação, Supervisão e Controle das Operações do Crédito Rural e do Proagro 			DEOCLÉCIO Pereira de Souza	DEROP	(61) 3414.1495	SBS, Q.3 Bl.B - Brasília - DF	19°
+								
+Unidades vinculadas ao Diretor de Política Econômica								
+	Departamento Econômico 			TULIO José Lenti Maciel	DEPEC	(61) 3414.1001	SBS, Q.3 Bl.B - Brasília - DF	10°
+	Departamento de Estudos e Pesquisas 			ADRIANA Soares Sales	DEPEP	(61) 3414.3421	SBS, Q.3 Bl.B - Brasília - DF	13°
+	Departamento de Relacionamento com Investidores e Estudos Especiais 			RENATO Jansson Rosek	GERIN	(61) 3414.3980	SBS, Q.3 Bl.B - Brasília - DF	12°
+								
+Unidades vinculadas ao Diretor de Política Monetária								
+	Departamento de Operações Bancárias e de Sistema de Pagamentos 			DASO Maranhao Coimbra	DEBAN	(61) 3414.1340	SBS, Q.3 Bl.B - Brasília - DF	15°
+	Departamento de Operações do Mercado Aberto 			JOÃO HENRIQUE de Paula F. Simão	DEMAB (RJ)	(21) 2233.9260	Av. Presidente Vargas, 730 -	22°
+							Rio de Janeiro/RJ	
+	Departamento das Reservas Internacionais 			MÁRCIO Barreira de Ayrosa Moreira	DEPIN	(61) 3414.1809	SBS, Q.3 Bl.B - Brasília - DF	5°
+								
+Unidades vinculadas ao Diretor de Administração								
+	Departamento de Contabilidade e Execução Financeira 			EDUARDO de Lima Rocha	DEAFI	(61) 3414.1255	SBS, Q.3 Bl.B - Brasília - DF	16°
+	Departamento de Tecnologia da Informação 			Marcelo José Oliveira YARED	DEINF	(61) 3414.2168	SBS, Q.3 Bl.B - Brasília - DF	2°
+	Departamento de Infraestrutura e Gestão Patrimonial 			ANTONIO CARLOS M. Oliveira	DEMAP	(61) 3414.1290	SBS, Q.3 Bl.B - Brasília - DF	1°ss
+	Departamento de Gestão de Pessoas 			NILVANETE Ferreira da Costa	DEPES	(61) 3414.1270	SBS, Q.3 Bl.B - Brasília - DF	17°
+	Departamento de Planejamento, Orçamento e Gestão 			ADALBERTO Felinto da Cruz Júnior	DEPOG	(61) 3414.1070	SBS, Q.3 Bl.B - Brasília - DF	9°
+	Departamento de Segurança 			GONTRON Magalhães Júnior	DESEG	(61) 3414.1328	SBS, Q.3 Bl.B - Brasília - DF	18°
+	Universidade Banco Central do Brasil 			JULIANA Mozachi Sandri Barral	UniBacen	(61) 3414.5082	SCES - Trecho 2 - Cj 31 -	
+							lotes 1A/1B -  Brasília/DF	
+	Departamento do Meio Circulante 			JOÃO SIDNEY de F. Filho	MECIR (RJ)	(21) 2253.0225	Av. Presidente Vargas, 730 -	21°
+							Rio de Janeiro/RJ	
+	Gerências Administrativas Regionais							
+		Belém - PA		Antonio CARDOSO da Silva	ADBEL	(91) 3241.7988	Boulevard Castilhos França	
+							nr. 708 - Belém/PA	
+		Belo Horizonte - MG		Luiz Claudio PORTELA Ferreira	ADBHO	(31) 3253.7441	Av. Álvares Cabral, 1605	
+							Belo Horizonte/MG	
+		Curitiba - PR		ROBERTO Siqueira Filho	ADCUR	(41) 3281.3001	Av. Cândido de Abreu, nº 344	
+							Curitiba/PR	
+		Fortaleza -CE		Luiz EDVAM Carvalho	ADFOR	(85) 3308.5445	Av. Heráclito Graça, 273	
+							Fortaleza/CE	
+		Porto Alegre -RS		DANILO Trademar Acosta	ADPAL	(51) 3215.7170	Rua 7 de Setembro, 586	
+							Porto Alegre/RS	
+		Recife - PE		CLEBER Pinto dos Santos	ADREC	(81) 2125.4200	Rua da Aurora, 1259	
+							Recife/PE	
+		Rio de Janeiro - RJ		FELIPE Beer Frenkel	ADRJA	(21) 2189.5201	Av. Presidente Vargas, 730	
+							Rio de Janeiro/RJ	
+		Salvador - BA		Genival Silva COUTINHO	ADSAL	(71) 2109.4501	Av. Garibaldi, 1211	
+							Salvador/BA	
+		São Paulo - SP		ANA Teresa Holanda de Albuquerque	ADSPA	(11) 3491.6922	Av. Paulista, 1804	
+							São Paulo/SP	
+								
+Unidades vinculadas ao Diretor de Assuntos Internacionais e de Gestão de Riscos Corporativos								
+	Departamento de Assuntos Internacionais 			BRUNO Walter Coelho SARAIVA	DERIN	(61) 3414.1370	SBS, Q.3 Bl.B - Brasília - DF	14°
+	Gerência-Executiva de Riscos Corporativos e Referências Operacionais 			ISABELA Ribeiro Damaso	GERIS	(61) 3414.2685	SBS, Q.3 Bl.B - Brasília - DF	17°

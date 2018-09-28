@@ -1,0 +1,56 @@
+M. Dark and J. Mirkovic, “Evaluation Theory and Practice Applied to Cybersecurity Education,” IEEE Security & Privacy, vol. 13, no. 2, 2015, pp. 75–80.
+MCGETTRICK, A., CASSEL, L. N., DARK, M., HAWTHORNE, E. K., AND IMPAGLIAZZO, J. Toward curricular guidelines for cybersecurity. In Proceedings of the 45th ACM Technical Symposium on Computer Science Education (New York, NY, USA, 2014), SIGCSE ’14, ACM, pp. 81–82. http://www.acm.org/education/TowardCurricularGuidelinesCybersec.pdf
+G. Conti, T. Babbitt and J. Nelson, "Hacking Competitions and Their Untapped Potential for Security Education," in IEEE Security & Privacy, vol. 9, no. 3, pp. 56-59, May-June 2011. http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=5772962
+Martin Mink and Felix C. Freiling. 2006. Is attack better than defense?: teaching information security the right way. In Proceedings of the 3rd annual conference on Information security curriculum development (InfoSecCD '06). ACM, New York, NY, USA, 44-48. DOI=http://dx.doi.org/10.1145/1231047.1231056
+James Walden. 2005. A real-time information warfare exercise on a virtual network. In Proceedings of the 36th SIGCSE technical symposium on Computer science education (SIGCSE '05). ACM, New York, NY, USA, 86-90. DOI=http://dx.doi.org/10.1145/1047344.1047386
+L. J. Hoffman, T. Rosenberg, R. Dodge and D. Ragsdale, "Exploring a national cybersecurity exercise for universities," in IEEE Security & Privacy, vol. 3, no. 5, pp. 27-33, Sept.-Oct. 2005. http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=1514397
+
+Referências de artigos lidos (potencialmente aproveitáveis - verificar)
+https://www.usenix.org/conference/3gse14/summit-program
+Get Safe Online, “Free online security advice.”, [Online] https://www.getsafeonline.org/.
+HM. Government, “Cyber Street, Protect your home or business from cyber crime.”, [Online] https://www.cyberstreetwise.com/.
+Australian Department of Broadband Communications and the Digital Economy, “Stay Smart Online Cybersecurity Education Modules - Primary.” [Online]. Available: https://budd-e.staysmartonline.gov.au/primary/main.php#
+Labuschagne W. A. and. Eloff M, “The Effectiveness of Online Gaming as Part of a Security Awareness Program,” in 13th European Conference on Cyber Warfare and Security ECCWS-2014 The University of Piraeus Piraeus, Greece, p. 125, 2014.
+Arachchilage N. A. G. and Love S., “Security awareness of computer users: A phishing threat avoidance perspective,” Comput. Hum. Behav., vol. 38, pp. 304–312, 2014. http://dx.doi.org/10.1016/j.chb.2014.05.046
+S. Boesen, R. Weiss, J. Sullivan, M. E. Locasto, J. Mache, and E. Nilsen. Edurange: Meeting the pedagogical challenges of student participation in cybertraining environments. In 7th Workshop on Cyber Security Experimentation and Test (CSET 14),
+MICROSOFT , 2013. The Elevation of Privilege (EoP) Card Game. http://www.microsoft.com/security/sdl/adopt/eop.aspx
+Institute of Information Security Professionals, “Our Skills Framework.”, [Online] https://www.iisp.org/imis15/iisp/About_Us/Our_Skills_Framework.aspx, 2013.
+Arachchilage N. A. G. and Love S., “A game design framework for avoiding phishing attacks,” Comput. Hum. Behav., vol. 29, no. 3, pp. 706–714, 2013. http://dx.doi.org/10.1016/j.chb.2012.12.018
+Rursch, J., Jacobson, D.: When a testbed does more than testing: the Internet- Scale Event Attack and Generation Environment (ISEAGE) - providing learning and synthesizing experiences for cyber security students. In: 2013 IEEE Frontiers in Education Conference, pp. 1267–1272, October 2013
+Dasgupta D., Ferebee D. M., and Michalewicz Z., “Applying puzzle-based learning to cybersecurity education,” in Proceedings of the 2013 on InfoSecCD’13: Information Security Curriculum Development Conference, p. 20, 2013. http://dx.doi.org/10.1145/2528908.2528910
+Centre for Information Systems Security Studies and Research (CISR), “Incorporating CyberCIEGE into an Introductory Cyber Security Course.”, [Online] http://cisr.nps.edu/cyberciege/CyberCIEGE%20 Syllabus.html, 2013. 
+ZACHARY PETERSON , MARK GONDREE , AND ANN G ALLENSON , 2012. [d0x3d!] A network security game. https://github.com/TableTopSecurity/d0x3d-the-game/blob/master/instructions/d0x3d-rules.pdf?raw=true
+Arachchilage G. and Asanka N., “Security awareness of computer users: A game based learning approach,” Brunel University, School of Information Systems, Computing and Mathematics, 2012.
+O’Leary, M. Small-Scale Cyber Security Competitions. In Colloquium for Information Systems Security Education (2012), 103–110
+Fulton, S., Schweitzer, D., Dressler, J.: What are we teaching in cyber competi- tions? In: Frontiers in Education Conference (FIE 2012), pp. 1–5 (2012)
+Andre T. S., Fidopiastis C. M, Ripley T. R., Oskorus A. L, Meyer R. E., and Snyder R. A., “Augmented cognition methods for evaluating serious game based insider cyber threat detection training,” in Foundations of Augmented Cognition. Directing the Future of Adaptive Systems, Springer, pp. 395–403, 2011. http://dx.doi.org/10.1007/978-3-642-21852-1_46
+Dimkov, Trajce and Pieters, Wolter and Hartel, Pieter (2010) Training Students to Steal: A Practical Assignment in Computer Security Education. In: 42nd ACM Technical Symposium on Computer Science Education, SIGCSE’11, March 9-12, 2011, Dallas, Texas, USA.
+DOUPE, A., EGELE, M., CAILLAT, B., STRINGHINI, G., YAKIN, G., ZAND, A., CAVEDON, L., AND VIGNA, G. Hit ’em Where it Hurts: A Live Security Exercise on Cyber Situational Awareness. In Proceedings of the Annual Computer Security Applications Conference (ACSAC) (Orlando, FL, December 2011).
+T. Kohno and B.D. Johnson. Science Fiction Prototyping and Security Education: Cultivating Contextual and Societal Thinking in Computer Security Education and Beyond. In Proceedings of the ACM Technical Symposium on Computer Science Education (SIGCSE ‘11), 2011.
+Rowe, D.C., Lunt, B.M., Ekstrom, J.J.: The role of cyber-security in information technology education. In: Proceedings of the 2011 Conference on Information Technology Education, SIGITE 2011, pp. 113–122. ACM, New York (2011)
+MARIO GUIMARAES , HUWIDA SAID , AND RICHARD AUSTIN , 2011. Using video games to teach security. In: Proc. 16th Annual Joint Conf. on Innovation and Technology in Computer Science Education (ITiCSE '11). ACM, New York, NY, 346-346. doi:10.1145/1999747.1999860 http://doi.acm.org/10.1145/1999747.1999860
+M. Mink and R. Greifeneder. Evaluation of the offensive approach in information security education. IFIP Advances in Information and Communication Technology, 330:203–214, 2010.
+THOMAS MONK, JOHAN VAN NIEKERK, AND ROSSOUW VON SOLMS, 2010. Sweetening the medicine: Educating users about information security by means of game play. In: Proc. 2010 Annual Research Conf. of the South African Institute of Computer Scientists and Information Technologists (SAICSIT '10). ACM, New York, NY, 193-200
+Fanelli, R. L., and O’Connor, T. J. Experiences with Practice-Focused Undergraduate Security Education. Workshop on Cyber Security Experimentation and Test (2010).
+Furtuna, A., Patriciu, V.V., Bica, I.: A structured approach for implementing cyber security exercises. In: 2010 8th International Conference on Communica- tions (COMM), pp. 415–418, June 2010
+Du, W., Jayaraman, K., and Gaubatz, N. B. Enhancing Security Education with Hands-On Laboratory Exercises. In Symposium on Information Assurance, no. 0618680 (2010), 56–61.
+Geers K., “Live fire exercise: preparing for cyber war,” J. Homel. Secur. Emerg. Manag., vol. 7, no. 1, 2010. http://dx.doi.org/10.2202/1547-7355.1780
+Sroufe, P., Tate, S., Dantu, R., Cankaya, E.C.: Experiences during a collegiate cyber defense competition. J. Appl. Secur. Res. 5(3), 382–396 (2010)
+V. Pastor, G. Díaz, and M. Castro, “State-of-the-art simulation systems for information security education, training and awareness,” in Education Engineering (EDUCON), 2010 IEEE, 2010, pp. 1907–1916.
+G. Louthan, W. Roberts, M. Butler, and J. Hale. The Blunderdome: An offensive exercise for building network, systems, and web security awareness. In Proc. of the 3rd Workshop on Cyber Security Experimentation and Test, Washington, DC, August 2010.
+T. J. O’Connor, B. Sangster, and E. Dean. Using hacking to teach computer science fundamentals. In American Society for Engineering Education, St. Lawrence Section, 2010.
+XIAOHONG YUAN , PERCY VEGA , YASEEN QADAH , RICKY ARCHER , HUIMING YU , AND JINSHENG XU , 2010. Visualization tools for teaching computer security. Trans. Comput. Educ. 9(4), Article 20 (January 2010), 28 pp.
+Schweitzer D. and Brown W., “Using visualization to teach security,” J. Comput. Sci. Coll., vol. 24, no. 5, pp. 143–150, 2009.
+M. E. Locasto and S. Sinclair. An Experience Report on Cyber-Security Education and Outreach. In Proceedings of the Annual Conference on Education in Information Security, 2009.
+CYNTHIA IRVINE AND MICHAEL THOMPSON , 2007, CyberCIEGE: The information assurance training and awareness video game. IA Newsletter: The Newsletter for Information Assurance Technology Professionals, 10(2) (Summer 2007), 22-26. http://iac.dtic.mil/iatac/download/Vol10_No 2.pdf
+Cone B. D., Thompson M. F., C. E. Irvine, and T. D. Nguyen, Cyber Security Training and Awareness Through Game Play. Springer, 2006. http://dx.doi.org/10.1007/0-387-33406-8_37
+B. A. Pashel. Teaching Students to Hack: Ethical Implications in Teaching Students to Hack at the University Level. In InfoSecCD ’06: Proceedings of the 3rd annual conference on Information security curriculum development, pages 197–200, New York, NY, USA, 2006. ACM.
+Irvine C. E., Thompson M. F., and Allen K., “CyberCIEGE: an information assurance teaching tool for training and awareness,” DTIC Document, 2005.
+P. Y. Logan and A. Clarkson. Teaching Students to Hack: Curriculum Issues in Information Security. In SIGCSE ’05: Proceedings of the 36th SIGCSE Technical Symposium on Computer Science Education, pages 157–161, New York, NY, USA, 2005. ACM.
+C. Cowan, S. Arnold, S. Beattie, and C. Wright. Defcon capture the flag: Defending vulnerable code from intense attack. In Proc. of the DARPA Information Survivability Conference and Exposition, Washington, DC, April 2003.
+Schepens, W.J., Ragsdale, D.J., Surdu, J.R., Schafer, J., New Port, R.: The cyber defense exercise: an evaluation of the effectiveness of information assurance education. J. Inf. Secur. 1(2) (2002)
+L.G.C. HAMEY , 2003. Teaching secure data communications Using a game representation. In: Proc. Fifth Australasian Computing Education Conf. (ACE2003), Adelaide, Australia. CRPIT, 20. T. Greening, and R. Lister, Eds. ACS. 187-196.
+CYNTHIA IRVINE AND MICHAEL THOMPSON , 2003. Teaching objectives of a simulation game for computer security. In: Proc. Informing Science and Information Technology Joint Conf., Pori, Finland (June 2003), 779-791. http://cisr.nps.edu/downloads/03paper_cciege.pdf
+VIGNA, G. Teaching Hands-On Network Security: Testbeds and Live Exercises. Journal of Information Warfare 3, 2 (February 2003), 8–25.
+G. White and G. Nordstrom. Security Across the Curriculum: Using Computer Security to Teach Computer Science Principles. In Proceedings of the 19 th National Information Systems Security Conference, pages 483–488, October 1996.
+

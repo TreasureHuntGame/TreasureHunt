@@ -1,0 +1,24 @@
+Procedimentos:
+
+- ver se tem acct
+- ver se tem scalpy
+- ver var/log/syslog
+- ver histórico
+- ver comando last
+- ver pwd/.thumbnails
+- ver /etc/mtab
+- ver grep -iR nome_aluno
+- ver /etc/log/daemon.log
+- ver /etc/syslog.conf
+- ver /etc/log/auth.log
+- ver /var/log/squid/access.log
+- ver /var/log/squid/cache.log
+- ver /var/log/squid/store.log
+- ver https://memoria.rnp.br/newsgen/9905/logs.html
+- ver http://www.linuxnewmedia.com.br/images/uploads/pdf_aberto/LM07_syslog.pdf
+instalar photorec
+- ver zcat /proc/config.gz | grep CONFIG_INOTIFY
+- ver http://askubuntu.com/questions/411462/show-recent-modified-created-files-using-terminal
+
+Acessos 
+8/9 - 9:51-11:05
