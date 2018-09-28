@@ -1,7 +1,5 @@
-#!/bin/bash
-
 # Ao executar, certifique-se de que você está executando os serviços apache e mysql
-# mysql deve estar rootado sem senha e as tabelas TreasureHunt.user e TreasureHunt.Resposta, caso existam, serão esvaziadas
+# mysql deve estar rootado sem senha e as tabelas TreasureHunt.Usuario e TreasureHunt.Resposta, caso existam, serão esvaziadas
 
 # Identificador do último problema
 MAX=8
@@ -140,13 +138,13 @@ do
 	while [ $LOCK -eq 1 ]
 	do
 		echo "Lista de problemas disponíveis:"
-		echo "1: base64"
-		echo "2: César"
-		echo "3: Comentário em código HTML"
-		echo "4: Comentário em robots.txt"
-		echo "5: Conversão para sequência de inteiros"
-		echo "6: Descompilar .class"
-		echo "7: Descompilar .pyc"
+		echo "1: (De)codificação de arquivo em base64"
+		echo "2: (Des)criptografia de Cifra de César"
+		echo "3: Comentário em código-fonte de página HTML"
+		echo "4: Comentário no arquivo robots.txt"
+		echo "5: (De)codificação de caractere ASCII para inteiro"
+		echo "6: Descompilar binário e obter fonte Java"
+		echo "7: Descompilar binário e obter fonte Python"
 		echo "8: Esteganografia em imagens"
 		echo "Obs.: escolha 1 ou 2 problemas. Exibiremos uma mensagem de erro se a composição não existir."
 		echo "----------"

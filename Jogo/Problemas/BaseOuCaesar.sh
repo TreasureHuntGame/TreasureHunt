@@ -18,6 +18,7 @@ do
 	then ARQUIVO=$5
 	else
 		ARQUIVO=$(ls "$DIRETORIO" | shuf -n 1)
+		echo $ARQUIVO ####
 		if [ ! $DIRETORIO = "/" ]
 			# Copia o arquivo sorteado para o diretório do jogador
 			then cp $DIRETORIO$ARQUIVO ${SAIDA}PROVISORIA
@@ -55,7 +56,7 @@ case $3 in
 	2) cat "${SAIDA}PROVISORIA" | caesar $(seq 1 25 | shuf -n 1) >> "$SAIDA" ;;
 	3) cat "$DIRETORIO$ARQUIVO" | caesar $(seq 1 25 | shuf -n 1) >> "$SAIDA" ;;
 	4) echo $FLAG | base64 >> "$SAIDA" ;;
-	5) echo $FLAG | caesar $(seq 1 25 | shuf -n 1) >> "$SAIDA" ;;
+	5) echo $3; echo $FLAG | caesar $(seq 1 25 | shuf -n 1) >> "$SAIDA" ;;
 esac
 
 # Remove o arquivo copiado
