@@ -98,10 +98,10 @@ Depois, reinicie o mysql (sudo service mysql restart) e tente novamente. Você t
 *Nota 5*: Arquivos de texto podem apresentar problemas se codificados com iso 8859-1. Prefira utf-8 ou us-ascii.
 
 *Nota 6*: Se você obtiver a mensagem `ERROR 1698 (28000): Access denied for user 'root'@'localhost'`ao final do script, verifique o valor default de autenticação para o seu usuário e altere-o. Isso pode ser feito seguindo os passos abaixo (exemplo para o usuário `root`):
-> sudo mysql -u root
+`> sudo mysql -u root
 mysql> USE mysql;
 mysql> SELECT User, Host, plugin FROM mysql.user;
 mysql> UPDATE user SET plugin='mysql_native_password' WHERE User='root';
 mysql> FLUSH PRIVILEGES;
 mysql> exit;
-> service mysql restart
+> service mysql restart`
