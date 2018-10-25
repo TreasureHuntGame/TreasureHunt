@@ -1,7 +1,7 @@
 NUM_INSTANCIAS=$1
 for i in $(seq $NUM_INSTANCIAS)
 do
-	cat "../$i/$2/saida.out" | base64 -d >> "../$i/$2/resposta.jpg"
+	cat "../$i/$2/saida.out" | base32 -d >> "../$i/$2/resposta.jpg"
 	outguess -r "../$i/$2/resposta.jpg" "../$i/$2/saida1.txt"
 	outguess -k $i -r "../$i/$2/resposta.jpg" "../$i/$2/saida2.txt"
 	rm "../$i/$2/resposta.jpg"
