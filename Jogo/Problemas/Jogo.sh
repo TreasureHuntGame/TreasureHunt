@@ -237,6 +237,7 @@ done
 # Se o seu mysql estiver com senha, altere aqui com --password
 sh ConfiguraBD.sh $QUANT_JOGADORES $QUANT_DESAFIOS | mysql --user=root
 
-verificaRespostas >> Log
+#verificaRespostas >> Log
+verificaRespostas | tee -a Log
 
 echo "---------- END TH{LOG} ----------" >> Log
