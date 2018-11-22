@@ -23,6 +23,14 @@ if ($stmt->rowCount() > 0) {
 	$stmt->bindParam(':senha', $senha, PDO::PARAM_STR);
 	$stmt->execute();
 
+$ip = $_SERVER['REMOTE_ADDR'];
+$sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, 0, 'submissaoPadrao', '$ip', CURRENT_TIMESTAMP)";
+$stmt = $conexao->prepare($sql);
+$stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
+$stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
+$stmt->bindParam(':ip', $ip, PDO::PARAM_STR);
+$stmt->execute();
+
 	@session_start();
 	unset($_SESSION['usuario']);
 

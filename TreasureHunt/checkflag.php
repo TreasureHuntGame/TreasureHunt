@@ -18,11 +18,14 @@ $usuario = $_SESSION['usuario'];
 
 // Insere idUsuario, idResposta e flagPura na tabela submissão
 //$sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', date('Y-m-d H:i:s'))";
-$sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', CURRENT_TIMESTAMP)";
+// $sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', CURRENT_TIMESTAMP)";
+$ip = $_SERVER['REMOTE_ADDR'];
+$sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', '$ip', CURRENT_TIMESTAMP)";
 $stmt = $conexao->prepare($sql);
 $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 $stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
 $stmt->bindParam(':flag', $flag, PDO::PARAM_STR);
+$stmt->bindParam(':ip', $ip, PDO::PARAM_STR);
 $stmt->execute();
 
 // Verifica se o usuário já acertou a questão
