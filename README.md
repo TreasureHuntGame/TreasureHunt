@@ -61,6 +61,7 @@ TreasureHunt Cybersecurity Game
 
 Para solucionar os desafios do jogo, sugere-se pelo menos as seguintes ferramentas:
 - awk
+- base32
 - base64
 - caesar
 - outguess
