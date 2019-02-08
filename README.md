@@ -6,6 +6,7 @@ TreasureHunt Cybersecurity Game
 ## Exige instalação das seguintes ferramentas:
 - apache2
 - awk
+- base32
 - base64
 - bash
 - bsdgames (pacote que contém a ferramenta caesar)
@@ -25,6 +26,7 @@ TreasureHunt Cybersecurity Game
 - mv
 - mysql-server-5.5
 - mysql-client-5.5
+- ngrok (opcional, para não disponibilizar o jogo somente na rede local)
 - oracle-java8-installer
 - outguess
 - php
