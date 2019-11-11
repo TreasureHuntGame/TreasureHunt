@@ -10,10 +10,10 @@
     <title>TreasureHunt{Security} -- You'll never find me!</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="icon" type="image/png" href="/TreasureHunt/img/favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/timeout-0.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="/TreasureHunt/css/style.css">
+    <script src="/TreasureHunt/js/timeout-0.1.js"></script>
 </head>
 
 <body class="text-light bg-dark">
