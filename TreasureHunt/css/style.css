@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css?family=Eczar&display=swap');
+@import url('http://fonts.googleapis.com/css?family=Muli&display=swap');
+
+body {
+	font-family: 'Muli', sans-serif;
+	text-align: center;
+}
+
+h1 {
+	font-family: 'Eczar', serif !important;
+	font-size: 3em;
+}
+
+h2 {
+	font-size: 1.2em;
+}
+
+.jumbotron {
+	margin-bottom: 0;
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
+
+.smile {
+	display: inline-block; 
+	margin-left: 10px;
+	transform: rotate(90deg);
+}
+
+p {
+	margin-bottom: 0;
+}
+
+label {
+	margin-bottom: 0;
+}
+
+footer {
+	font-size: 0.7em;
+}
+
+footer a {
+	color: black;
+}
+
+footer a:hover {
+	color: black;
+	font-weight: bold;
+}
+
+#lista-de-regras {
+	list-style-type: none;
+	text-align: justify;
+	padding: 0 1em;
+}
+
+.prompt::before {
+	content: '$ ';
+}
+
+.prompt {
+	border-right: 0.5em solid black ;
+}
+
+code, .prompt {
+	background-color: black;
+	color: #79ff4d;
+	font-weight: bold;
+	padding-right: 0.4em;
+	padding-left: 0.4em;
+}
+
+li:hover .prompt {
+	animation: blinker 0.5s step-end infinite alternate;
+	border-right: 0.5em solid black ;
+}
+
+@keyframes blinker { 
+   50% { border-right-color: white; } 
+}
+
+#espaco {
+	font-size: 1pt;
+}
+
+#unzip {
+	border-left: 0.5em solid black ;
+}
+
+#unzip:hover {
+	animation: blink 0.5s step-end infinite alternate;
+	border-left: 0.5em solid black ;
+}
+
+@keyframes blink { 
+   50% { border-left-color: white; } 
+}
+
+::placeholder {
+   font-family: 'Muli', sans-serif;
+   text-align: center;
+}
+
+nav {
+	background-color: black;
+	margin: 0 auto;
+}
+
+nav ul {
+	list-style: none;
+  	margin: 0;
+  	padding: 0;
+	position: relative;
+}
+
+nav ul li {
+	display: inline-block;
+}
+
+nav ul li a {	
+	display: block;
+	font-size: 20px;
+	line-height: 60px;
+	padding: 0 10px;	
+	text-decoration: none;
+	cursor: not-allowed;
+}
+
+input {
+	min-width: 70px !important;
+	max-width: 99.99% !important;
+	transition: width 0.25s;
+	height: 20px;
+	text-align: center;
+	font-family: 'Muli', sans-serif;
+	border-radius: 1px;
+	margin: 2px;
+	color: white;
+}
+
+button {
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    margin-left: 2px;
+	width: 100px;
+}
+
+address {
+	font-size: 1.6em;
+	font-style: normal;
+}
+
+address .at {
+	visibility: hidden;
+}
+
+address .at:after {
+	color: black;
+	content:'@';
+	visibility: visible;	
+}
+
+address .sinal-menor:before {
+	content: '<';
+}
+
+address .sinal-maior:after {
+	content: '>';
+}
+
+address .sinal-menor, address .sinal-maior {
+	color: white;
+}
+
+address a:hover {
+	color: black;
+}
+
+.nome {
+	color: white;
+	font-weight: normal;
+}
+
+.destaque {
+	color:black;
+}
+
+.form-signin {
+  width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  padding-top: 0;
+  margin: 0 auto;
+}
+
+.form-signin .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 1em;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="number"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"],
+.form-signin input[type="text"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#como-jogar, #contatos, #ranking {
+	display: none;
+}
+
+#logout {
+	color: white;
+	text-decoration: none;
+}
+
+.container-fluid {
+	margin: 0;
+}
+
+#arquivo:hover {
+	color: black;
+	text-decoration: underline;
+	font-weight: bold;
+}
+
+/*
+#lembrar-me {
+	vertical-align: middle;
+}*/
