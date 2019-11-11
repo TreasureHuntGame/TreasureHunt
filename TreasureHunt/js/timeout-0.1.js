@@ -1,5 +1,5 @@
-setTimeout(function(){ window.location = "index.php"; }, 10000);
+setTimeout(function(){ window.location = "/TreasureHunt/index.php"; }, 10000);
 
 function voltar() {
-	window.location = "index.php";
+	window.location = "/TreasureHunt/index.php";
 }
