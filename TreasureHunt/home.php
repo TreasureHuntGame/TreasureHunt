@@ -65,7 +65,7 @@ if (!isset($_SESSION['usuario'])) {
                     <span class="destaque"><?php $usuario=$_SESSION['usuario']; echo $usuario ?></span>
                     <br>
                     <label>Arquivo:</label>
-                    <a class="destaque" id="arquivo" href="<?php print_r(" Desafios/Jogador ".$usuario.".zip ") ?>">
+                    <a class="destaque" id="arquivo" href="<?php print_r("Desafios/Jogador".$usuario.".zip") ?>">
                             <?php print_r("Jogador".$usuario.".zip") ?>
                     </a>
                 </div>
