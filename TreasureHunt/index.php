@@ -46,9 +46,9 @@
         <form action="acesso.php" method="POST" class="form-signin">
             <label>Autentique-se:</label>
             <label for="usuario" class="sr-only">Informe seu ID</label>
-            <input type="number" min="1" name="usuario" id="usuario" class="form-control input-sm" placeholder="Informe seu ID" required autofocus>
+            <input type="number" min="1" name="usuario" id="usuario" class="form-control input-sm" placeholder="Informe seu ID" required autofocus data-toggle="tooltip" data-placement="bottom" title="Credencial numérica atribuída a você.">
             <label for="senha" class="sr-only">Informe sua senha</label>
-            <input type="password" id="senha" name="senha" class="form-control" placeholder="Informe sua senha" required>
+            <input type="password" id="senha" name="senha" class="form-control" placeholder="Informe sua senha" required data-toggle="tooltip" data-placement="bottom" title="Senha fornecida junto à credencial.">
             <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
             <button class="btn btn-dark btn-block" type="submit" name="enviar">Entrar</button>
         </form>

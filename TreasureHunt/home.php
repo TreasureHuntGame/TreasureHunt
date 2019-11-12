@@ -61,60 +61,71 @@ if (!isset($_SESSION['usuario'])) {
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark">
                     <h2>Seus dados:</h2>
-                    <label>ID:</label> 
-                    <span class="destaque"><?php $usuario=$_SESSION['usuario']; echo $usuario ?></span>
-                    <br>
-                    <label>Arquivo:</label>
-                    <a class="destaque" id="arquivo" href="<?php print_r("Desafios/Jogador".$usuario.".zip") ?>">
+                    <div>
+                        <label>ID:</label> 
+                        <span class="destaque" data-toggle="tooltip" data-placement="bottom" title="Número que identifica cada jogador.">
+                            <?php $usuario=$_SESSION['usuario']; echo $usuario ?>
+                        </span>
+                    </div>
+                    <div>
+                        <label>Arquivo:</label>
+                        <span data-toggle="tooltip" data-placement="bottom" title="Arquivo que contém os exercícios!">
+                            <a class="destaque" id="arquivo" href="<?php print_r("Desafios/Jogador".$usuario.".zip") ?>">
                             <?php print_r("Jogador".$usuario.".zip") ?>
-                    </a>
+                            </a>
+                        </span>
+                    </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark">
                     <form action="checkflag.php" method="POST" class="form-signin">
                         <h2>Submeta sua <i>flag</i>:</h2>
                         <label for="id-problema" class="sr-only">Informe o ID do problema</label>
-                        <input type="number" min="1" name="problema" id="id-problema" class="form-control input-sm" placeholder="Informe o ID do problema" required>
+                        <input type="number" min="1" name="problema" id="id-problema" class="form-control input-sm" placeholder="Informe o ID do problema" required data-toggle="tooltip" data-placement="bottom" title="Número do diretório cujo exercício foi resolvido.">
                         <label for="flag-interno" class="sr-only">Informe a flag</label>
-                        <input type="text" id="flag-interno" name="flag" class="form-control" placeholder="Informe a flag" required>
+                        <input type="text" id="flag-interno" name="flag" class="form-control" placeholder="Informe a flag" required data-toggle="tooltip" data-placement="bottom" title="Resposta encontrada.">
                         <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                         <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
                     </form>
                 </div>
                 <div id="placar-individual" class="col-sm-12 col-md-12 col-lg-4 jumbotron bg-dark">
                     <h2>Seus resultados:</h2>
-                    <table class="mx-auto">
-                        <tr>
-                            <th>Problema</th>
-                            <th>Status</th>
-                            <th>Nº de Tentativas</th>
-                        </tr>
-                        <?php
-					$usuario = $_SESSION['usuario'];
-					$stmt = $conexao->query("SELECT idProblema, acertou, tentativas FROM TreasureHunt.Resposta WHERE idUsuario='$usuario'");
-					$i=0;
-					while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
-						?>
-                        <tr>
-                            <td>
-                                <?php echo $linha->idProblema; ?>
-                            </td>
-                            <td>
-                                <?php
-									if ($linha->acertou > 0) {
-										echo "Resolvido";
-									}
-									else {
-										echo "Não Resolvido";
-									}
-								?>
-                            </td>
-                            <td>
-                                <?php echo $linha->tentativas; ?>
-                            </td>
-                        </tr>
-                        		<?php
-					}
-								?>
+                    <table class="mx-auto" data-toggle="tooltip" data-placement="bottom" title="Placar individual detalhado.">
+                        <thead>
+                            <tr>
+                                <th class="align-top">Problema</th>
+                                <th class="align-top">Status</th>
+                                <th class="align-top">Nº de Tentativas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+    					$usuario = $_SESSION['usuario'];
+    					$stmt = $conexao->query("SELECT idProblema, acertou, tentativas FROM TreasureHunt.Resposta WHERE idUsuario='$usuario'");
+    					$i=0;
+    					while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
+    						?>
+                            <tr>
+                                <td class="align-top">
+                                    <?php echo $linha->idProblema; ?>
+                                </td>
+                                <td class="align-top">
+                                    <?php
+    									if ($linha->acertou > 0) {
+    										echo "Resolvido";
+    									}
+    									else {
+    										echo "Não Resolvido";
+    									}
+    								?>
+                                </td>
+                                <td class="align-top">
+                                    <?php echo $linha->tentativas; ?>
+                                </td>
+                            </tr>
+                            		<?php
+    					}
+    								?>
+                        </tbody>
                     </table>
                 </div>
             </div>
@@ -125,35 +136,39 @@ if (!isset($_SESSION['usuario'])) {
             <h1 class="font-weight-bold">Placar<span class="destaque">!</span></h1>
         </div>
         <div id="placar">
-            <table class="mx-auto">
-                <tr>
-                    <th>Colocação</th>
-                    <th>Jogador (ID)</th>
-                    <th>Acertos</th>
-                    <th>Hora do Último Acerto</th>
-                </tr>
+            <table class="mx-auto" data-toggle="tooltip" data-placement="bottom" title="Ranqueamento ordenado pelo número de acertos. O desempate é o horário da última submissão correta.">
+                <thead>
+                    <tr>
+                        <th class="align-top">Colocação</th>
+                        <th class="align-top">Jogador (ID)</th>
+                        <th class="align-top">Acertos</th>
+                        <th class="align-top">Hora do Último Acerto</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <?php
 		$stmt = $conexao->query("SELECT idUsuario, SUM(acertou) AS acertos, MAX(hora) AS hora FROM TreasureHunt.Resposta GROUP BY idUsuario ORDER BY acertos DESC, hora ASC, idUsuario ASC");
 		$i=0;
 		while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
 					?>
-                <tr>
-                    <td>
-                        <?php echo ++$i."º"; ?>
-                    </td>
-                    <td>
-                        <?php echo $linha->idUsuario; ?>
-                    </td>
-                    <td>
-                        <?php echo $linha->acertos; ?>
-                    </td>
-                    <td>
-                        <?php echo $linha->hora; ?>
-                    </td>
-                </tr>
+                    <tr>
+                        <td class="align-top">
+                            <?php echo ++$i."º"; ?>
+                        </td>
+                        <td class="align-top">
+                            <?php echo $linha->idUsuario; ?>
+                        </td>
+                        <td class="align-top">
+                            <?php echo $linha->acertos; ?>
+                        </td>
+                        <td class="align-top">
+                            <?php echo $linha->hora; ?>
+                        </td>
+                    </tr>
                         <?php
 		}
 						?>
+                </tbody>
          	</table>
         </div>
     </div>

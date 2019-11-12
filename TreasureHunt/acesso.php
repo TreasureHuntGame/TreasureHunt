@@ -41,7 +41,7 @@ if ($stmt->rowCount() > 0) {
 	}
 	else {
 ?>
-<script type="text/javascript">
+<script>
 	alert('Senha incorreta ou não informada!');
 	window.setTimeout("location.href='index.php';");
 </script>
@@ -50,7 +50,7 @@ if ($stmt->rowCount() > 0) {
 }
 else {
 ?>
-<script type="text/javascript">
+<script>
 	alert('Usuário incorreto ou não informado!');
 	window.setTimeout("location.href='index.php';");
 </script>
