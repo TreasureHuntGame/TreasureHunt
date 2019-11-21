@@ -22,19 +22,25 @@ if [ $(ls $DIRETORIO | grep .jpg | wc -l) -eq 0 ]
 			[ -d "$DIRETORIO$ARQUIVO" ] || break
 		done
 	
-		if [ $# -eq 3 ]
+		if [ $# -eq 5 ]
 		then
 			# Esteganografa a flag na imagem sorteada
-			outguess -d $3 $DIRETORIO$ARQUIVO $SAIDA
+			if [ $5 -eq 1 ]
+				then outguess -k $4 -d $3 $DIRETORIO$ARQUIVO $SAIDA
+				else outguess -d $3 $DIRETORIO$ARQUIVO $SAIDA
+			fi
 		else
 			# Gera a flag
 			FLAG="TreasureHunt{"$(cat /dev/urandom | tr -cd 'a-z0-9' | head -c 8)"}"
 		
 			# Salva a flag em arquivo
 			echo $FLAG > flag
-		
+
 			# Esteganografa a flag na imagem sorteada
-			outguess -d flag $DIRETORIO$ARQUIVO $SAIDA
+			if [ $4 -eq 1 ]
+				then outguess -k $3 -d flag $DIRETORIO$ARQUIVO $SAIDA
+				else outguess -d flag $DIRETORIO$ARQUIVO $SAIDA
+			fi
 	
 			# Remove o arquivo flag
 			[ -e flag ] && rm flag
