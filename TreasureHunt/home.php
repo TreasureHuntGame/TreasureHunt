@@ -26,6 +26,9 @@ if (!isset($_SESSION['usuario'])) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/efeitos-0.2.js"></script>
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
 </head>
 
 <body class="text-light bg-dark">
@@ -213,7 +216,7 @@ if (!isset($_SESSION['usuario'])) {
             </a>
             <br>
             <p>Este obra está licenciada com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Atribuição-NãoComercial 4.0 Internacional</a>.</p>
-            <p class="text-muted">© 2017-2019</p>
+            <p class="text-muted">© 2017-2020</p>
         </div>
     </footer>
 </body>

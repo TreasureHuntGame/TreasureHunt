@@ -14,6 +14,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/TreasureHunt/css/style.css">
     <script src="/TreasureHunt/js/timeout-0.1.js"></script>
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
 </head>
 
 <body class="text-light bg-dark">
