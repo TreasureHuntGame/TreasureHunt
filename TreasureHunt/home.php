@@ -12,14 +12,13 @@ if (!isset($_SESSION['usuario'])) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="TreasureHunt, um Jogo de Caça ao Tesouro de Segurança Computacional">
     <meta name="keywords" content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
     <meta name="author" content="Ricardo de la Rocha Ladeira">
-    <title>TreasureHunt{Security} -- You'll never find me!</title>
+    <title>Home -- TreasureHunt{Security}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/png" href="img/favicon.png">
@@ -30,7 +29,6 @@ if (!isset($_SESSION['usuario'])) {
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <![endif]-->
 </head>
-
 <body class="text-light bg-dark">
     <nav class="navbar navbar-expand-sm navbar-dark justify-content-center">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -65,15 +63,15 @@ if (!isset($_SESSION['usuario'])) {
                 <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark">
                     <h2>Seus dados:</h2>
                     <div>
-                        <label>ID:</label> 
-                        <span class="destaque" data-toggle="tooltip" data-placement="bottom" title="Número que identifica cada jogador.">
+                        <label class="font-weight-bold">ID:</label> 
+                        <span data-toggle="tooltip" data-placement="bottom" title="Número que identifica cada jogador.">
                             <?php $usuario=$_SESSION['usuario']; echo $usuario ?>
                         </span>
                     </div>
                     <div>
-                        <label>Arquivo:</label>
+                        <label class="font-weight-bold">Arquivo:</label>
                         <span data-toggle="tooltip" data-placement="bottom" title="Arquivo que contém os exercícios!">
-                            <a class="destaque" id="arquivo" href="<?php print_r("Desafios/Jogador".$usuario.".zip") ?>">
+                            <a id="arquivo" href="<?php print_r("Desafios/Jogador".$usuario.".zip") ?>">
                             <?php print_r("Jogador".$usuario.".zip") ?>
                             </a>
                         </span>
@@ -92,7 +90,8 @@ if (!isset($_SESSION['usuario'])) {
                 </div>
                 <div id="placar-individual" class="col-sm-12 col-md-12 col-lg-4 jumbotron bg-dark">
                     <h2>Seus resultados:</h2>
-                    <table class="mx-auto" data-toggle="tooltip" data-placement="bottom" title="Placar individual detalhado.">
+                    <table class="mx-auto" title="Placar individual detalhado contendo o estado e o número de tentativas por problema.">
+                        <caption>Placar individual detalhado.</caption>
                         <thead>
                             <tr>
                                 <th class="align-top">Problema</th>
@@ -139,7 +138,8 @@ if (!isset($_SESSION['usuario'])) {
             <h1 class="font-weight-bold">Placar<span class="destaque">!</span></h1>
         </div>
         <div id="placar">
-            <table class="mx-auto" data-toggle="tooltip" data-placement="bottom" title="Ranqueamento ordenado pelo número de acertos. O desempate é o horário da última submissão correta.">
+            <table class="mx-auto" title="Ranqueamento ordenado pelo número de acertos. O desempate é o horário da última submissão correta.">
+                <caption>Classificação do jogo.</caption>
                 <thead>
                     <tr>
                         <th class="align-top">Colocação</th>
@@ -177,20 +177,20 @@ if (!isset($_SESSION['usuario'])) {
     </div>
     <div id="como-jogar">
         <div class="jumbotron bg-dark">
-            <h1 class="font-weight-bold">Como <span class="destaque">Jogar</span>?</h1>
+            <h1 class="font-weight-bold">Como Jogar<span class="destaque">?</span></h1>
         </div>
         <ul id="lista-de-regras">
             <li><span class="prompt"></span> Na tela de início, insira seu ID e sua senha e clique em <button class="btn btn-sm btn-dark" name="enviar">Entrar</button>.
             </li>
-            <li><span class="prompt"></span> Baixe o arquivo zip disponível e descompacte-o (sugestão: <code id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém diretórios representados por números inteiros. Cada diretório contém pelo menos um arquivo.
+            <li><span class="prompt"></span> Baixe e descompacte o arquivo zip disponível (sugestão: <code id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém diretórios representados por números inteiros. Cada diretório contém pelo menos um arquivo.
             </li>
             <li><span class="prompt"></span> Seu objetivo é descobrir a palavra secreta (<i>flag</i>) escondida em cada um dos diretórios.
             </li>
             <li><span class="prompt"></span> Vencerá o jogo aquele que submeter mais respostas corretas em menos tempo, ou seja, o ranqueamento é feito pelo número de acertos e, em caso de empate, ficará à frente aquele que obteve seu último acerto antes.
             </li>
-            <li><span class="prompt"></span> Cada palavra descoberta é um desafio resolvido! Você só precisa realizar a submissão no sistema, informando o ID do problema (número do diretório) e a <i>flag</i> encontrada. O sistema informará se a <i>flag</i> está (in)correta.
+            <li><span class="prompt"></span> Cada <i>flag</i> descoberta é um desafio resolvido! Você só precisa realizar a submissão no sistema, informando o ID do problema (número do diretório) e a <i>flag</i> encontrada. O sistema informará se a <i>flag</i> está (in)correta.
             </li>
-            <li><span class="prompt"></span> As <i>flag</i> possuem o formato <code>TreasureHunt{texto-aleatorio}</code>. Na submissão, digite toda <i>flag</i>! Exemplo: <code>TreasureHunt{dhi2uh39}</code>.
+            <li><span class="prompt"></span> As <i>flags</i> possuem o formato <code>TreasureHunt{texto-aleatorio}</code>. Na submissão, digite toda <i>flag</i>! Exemplo: <code>TreasureHunt{dhi2uh39}</code>.
                 </li>
         </ul>
     </div>
@@ -200,25 +200,24 @@ if (!isset($_SESSION['usuario'])) {
             <h2>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque">:)</span></h2>
         </div>
         <address>
-	        <a href="https://instagram.com/ricardo.delarocha">
-		        <span class="nome">Ricardo de la Rocha <span class="destaque font-weight-bold">Ladeira</span></span>
-		        </a>
-	        <span class="sinal-menor sinal-maior">ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br</span>
-	        <br>
-	        <span class="nome">Rafael Rodrigues <span class="destaque font-weight-bold">Obelheiro</span></span>
-	        <span class="sinal-menor sinal-maior">rafael.obelheiro<span class="at font-weight-bold"></span>udesc.br</span>
-    	</address>
+        <a href="https://instagram.com/ricardo.delarocha" target="_blank" title="Instagram do autor Ricardo de la Rocha Ladeira (abre em nova guia)">
+          <span class="nome">Ricardo de la Rocha <strong>Ladeira</strong></span>
+        </a>
+        <span class="sinal-menor sinal-maior">ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br</span>
+        <br>
+        <span class="nome">Rafael Rodrigues <strong>Obelheiro</strong></span>
+        <span class="sinal-menor sinal-maior">rafael.obelheiro<span class="at font-weight-bold"></span>udesc.br</span>
+        </address>
     </div>
     <footer class="page-footer font-small">
         <div class="footer-copyright">
-            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">
+            <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons">
                 <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png">
             </a>
             <br>
-            <p>Este obra está licenciada com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Atribuição-NãoComercial 4.0 Internacional</a>.</p>
-            <p class="text-muted">© 2017-2020</p>
+            <p>Esta obra está licenciada com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Atribuição-NãoComercial 4.0 Internacional</a>.</p>
+            <p>© 2017-2020</p>
         </div>
     </footer>
 </body>
-
 </html>

@@ -50,51 +50,85 @@ footer a:hover {
 
 #lista-de-regras {
 	list-style-type: none;
-	text-align: justify;
+	text-align: left;
 	padding: 0 1em;
 }
 
 .prompt::before {
-	content: '$ ';
+	content: '~$ ';
 }
 
 .prompt {
-	border-right: 0.5em solid black ;
+	border-right: 0.5em solid black;
 }
 
 code, .prompt {
-	background-color: black;
-	color: #79ff4d;
+	background-color: #000;
+	/* color: #79FF4D; */
+	color: #FFF;
 	font-weight: bold;
-	padding-right: 0.4em;
-	padding-left: 0.4em;
+	padding: 0.2em;
+}
+
+li .prompt {
+	margin-right: 0.5em;
 }
 
 li:hover .prompt {
+	border-right-color: #FFF;
+}
+
+/*
+
+O efeito abaixo foi comentado para evitar problemas a indivíduos com epilepsia fotossensível.
+Se for desejável utilizar o efeito, basta comentar o estilo acima e descomentar o estilo abaixo.
+
+*/
+
+/*
+
+li:hover .prompt {
 	animation: blinker 0.5s step-end infinite alternate;
-	border-right: 0.5em solid black ;
+	border-right-color: black;
 }
 
 @keyframes blinker { 
-   50% { border-right-color: white; } 
+   50% { border-right-color: #FFF; } 
 }
+
+*/
 
 #espaco {
 	font-size: 1pt;
 }
 
 #unzip {
-	border-left: 0.5em solid black ;
+	border-left: 0.5em solid #000;
 }
 
 #unzip:hover {
+	border-left-color: #FFF;
+}
+
+/*
+
+O efeito abaixo foi comentado para evitar problemas a indivíduos com epilepsia fotossensível.
+Se for desejável utilizar o efeito, basta comentar o estilo acima e descomentar o estilo abaixo.
+
+*/
+
+/*
+
+#unzip:hover {
 	animation: blink 0.5s step-end infinite alternate;
-	border-left: 0.5em solid black ;
+	border-left-color: #000;
 }
 
 @keyframes blink { 
-   50% { border-left-color: white; } 
+   50% { border-left-color: #FFF; } 
 }
+
+*/
 
 ::placeholder {
    font-family: 'Muli', sans-serif;
@@ -102,7 +136,7 @@ li:hover .prompt {
 }
 
 nav {
-	background-color: black;
+	background-color: #000;
 	margin: 0 auto;
 }
 
@@ -134,8 +168,16 @@ input {
 	text-align: center;
 	font-family: 'Muli', sans-serif;
 	border-radius: 1px;
-	margin: 2px;
-	color: white;
+	color: #FFF;
+	filter: none;
+  	box-shadow: 0 0 0 .2rem rgba(108 ,108, 108, .25);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus {
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: 0 0 0 .2rem rgba(108 ,108, 108, .25);
 }
 
 button {
@@ -156,7 +198,7 @@ address .at {
 }
 
 address .at:after {
-	color: black;
+	color: #000;
 	content:'@';
 	visibility: visible;	
 }
@@ -170,20 +212,20 @@ address .sinal-maior:after {
 }
 
 address .sinal-menor, address .sinal-maior {
-	color: white;
+	color: #FFF;
 }
 
 address a:hover {
-	color: white;
+	color: #FFF;
 }
 
 .nome {
-	color: white;
+	color: #FFF;
 	font-weight: normal;
 }
 
 .destaque {
-	color:black;
+	color: #000;
 }
 
 .form-signin {
@@ -200,23 +242,19 @@ address a:hover {
   height: auto;
   padding: 10px;
   font-size: 1em;
+  border: 2px solid #343A40;
 }
 
-.form-signin .form-control:focus {
+.form-signin .form-control:focus, .form-signin .form-control:hover {
   z-index: 2;
+  border-color: #767676;
+  box-shadow: 0 0 0 .2rem rgba(108 ,108, 108, .25);
 }
 
-.form-signin input[type="number"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
+.form-signin input[type="number"],
 .form-signin input[type="password"],
 .form-signin input[type="text"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  border-radius: 5px;
 }
 
 #como-jogar, #contatos, #ranking {
@@ -224,7 +262,7 @@ address a:hover {
 }
 
 #logout {
-	color: white;
+	color: #FFF;
 	text-decoration: none;
 }
 
@@ -232,8 +270,26 @@ address a:hover {
 	margin: 0;
 }
 
+#arquivo {
+	color: #FFF;
+}
+
 #arquivo:hover {
-	color: black;
 	text-decoration: underline;
 	font-weight: bold;
+}
+
+#creative-commons:hover {
+	text-decoration: inherit;
+}
+
+#erro {
+	 overflow-wrap: break-word;
+}
+
+caption {
+	caption-side: top;
+	color: #FFF;
+	text-align: center;
+	padding-top: 0;
 }
