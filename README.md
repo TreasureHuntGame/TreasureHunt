@@ -1,7 +1,7 @@
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Licença Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br /><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">TreasureHunt{Security}</span> de <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/TreasureHuntGame/TreasureHunt" property="cc:attributionName" rel="cc:attributionURL">Ricardo de la Rocha Ladeira</a> está licenciado com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons - Atribuição-NãoComercial 4.0 Internacional</a>.<br />Baseado no trabalho disponível em <a xmlns:dct="http://purl.org/dc/terms/" href="https://github.com/TreasureHuntGame/TreasureHunt" rel="dct:source">https://github.com/TreasureHuntGame/TreasureHunt</a>.
 
 # TreasureHunt
-TreasureHunt Cybersecurity Game
+TreasureHunt Cybersecurity Game é um jogo de caça ao tesouro, também conhecido como CTF. Neste jogo o objetivo é resolver o máximo de exercícios de Segurança Computacional antes dos concorrentes. Os códigos presentes no repositório representam o gerador de competições (em TreasureHunt/Jogo) e a interface web do jogo (em TreasureHunt/TreasureHunt).
 
 ## Exige instalação das seguintes ferramentas:
 - apache2
