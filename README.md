@@ -48,15 +48,15 @@ Nota-se que podemos dividir o projeto em dois grandes módulos:
 
 ### Gerador de desafios: 
 
-O gerador de desafios é acionado pelo organizador e é composto por um conjunto de _scripts_ e diretórios com recursos como imagens, textos e códigos, localizados em [`TreasureHunt/Jogo`](./jogo). Esses diretórios são usados como base para criação de instâncias únicas de problemas. Ainda que exista um conjunto de arquivos padrão, o organizador pode modificá-los, adicionando ou removendo-os a seu critério. 
+O gerador de desafios é acionado pelo organizador e é composto por um conjunto de _scripts_ e diretórios com recursos como imagens, textos e códigos, localizados em [`TreasureHunt/Jogo`](/Jogo). Esses diretórios são usados como base para criação de instâncias únicas de problemas. Ainda que exista um conjunto de arquivos padrão, o organizador pode modificá-los, adicionando ou removendo-os a seu critério. 
 
-Os _scripts_, por sua vez, são responsáveis por montar a competição, gerar instâncias de problemas e _flags_ únicas para cada jogador, bem como configurar o Sistema de Gerenciamento de Banco de Dados (SGBD). O _script_ principal é chamado de [jogo.sh](./jogo/problemas/jogo.sh). Ele recebe a quantidade de jogadores e problemas, os quais podem aplicar técnicas únicas ou compostas de acordo com as entradas do organizador. Por fim, as entradas são validadas, prosseguindo na criação dos arquivos compactados (em formato .zip) que serão enviados para o Servidor _Web_ e na configuração do SGBD. A imagem a seguir demonstra a execução do _script_ principal:
+Os _scripts_, por sua vez, são responsáveis por montar a competição, gerar instâncias de problemas e _flags_ únicas para cada jogador, bem como configurar o Sistema de Gerenciamento de Banco de Dados (SGBD). O _script_ principal é chamado de [jogo.sh](Jogo/Problemas/Jogo.sh). Ele recebe a quantidade de jogadores e problemas, os quais podem aplicar técnicas únicas ou compostas de acordo com as entradas do organizador. Por fim, as entradas são validadas, prosseguindo na criação dos arquivos compactados (em formato .zip) que serão enviados para o Servidor _Web_ e na configuração do SGBD. A imagem a seguir demonstra a execução do _script_ principal:
 
 ![execução do _script_ principal](Imagens/script.png)
 
 ### Sistema Web:
 
-É o componente no qual os jogadores interagem com o jogo, localizando-se em [`TreasureHunt/TreasureHunt`](./TreasureHunt). Nele os usuários têm as seguintes funcionalidades, como também descritas no diagrama de casos de uso: 
+É o componente no qual os jogadores interagem com o jogo, localizando-se em [`TreasureHunt/TreasureHunt`](/TreasureHunt). Nele os usuários têm as seguintes funcionalidades, como também descritas no diagrama de casos de uso: 
 
 ![diagrama de casos deuso](Imagens/caso_uso.png)
 
@@ -100,7 +100,7 @@ cd TreasureHunt
 
 ### Instalação de Requisitos e Ferramentas 
 
-Após baixar o repositório para a sua máquina, o próximo passo é fazer a instalação dos requisitos do projeto. Para isto, basta executar o _script_ [`instalador.sh`](./instalador/instalador.sh), localizado em [`TreasureHunt/instalador`](./instalador), que se encarrega de instalar todos os pacotes, que por padrão se encontram no arquivo [`requisitos.txt`](./instalador/requisitos.txt).
+Após baixar o repositório para a sua máquina, o próximo passo é fazer a instalação dos requisitos do projeto. Para isto, basta executar o _script_ [`instalador.sh`](/Instalador/instalador.sh), localizado em [`TreasureHunt/Instalador`](/Instalador), que se encarrega de instalar todos os pacotes, que por padrão se encontram no arquivo [`requisitos.txt`](/Instalador/requisitos.txt).
 
 ```sh
 cd instalador
@@ -127,7 +127,7 @@ Cabe ao organizador da competição decidir se fornece ou não as ferramentas.
 
 As competições de TreasureHunt precisam ser criadas pelo organizador. Para tanto, este deve escolher a quantidade de participantes, bem como quantos e quais desafios estarão presentes, podendo inclusive adicionar um problema composto, onde duas técnicas são aplicadas em conjunto.
 
-Para gerar a competição, basta executar o _script_ [`jogo.sh`](./jogo/problemas/jogo.sh) do diretório [TreasureHunt/jogo/problemas/](./jogo/problemas).
+Para gerar a competição, basta executar o _script_ [`jogo.sh`](/Jogo/Problemas/Jogo.sh) do diretório [TreasureHunt/jogo/problemas/](/Jogo/Problemas).
 
 ```sh
 cd jogo/problemas
@@ -157,7 +157,7 @@ Com o fim desses passos, o esquema e as tabelas também terão sido criadas auto
 
 Para iniciar a interface _web_ basta seguir os seguintes passos:
 
-1. Copie o diretório [/TreasureHunt](./TreasureHunt) para o diretório do servido web. Dependendo do sistema operacional e do servidor _web_ este se localizará em locais diferentes. Exemplos: `C:\xampp\htdocs` com o Xampp no Windows ou `/var/www/html/TreasureHunt/` em certas distribuições Linux:
+1. Copie o diretório [/TreasureHunt](/TreasureHunt) para o diretório do servido web. Dependendo do sistema operacional e do servidor _web_ este se localizará em locais diferentes. Exemplos: `C:\xampp\htdocs` com o Xampp no Windows ou `/var/www/html/TreasureHunt/` em certas distribuições Linux:
 
 ```sh
 cp TreasureHunt /var/www/html/TreasureHunt/
