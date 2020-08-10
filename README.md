@@ -169,7 +169,7 @@ cp TreasureHunt /var/www/html/TreasureHunt/
 sudo service apache2 start
 ```
 
-3. Forneça acesso aos jogadores através do _link_ gerado pelo `ngrok` ou informando seu endereço IP. Neste caso, verifique em sua interface de rede, por exemplo, digitando ``ifconfig``.
+3. Forneça acesso aos jogadores através do _link_ gerado pelo [`ngrok`](https://ngrok.com/) ou informando seu endereço IP. Neste caso, verifique em sua interface de rede, por exemplo, digitando ``ifconfig``.
 
 4. Forneça um identificador de usuário (ID) e uma senha de acesso a cada jogador. Eles usarão essas informações para se autenticar na aplicação _web_ posteriormente.
 
