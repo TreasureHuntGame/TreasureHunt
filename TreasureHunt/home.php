@@ -86,7 +86,7 @@ if (!isset($_SESSION['usuario'])) {
                                 }
 
                                 $arquivo = "Desafios/Jogador" . $usuario . ".zip";
-                                $tamanho = formatBytes(filesize($arquivo), $precision = 0);
+                                $tamanho = formatBytes(filesize($arquivo));
                                 $partes = pathinfo($arquivo);
                                 print_r("Jogador" . $usuario . ".zip" . "<br>(formato ." . $partes['extension'] . ", tamanho " . $tamanho . ")")
                                 ?>
