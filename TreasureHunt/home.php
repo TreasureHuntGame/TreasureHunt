@@ -76,10 +76,19 @@ if (!isset($_SESSION['usuario'])) {
                         <span data-toggle="tooltip" data-placement="bottom" title="Arquivo que contém os exercícios!">
                             <a id="arquivo" href="<?php print_r("Desafios/Jogador" . $usuario . ".zip") ?>">
                                 <?php
+                                // formato tamanho de arquivo no melhor formato (B, Kb, Mb ou Tb) e precisão escolhida
+                                function formatBytes($size, $precision = 2)
+                                {
+                                    $base = log($size, 1024);
+                                    $suffixes = array('B', 'Kb', 'Mb', 'Gb', 'Tb');
+
+                                    return round(pow(1024, $base - floor($base)), $precision) . ' ' . $suffixes[floor($base)];
+                                }
+
                                 $arquivo = "Desafios/Jogador" . $usuario . ".zip";
-                                $tamanhoKB = filesize($arquivo) / 1024;
+                                $tamanho = formatBytes(filesize($arquivo), $precision = 0);
                                 $partes = pathinfo($arquivo);
-                                print_r("Jogador" . $usuario . ".zip" . " (formato ." . $partes['extension'] . ", tamanho " . intval($tamanhoKB) . "Kb)")
+                                print_r("Jogador" . $usuario . ".zip" . " (formato ." . $partes['extension'] . ", tamanho " . $tamanho . ")")
                                 ?>
                             </a>
                         </span>
