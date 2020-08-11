@@ -67,8 +67,10 @@ if (!isset($_SESSION['usuario'])) {
                     <div>
                         <label class="font-weight-bold">ID:</label>
                         <span data-toggle="tooltip" data-placement="bottom" title="Número que identifica cada jogador.">
-                            <?php $usuario = $_SESSION['usuario'];
-                            echo $usuario ?>
+                            <?php
+                            $usuario = $_SESSION['usuario'];
+                            echo $usuario
+                            ?>
                         </span>
                     </div>
                     <div>
@@ -76,11 +78,9 @@ if (!isset($_SESSION['usuario'])) {
                         <span data-toggle="tooltip" data-placement="bottom" title="Arquivo que contém os exercícios!">
                             <a id="arquivo" href="<?php print_r("Desafios/Jogador" . $usuario . ".zip") ?>">
                                 <?php
-                                // formato tamanho de arquivo no melhor formato (B, Kb, Mb ou Tb) e precisão escolhida
-                                function formatBytes($size, $precision = 2)
-                                {
+                                function formatBytes($size, $precision = 2) {
                                     $base = log($size, 1024);
-                                    $suffixes = array('B', 'Kb', 'Mb', 'Gb', 'Tb');
+                                    $suffixes = array('B', 'kB', 'MB', 'GB', 'TB');
 
                                     return round(pow(1024, $base - floor($base)), $precision) . ' ' . $suffixes[floor($base)];
                                 }
@@ -88,7 +88,7 @@ if (!isset($_SESSION['usuario'])) {
                                 $arquivo = "Desafios/Jogador" . $usuario . ".zip";
                                 $tamanho = formatBytes(filesize($arquivo), $precision = 0);
                                 $partes = pathinfo($arquivo);
-                                print_r("Jogador" . $usuario . ".zip" . " (formato ." . $partes['extension'] . ", tamanho " . $tamanho . ")")
+                                print_r("Jogador" . $usuario . ".zip" . "<br>(formato ." . $partes['extension'] . ", tamanho " . $tamanho . ")")
                                 ?>
                             </a>
                         </span>
@@ -125,19 +125,22 @@ if (!isset($_SESSION['usuario'])) {
                             ?>
                                 <tr>
                                     <td class="align-top">
-                                        <?php echo $linha->idProblema; ?>
-                                    </td>
-                                    <td class="align-top">
                                         <?php
-                                        if ($linha->acertou > 0) {
-                                            echo "Resolvido";
-                                        } else {
-                                            echo "Não Resolvido";
-                                        }
+                                        echo $linha->idProblema;
                                         ?>
                                     </td>
                                     <td class="align-top">
-                                        <?php echo $linha->tentativas; ?>
+                                        <?php
+                                        if ($linha->acertou > 0)
+                                            echo "Resolvido";
+                                        else
+                                            echo "Não Resolvido";
+                                        ?>
+                                    </td>
+                                    <td class="align-top">
+                                        <?php
+                                        echo $linha->tentativas;
+                                        ?>
                                     </td>
                                 </tr>
                             <?php
