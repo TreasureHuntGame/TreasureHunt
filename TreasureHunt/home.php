@@ -5,13 +5,14 @@ ob_start();
 @session_start();
 
 if (!isset($_SESSION['usuario'])) {
-	unset($_SESSION['usuario']);
-	header('location:index.php');
+    unset($_SESSION['usuario']);
+    header('location:index.php');
 }
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,6 +30,7 @@ if (!isset($_SESSION['usuario'])) {
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <![endif]-->
 </head>
+
 <body class="text-light bg-dark">
     <nav class="navbar navbar-expand-sm navbar-dark justify-content-center">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -63,16 +65,22 @@ if (!isset($_SESSION['usuario'])) {
                 <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark">
                     <h2>Seus dados:</h2>
                     <div>
-                        <label class="font-weight-bold">ID:</label> 
+                        <label class="font-weight-bold">ID:</label>
                         <span data-toggle="tooltip" data-placement="bottom" title="Número que identifica cada jogador.">
-                            <?php $usuario=$_SESSION['usuario']; echo $usuario ?>
+                            <?php $usuario = $_SESSION['usuario'];
+                            echo $usuario ?>
                         </span>
                     </div>
                     <div>
                         <label class="font-weight-bold">Arquivo:</label>
                         <span data-toggle="tooltip" data-placement="bottom" title="Arquivo que contém os exercícios!">
-                            <a id="arquivo" href="<?php print_r("Desafios/Jogador".$usuario.".zip") ?>">
-                            <?php print_r("Jogador".$usuario.".zip") ?>
+                            <a id="arquivo" href="<?php print_r("Desafios/Jogador" . $usuario . ".zip") ?>">
+                                <?php
+                                $arquivo = "Desafios/Jogador" . $usuario . ".zip";
+                                $tamanhoKB = filesize($arquivo) / 1024;
+                                $partes = pathinfo($arquivo);
+                                print_r("Jogador" . $usuario . ".zip" . " (formato ." . $partes['extension'] . ", tamanho " . intval($tamanhoKB) . "Kb)")
+                                ?>
                             </a>
                         </span>
                     </div>
@@ -101,32 +109,31 @@ if (!isset($_SESSION['usuario'])) {
                         </thead>
                         <tbody>
                             <?php
-    					$usuario = $_SESSION['usuario'];
-    					$stmt = $conexao->query("SELECT idProblema, acertou, tentativas FROM TreasureHunt.Resposta WHERE idUsuario='$usuario'");
-    					$i=0;
-    					while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
-    						?>
-                            <tr>
-                                <td class="align-top">
-                                    <?php echo $linha->idProblema; ?>
-                                </td>
-                                <td class="align-top">
-                                    <?php
-    									if ($linha->acertou > 0) {
-    										echo "Resolvido";
-    									}
-    									else {
-    										echo "Não Resolvido";
-    									}
-    								?>
-                                </td>
-                                <td class="align-top">
-                                    <?php echo $linha->tentativas; ?>
-                                </td>
-                            </tr>
-                            		<?php
-    					}
-    								?>
+                            $usuario = $_SESSION['usuario'];
+                            $stmt = $conexao->query("SELECT idProblema, acertou, tentativas FROM TreasureHunt.Resposta WHERE idUsuario='$usuario'");
+                            $i = 0;
+                            while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
+                            ?>
+                                <tr>
+                                    <td class="align-top">
+                                        <?php echo $linha->idProblema; ?>
+                                    </td>
+                                    <td class="align-top">
+                                        <?php
+                                        if ($linha->acertou > 0) {
+                                            echo "Resolvido";
+                                        } else {
+                                            echo "Não Resolvido";
+                                        }
+                                        ?>
+                                    </td>
+                                    <td class="align-top">
+                                        <?php echo $linha->tentativas; ?>
+                                    </td>
+                                </tr>
+                            <?php
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -150,29 +157,29 @@ if (!isset($_SESSION['usuario'])) {
                 </thead>
                 <tbody>
                     <?php
-		$stmt = $conexao->query("SELECT idUsuario, SUM(acertou) AS acertos, MAX(hora) AS hora FROM TreasureHunt.Resposta GROUP BY idUsuario ORDER BY acertos DESC, hora ASC, idUsuario ASC");
-		$i=0;
-		while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
-					?>
-                    <tr>
-                        <td class="align-top">
-                            <?php echo ++$i."º"; ?>
-                        </td>
-                        <td class="align-top">
-                            <?php echo $linha->idUsuario; ?>
-                        </td>
-                        <td class="align-top">
-                            <?php echo $linha->acertos; ?>
-                        </td>
-                        <td class="align-top">
-                            <?php echo $linha->hora; ?>
-                        </td>
-                    </tr>
-                        <?php
-		}
-						?>
+                    $stmt = $conexao->query("SELECT idUsuario, SUM(acertou) AS acertos, MAX(hora) AS hora FROM TreasureHunt.Resposta GROUP BY idUsuario ORDER BY acertos DESC, hora ASC, idUsuario ASC");
+                    $i = 0;
+                    while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
+                    ?>
+                        <tr>
+                            <td class="align-top">
+                                <?php echo ++$i . "º"; ?>
+                            </td>
+                            <td class="align-top">
+                                <?php echo $linha->idUsuario; ?>
+                            </td>
+                            <td class="align-top">
+                                <?php echo $linha->acertos; ?>
+                            </td>
+                            <td class="align-top">
+                                <?php echo $linha->hora; ?>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
                 </tbody>
-         	</table>
+            </table>
         </div>
     </div>
     <div id="como-jogar">
@@ -191,7 +198,7 @@ if (!isset($_SESSION['usuario'])) {
             <li><span class="prompt"></span> Cada <i>flag</i> descoberta é um desafio resolvido! Você só precisa realizar a submissão no sistema, informando o ID do problema (número do diretório) e a <i>flag</i> encontrada. O sistema informará se a <i>flag</i> está (in)correta.
             </li>
             <li><span class="prompt"></span> As <i>flags</i> possuem o formato <code>TreasureHunt{texto-aleatorio}</code>. Na submissão, digite toda <i>flag</i>! Exemplo: <code>TreasureHunt{dhi2uh39}</code>.
-                </li>
+            </li>
         </ul>
     </div>
     <div id="contatos">
@@ -200,13 +207,13 @@ if (!isset($_SESSION['usuario'])) {
             <h2>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque">:)</span></h2>
         </div>
         <address>
-        <a href="https://instagram.com/ricardo.delarocha" target="_blank" title="Instagram do autor Ricardo de la Rocha Ladeira (abre em nova guia)">
-          <span class="nome">Ricardo de la Rocha <strong>Ladeira</strong></span>
-        </a>
-        <span class="sinal-menor sinal-maior">ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br</span>
-        <br>
-        <span class="nome">Rafael Rodrigues <strong>Obelheiro</strong></span>
-        <span class="sinal-menor sinal-maior">rafael.obelheiro<span class="at font-weight-bold"></span>udesc.br</span>
+            <a href="https://instagram.com/ricardo.delarocha" target="_blank" title="Instagram do autor Ricardo de la Rocha Ladeira (abre em nova guia)">
+                <span class="nome">Ricardo de la Rocha <strong>Ladeira</strong></span>
+            </a>
+            <span class="sinal-menor sinal-maior">ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br</span>
+            <br>
+            <span class="nome">Rafael Rodrigues <strong>Obelheiro</strong></span>
+            <span class="sinal-menor sinal-maior">rafael.obelheiro<span class="at font-weight-bold"></span>udesc.br</span>
         </address>
     </div>
     <footer class="page-footer font-small">
@@ -220,4 +227,5 @@ if (!isset($_SESSION['usuario'])) {
         </div>
     </footer>
 </body>
+
 </html>
