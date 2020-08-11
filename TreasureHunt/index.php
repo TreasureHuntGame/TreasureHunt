@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,6 +18,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <![endif]-->
 </head>
+
 <body class="text-light bg-dark">
     <nav class="navbar navbar-expand-sm navbar-dark justify-content-center">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
@@ -39,8 +41,8 @@
     <main>
         <div class="jumbotron bg-dark">
             <h1 class="font-weight-bold">
-            TreasureHunt<span id="espaco"> </span><span class="destaque">{</span>Security<span class="destaque">}</span>
-          </h1>
+                TreasureHunt<span id="espaco"> </span><span class="destaque">{</span>Security<span class="destaque">}</span>
+            </h1>
             <h2>Um jogo para testar suas habilidades em Segurança Computacional. <span class="smile destaque">:)</span></h2>
         </div>
         <form action="acesso.php" method="POST" class="form-signin">
@@ -79,13 +81,29 @@
             <h2>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque">:)</span></h2>
         </div>
         <address>
-        <a href="https://instagram.com/ricardo.delarocha" target="_blank" title="Instagram do autor Ricardo de la Rocha Ladeira (abre em nova guia)">
-          <span class="nome">Ricardo de la Rocha <strong>Ladeira</strong></span>
-        </a>
-        <span class="sinal-menor sinal-maior">ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br</span>
-        <br>
-        <span class="nome">Rafael Rodrigues <strong>Obelheiro</strong></span>
-        <span class="sinal-menor sinal-maior">rafael.obelheiro<span class="at font-weight-bold"></span>udesc.br</span>
+            <span class="address-title">Equipe atual:</span>
+            <span class="contato">
+                <span class="nome">Ricardo de la Rocha Ladeira</span>:
+                <span class="sinal-menor sinal-maior">ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br</span>
+            </span>
+            <span class="contato">
+                <span class="nome">Vítor Augusto Ueno Otto</span>:
+                <span class="sinal-menor sinal-maior">vitoruenootto<span class="at font-weight-bold"></span>gmail.com</span>
+            </span>
+
+            <span class="address-title">Contribuidores:</span>
+            <span class="contato">
+                <span class="nome">Henrique Arnicheski Dalposso</span>
+            </span>
+            <span class="contato">
+                <span class="nome">Rafael Rodrigues Obelheiro</span>
+            </span>
+            <span class="contato"> 
+                <span class="nome">Richard Robert Dias Custódio</span>
+            </span>
+            <span class="contato">
+                <span class="nome">Vinícius Manuel Martins</span>
+            </span>
         </address>
     </div>
     <footer class="page-footer font-small">
@@ -99,4 +117,5 @@
         </div>
     </footer>
 </body>
+
 </html>

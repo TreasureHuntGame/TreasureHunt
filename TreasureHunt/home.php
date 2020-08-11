@@ -219,13 +219,29 @@ if (!isset($_SESSION['usuario'])) {
             <h2>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque">:)</span></h2>
         </div>
         <address>
-            <a href="https://instagram.com/ricardo.delarocha" target="_blank" title="Instagram do autor Ricardo de la Rocha Ladeira (abre em nova guia)">
-                <span class="nome">Ricardo de la Rocha <strong>Ladeira</strong></span>
-            </a>
-            <span class="sinal-menor sinal-maior">ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br</span>
-            <br>
-            <span class="nome">Rafael Rodrigues <strong>Obelheiro</strong></span>
-            <span class="sinal-menor sinal-maior">rafael.obelheiro<span class="at font-weight-bold"></span>udesc.br</span>
+            <span class="address-title">Equipe atual:</span>
+            <span class="contato">
+                <span class="nome">Ricardo de la Rocha Ladeira</span>:
+                <span class="sinal-menor sinal-maior">ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br</span>
+            </span>
+            <span class="contato">
+                <span class="nome">Vítor Augusto Ueno Otto</span>:
+                <span class="sinal-menor sinal-maior">vitoruenootto<span class="at font-weight-bold"></span>gmail.com</span>
+            </span>
+
+            <span class="address-title">Contribuidores:</span>
+            <span class="contato">
+                <span class="nome">Henrique Arnicheski Dalposso</span>
+            </span>
+            <span class="contato">
+                <span class="nome">Rafael Rodrigues Obelheiro</span>
+            </span>
+            <span class="contato"> 
+                <span class="nome">Richard Robert Dias Custódio</span>
+            </span>
+            <span class="contato">
+                <span class="nome">Vinícius Manuel Martins</span>
+            </span>
         </address>
     </div>
     <footer class="page-footer font-small">

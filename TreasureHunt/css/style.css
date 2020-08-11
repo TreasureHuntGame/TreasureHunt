@@ -140,7 +140,7 @@ nav {
 	margin: 0 auto;
 }
 
-nav ul {
+nav ul{
 	list-style: none;
   	margin: 0;
   	padding: 0;
@@ -217,6 +217,15 @@ address .sinal-menor, address .sinal-maior {
 
 address a:hover {
 	color: #FFF;
+}
+
+.contato, .address-title {
+	display: block;
+}
+
+.address-title {
+	font-weight: bold;
+	margin: 15px 0;
 }
 
 .nome {
