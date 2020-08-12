@@ -81,29 +81,23 @@
             <h2>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque">:)</span></h2>
         </div>
         <address>
-            <span class="address-title">Equipe atual:</span>
+
+            <h3 class="address-title">Equipe atual:</h3>
             <span class="contato">
-                <span class="nome">Ricardo de la Rocha Ladeira</span>:
+                <span class="nome-autor">Ricardo de la Rocha Ladeira</span>:
                 <span class="sinal-menor sinal-maior">ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br</span>
             </span>
             <span class="contato">
-                <span class="nome">Vítor Augusto Ueno Otto</span>:
+                <span class="nome-autor">Vítor Augusto Ueno Otto</span>:
                 <span class="sinal-menor sinal-maior">vitoruenootto<span class="at font-weight-bold"></span>gmail.com</span>
             </span>
 
-            <span class="address-title">Contribuidores:</span>
-            <span class="contato">
-                <span class="nome">Henrique Arnicheski Dalposso</span>
-            </span>
-            <span class="contato">
-                <span class="nome">Rafael Rodrigues Obelheiro</span>
-            </span>
-            <span class="contato"> 
-                <span class="nome">Richard Robert Dias Custódio</span>
-            </span>
-            <span class="contato">
-                <span class="nome">Vinícius Manuel Martins</span>
-            </span>
+            <h4 class="address-title">Contribuidores:</h4>
+            <span class="contato nome-contrib">Henrique Arnicheski Dalposso</span>
+            <span class="contato nome-contrib">Rafael Rodrigues Obelheiro</span>
+            <span class="contato nome-contrib">Richard Robert Dias Custódio</span>
+            <span class="contato nome-contrib">Vinícius Manuel Martins</span>
+
         </address>
     </div>
     <footer class="page-footer font-small">
