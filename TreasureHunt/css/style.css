@@ -157,7 +157,11 @@ nav ul li a {
 	line-height: 60px;
 	padding: 0 10px;	
 	text-decoration: none;
-	cursor: not-allowed;
+	cursor: url('../img/cursor_fechado.png'), pointer;
+}
+
+nav ul li a:active {
+	cursor: url('../img/cursor_aberto.png'), pointer;
 }
 
 input {
