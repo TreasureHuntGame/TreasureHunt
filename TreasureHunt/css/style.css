@@ -189,7 +189,7 @@ button {
 }
 
 address {
-	font-size: 1.6em;
+	font-size: 1.4em;
 	font-style: normal;
 }
 
@@ -219,18 +219,29 @@ address a:hover {
 	color: #FFF;
 }
 
-.contato, .address-title {
+.contato {
 	display: block;
+	color: #FFF;
+	font-weight: normal;
+	font-size: 0.9em;
 }
 
 .address-title {
+	display: block;
 	font-weight: bold;
-	margin: 15px 0;
+	margin: 10px 0;
 }
 
-.nome {
-	color: #FFF;
-	font-weight: normal;
+h3.address-title {
+	font-size: 1.2em;
+}
+
+h4.address-title {
+	font-size: 0.9em;
+}
+
+.nome-contrib {
+	font-size: 0.7em;
 }
 
 .destaque {
