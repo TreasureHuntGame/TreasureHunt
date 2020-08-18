@@ -236,11 +236,11 @@ address a:hover {
 	margin: 10px 0;
 }
 
-h3.address-title {
+.address-title:first-child {
 	font-size: 1.2em;
 }
 
-h4.address-title {
+.address-title:last-child {
 	font-size: 0.9em;
 }
 
@@ -316,4 +316,100 @@ caption {
 	color: #FFF;
 	text-align: center;
 	padding-top: 0;
+}
+
+@media (max-width: 640px) {
+	h1 {
+		font-size: 2.6em;
+	}
+
+	h2 {
+		font-size: 1.1em;
+	}
+	
+	h3 {
+		font-size: 1em;	
+	}
+
+	h4 { 
+		font-size: 0.9em;
+	}
+
+	/* index */
+	.jumbotron {
+		padding-top: 1.5em;
+	}
+
+	#jumbotron-index{
+		padding-bottom: 1.5em;
+	} 
+
+	#titulo-index {
+		font-size: 2.8em;
+	}
+
+	/* contato */
+	#contatos .jumbotron {
+		padding-bottom: 0.9em; 
+	}
+
+	.address-title:first-child{
+		margin: 5px 0;
+		font-size: 1em;
+	}
+
+	.address-title:last-child{
+		margin: 5px 0;
+	}
+
+	.contato {
+		font-size: 0.7em;
+	}
+
+	.nome-contrib {
+		font-size: 0.6em;
+	}
+
+	/* como jogar */
+	#como-jogar .jumbotron{
+		padding-bottom: 1.3em;
+	}
+
+	#como-jogar ul li{
+		margin-bottom: 15px;
+	}
+
+	/* home */
+	#jumbotron-home-title{
+		padding-bottom: 0.9em;
+	} 
+
+	#jumbotron-home-dados{
+		padding: 1.6em 0.8em;
+	}
+
+	#jumbotron-home-form h2{
+		font-size: 1em;
+	}
+
+	#jumbotron-home-form{
+		padding: 1.5em;
+	}
+
+	#placar-individual{
+		padding-top: 0em;
+	} 
+
+	#placar-individual th {
+		padding: 5px 10px;
+	}
+
+	/* placar geral */
+	#placar th:first-child, td:first-child{
+		padding-left: 5px;  
+	}
+
+	#placar th:last-child, td:last-child{
+		padding-right: 5px;  
+	}
 }

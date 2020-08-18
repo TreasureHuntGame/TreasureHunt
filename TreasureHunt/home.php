@@ -57,12 +57,12 @@ if (!isset($_SESSION['usuario'])) {
         </div>
     </nav>
     <main>
-        <div class="jumbotron bg-dark">
+        <div class="jumbotron bg-dark" id="jumbotron-home-title">
             <h1 class="font-weight-bold">Principal<span class="destaque">!</span></h1>
         </div>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark">
+                <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark" id="jumbotron-home-dados">
                     <h2>Seus dados:</h2>
                     <div>
                         <label class="font-weight-bold">ID:</label>
@@ -94,7 +94,7 @@ if (!isset($_SESSION['usuario'])) {
                         </span>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark">
+                <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark" id="jumbotron-home-form">
                     <form action="checkflag.php" method="POST" class="form-signin">
                         <h2>Submeta sua <i>flag</i>:</h2>
                         <label for="id-problema" class="sr-only">Informe o ID do problema</label>
