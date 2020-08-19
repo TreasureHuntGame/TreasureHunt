@@ -240,7 +240,7 @@ address a:hover {
 	font-size: 1.2em;
 }
 
-.address-title:last-child {
+.address-title:nth-child(4) {
 	font-size: 0.9em;
 }
 
@@ -350,20 +350,21 @@ caption {
 
 	/* contato */
 	#contatos .jumbotron {
-		padding-bottom: 0.9em; 
+		padding-bottom: 0.5em; 
 	}
 
 	.address-title:first-child{
-		margin: 5px 0;
-		font-size: 1em;
+		margin: 2px 0;
+		font-size: 0.9em;
 	}
 
-	.address-title:last-child{
-		margin: 5px 0;
+	.address-title:nth-child(4) {
+		margin: 2px 0;
+		font-size: 0.8em;
 	}
 
 	.contato {
-		font-size: 0.7em;
+		font-size: 0.65em;
 	}
 
 	.nome-contrib {
@@ -401,7 +402,11 @@ caption {
 	} 
 
 	#placar-individual th {
-		padding: 5px 10px;
+		padding: 3px 10px;
+	}
+	
+	#placar-individual tbody tr{
+		white-space: nowrap;
 	}
 
 	/* placar geral */

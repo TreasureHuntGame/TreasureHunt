@@ -220,7 +220,7 @@ if (!isset($_SESSION['usuario'])) {
         </div>
         <address>
 
-            <h3 class="address-title">Equipe atual:</h3>
+            <span class="address-title">Equipe atual:</span>
             <span class="contato">
                 <span class="nome-autor">Ricardo de la Rocha Ladeira</span>:
                 <span class="sinal-menor sinal-maior">ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br</span>
@@ -230,7 +230,7 @@ if (!isset($_SESSION['usuario'])) {
                 <span class="sinal-menor sinal-maior">vitoruenootto<span class="at font-weight-bold"></span>gmail.com</span>
             </span>
 
-            <h4 class="address-title">Contribuidores:</h4>
+            <span class="address-title">Contribuidores:</span>
             <span class="contato nome-contrib">Henrique Arnicheski Dalposso</span>
             <span class="contato nome-contrib">Rafael Rodrigues Obelheiro</span>
             <span class="contato nome-contrib">Richard Robert Dias Custódio</span>
