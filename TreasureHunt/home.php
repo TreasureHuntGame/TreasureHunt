@@ -58,12 +58,12 @@ if (!isset($_SESSION['usuario'])) {
     </nav>
     <main>
         <div class="jumbotron bg-dark" id="jumbotron-home-title">
-            <h1 class="font-weight-bold">Principal<span class="destaque">!</span></h1>
+            <h2 class="font-weight-bold page-title">Principal<span class="destaque">!</span></h2>
         </div>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark" id="jumbotron-home-dados">
-                    <h2>Seus dados:</h2>
+                    <h3>Seus dados:</h3>
                     <div>
                         <label class="font-weight-bold">ID:</label>
                         <span data-toggle="tooltip" data-placement="bottom" title="Número que identifica cada jogador.">
@@ -96,7 +96,7 @@ if (!isset($_SESSION['usuario'])) {
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark" id="jumbotron-home-form">
                     <form action="checkflag.php" method="POST" class="form-signin">
-                        <h2>Submeta sua <i>flag</i>:</h2>
+                        <h3>Submeta sua <i>flag</i>:</h3>
                         <label for="id-problema" class="sr-only">Informe o ID do problema</label>
                         <input type="number" min="1" name="problema" id="id-problema" class="form-control input-sm" placeholder="Informe o ID do problema" required data-toggle="tooltip" data-placement="bottom" title="Número do diretório cujo exercício foi resolvido.">
                         <label for="flag-interno" class="sr-only">Informe a flag</label>
@@ -106,7 +106,7 @@ if (!isset($_SESSION['usuario'])) {
                     </form>
                 </div>
                 <div id="placar-individual" class="col-sm-12 col-md-12 col-lg-4 jumbotron bg-dark">
-                    <h2>Seus resultados:</h2>
+                    <h3>Seus resultados:</h3>
                     <table class="mx-auto" title="Placar individual detalhado contendo o estado e o número de tentativas por problema.">
                         <caption>Placar individual detalhado.</caption>
                         <thead>
@@ -154,7 +154,7 @@ if (!isset($_SESSION['usuario'])) {
     </main>
     <div id="ranking" class="mb-3">
         <div class="jumbotron bg-dark">
-            <h1 class="font-weight-bold">Placar<span class="destaque">!</span></h1>
+            <h2 class="font-weight-bold page-title">Placar<span class="destaque">!</span></h2>
         </div>
         <div id="placar">
             <table class="mx-auto" title="Ranqueamento ordenado pelo número de acertos. O desempate é o horário da última submissão correta.">
@@ -196,7 +196,7 @@ if (!isset($_SESSION['usuario'])) {
     </div>
     <div id="como-jogar">
         <div class="jumbotron bg-dark">
-            <h1 class="font-weight-bold">Como Jogar<span class="destaque">?</span></h1>
+            <h2 class="font-weight-bold page-title">Como Jogar<span class="destaque">?</span></h2>
         </div>
         <ul id="lista-de-regras">
             <li><span class="prompt"></span> Na tela de início, insira seu ID e sua senha e clique em <button class="btn btn-sm btn-dark" name="enviar">Entrar</button>.
@@ -215,8 +215,8 @@ if (!isset($_SESSION['usuario'])) {
     </div>
     <div id="contatos">
         <div class="jumbotron bg-dark">
-            <h1 class="font-weight-bold">Contato<span class="destaque">!</span></h1>
-            <h2>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque">:)</span></h2>
+            <h2 class="font-weight-bold page-title">Contato<span class="destaque">!</span></h2>
+            <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque">:)</span></h3>
         </div>
         <address>
 

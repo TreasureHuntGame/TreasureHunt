@@ -43,7 +43,7 @@
             <h1 class="font-weight-bold" id="titulo-index">
                 TreasureHunt<span id="espaco"> </span><span class="destaque">{</span>Security<span class="destaque">}</span>
             </h1>
-            <h2>Um jogo para testar suas habilidades em Segurança Computacional. <span class="smile destaque">:)</span></h2>
+            <h2 id="subtitulo-index">Um jogo para testar suas habilidades em Segurança Computacional. <span class="smile destaque">:)</span></h2>
         </div>
         <form action="acesso.php" method="POST" class="form-signin">
             <label>Autentique-se:</label>
@@ -57,7 +57,7 @@
     </main>
     <div id="como-jogar">
         <div class="jumbotron bg-dark">
-            <h1 class="font-weight-bold">Como Jogar<span class="destaque">?</span></h1>
+            <h2 class="font-weight-bold page-title">Como Jogar<span class="destaque">?</span></h2>
         </div>
         <ul id="lista-de-regras">
             <li><span class="prompt"></span> Na tela de início, insira seu ID e sua senha e clique em
@@ -77,8 +77,8 @@
     </div>
     <div id="contatos">
         <div class="jumbotron bg-dark">
-            <h1 class="font-weight-bold">Contato<span class="destaque">!</span></h1>
-            <h2>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque">:)</span></h2>
+            <h2 class="font-weight-bold page-title">Contato<span class="destaque">!</span></h2>
+            <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque">:)</span></h3>
         </div>
         <address>
 

@@ -12,7 +12,20 @@ h1 {
 }
 
 h2 {
+	font-size: 1.5em;
+}
+
+h3 {
 	font-size: 1.2em;
+}
+
+#subtitulo-index{
+	font-size: 1.2em;
+}
+
+.page-title {
+	font-family: 'Eczar', serif !important;
+	font-size: 3em;
 }
 
 .jumbotron {
@@ -324,15 +337,19 @@ caption {
 	}
 
 	h2 {
-		font-size: 1.1em;
+		font-size: 1.3em;
 	}
 	
 	h3 {
-		font-size: 1em;	
+		font-size: 1.1em;	
 	}
 
 	h4 { 
 		font-size: 0.9em;
+	}
+
+	.page-title{
+		font-size: 2.6em;
 	}
 
 	/* index */
@@ -343,6 +360,10 @@ caption {
 	#jumbotron-index{
 		padding-bottom: 1.5em;
 	} 
+
+	#subtitulo-index{
+		font-size: 1.1em;
+	}
 
 	#titulo-index {
 		font-size: 2.8em;
@@ -389,7 +410,7 @@ caption {
 		padding: 1.6em 0.8em;
 	}
 
-	#jumbotron-home-form h2{
+	#jumbotron-home-form h3{
 		font-size: 1em;
 	}
 
