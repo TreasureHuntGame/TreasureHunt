@@ -82,6 +82,21 @@ code, .prompt {
 	font-weight: bold;
 	padding: 0.2em;
 }
+noscript h2 {
+	font-weight: bold;
+}
+
+noscript div.jumbotron  {
+	font-size: 0.9em;
+	margin: 0 auto 1em auto;
+	padding: 2em 1em;
+	background-color: darkred !important;
+	border-radius: 3em;
+}
+
+noscript ul  {
+	text-align: left;
+}
 
 li .prompt {
 	margin-right: 0.5em;
@@ -369,6 +384,13 @@ caption {
 		font-size: 2.8em;
 	}
 
+	noscript div.jumbotron  {
+		font-size: 0.9em;
+		margin: 0 auto 1em auto;
+		padding: 1.5em 0.6em;
+		width: 95%;
+	}
+	
 	/* contato */
 	#contatos .jumbotron {
 		padding-bottom: 0.5em; 

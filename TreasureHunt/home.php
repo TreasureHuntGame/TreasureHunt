@@ -238,6 +238,13 @@ if (!isset($_SESSION['usuario'])) {
 
         </address>
     </div>
+    <noscript>
+        <div class="jumbotron bg-dark col-sm-12 col-md-10 col-lg-4">
+            <h2>Alerta: JavaScript desativado!</h2>
+            <p>O JavaScript está desativado, então algumas funcionalidades podem estar indisponíveis.
+            Para ativá-lo verifique as configurações do seu navegador.</p>
+        </div>
+    </noscript>
     <footer class="page-footer font-small">
         <div class="footer-copyright">
             <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons">
