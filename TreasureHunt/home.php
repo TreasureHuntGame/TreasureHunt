@@ -78,7 +78,8 @@ if (!isset($_SESSION['usuario'])) {
                         <span data-toggle="tooltip" data-placement="bottom" title="Arquivo que contém os exercícios!">
                             <a id="arquivo" href="<?php print_r("Desafios/Jogador" . $usuario . ".zip") ?>">
                                 <?php
-                                function formatBytes($size, $precision = 2) {
+                                function formatBytes($size, $precision = 2)
+                                {
                                     $base = log($size, 1024);
                                     $suffixes = array('B', 'kB', 'MB', 'GB', 'TB');
 
@@ -96,10 +97,10 @@ if (!isset($_SESSION['usuario'])) {
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark" id="jumbotron-home-form">
                     <form action="checkflag.php" method="POST" class="form-signin">
-                        <h3>Submeta sua <i>flag</i>:</h3>
+                        <h3>Submeta sua <i lang="en">flag</i>:</h3>
                         <label for="id-problema" class="sr-only">Informe o ID do problema</label>
                         <input type="number" min="1" name="problema" id="id-problema" class="form-control input-sm" placeholder="Informe o ID do problema" required data-toggle="tooltip" data-placement="bottom" title="Número do diretório cujo exercício foi resolvido.">
-                        <label for="flag-interno" class="sr-only">Informe a flag</label>
+                        <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span></label>
                         <input type="text" id="flag-interno" name="flag" class="form-control" placeholder="Informe a flag" required data-toggle="tooltip" data-placement="bottom" title="Resposta encontrada.">
                         <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                         <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
@@ -199,24 +200,25 @@ if (!isset($_SESSION['usuario'])) {
             <h2 class="font-weight-bold page-title">Como Jogar<span class="destaque">?</span></h2>
         </div>
         <ul id="lista-de-regras">
-            <li><span class="prompt"></span> Na tela de início, insira seu ID e sua senha e clique em <button class="btn btn-sm btn-dark" name="enviar">Entrar</button>.
+            <li><span class="prompt"></span> Na tela de início, insira seu ID e sua senha e clique em
+                <button class="btn btn-sm btn-dark" name="enviar">Entrar</button>.
             </li>
             <li><span class="prompt"></span> Baixe e descompacte o arquivo zip disponível (sugestão: <code id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém diretórios representados por números inteiros. Cada diretório contém pelo menos um arquivo.
             </li>
-            <li><span class="prompt"></span> Seu objetivo é descobrir a palavra secreta (<i>flag</i>) escondida em cada um dos diretórios.
+            <li><span class="prompt"></span> Seu objetivo é descobrir a palavra secreta (<i lang="en">flag</i>) escondida em cada um dos diretórios.
             </li>
             <li><span class="prompt"></span> Vencerá o jogo aquele que submeter mais respostas corretas em menos tempo, ou seja, o ranqueamento é feito pelo número de acertos e, em caso de empate, ficará à frente aquele que obteve seu último acerto antes.
             </li>
-            <li><span class="prompt"></span> Cada <i>flag</i> descoberta é um desafio resolvido! Você só precisa realizar a submissão no sistema, informando o ID do problema (número do diretório) e a <i>flag</i> encontrada. O sistema informará se a <i>flag</i> está (in)correta.
+            <li><span class="prompt"></span> Cada <i lang="en">flag</i> descoberta é um desafio resolvido! Você só precisa realizar a submissão no sistema, informando o ID do problema (número do diretório) e a <i lang="en">flag</i> encontrada. O sistema informará se a <i lang="en">flag</i> está (in)correta.
             </li>
-            <li><span class="prompt"></span> As <i>flags</i> possuem o formato <code>TreasureHunt{texto-aleatorio}</code>. Na submissão, digite toda <i>flag</i>! Exemplo: <code>TreasureHunt{dhi2uh39}</code>.
+            <li><span class="prompt"></span> As <i lang="en">flags</i> possuem o formato <code> <span>TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <i lang="en">flag</i>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
             </li>
         </ul>
     </div>
     <div id="contatos">
         <div class="jumbotron bg-dark">
             <h2 class="font-weight-bold page-title">Contato<span class="destaque">!</span></h2>
-            <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque">:)</span></h3>
+            <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque"></span></h3>
         </div>
         <address>
 
@@ -242,7 +244,7 @@ if (!isset($_SESSION['usuario'])) {
         <div class="jumbotron bg-dark col-sm-12 col-md-10 col-lg-4">
             <h2>Alerta: JavaScript desativado!</h2>
             <p>O JavaScript está desativado, então algumas funcionalidades podem estar indisponíveis.
-            Para ativá-lo verifique as configurações do seu navegador.</p>
+                Para ativá-lo verifique as configurações do seu navegador.</p>
         </div>
     </noscript>
     <footer class="page-footer font-small">
@@ -251,8 +253,8 @@ if (!isset($_SESSION['usuario'])) {
                 <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png">
             </a>
             <br>
-            <p>Esta obra está licenciada com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Atribuição-NãoComercial 4.0 Internacional</a>.</p>
-            <p>© 2017-2020</p>
+            <p>Esta obra está licenciada com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><span lang="en">Creative Commons</span> Atribuição-NãoComercial 4.0 Internacional</a>.</p>
+            <p><span lang="en">©</span> 2017-2020</p>
         </div>
     </footer>
 </body>

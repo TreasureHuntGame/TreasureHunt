@@ -1,6 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Eczar&display=swap');
 @import url('http://fonts.googleapis.com/css?family=Muli&display=swap');
 
+:root{
+	--cor-primaria: #FFF;
+	--cor-secundaria: #000;
+	--cor-fundo: #343A40;
+	--warning: darkred;
+	--input-box-shadow: rgba(108 ,108, 108, .25);
+	--form-border-color: #767676;
+	--input-hover:#23272B;
+	--input-cor-fundo: #FFF;
+	--input-cor-placeholder: #495057; 
+}
+
+
 body {
 	font-family: 'Muli', sans-serif;
 	text-align: center;
@@ -9,14 +22,21 @@ body {
 h1 {
 	font-family: 'Eczar', serif !important;
 	font-size: 3em;
+	color: var(--cor-primaria);
 }
 
 h2 {
 	font-size: 1.5em;
+	color: var(--cor-primaria);
 }
 
 h3 {
 	font-size: 1.2em;
+	color: var(--cor-primaria);
+}
+
+.bg-dark{
+	background-color: var(--cor-fundo)!important;
 }
 
 #subtitulo-index{
@@ -32,6 +52,7 @@ h3 {
 	margin-bottom: 0;
 	padding-top: 2em;
 	padding-bottom: 2em;
+	color: var(--cor-primaria);
 }
 
 .smile {
@@ -40,8 +61,17 @@ h3 {
 	transform: rotate(90deg);
 }
 
+.smile::after{
+	content: ":)";
+}
+
+table {
+	color: var(--cor-primaria)
+}
+
 p {
 	margin-bottom: 0;
+	color: var(--cor-primaria);
 }
 
 label {
@@ -72,13 +102,13 @@ footer a:hover {
 }
 
 .prompt {
-	border-right: 0.5em solid black;
+	border-right: 0.5em solid var(--cor-secundaria);
 }
 
 code, .prompt {
-	background-color: #000;
+	background-color: var(--cor-secundaria);
 	/* color: #79FF4D; */
-	color: #FFF;
+	color: var(--cor-primaria);
 	font-weight: bold;
 	padding: 0.2em;
 }
@@ -90,7 +120,7 @@ noscript div.jumbotron  {
 	font-size: 0.9em;
 	margin: 0 auto 1em auto;
 	padding: 2em 1em;
-	background-color: darkred !important;
+	background-color: var(--warning) !important;
 	border-radius: 3em;
 }
 
@@ -98,12 +128,16 @@ noscript ul  {
 	text-align: left;
 }
 
+ul { 
+	color: var(--cor-primaria);
+}
+
 li .prompt {
 	margin-right: 0.5em;
 }
 
 li:hover .prompt {
-	border-right-color: #FFF;
+	border-right-color: var(--cor-primaria);
 }
 
 /*
@@ -131,11 +165,11 @@ li:hover .prompt {
 }
 
 #unzip {
-	border-left: 0.5em solid #000;
+	border-left: 0.5em solid var(--cor-secundaria);
 }
 
 #unzip:hover {
-	border-left-color: #FFF;
+	border-left-color: var(--cor-primaria);
 }
 
 /*
@@ -161,11 +195,13 @@ Se for desejável utilizar o efeito, basta comentar o estilo acima e descomentar
 ::placeholder {
    font-family: 'Muli', sans-serif;
    text-align: center;
+   color: var(--input-cor-placeholder) !important;
 }
 
 nav {
-	background-color: #000;
+	background-color: var(--cor-secundaria);
 	margin: 0 auto;
+	color: var(--cor-primaria);
 }
 
 nav ul{
@@ -192,6 +228,10 @@ nav ul li a:active {
 	cursor: url('../img/cursor_aberto.png'), pointer;
 }
 
+label {
+	color: var(--cor-primaria);
+}
+
 input {
 	min-width: 70px !important;
 	max-width: 99.99% !important;
@@ -200,16 +240,17 @@ input {
 	text-align: center;
 	font-family: 'Muli', sans-serif;
 	border-radius: 1px;
-	color: #FFF;
+	color: var(--cor-primaria);
+	background-color: var(--input-cor-fundo) !important;
 	filter: none;
-  	box-shadow: 0 0 0 .2rem rgba(108 ,108, 108, .25);
+  	box-shadow: 0 0 0 .2rem var(--input-box-shadow);
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
 input:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
-  box-shadow: 0 0 0 .2rem rgba(108 ,108, 108, .25);
+  box-shadow: 0 0 0 .2rem var(--input-box-shadow);
 }
 
 button {
@@ -218,7 +259,18 @@ button {
     margin: 5px;
     margin-left: 2px;
 	width: 100px;
+	background-color: var(--cor-fundo) !important;
+	color: var(--cor-primaria) !important;
+	border-color: var(--cor-fundo) !important;
 }
+
+button.navbar-toggler {
+	background-color: var(--cor-secundaria) !important;
+}
+
+/* .btn_dark{
+	
+} */
 
 address {
 	font-size: 1.4em;
@@ -230,7 +282,7 @@ address .at {
 }
 
 address .at:after {
-	color: #000;
+	color: var(--cor-secundaria);
 	content:'@';
 	visibility: visible;	
 }
@@ -244,16 +296,16 @@ address .sinal-maior:after {
 }
 
 address .sinal-menor, address .sinal-maior {
-	color: #FFF;
+	color: var(--cor-primaria);
 }
 
 address a:hover {
-	color: #FFF;
+	color: var(--cor-primaria);
 }
 
 .contato {
 	display: block;
-	color: #FFF;
+	color: var(--cor-primaria);
 	font-weight: normal;
 	font-size: 0.9em;
 }
@@ -262,6 +314,7 @@ address a:hover {
 	display: block;
 	font-weight: bold;
 	margin: 10px 0;
+	color: var(--cor-primaria);
 }
 
 .address-title:first-child {
@@ -277,7 +330,7 @@ address a:hover {
 }
 
 .destaque {
-	color: #000;
+	color: var(--cor-secundaria);
 }
 
 .form-signin {
@@ -294,13 +347,13 @@ address a:hover {
   height: auto;
   padding: 10px;
   font-size: 1em;
-  border: 2px solid #343A40;
+  border: 2px solid var(--cor-fundo);
 }
 
 .form-signin .form-control:focus, .form-signin .form-control:hover {
   z-index: 2;
-  border-color: #767676;
-  box-shadow: 0 0 0 .2rem rgba(108 ,108, 108, .25);
+  border-color: var(--form-border-color);
+  box-shadow: 0 0 0 .2rem var(--input-box-shadow);
 }
 
 .form-signin input[type="number"],
@@ -314,7 +367,7 @@ address a:hover {
 }
 
 #logout {
-	color: #FFF;
+	color: var(--cor-primaria);
 	text-decoration: none;
 }
 
@@ -323,7 +376,7 @@ address a:hover {
 }
 
 #arquivo {
-	color: #FFF;
+	color: var(--cor-primaria);
 }
 
 #arquivo:hover {
@@ -341,7 +394,7 @@ address a:hover {
 
 caption {
 	caption-side: top;
-	color: #FFF;
+	color: var(--cor-primaria);
 	text-align: center;
 	padding-top: 0;
 }
