@@ -5,14 +5,16 @@
 	--cor-primaria: #FFF;
 	--cor-secundaria: #000;
 	--cor-fundo: #343A40;
-	--warning: darkred;
+	--warning-background: darkred;
+	--warning: #FFF;
+	--success-background:#155724;
+	--success: #FFF ;
 	--input-box-shadow: rgba(108 ,108, 108, .25);
 	--form-border-color: #767676;
 	--input-hover:#23272B;
 	--input-cor-fundo: #FFF;
 	--input-cor-placeholder: #495057; 
 }
-
 
 body {
 	font-family: 'Muli', sans-serif;
@@ -112,21 +114,6 @@ code, .prompt {
 	font-weight: bold;
 	padding: 0.2em;
 }
-noscript h2 {
-	font-weight: bold;
-}
-
-noscript div.jumbotron  {
-	font-size: 0.9em;
-	margin: 0 auto 1em auto;
-	padding: 2em 1em;
-	background-color: var(--warning) !important;
-	border-radius: 3em;
-}
-
-noscript ul  {
-	text-align: left;
-}
 
 ul { 
 	color: var(--cor-primaria);
@@ -215,22 +202,83 @@ nav ul li {
 	display: inline-block;
 }
 
-nav ul li a {	
+nav ul li label, nav ul li a {	
 	display: block;
 	font-size: 20px;
 	line-height: 60px;
 	padding: 0 10px;	
 	text-decoration: none;
+	color: var(--cor-primaria);
 	cursor: url('../img/cursor_fechado.png'), pointer;
-}
-
-nav ul li a:active {
-	cursor: url('../img/cursor_aberto.png'), pointer;
 }
 
 label {
 	color: var(--cor-primaria);
 }
+
+nav ul li label:active, nav ul li a:active {
+	cursor: url('../img/cursor_aberto.png'), pointer;
+	color: var(--cor-primaria);
+	text-decoration: none;
+}
+
+nav ul li a:hover {
+	color: var(--cor-primaria);
+	text-decoration: none;	
+} 
+
+input[name=collapse-btn], 
+input[name=nav], 
+#collapsibleNavbar {
+	display: none;
+}
+
+.navbar-toggler {
+	width: 5em;
+	margin: 5px 0;
+	border: 1px solid var(--cor-fundo) !important;
+}
+
+#main, 
+#como-jogar, 
+#contatos, 
+#ranking{
+	opacity: 0;
+	height: 0;
+	overflow: hidden;
+	transition: max-height 0s, opacity .9s .3s ease-in-out;
+}
+
+input#inicio:checked ~ #main,
+input#rank:checked ~ #ranking, 
+input#regras:checked ~ #como-jogar,
+input#contato:checked ~ #contatos{
+	opacity: 1;
+	height: auto;
+}
+
+#inicio:checked ~ nav div ul li #inicio-label, 
+#rank:checked ~ nav div ul li #rank-label, 
+#regras:checked ~ nav div ul li #regras-label,
+#contato:checked ~ nav div ul li #contato-label{
+	font-weight: bold;
+}
+
+#placar {
+	padding: 0 0 20px 0;
+}
+
+.alert-success{
+	background-color: var(--success-background);
+	color: var(--success);
+	margin: 20px auto 0 auto; 
+}
+
+.alert-danger {
+	background-color: var(--warning-background);
+	color: var(--warning);
+	margin: 20px auto 0 auto; 
+} 
 
 input {
 	min-width: 70px !important;
@@ -267,10 +315,6 @@ button {
 button.navbar-toggler {
 	background-color: var(--cor-secundaria) !important;
 }
-
-/* .btn_dark{
-	
-} */
 
 address {
 	font-size: 1.4em;
@@ -362,9 +406,6 @@ address a:hover {
   border-radius: 5px;
 }
 
-#como-jogar, #contatos, #ranking {
-	display: none;
-}
 
 #logout {
 	color: var(--cor-primaria);
@@ -398,6 +439,22 @@ caption {
 	text-align: center;
 	padding-top: 0;
 }
+
+@media (max-width: 575px) {
+	#collapsibleNavbar{
+		display: block;
+		max-height: 0;
+		overflow: hidden;
+		visibility: hidden;
+		transition: visibility 1s, max-height 0.7s linear; 
+	}
+
+	input#collapse-btn:checked ~ #collapsibleNavbar {
+		max-height: 400px;
+		visibility: visible;
+	}
+	
+} 
 
 @media (max-width: 640px) {
 	h1 {
@@ -435,13 +492,6 @@ caption {
 
 	#titulo-index {
 		font-size: 2.8em;
-	}
-
-	noscript div.jumbotron  {
-		font-size: 0.9em;
-		margin: 0 auto 1em auto;
-		padding: 1.5em 0.6em;
-		width: 95%;
 	}
 	
 	/* contato */

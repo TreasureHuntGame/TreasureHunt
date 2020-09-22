@@ -40,20 +40,10 @@ if ($stmt->rowCount() > 0) {
 		header('location:home.php');
 	}
 	else {
-?>
-<script>
-	alert('Senha incorreta ou não informada!');
-	window.setTimeout("location.href='index.php';");
-</script>
-<?php
+		header('Location:index.php?message=passwd_error');
 	}
 }
 else {
-?>
-<script>
-	alert('Usuário incorreto ou não informado!');
-	window.setTimeout("location.href='index.php';");
-</script>
-<?php
+	$batata = 'batata';
+	header('Location:index.php?message=user_error');
 }
-?>

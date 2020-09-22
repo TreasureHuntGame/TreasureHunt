@@ -13,32 +13,28 @@
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/efeitos-0.1.js"></script>
+    <script src="js/efeitos.js"></script>
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <![endif]-->
 </head>
 
 <body class="text-light bg-dark">
+    <input type="radio" name="nav" id="inicio" checked tabindex="-1" class="tab">
+    <input type="radio" name="nav" id="regras" tabindex="-1" class="tab">
+    <input type="radio" name="nav" id="contato" tabindex="-1" class="tab">
     <nav class="navbar navbar-expand-sm navbar-dark justify-content-center">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <input type="checkbox" name="collapse-btn" id="collapse-btn" role="button">
+        <label for="collapse-btn" class="navbar-toggler"><span class="navbar-toggler-icon"></span></label>
         <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a id="inicio" accesskey="i">Início</a>
-                </li>
-                <li class="nav-item">
-                    <a id="regras" accesskey="j">Como Jogar?</a>
-                </li>
-                <li class="nav-item">
-                    <a id="contato" accesskey="c">Contato</a>
-                </li>
+                <li class="nav-item"><label id="inicio-label" for="inicio" tabindex="0">Início</label></li>
+                <li class="nav-item"><label id="regras-label" for="regras" tabindex="0">Como Jogar?</label></li>
+                <li class="nav-item"><label id="contato-label" for="contato" tabindex="0">Contato</label></li>
             </ul>
         </div>
     </nav>
-    <main>
+    <div id="main">
         <div class="jumbotron bg-dark" id="jumbotron-index">
             <h1 class="font-weight-bold" id="titulo-index" lang="en">
                 TreasureHunt<span id="espaco"> </span><span class="destaque">{</span>Security<span class="destaque">}</span>
@@ -53,8 +49,20 @@
             <input type="password" id="senha" name="senha" class="form-control" placeholder="Informe sua senha" required data-toggle="tooltip" data-placement="bottom" title="Senha fornecida junto à credencial.">
             <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
             <button class="btn btn-dark btn-block" type="submit" name="enviar">Entrar</button>
+            <?php
+            if (isset($_GET['message'])) {
+                switch ($_GET['message']) {
+                    case 'passwd_error':
+                        echo '<div class="alert alert-danger login" role="alert"> Senha incorreta ou não informada!</div>';
+                        break;
+                    case 'user_error':
+                        echo '<div class="alert alert-danger login" role="alert"> Usuário incorreto ou não informado!</div>';
+                        break;
+                }
+            }
+            ?>
         </form>
-    </main>
+    </div>
     <div id="como-jogar">
         <div class="jumbotron bg-dark">
             <h2 class="font-weight-bold page-title">Como Jogar<span class="destaque">?</span></h2>
@@ -78,7 +86,7 @@
     <div id="contatos">
         <div class="jumbotron bg-dark">
             <h2 class="font-weight-bold page-title">Contato<span class="destaque">!</span></h2>
-            <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque">:)</span></h3>
+            <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque"></span></h3>
         </div>
         <address>
 
@@ -100,13 +108,6 @@
 
         </address>
     </div>
-    <noscript>
-        <div class="jumbotron bg-dark col-sm-12 col-md-10 col-lg-4">
-            <h2>Alerta: JavaScript desativado!</h2>
-            <p>O JavaScript está desativado, então algumas funcionalidades podem estar indisponíveis.
-                Para ativá-lo verifique as configurações do seu navegador.</p>
-        </div>
-    </noscript>
     <footer class="page-footer font-small">
         <div class="footer-copyright">
             <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons">

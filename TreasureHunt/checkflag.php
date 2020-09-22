@@ -37,11 +37,8 @@ $stmt->execute();
 
 // Se retornar resultado, usuário já havia respondido corretamente
 if ($stmt->rowCount() > 0) {
-?>
-<script>
-	alert('Você já acertou a questão '+ <?php echo $problema; ?> + '!');
-</script>
-<?php
+	header('Location:home.php?message=duplicada&id='.$problema);
+	exit();
 } else {
 
 	// Se acerta a resposta e depois segue informando,
@@ -69,21 +66,16 @@ if ($stmt->rowCount() > 0) {
 		$stmt = $conexao->prepare("SELECT COUNT(*) AS Acertos FROM TreasureHunt.Resposta WHERE idUsuario=$usuario and acertou=1");
 		$stmt->execute();
 		$linhaAcertos = $stmt->fetch(PDO::FETCH_OBJ);
-?>
-<script>
-	alert('Acertou! '+ <?php echo $linhaAcertos->Acertos; ?> + '/' + <?php echo $linhaTotal->Total; ?>);
-</script>
-<?php
+
+		header('Location:home.php?message=acertou&acertos='.$linhaAcertos->Acertos.'&total='.$linhaTotal->Total);
+		exit();
 	} else {
 		$stmt = $conexao->prepare("SELECT MAX(idProblema) AS Max FROM TreasureHunt.Resposta");
 		$stmt->execute();
 		$linhaTotal = $stmt->fetch(PDO::FETCH_OBJ);
 		if ($problema < 1 or $problema > $linhaTotal->Max) {
-?>
-<script>
-	alert('Problema com ID inválido!');
-</script>
-<?php
+			header('Location:home.php?message=id_invalido');
+			exit();
 		} else {
 		$acertou = false;
 		atualiza($acertou, $usuario, $problema);
@@ -92,13 +84,12 @@ if ($stmt->rowCount() > 0) {
     	$verificaPadrao = (substr($flagPura, 0, 13) === 'TreasureHunt{') && (substr($flagPura, $tamanho - 1, $tamanho) === '}');
     	$mensagem = "Errou!";
     	if ($verificaPadrao != 1) {
-	    	$mensagem .= " Considere submeter a flag no seguinte formato: TreasureHunt{texto-aleatorio}";
-    	}
-?>
-<script>
-	alert('<?php echo $mensagem; ?>');
-</script>
-<?php
+			$mensagem .= " Considere submeter a flag no seguinte formato: TreasureHunt{texto-aleatorio}";
+			header('Location:home.php?message=formato');
+			exit();
+		}
+		header('Location:home.php?message=erro');
+		exit();
 		}
 	}
 }

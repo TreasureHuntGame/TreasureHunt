@@ -25,38 +25,33 @@ if (!isset($_SESSION['usuario'])) {
     <link rel="icon" type="image/png" href="img/favicon.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/efeitos-0.2.js"></script>
+    <script src="js/efeitos.js"></script>
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <![endif]-->
 </head>
 
 <body class="text-light bg-dark">
+    <input type="radio" name="nav" id="inicio" checked>
+    <input type="radio" name="nav" id="rank">
+    <input type="radio" name="nav" id="regras">
+    <input type="radio" name="nav" id="contato">
     <nav class="navbar navbar-expand-sm navbar-dark justify-content-center">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <input type="checkbox" name="collapse-btn" id="collapse-btn" role="button">
+        <label for="collapse-btn" class="navbar-toggler"><span class="navbar-toggler-icon"></span></label>
         <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
             <ul class="navbar-nav">
+                <li class="nav-item"><label id="inicio-label" for="inicio" tabindex="0">Início</label></li>
+                <li class="nav-item"><label id="rank-label" for="rank" tabindex="0">Placar</label></li>
+                <li class="nav-item"><label id="regras-label" for="regras" tabindex="0">Como Jogar?</label></li>
+                <li class="nav-item"><label id="contato-label" for="contato" tabindex="0">Contato</label></li>
                 <li class="nav-item">
-                    <a id="inicio" accesskey="i">Início</a>
-                </li>
-                <li class="nav-item">
-                    <a id="rank" accesskey="p">Placar</a>
-                </li>
-                <li class="nav-item">
-                    <a id="regras" accesskey="j">Como Jogar?</a>
-                </li>
-                <li class="nav-item">
-                    <a id="contato" accesskey="c">Contato</a>
-                </li>
-                <li class="nav-item">
-                    <a id="logout" accesskey="l" href="logout.php">Logout</a>
+                    <a id="logout" accesskey="l" href="logout.php" class="mostrar">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
-    <main>
+    <div id="main">
         <div class="jumbotron bg-dark" id="jumbotron-home-title">
             <h2 class="font-weight-bold page-title">Principal<span class="destaque">!</span></h2>
         </div>
@@ -104,6 +99,27 @@ if (!isset($_SESSION['usuario'])) {
                         <input type="text" id="flag-interno" name="flag" class="form-control" placeholder="Informe a flag" required data-toggle="tooltip" data-placement="bottom" title="Resposta encontrada.">
                         <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                         <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
+                        <?php
+                        if (isset($_GET['message'])) {
+                            switch ($_GET['message']) {
+                                case 'erro':
+                                    echo '<div class="alert alert-danger" role="alert"> Errou!</div>';
+                                    break;
+                                case 'duplicada':
+                                    echo '<div class="alert alert-danger" role="alert"> Você já acertou a questão ' . $_GET['id'] . '!</div>';
+                                    break;
+                                case 'formato':
+                                    echo '<div class="alert alert-danger" role="alert"> Errou! Considere submeter a flag no seguinte formato: TreasureHunt{texto-aleatorio}.</div>';
+                                    break;
+                                case 'id_invalido':
+                                    echo '<div class="alert alert-danger" role="alert"> Problema com ID inválido!</div>';
+                                    break;
+                                case 'acertou':
+                                    echo '<div class="alert alert-success" role="alert">Acertou! ' . $_GET['acertos'] . '/' . $_GET['total'] . '</div>';
+                                    break;
+                            }
+                        }
+                        ?>
                     </form>
                 </div>
                 <div id="placar-individual" class="col-sm-12 col-md-12 col-lg-4 jumbotron bg-dark">
@@ -152,12 +168,12 @@ if (!isset($_SESSION['usuario'])) {
                 </div>
             </div>
         </div>
-    </main>
-    <div id="ranking" class="mb-3">
+    </div>
+    <div id="ranking">
         <div class="jumbotron bg-dark">
             <h2 class="font-weight-bold page-title">Placar<span class="destaque">!</span></h2>
         </div>
-        <div id="placar">
+        <div id="placar" class="jumbotron bg-dark">
             <table class="mx-auto" title="Ranqueamento ordenado pelo número de acertos. O desempate é o horário da última submissão correta.">
                 <caption>Classificação do jogo.</caption>
                 <thead>
@@ -174,20 +190,24 @@ if (!isset($_SESSION['usuario'])) {
                     $i = 0;
                     while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
                     ?>
-                        <tr>
-                            <td class="align-top">
-                                <?php echo ++$i . "º"; ?>
-                            </td>
-                            <td class="align-top">
-                                <?php echo $linha->idUsuario; ?>
-                            </td>
-                            <td class="align-top">
-                                <?php echo $linha->acertos; ?>
-                            </td>
-                            <td class="align-top">
-                                <?php echo $linha->hora; ?>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td class="align-top">
+                            <?php echo ++$i . "º"; 
+                            ?>
+                        </td>
+                        <td class="align-top">
+                            <?php echo $linha->idUsuario; 
+                            ?>
+                        </td>
+                        <td class="align-top">
+                            <?php echo $linha->acertos; 
+                            ?>
+                        </td>
+                        <td class="align-top">
+                            <?php echo $linha->hora; 
+                            ?>
+                        </td>
+                    </tr>
                     <?php
                     }
                     ?>
@@ -240,13 +260,6 @@ if (!isset($_SESSION['usuario'])) {
 
         </address>
     </div>
-    <noscript>
-        <div class="jumbotron bg-dark col-sm-12 col-md-10 col-lg-4">
-            <h2>Alerta: JavaScript desativado!</h2>
-            <p>O JavaScript está desativado, então algumas funcionalidades podem estar indisponíveis.
-                Para ativá-lo verifique as configurações do seu navegador.</p>
-        </div>
-    </noscript>
     <footer class="page-footer font-small">
         <div class="footer-copyright">
             <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons">
