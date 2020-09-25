@@ -41,10 +41,10 @@ if (!isset($_SESSION['usuario'])) {
         <label for="collapse-btn" class="navbar-toggler"><span class="navbar-toggler-icon"></span></label>
         <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
             <ul class="navbar-nav">
-                <li class="nav-item"><label id="inicio-label" for="inicio" tabindex="0">Início</label></li>
-                <li class="nav-item"><label id="rank-label" for="rank" tabindex="0">Placar</label></li>
-                <li class="nav-item"><label id="regras-label" for="regras" tabindex="0">Como Jogar?</label></li>
-                <li class="nav-item"><label id="contato-label" for="contato" tabindex="0">Contato</label></li>
+                <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0">Início</label></li>
+                <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0">Placar</label></li>
+                <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0">Como Jogar?</label></li>
+                <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0">Contato</label></li>
                 <li class="nav-item">
                     <a id="logout" accesskey="l" href="logout.php" class="mostrar">Logout</a>
                 </li>
@@ -94,7 +94,7 @@ if (!isset($_SESSION['usuario'])) {
                     <form action="checkflag.php" method="POST" class="form-signin">
                         <h3>Submeta sua <i lang="en">flag</i>:</h3>
                         <label for="id-problema" class="sr-only">Informe o ID do problema</label>
-                        <input type="number" min="1" name="problema" id="id-problema" class="form-control input-sm" placeholder="Informe o ID do problema" required data-toggle="tooltip" data-placement="bottom" title="Número do diretório cujo exercício foi resolvido.">
+                        <input type="number" min="1" name="problema" id="id-problema" class="form-control input-sm" placeholder="Informe o ID do problema" required data-toggle="tooltip" data-placement="bottom" title="Número do diretório cujo exercício foi resolvido." autofocus>
                         <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span></label>
                         <input type="text" id="flag-interno" name="flag" class="form-control" placeholder="Informe a flag" required data-toggle="tooltip" data-placement="bottom" title="Resposta encontrada.">
                         <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
@@ -140,7 +140,7 @@ if (!isset($_SESSION['usuario'])) {
                             $i = 0;
                             while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
                             ?>
-                                <tr>
+                            <tr>
                                     <td class="align-top">
                                         <?php
                                         echo $linha->idProblema;
@@ -231,7 +231,7 @@ if (!isset($_SESSION['usuario'])) {
             </li>
             <li><span class="prompt"></span> Cada <i lang="en">flag</i> descoberta é um desafio resolvido! Você só precisa realizar a submissão no sistema, informando o ID do problema (número do diretório) e a <i lang="en">flag</i> encontrada. O sistema informará se a <i lang="en">flag</i> está (in)correta.
             </li>
-            <li><span class="prompt"></span> As <i lang="en">flags</i> possuem o formato <code> <span>TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <i lang="en">flag</i>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
+            <li><span class="prompt"></span> As <i lang="en">flags</i> possuem o formato <code> <span lang="en">TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <i lang="en">flag</i>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
             </li>
         </ul>
     </div>
