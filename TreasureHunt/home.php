@@ -47,17 +47,17 @@ if (!isset($_SESSION['usuario'])) {
             <label for="collapse-btn" class="navbar-toggler"><span class="navbar-toggler-icon"></span></label>
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0" role="link" accesskey="i">Início</label></li>
-                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0" role="link" accesskey="p">Placar</label></li>
-                    <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" role="link" accesskey="j">Como Jogar?</label></li>
-                    <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" role="link" accesskey="c">Contato</label></li>
+                    <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0"  accesskey="i">Início</label></li>
+                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0"  accesskey="p">Placar</label></li>
+                    <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0"  accesskey="j">Como Jogar?</label></li>
+                    <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0"  accesskey="c">Contato</label></li>
                     <li class="nav-item">
                         <a id="logout" accesskey="l" href="logout.php" class="mostrar">Logout</a>
                     </li>
                 </ul>
                 <ul class="navbar-nav ml-auto">
                     <li>
-                        <label for="contrast" class="form-inline justify-content-end label-link contrast-label" tabindex="0" title="Recurso de alto contraste" role="button" accesskey="a">
+                        <label for="contrast" class="form-inline justify-content-end label-link contrast-label" tabindex="0" title="Recurso de alto contraste"  accesskey="a">
                             <span class="material-icons" aria-hidden="true">invert_colors</span>
                             <span class="sr-only">Recurso de alto Contraste</span>
                         </label>
