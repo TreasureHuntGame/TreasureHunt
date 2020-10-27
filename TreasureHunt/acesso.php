@@ -44,6 +44,5 @@ if ($stmt->rowCount() > 0) {
 	}
 }
 else {
-	$batata = 'batata';
 	header('Location:index.php?message=user_error');
 }
