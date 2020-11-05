@@ -7,7 +7,7 @@ body {
     margin: 0;
 }
 
- :root {
+:root {
     --cor-primaria: #FFF;
     --cor-secundaria: #000;
     --cor-fundo: #343A40;
@@ -242,6 +242,10 @@ ul {
     color: var(--cor-primaria);
 }
 
+div.vpw-dict-container ul {
+    color: black !important;
+}
+
 li .prompt {
     margin-right: 0.5em;
 }
@@ -306,7 +310,7 @@ border-left-color: #000;
 
 */
 
-::placeholder {
+ ::placeholder {
     font-family: 'Muli', sans-serif;
     text-align: center;
     color: var(--input-cor-placeholder) !important;
