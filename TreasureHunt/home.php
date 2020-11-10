@@ -51,9 +51,9 @@ if (!isset($_SESSION['usuario'])) {
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0" accesskey="i">Início</label></li>
-                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0" accesskey="p">Placar</label></li>
                     <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" accesskey="j">Como Jogar?</label></li>
                     <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" accesskey="c">Contato</label></li>
+                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0" accesskey="p">Placar</label></li>
                     <li class="nav-item">
                         <a id="logout" accesskey="l" href="logout.php" class="mostrar" lang="en">Logout</a>
                     </li>
