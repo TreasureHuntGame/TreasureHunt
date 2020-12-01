@@ -59,16 +59,16 @@ header('Content-Type: text/html; charset=utf-8');
         <div id="main">
             <div class="jumbotron bg-dark" id="jumbotron-index">
                 <h1 class="font-weight-bold" id="titulo-index" lang="en">
-                    TreasureHunt<span id="espaco"> </span><span class="destaque">{</span>Security<span class="destaque">}</span>
+                    TreasureHunt<span id="espaco"> </span><span class="destaque d-left"></span>Security<span class="destaque d-right"></span>
                 </h1>
                 <h2 id="subtitulo-index">Um jogo para testar suas habilidades em Segurança Computacional. <span class="smile destaque"></span></h2>
             </div>
-            <form action="acesso.php" method="POST" class="form-signin">
-                <label>Autentique-se:</label>
-                <label for="usuario" class="sr-only">Informe seu ID</label>
-                <input type="number" min="1" name="usuario" id="usuario" class="form-control input-sm" placeholder="Informe seu ID" required  data-trigger="hover" data-toggle="tooltip" data-placement="top" title="Credencial numérica atribuída a você.">
-                <label for="senha" class="sr-only">Informe sua senha</label>
-                <input type="password" id="senha" name="senha" class="form-control" placeholder="Informe sua senha" data-trigger="hover" data-toggle="tooltip" data-placement="top" title="Senha fornecida junto à credencial." required>
+            <form action="acesso.php" method="POST" class="form-signin" autocomplete="on">
+                    <h3 class="h6">Autentique-se:</h3>
+                    <label for="usuario" class="sr-only">Informe seu ID:</label>
+                    <input type="text" name="usuario" id="usuario" pattern="[0-9]{1,10}" inputmode="numeric" autocomplete="username" class="form-control input-sm" aria-required="true" data-trigger="focus" data-offset="400" placeholder="ID da conta (Exemplo: 1)" data-placement="top" required data-toggle="tooltip"  title="Credencial numérica atribuída a você.">
+                    <label for="senha" class="sr-only">Informe sua senha:</label>
+                    <input type="password" id="senha" name="senha" class="form-control" autocomplete="current-password"  data-trigger="focus" data-offset="400" aria-required="true" placeholder="Informe sua senha" data-toggle="tooltip" data-placement="top" title="Senha fornecida junto à credencial." required>
                 <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                 <button class="btn btn-dark btn-block" type="submit" name="enviar">Entrar</button>
                 <?php
@@ -167,20 +167,25 @@ header('Content-Type: text/html; charset=utf-8');
                         <a class="close" id="close-modal" href="#" title="fechar janela de detalhes"><span aria-hidden="true" id="modal-x">&times;</span></a>
                     <div class="contnt">
                         <p>Este site utiliza cookies para melhorar a experiência de 
-                        navegação do usuário ao salvar sua preferência de contraste. 
-                        A preferência será salva somente se você clicar em "Sim". 
-                        Essa informação visa a melhorar a acessibilidade do website
-                        por pessoas com baixa visibilidade, que, dessa forma, 
-                        não precisam reativar essa opção em um acesso futuro.
-                        Esse cookie é mantido por 30 dias.</p>
-                        <p>A identidade dos competidores é preservada durante as competições 
-                        do TreasureHunt, pois cada indivíduo é identificado por um número. 
-                        Apenas o pesquisador responsável terá acesso aos dados brutos,
-                        sem qualquer identificação ou correlação nominal dos participantes.</p>
-                        <p>Ressalta-se que o único dado sensível que a ferramenta recolhe é 
-                        o endereço IP de quem a acessa, pois ele é utilizado para garantir 
-                        a integridade da competição e identificar eventuais ataques e 
-                        tentativas de trapaça.</p>
+                            navegação do usuário ao salvar sua preferência de contraste. 
+                            A preferência será salva somente se você clicar em "Sim". 
+                            Essa informação visa a melhorar a acessibilidade do website
+                            por pessoas com baixa visibilidade, que, dessa forma, 
+                            não precisam reativar essa opção em um acesso futuro.
+                            Esse cookie é mantido por 30 dias.
+                        </p>
+                        <p>
+                            A identidade dos competidores é preservada durante as competições 
+                            do TreasureHunt, pois cada indivíduo é identificado por um número. 
+                            Apenas o pesquisador responsável terá acesso aos dados brutos,
+                            sem qualquer identificação ou correlação nominal dos participantes.
+                        </p>
+                        <p>
+                            Ressalta-se que o único dado sensível que a ferramenta recolhe é 
+                            o endereço IP de quem a acessa, pois ele é utilizado para garantir 
+                            a integridade da competição e identificar eventuais ataques e 
+                            tentativas de trapaça.
+                        </p>
                     </div>
                 </div>
          </div>';

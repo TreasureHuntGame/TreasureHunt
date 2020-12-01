@@ -20,7 +20,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta name="description" content="TreasureHunt, um Jogo de Caça ao Tesouro de Segurança Computacional">
     <meta name="keywords" content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
     <meta name="author" content="Ricardo de la Rocha Ladeira">
-    <title>Home -- TreasureHunt{Security}</title>
+    <title>TreasureHunt{Security} -- Página do Jogador</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -87,7 +87,7 @@ if (!isset($_SESSION['usuario'])) {
                         </div>
                         <div>
                             <label class="font-weight-bold">Arquivo:</label>
-                            <span data-toggle="tooltip" data-placement="bottom" title="Arquivo que contém os exercícios!">
+                            <span data-toggle="tooltip" data-placement="bottom" data-trigger="focus" title="Arquivo que contém os exercícios!">
                                 <a id="arquivo" href="<?php print_r("Desafios/Jogador" . $usuario . ".zip") ?>">
                                     <?php
                                     function formatBytes($size, $precision = 2)
@@ -108,12 +108,12 @@ if (!isset($_SESSION['usuario'])) {
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark" id="jumbotron-home-form">
-                        <form action="checkflag.php" method="POST" class="form-signin">
+                        <form action="checkflag.php" method="POST" class="form-signin" autocomplete="off">
                             <h3>Submeta sua <i lang="en">flag</i>:</h3>
                             <label for="id-problema" class="sr-only">Informe o ID do problema</label>
-                            <input type="number" min="1" name="problema" id="id-problema" class="form-control input-sm" placeholder="Informe o ID do problema" required data-trigger="hover" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
+                            <input autocomplete="off" type="text" pattern="[0-9]{1,10}" inputmode="numeric" name="problema" data-offset="400" id="id-problema" class="form-control input-sm" aria-required="true" placeholder="ID do problema (Exemplo: 1)" required data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
                             <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span></label>
-                            <input type="text" id="flag-interno" name="flag" class="form-control" placeholder="Informe a flag" required data-trigger="hover" data-toggle="tooltip" data-placement="top" title="Resposta encontrada.">
+                            <input autocomplete="off" type="text" id="flag-interno" data-offset="400" name="flag" class="form-control" placeholder="TreasureHunt{texto-aleatorio}" aria-required="true" required data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Resposta encontrada.">
                             <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                             <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
                             <?php
@@ -141,7 +141,7 @@ if (!isset($_SESSION['usuario'])) {
                     </div>
                     <div id="placar-individual" class="col-sm-12 col-md-12 col-lg-4 jumbotron bg-dark">
                         <h3>Seus resultados:</h3>
-                        <table class="mx-auto" data-toggle="tooltip" data-placement="left" data-trigger="hover" title="Placar individual detalhado contendo o estado e o número de tentativas por problema.">
+                        <table id="table-individual" data-trigger="hover" class="mx-auto" data-toggle="tooltip" data-placement="left" data-trigger="hover" title="Placar individual detalhado contendo o estado e o número de tentativas por problema.">
                             <caption>Placar individual detalhado.</caption>
                             <thead>
                                 <tr>
@@ -314,18 +314,27 @@ if (!isset($_SESSION['usuario'])) {
                     <h2>Valorizamos sua privacidade</h2>
                     <a class="close" id="close-modal" href="#" title="fechar janela de detalhes"><span aria-hidden="true" id="modal-x">&times;</span></a>
                     <div class="contnt">
-                        <p>Este site utiliza cookies para melhorar a experiência de navegação do usuário ao salvar
-                        sua preferência de contraste. A preferência será salva somente se você clicar em "Sim". 
-                        Essa informação visa a melhorar a acessibilidade do website por pessoas com baixa 
-                        visibilidade, que, dessa forma, não precisam reativar essa opção em um acesso futuro.
-                        Esse cookie é mantido por 30 dias.</p>
-                        <p>A identidade dos competidores é preservada durante as competições do TreasureHunt, 
-                        pois cada indivíduo é identificado por um número. Apenas o pesquisador responsável 
-                        terá acesso aos dados brutos, sem qualquer identificação ou correlação nominal 
-                        dos participantes.</p>
-                        <p>Ressalta-se que o único dado sensível que a ferramenta recolhe é o endereço IP 
-                        de quem a acessa, pois ele é utilizado para garantir a integridade da competição
-                        e identificar eventuais ataques e tentativas de trapaça.</p>
+                        <p>                            
+                            Este site utiliza cookies para melhorar a experiência de 
+                            navegação do usuário ao salvar sua preferência de contraste. 
+                            A preferência será salva somente se você clicar em "Sim". 
+                            Essa informação visa a melhorar a acessibilidade do website
+                            por pessoas com baixa visibilidade, que, dessa forma, 
+                            não precisam reativar essa opção em um acesso futuro.
+                            Esse cookie é mantido por 30 dias.
+                        </p>
+                        <p>
+                            A identidade dos competidores é preservada durante as competições 
+                            do TreasureHunt, pois cada indivíduo é identificado por um número. 
+                            Apenas o pesquisador responsável terá acesso aos dados brutos,
+                            sem qualquer identificação ou correlação nominal dos participantes.
+                        </p>
+                        <p>
+                            Ressalta-se que o único dado sensível que a ferramenta recolhe é 
+                            o endereço IP de quem a acessa, pois ele é utilizado para garantir 
+                            a integridade da competição e identificar eventuais ataques e 
+                            tentativas de trapaça.
+                        </p>
                     </div>
                 </div>
             </div>';

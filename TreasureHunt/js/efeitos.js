@@ -1,11 +1,8 @@
 $(function() {
-
     // habilita o tooltip do bootstrap (mensagem no hover) 
     $('[data-toggle="tooltip"]').tooltip();
 
-
     // lista de páginas do site
-    var navItems = ['inicio', 'regras', 'contato', 'rank'];
     var pages = {
         'inicio': 'main',
         'regras': 'como-jogar',
@@ -20,12 +17,89 @@ $(function() {
 
     // quando troca de tela apenas a página atual é focável 
     // (melhorar navegação para leitores) 
+    var navItems = ['inicio', 'regras', 'contato', 'rank'];
     navItems.forEach(element => {
         $(`#${element}`).click(function() {
             unfocusPages(element);
         });
     });
 
+    var msg = getQueryParam('message');
+    if (msg != false) {
+        var input;
+
+        switch (msg) {
+            case 'user_error':
+                input = $('#usuario');
+                break;
+            case 'passwd_error':
+                input = $('#senha');
+                break;
+            case 'erro':
+                input = $('#flag-interno');
+                break;
+            case 'duplicada':
+                input = $('#id-problema');
+                break;
+            case 'formato':
+                input = $('#flag-interno');
+                break;
+            case 'id_invalido':
+                input = $('#id-problema');
+                break
+            default:
+                break;
+        }
+        input.addClass('field-error');
+    };
+
+    // reimplementando os titles que são automaticamente excluidos pelo bootstrap
+    // precisam ser usados para mostrar as mensagens personalizadas de erro de formulário
+    var inputs = ['#usuario', '#senha', '#id-problema', '#flag-interno', '#arquivo', '#table-individual'];
+    for (input of inputs) {
+        switch (input) {
+            case '#usuario':
+                $(input).attr('title', 'Credencial numérica atribuída a você. Precisa ser um número')
+                break;
+            case '#senha':
+                $(input).attr('title', 'Senha fornecida junto à credencial.')
+                break;
+            case '#id-problema':
+                $(input).attr('title', 'Número do diretório cujo exercício foi resolvido. Precisa ser um número.')
+                break;
+            case '#flag-interno':
+                $(input).attr('title', 'Resposta encontrada. Formato: TreasureHunt{texto-aleatório}')
+                break;
+            default:
+                break;
+        }
+        // quando o input recebe hover ele tira o title temporariamente para não
+        // mostrar uma mensagem que já é mostrada pelos tooltips
+        $(input).hover(function() {
+                var title = $(this).attr('title');
+                $(this).attr('tmp_title', title);
+                $(this).attr('title', '')
+            },
+            function() {
+                var recoveredTitle = $(this).attr('tmp_title');
+                $(this).attr('title', recoveredTitle);
+            });
+        $(input).click(function() {
+            var oldTitle = $(this).attr("tmp_title");
+            $(this).attr("title", oldTitle);
+        })
+    }
+
+    // exclui o tooltip quando o esc é pressionado
+    // isso é usado para cumprir o critério 1.4.13 da WCAG
+    $(document).keyup(function(event) {
+        if (event.which === 27) {
+            $('#usuario').tooltip('hide');
+            $('#senha').tooltip('hide');
+            $('#id-problema').tooltip('hide');
+            $('#flag-interno').tooltip('hide');
+        }
+    });
 
     // retrai o navbar quando um dos itens dele é clidado (versão mobile)
     $('.navbar-collapse>.navbar-nav>.nav-item>label').click(function() {
@@ -96,7 +170,6 @@ $(function() {
             }, 800);
     });
 
-
     // se o cookie de aceitação tiver valor true ele salva a preferência de 
     // alto contraste no cookie 'contrast'  
     $('#contrast').change(function() {
@@ -123,7 +196,6 @@ $(function() {
         $("#modal-x").attr('aria-hidden', 'true');
     });
 
-
     // quando o modal é fechado remove a classe que trava o scroll
     $('#close-modal').click(function(e) {
         $('body, html').removeClass('disable-scroll');
@@ -142,7 +214,6 @@ $(function() {
     if (isFirefox && notUsingHttps) {
         window.location.href = 'https://' + oldUrl.substring(7, oldUrl.length);
     }
-
 
     // função para permitir que os botões 'enter' e 'espaço' sejam 
     // considerados cliques
@@ -266,6 +337,16 @@ $(function() {
             var secure = usingFirefox ? 'SameSite=None;secure;' : '';
             document.cookie = name + "=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT;" + secure;
         }
+    }
+
+    // função que procura por um query param e o retorna se encontrar
+    // recebe: nome do query param a ser procurado
+    // retorna: valor do query param ou false se não achar
+    function getQueryParam(name) {
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+            .exec(window.location.search);
+
+        return (results !== null) ? results[1] || 0 : false;
     }
 
 });
