@@ -20,7 +20,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta name="description" content="TreasureHunt, um Jogo de Caça ao Tesouro de Segurança Computacional">
     <meta name="keywords" content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
     <meta name="author" content="Ricardo de la Rocha Ladeira">
-    <title>TreasureHunt{Security} -- Página do Jogador</title>
+    <title>Home -- TreasureHunt{Security}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -34,28 +34,28 @@ if (!isset($_SESSION['usuario'])) {
 </head>
 
 <body>
-    <input type="checkbox" name="contrast-mode" id="contrast" tabindex="-1">
+    <input type="checkbox" name="contrast-mode" id="contrast">
     <div id="page-wrapper">
-        <input type="radio" name="nav" id="inicio" tabindex="-1" checked>
-        <input type="radio" name="nav" id="rank" tabindex="-1">
-        <input type="radio" name="nav" id="regras" tabindex="-1">
-        <input type="radio" name="nav" id="contato" tabindex="-1">
+        <input type="radio" name="nav" id="inicio" checked>
+        <input type="radio" name="nav" id="rank">
+        <input type="radio" name="nav" id="regras">
+        <input type="radio" name="nav" id="contato">
         <noscript>
             <div class="jumbotron bg-dark col-sm-12 col-md-10 col-lg-12">
                 <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
             </div>
         </noscript>
         <nav class="navbar navbar-expand-sm navbar-dark justify-content-center">
-            <input type="checkbox" name="collapse-btn" id="collapse-btn" tabindex="-1">
+            <input type="checkbox" name="collapse-btn" id="collapse-btn" role="button">
             <label for="collapse-btn" class="navbar-toggler"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0" accesskey="i">Início</label></li>
+                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0" accesskey="p">Placar</label></li>
                     <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" accesskey="j">Como Jogar?</label></li>
                     <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" accesskey="c">Contato</label></li>
-                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0" accesskey="p">Placar</label></li>
                     <li class="nav-item">
-                        <a id="logout" accesskey="l" href="logout.php" class="mostrar" lang="en">Logout</a>
+                        <a id="logout" accesskey="l" href="logout.php" class="mostrar">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -63,7 +63,7 @@ if (!isset($_SESSION['usuario'])) {
                 <li>
                     <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
                         <span class="material-icons" aria-hidden="true">invert_colors</span>
-                        <span class="sr-only" role="button">Ativar ou desativar alto Contraste</span>
+                        <span class="sr-only">Recurso de alto Contraste</span>
                     </label>
                 </li>
             </ul>
@@ -87,7 +87,7 @@ if (!isset($_SESSION['usuario'])) {
                         </div>
                         <div>
                             <label class="font-weight-bold">Arquivo:</label>
-                            <span data-toggle="tooltip" data-placement="bottom" data-trigger="focus" title="Arquivo que contém os exercícios!">
+                            <span data-toggle="tooltip" data-placement="bottom" title="Arquivo que contém os exercícios!">
                                 <a id="arquivo" href="<?php print_r("Desafios/Jogador" . $usuario . ".zip") ?>">
                                     <?php
                                     function formatBytes($size, $precision = 2)
@@ -108,31 +108,31 @@ if (!isset($_SESSION['usuario'])) {
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark" id="jumbotron-home-form">
-                        <form action="checkflag.php" method="POST" class="form-signin" autocomplete="off">
+                        <form action="checkflag.php" method="POST" class="form-signin">
                             <h3>Submeta sua <i lang="en">flag</i>:</h3>
                             <label for="id-problema" class="sr-only">Informe o ID do problema</label>
-                            <input autocomplete="off" type="text" pattern="[0-9]{1,10}" inputmode="numeric" name="problema" data-offset="400" id="id-problema" class="form-control input-sm" aria-required="true" placeholder="ID do problema (Exemplo: 1)" required data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
+                            <input type="number" min="1" name="problema" id="id-problema" class="form-control input-sm" placeholder="Informe o ID do problema" required data-trigger="hover" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido." autofocus>
                             <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span></label>
-                            <input autocomplete="off" type="text" id="flag-interno" data-offset="400" name="flag" class="form-control" placeholder="TreasureHunt{texto-aleatorio}" aria-required="true" required data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Resposta encontrada.">
+                            <input type="text" id="flag-interno" name="flag" class="form-control" placeholder="Informe a flag" required data-trigger="hover" data-toggle="tooltip" data-placement="top" title="Resposta encontrada.">
                             <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                             <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
                             <?php
                             if (isset($_GET['message'])) {
                                 switch ($_GET['message']) {
                                     case 'erro':
-                                        echo '<div class="alert alert-danger" role="alert" aria-atomic="true"> Errou! Verifique se a resposta informada não contém espaço ou outros caracteres adicionais.</div>';
+                                        echo '<div class="alert alert-danger" role="alert"> Errou! Verifique se a resposta informada não contém espaço ou outros caracteres adicionais.</div>';
                                         break;
                                     case 'duplicada':
-                                        echo '<div class="alert alert-danger" role="alert" aria-atomic="true"> Você já acertou a questão ' . $_GET['id'] . '! Verifique o ID do problema.</div>';
+                                        echo '<div class="alert alert-danger" role="alert"> Você já acertou a questão ' . $_GET['id'] . '! Verifique o ID do problema.</div>';
                                         break;
                                     case 'formato':
-                                        echo '<div class="alert alert-danger" role="alert" aria-atomic="true"> Errou! Considere submeter a flag no seguinte formato: TreasureHunt{texto-aleatório}.</div>';
+                                        echo '<div class="alert alert-danger" role="alert"> Errou! Considere submeter a flag no seguinte formato: TreasureHunt{texto-aleatório}.</div>';
                                         break;
                                     case 'id_invalido':
-                                        echo '<div class="alert alert-danger" role="alert" aria-atomic="true"> Problema com ID inválido! Verifique a numeração dos diretórios recebidos.</div>';
+                                        echo '<div class="alert alert-danger" role="alert"> Problema com ID inválido! Verifique a numeração dos diretórios recebidos.</div>';
                                         break;
                                     case 'acertou':
-                                        echo '<div class="alert alert-success" role="alert" aria-atomic="true"> Acertou! ' . $_GET['acertos'] . '/' . $_GET['total'] . '</div>';
+                                        echo '<div class="alert alert-success" role="alert">Acertou! ' . $_GET['acertos'] . '/' . $_GET['total'] . '</div>';
                                         break;
                                 }
                             }
@@ -141,7 +141,7 @@ if (!isset($_SESSION['usuario'])) {
                     </div>
                     <div id="placar-individual" class="col-sm-12 col-md-12 col-lg-4 jumbotron bg-dark">
                         <h3>Seus resultados:</h3>
-                        <table id="table-individual" data-trigger="hover" class="mx-auto" data-toggle="tooltip" data-placement="left" data-trigger="hover" title="Placar individual detalhado contendo o estado e o número de tentativas por problema.">
+                        <table class="mx-auto" data-toggle="tooltip" data-placement="left" data-trigger="hover" title="Placar individual detalhado contendo o estado e o número de tentativas por problema.">
                             <caption>Placar individual detalhado.</caption>
                             <thead>
                                 <tr>
@@ -237,18 +237,18 @@ if (!isset($_SESSION['usuario'])) {
                 <h2 class="font-weight-bold page-title">Como Jogar<span class="destaque">?</span></h2>
             </div>
             <ul id="lista-de-regras">
-                <li><span class="prompt" aria-hidden="true"></span> Na tela de início, insira seu ID e sua senha e clique em
+                <li><span class="prompt"></span> Na tela de início, insira seu ID e sua senha e clique em
                     <button class="btn btn-sm btn-dark" name="enviar">Entrar</button>.
                 </li>
-                <li><span class="prompt" aria-hidden="true"></span> Baixe e descompacte o arquivo zip disponível (sugestão: <code id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém diretórios representados por números inteiros. Cada diretório contém pelo menos um arquivo.
+                <li><span class="prompt"></span> Baixe e descompacte o arquivo zip disponível (sugestão: <code id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém diretórios representados por números inteiros. Cada diretório contém pelo menos um arquivo.
                 </li>
-                <li><span class="prompt" aria-hidden="true"></span> Seu objetivo é descobrir a palavra secreta (<em lang="en">flag</em>) escondida em cada um dos diretórios.
+                <li><span class="prompt"></span> Seu objetivo é descobrir a palavra secreta (<em lang="en">flag</em>) escondida em cada um dos diretórios.
                 </li>
-                <li><span class="prompt" aria-hidden="true"></span> Vencerá o jogo aquele que submeter mais respostas corretas em menos tempo, ou seja, o ranqueamento é feito pelo número de acertos e, em caso de empate, ficará à frente aquele que obteve seu último acerto antes.
+                <li><span class="prompt"></span> Vencerá o jogo aquele que submeter mais respostas corretas em menos tempo, ou seja, o ranqueamento é feito pelo número de acertos e, em caso de empate, ficará à frente aquele que obteve seu último acerto antes.
                 </li>
-                <li><span class="prompt" aria-hidden="true"></span> Cada <em lang="en">flag</em> descoberta é um desafio resolvido! Você só precisa realizar a submissão no sistema, informando o ID do problema (número do diretório) e a <em lang="en">flag</em> encontrada. O sistema informará se a <em lang="en">flag</em> está (in)correta.
+                <li><span class="prompt"></span> Cada <em lang="en">flag</em> descoberta é um desafio resolvido! Você só precisa realizar a submissão no sistema, informando o ID do problema (número do diretório) e a <em lang="en">flag</em> encontrada. O sistema informará se a <em lang="en">flag</em> está (in)correta.
                 </li>
-                <li><span class="prompt" aria-hidden="true"></span> As <em lang="en">flags</em> possuem o formato <code> <span>TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <em lang="en">flag</em>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
+                <li><span class="prompt"></span> As <em lang="en">flags</em> possuem o formato <code> <span>TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <em lang="en">flag</em>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
                 </li>
             </ul>
         </div>
@@ -280,12 +280,12 @@ if (!isset($_SESSION['usuario'])) {
         <footer class="page-footer font-small">
             <div class="col">
                 <div class="footer-copyright">
-                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons"  tabindex="-1">
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons">
                         <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png">
                     </a>
                     <br>
                     <p>Esta obra está licenciada com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><span lang="en">Creative Commons</span> Atribuição-NãoComercial 4.0 Internacional</a>.</p>
-                    <p><span lang="en">©</span> 2017-2020</p>
+                    <p><span lang="en">©</span> 2017-2021</p>
                 </div>
             </div>
         </footer>
@@ -301,10 +301,10 @@ if (!isset($_SESSION['usuario'])) {
              </div>
              <div class="col-lg-5 col-sm-12 ml-auto">
              <label for="hide-cookie-bar">
-             <a class="btn btn-primary" id="cookie-yes" tabindex="0" role="button" title="Aceitar uso de cookie para armazenamento de preferências e termos de privacidade">Sim</a>
-             <a class="btn btn-primary" id="cookie-no" tabindex="0" role="button" title="Aceitar uso de cookie para armazenamento de preferências e termos de privacidade">Não</a>
+             <a class="btn btn-primary" id="cookie-yes" tabindex="0" role="button">Sim</a>
+             <a class="btn btn-primary" id="cookie-no" tabindex="0" role="button">Não</a>
              </label>
-             <a href="#modal-privacy" id="open-modal-btn" class="btn btn-primary" title="Acessar termos de privacidade">Detalhes</a>
+             <a href="#modal-privacy" id="open-modal-btn" class="btn btn-primary">Detalhes</a>
              </div>
              </div>
              </div>';
@@ -312,28 +312,16 @@ if (!isset($_SESSION['usuario'])) {
             echo '<div id="modal-privacy" class="overlay noscript">
                 <div class="popup">
                     <h2>Valorizamos sua privacidade</h2>
-                    <a class="close" id="close-modal" href="#" title="fechar janela de detalhes"><span aria-hidden="true" id="modal-x">&times;</span></a>
+                    <a class="close" id="close-modal" href="#">&times;</a>
                     <div class="contnt">
                         <p>                            
-                            Este site utiliza cookies para melhorar a experiência de 
-                            navegação do usuário ao salvar sua preferência de contraste. 
-                            A preferência será salva somente se você clicar em "Sim". 
-                            Essa informação visa a melhorar a acessibilidade do website
-                            por pessoas com baixa visibilidade, que, dessa forma, 
-                            não precisam reativar essa opção em um acesso futuro.
-                            Esse cookie é mantido por 30 dias.
+                            Este site utiliza cookies para melhorar a experiência de navegação do usuário ao salvar sua preferência de contraste. A preferência será salva somente se você clicar em "Sim". Essa informação visa a melhorar a acessibilidade do website por pessoas com baixa visibilidade, que, dessa forma, não precisam reativar essa opção em um acesso futuro. Esse cookie é mantido por 30 dias.
                         </p>
                         <p>
-                            A identidade dos competidores é preservada durante as competições 
-                            do TreasureHunt, pois cada indivíduo é identificado por um número. 
-                            Apenas o pesquisador responsável terá acesso aos dados brutos,
-                            sem qualquer identificação ou correlação nominal dos participantes.
+                            A identidade dos competidores é preservada durante as competições do TreasureHunt, pois cada indivíduo é identificado por um número. Apenas o pesquisador responsável terá acesso aos dados brutos, sem qualquer identificação ou correlação nominal dos participantes.
                         </p>
                         <p>
-                            Ressalta-se que o único dado sensível que a ferramenta recolhe é 
-                            o endereço IP de quem a acessa, pois ele é utilizado para garantir 
-                            a integridade da competição e identificar eventuais ataques e 
-                            tentativas de trapaça.
+                            Ressalta-se que o único dado sensível que a ferramenta recolhe é o endereço IP de quem a acessa, pois ele é utilizado para garantir a integridade da competição e identificar eventuais ataques e tentativas de trapaça.
                         </p>
                     </div>
                 </div>

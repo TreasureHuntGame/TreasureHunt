@@ -1,14 +1,5 @@
-Este site utiliza cookies para melhorar a experiência de navegação do usuário ao salvar
-sua preferência de contraste. A preferência será salva somente se você clicar em "Sim". 
-Essa informação visa a melhorar a acessibilidade do website por pessoas com baixa 
-visibilidade, que, dessa forma, não precisam reativar essa opção em um acesso futuro.
-Esse cookie é mantido por 30 dias.
+Este site utiliza cookies para melhorar a experiência de navegação do usuário ao salvar sua preferência de contraste. A preferência será salva somente se você clicar em "Sim". Essa informação visa a melhorar a acessibilidade do website por pessoas com baixa visibilidade, que, dessa forma, não precisam reativar essa opção em um acesso futuro. Esse cookie é mantido por 30 dias.
 
-A identidade dos competidores é preservada durante as competições do TreasureHunt, 
-pois cada indivíduo é identificado por um número. Apenas o pesquisador responsável 
-terá acesso aos dados brutos, sem qualquer identificação ou correlação nominal 
-dos participantes.
+A identidade dos competidores é preservada durante as competições do TreasureHunt, pois cada indivíduo é identificado por um número. Apenas o pesquisador responsável terá acesso aos dados brutos, sem qualquer identificação ou correlação nominal dos participantes.
 
-Ressalta-se que o único dado sensível que a ferramenta recolhe é o endereço IP 
-de quem a acessa, pois ele é utilizado para garantir a integridade da competição
-e identificar eventuais ataques e tentativas de trapaça.
+Ressalta-se que o único dado sensível que a ferramenta recolhe é o endereço IP de quem a acessa, pois ele é utilizado para garantir a integridade da competição e identificar eventuais ataques e tentativas de trapaça.

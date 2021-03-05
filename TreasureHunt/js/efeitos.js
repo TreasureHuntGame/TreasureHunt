@@ -1,105 +1,7 @@
 $(function() {
+
     // habilita o tooltip do bootstrap (mensagem no hover) 
     $('[data-toggle="tooltip"]').tooltip();
-
-    // lista de páginas do site
-    var pages = {
-        'inicio': 'main',
-        'regras': 'como-jogar',
-        'contato': 'contatos',
-        'rank': 'ranking'
-    };
-    var currentPage = 'inicio';
-
-    // remover foco das seções não visíveis, por padrão mostrando só o início
-    unfocusPages('inicio');
-    lockElement('#modal-privacy');
-
-    // quando troca de tela apenas a página atual é focável 
-    // (melhorar navegação para leitores) 
-    var navItems = ['inicio', 'regras', 'contato', 'rank'];
-    navItems.forEach(element => {
-        $(`#${element}`).click(function() {
-            unfocusPages(element);
-        });
-    });
-
-    var msg = getQueryParam('message');
-    if (msg != false) {
-        var input;
-
-        switch (msg) {
-            case 'user_error':
-                input = $('#usuario');
-                break;
-            case 'passwd_error':
-                input = $('#senha');
-                break;
-            case 'erro':
-                input = $('#flag-interno');
-                break;
-            case 'duplicada':
-                input = $('#id-problema');
-                break;
-            case 'formato':
-                input = $('#flag-interno');
-                break;
-            case 'id_invalido':
-                input = $('#id-problema');
-                break
-            default:
-                break;
-        }
-        input.addClass('field-error');
-    };
-
-    // reimplementando os titles que são automaticamente excluidos pelo bootstrap
-    // precisam ser usados para mostrar as mensagens personalizadas de erro de formulário
-    var inputs = ['#usuario', '#senha', '#id-problema', '#flag-interno', '#arquivo', '#table-individual'];
-    for (input of inputs) {
-        switch (input) {
-            case '#usuario':
-                $(input).attr('title', 'Credencial numérica atribuída a você. Precisa ser um número')
-                break;
-            case '#senha':
-                $(input).attr('title', 'Senha fornecida junto à credencial.')
-                break;
-            case '#id-problema':
-                $(input).attr('title', 'Número do diretório cujo exercício foi resolvido. Precisa ser um número.')
-                break;
-            case '#flag-interno':
-                $(input).attr('title', 'Resposta encontrada. Formato: TreasureHunt{texto-aleatório}')
-                break;
-            default:
-                break;
-        }
-        // quando o input recebe hover ele tira o title temporariamente para não
-        // mostrar uma mensagem que já é mostrada pelos tooltips
-        $(input).hover(function() {
-                var title = $(this).attr('title');
-                $(this).attr('tmp_title', title);
-                $(this).attr('title', '')
-            },
-            function() {
-                var recoveredTitle = $(this).attr('tmp_title');
-                $(this).attr('title', recoveredTitle);
-            });
-        $(input).click(function() {
-            var oldTitle = $(this).attr("tmp_title");
-            $(this).attr("title", oldTitle);
-        })
-    }
-
-    // exclui o tooltip quando o esc é pressionado
-    // isso é usado para cumprir o critério 1.4.13 da WCAG
-    $(document).keyup(function(event) {
-        if (event.which === 27) {
-            $('#usuario').tooltip('hide');
-            $('#senha').tooltip('hide');
-            $('#id-problema').tooltip('hide');
-            $('#flag-interno').tooltip('hide');
-        }
-    });
 
     // retrai o navbar quando um dos itens dele é clidado (versão mobile)
     $('.navbar-collapse>.navbar-nav>.nav-item>label').click(function() {
@@ -153,7 +55,7 @@ $(function() {
                 $('#modal-privacy').remove();
                 $('body').removeAttr('style');
             }, 800);
-    });
+    })
 
     // cria o cookie de aceitação com valor false quando
     // "não" é pressionado na cookie bar, 
@@ -168,7 +70,7 @@ $(function() {
                 $('#modal-privacy').remove();
                 $('body').removeAttr('style');
             }, 800);
-    });
+    })
 
     // se o cookie de aceitação tiver valor true ele salva a preferência de 
     // alto contraste no cookie 'contrast'  
@@ -191,20 +93,22 @@ $(function() {
     // quando o modal é aberto adiciona a classe que trava o scroll
     $('#open-modal-btn').click(function() {
         $('body, html').addClass('disable-scroll');
-        lockElement('#page-wrapper');
-        unlockElement('#modal-privacy');
-        $("#modal-x").attr('aria-hidden', 'true');
     });
+
 
     // quando o modal é fechado remove a classe que trava o scroll
     $('#close-modal').click(function(e) {
         $('body, html').removeClass('disable-scroll');
-        unlockElement('#page-wrapper');
-        unlockElement('nav');
-        unlockElement('#cookie-bar');
-        unfocusPages(currentPage);
-        lockElement('#modal-privacy');
     });
+
+
+    // função para permitir que os botões 'enter' e 'espaço' sejam 
+    // considerados cliques
+    function set_keyboard_click(event) {
+        if (event.which == 13 || event.which == 32) {
+            event.target.click();
+        }
+    }
 
     // se o navegador em questão for o firefox e não estiver usando https
     // ele recarrega a página com https -> resolve o bug do firefox
@@ -215,87 +119,6 @@ $(function() {
         window.location.href = 'https://' + oldUrl.substring(7, oldUrl.length);
     }
 
-    // função para permitir que os botões 'enter' e 'espaço' sejam 
-    // considerados cliques
-    function set_keyboard_click(event) {
-        if (event.which == 13 || event.which == 32) {
-            event.target.click();
-        }
-    }
-
-    // função que torna todas as páginas do site infocáveis com exceção
-    // da página de destino do usuário.
-    // recebe: o item do nav que ele clicou. Esse item corresponde a   
-    // a única página que será focável
-    // retorna: nada
-    function unfocusPages(clickedItem) {
-        clickedItem.length > 0 ? currentPage = clickedItem : null;
-        focusPages(clickedItem);
-        Object.keys(pages).forEach(function(navItem) {
-            if (navItem !== clickedItem) {
-                var contentDivId = pages[navItem];
-                $(`#${contentDivId}`).find('*').each(function() {
-                    $(this).attr('tabindex', '-1');
-                    $(this).attr('aria-hidden', 'true');
-                });
-            };
-        });
-    }
-
-    // função para tornar as páginas focáveis novamente
-    // recebe: o item do nav que ele clicou. Esse item corresponde a   
-    // a única página que será focável
-    // retorna: nada
-    function focusPages(clickedItem) {
-        Object.keys(pages).forEach(function(navItem) {
-            if (navItem == clickedItem) {
-                var contentDivId = pages[navItem];
-                $(`#${contentDivId}`).find('*').each(function() {
-                    $(this).removeAttr('tabindex');
-                    $(this).removeAttr('aria-hidden');
-                    restoreDefaultAttributes();
-                });
-            }
-        });
-    }
-
-    // função para travar todos os descendentes de um elemento
-    // recebe: elemento
-    // retorna: nada
-    function lockElement(element) {
-        $(element).find('*').each(function() {
-            $(this).attr('tabindex', '-1');
-            $(this).attr('aria-hidden', 'true');
-        });
-    }
-
-    // função para destravar todos os descendentes de um elemento
-    // recebe: elemento
-    // retorna: nada
-    function unlockElement(element) {
-        $(element).removeAttr('aria-hidden');
-        $(element).removeAttr('tabindex');
-        $(element).find('*').each(function() {
-            $(this).removeAttr('aria-hidden');
-            $(this).removeAttr('tabindex');
-            if (element == 'nav' && $(this).prop('tagName').toLowerCase() == 'label') {
-                $(this).attr('tabindex', '0');
-            } else if (element == '#cookie-bar') {
-                $('#cookie-yes').attr('tabindex', '0');
-                $('#cookie-no').attr('tabindex', '0');
-            }
-        });
-
-
-    }
-
-    // função para voltar o valor padrão de alguns atributos da página
-    // recebe: nada
-    // retorna: nada
-    function restoreDefaultAttributes() {
-        $('.prompt').attr('aria-hidden', 'true');
-        $('#creative-commons').attr('tabindex', '-1');
-    }
 
     // função para facilitar a criação do cookie;
     // recebe: nome do cookie, valor do cookie e tempo de expiração em dias
@@ -337,16 +160,6 @@ $(function() {
             var secure = usingFirefox ? 'SameSite=None;secure;' : '';
             document.cookie = name + "=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT;" + secure;
         }
-    }
-
-    // função que procura por um query param e o retorna se encontrar
-    // recebe: nome do query param a ser procurado
-    // retorna: valor do query param ou false se não achar
-    function getQueryParam(name) {
-        var results = new RegExp('[\?&]' + name + '=([^&#]*)')
-            .exec(window.location.search);
-
-        return (results !== null) ? results[1] || 0 : false;
     }
 
 });

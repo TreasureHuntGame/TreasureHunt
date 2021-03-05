@@ -6,7 +6,7 @@
     <meta name="description" content="TreasureHunt, um Jogo de Caça ao Tesouro de Segurança Computacional">
     <meta name="keywords" content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
     <meta name="author" content="Ricardo de la Rocha Ladeira">
-    <title>TreasureHunt{Security} -- Acesso Proibido -- Erro 403</title>
+    <title>403 -- TreasureHunt{Security}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/png" href="/TreasureHunt/img/favicon.png">
@@ -48,7 +48,7 @@
             </a>
             <br>
             <p>Esta obra está licenciada com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Atribuição-NãoComercial 4.0 Internacional</a>.</p>
-            <p>© 2017-2020</p>
+            <p>© 2017-2021</p>
         </div>
     </footer>    
 </body>
