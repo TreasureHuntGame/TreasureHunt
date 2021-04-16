@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Ao executar, certifique-se de que você está executando os serviços apache e mysql
 # mysql deve estar rootado sem senha e as tabelas TreasureHunt.Usuario e TreasureHunt.Resposta, caso existam, serão esvaziadas
 
