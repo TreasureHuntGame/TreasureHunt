@@ -191,15 +191,17 @@ Pressupõe-se algumas condições para que a instalação ocorra com sucesso. Es
 
 - *Nota 2*: O _script_ considera que o MySQL será utilizado com usuário ``root`` e sem senha. O organizador pode alterar isso manipulando a chamada ao _script_ ``ConfiguraBD.sh`` no arquivo ``Jogo.sh``.
 
-- *Nota 3*: O _script_ considera que o MySQL será utilizado sem a diretiva ``NO_ZERO_DATE``. Para removê-la, insira o seguinte comando no arquivo de configuração, my.ini no _windows_ ou my.cnf no _linux_, após `[mysqld]:` (adicionar caso não esteja presente):
+- *Nota 3*: O _script_ considera que o MySQL será utilizado sem a diretiva ``NO_ZERO_DATE``. Para removê-la, uma dessas soluções pode ser empregada (a depender da versão do mysql) no arquivo de configuração, my.ini no _windows_ ou my.cnf (/etc/mysql/) no _linux_, após o indicador `[mysqld]:` (adicionar caso não esteja presente):
+
+(testado na versão 5.7.30):
 
 ``sql_mode = "ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"``
 
-Depois, reinicie o mysql (``sudo service mysql restart``) e tente novamente. Você também pode verificar se a diretiva foi removida entrando no MySQL e digitando no console: ``SHOW VARIABLES LIKE 'sql_mode';``. 
-
-Em caso de erro ao reiniciar o serviço, especialmente em versões mais recentes do mysql, pode ser necessário alterar o comando no arquivo de configuração: 
+(testado na versão 8.0.23):
 
 ``sql_mode="ALLOW_INVALID_DATES"``
+
+Depois, reinicie o mysql (``sudo service mysql restart``) e tente novamente. Você também pode verificar se a diretiva foi removida entrando no MySQL e digitando no console: ``SHOW VARIABLES LIKE 'sql_mode';``. 
 
 - *Nota 4*: O arquivo ``apache2.conf``, disponível no diretório ``TreasureHunt/TreasureHunt``, serve apenas como exemplo de configuração do servidor web. O organizador pode configurá-lo de maneira diferente, a seu critério.
 
