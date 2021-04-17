@@ -50,7 +50,7 @@ Nota-se que podemos dividir o projeto em dois grandes módulos:
 
 O gerador de desafios é acionado pelo organizador e é composto por um conjunto de _scripts_ e diretórios com recursos como imagens, textos e códigos, localizados em [`TreasureHunt/Jogo`](/Jogo). Esses diretórios são usados como base para criação de instâncias únicas de problemas. Ainda que exista um conjunto de arquivos padrão, o organizador pode modificá-los, adicionando ou removendo-os a seu critério. 
 
-Os _scripts_, por sua vez, são responsáveis por montar a competição, gerar instâncias de problemas e _flags_ únicas para cada jogador, bem como configurar o Sistema de Gerenciamento de Banco de Dados (SGBD). O _script_ principal é chamado de [jogo.sh](Jogo/Problemas/Jogo.sh). Ele recebe a quantidade de jogadores e problemas, os quais podem aplicar técnicas únicas ou compostas de acordo com as entradas do organizador. Por fim, as entradas são validadas, prosseguindo na criação dos arquivos compactados (em formato .zip) que serão enviados para o Servidor _Web_ e na configuração do SGBD. A imagem a seguir demonstra a execução do _script_ principal:
+Os _scripts_, por sua vez, são responsáveis por montar a competição, gerar instâncias de problemas e _flags_ únicas para cada jogador, bem como configurar o Sistema de Gerenciamento de Banco de Dados (SGBD). O _script_ principal é chamado de [Jogo.sh](Jogo/Problemas/Jogo.sh). Ele recebe a quantidade de jogadores e problemas, os quais podem aplicar técnicas únicas ou compostas de acordo com as entradas do organizador. Por fim, as entradas são validadas, prosseguindo na criação dos arquivos compactados (em formato .zip) que serão enviados para o Servidor _Web_ e na configuração do SGBD. A imagem a seguir demonstra a execução do _script_ principal:
 
 ![execução do _script_ principal](Imagens/script.png)
 
@@ -103,7 +103,7 @@ cd TreasureHunt
 Após baixar o repositório para a sua máquina, o próximo passo é fazer a instalação dos requisitos do projeto. Para isto, basta executar o _script_ [`instalador.sh`](/Instalador/instalador.sh), localizado em [`TreasureHunt/Instalador`](/Instalador), que se encarrega de instalar todos os pacotes, que por padrão se encontram no arquivo [`requisitos.txt`](/Instalador/requisitos.txt).
 
 ```sh
-cd instalador
+cd Instalador
 chmod +x instalador.sh
 ./instalador.sh
 ```
@@ -127,12 +127,12 @@ Cabe ao organizador da competição decidir se fornece ou não as ferramentas.
 
 As competições de TreasureHunt precisam ser criadas pelo organizador. Para tanto, este deve escolher a quantidade de participantes, bem como quantos e quais desafios estarão presentes, podendo inclusive adicionar um problema composto, onde duas técnicas são aplicadas em conjunto.
 
-Para gerar a competição, basta executar o _script_ [`jogo.sh`](/Jogo/Problemas/Jogo.sh) do diretório [TreasureHunt/jogo/problemas/](/Jogo/Problemas).
+Para gerar a competição, basta executar o _script_ [`Jogo.sh`](/Jogo/Problemas/Jogo.sh) do diretório [TreasureHunt/Jogo/Problemas/](/Jogo/Problemas).
 
 ```sh
-cd jogo/problemas
-chmod +x jogo.sh
-./jogo.sh
+cd Jogo/Problemas
+chmod +x Jogo.sh
+./Jogo.sh
 ```
 
 #### Opções de Problemas
@@ -191,10 +191,15 @@ Pressupõe-se algumas condições para que a instalação ocorra com sucesso. Es
 
 - *Nota 2*: O _script_ considera que o MySQL será utilizado com usuário ``root`` e sem senha. O organizador pode alterar isso manipulando a chamada ao _script_ ``ConfiguraBD.sh`` no arquivo ``Jogo.sh``.
 
-- *Nota 3*: O _script_ considera que o MySQL será utilizado sem a diretiva ``NO_ZERO_DATE``. Para removê-la, insira no arquivo de configuração: 
-[mysqld]  
+- *Nota 3*: O _script_ considera que o MySQL será utilizado sem a diretiva ``NO_ZERO_DATE``. Para removê-la, insira o seguinte comando no arquivo de configuração, my.ini no _windows_ ou my.cnf no _linux_, após `[mysqld]:` (adicionar caso não esteja presente):
+
 ``sql_mode = "ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION"``
-Depois, reinicie o mysql (``sudo service mysql restart``) e tente novamente. Você também pode verificar se a diretiva foi removida entrando no MySQL e digitando no console: ``SHOW VARIABLES LIKE 'sql_mode';``
+
+Depois, reinicie o mysql (``sudo service mysql restart``) e tente novamente. Você também pode verificar se a diretiva foi removida entrando no MySQL e digitando no console: ``SHOW VARIABLES LIKE 'sql_mode';``. 
+
+Em caso de erro ao reiniciar o serviço, especialmente em versões mais recentes do mysql, pode ser necessário alterar o comando no arquivo de configuração: 
+
+``sql_mode="ALLOW_INVALID_DATES"``
 
 - *Nota 4*: O arquivo ``apache2.conf``, disponível no diretório ``TreasureHunt/TreasureHunt``, serve apenas como exemplo de configuração do servidor web. O organizador pode configurá-lo de maneira diferente, a seu critério.
 
@@ -210,6 +215,11 @@ mysql> UPDATE user SET plugin='mysql_native_password' WHERE User='root';
 mysql> FLUSH PRIVILEGES;
 mysql> exit;
 > service mysql restart
+```
+- *Nota 7*: Se você obtiver a mensagem de erro `Bad substitution` ao executar o script _Jogo.sh_, tente executar o _script_ da seguinte forma:
+
+```sh
+bash Jogo.sh
 ```
 
 ---
