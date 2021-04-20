@@ -1,6 +1,6 @@
 # :trophy: TreasureHunt
 
-> Ferramenta de geração automática de problemas e competições do tipo desafio (também conhecidas como CTF _Jeopardy!_) para ensino de Segurança Computacional
+> Ferramenta de geração automática de problemas e competições do tipo desafio (também conhecidas como CTF _Jeopardy!_) para ensino de Segurança Computacional. 
 
 ![Interface _web_ do TreasureHunt](Imagens/tela.png)
 
@@ -23,7 +23,7 @@
 
 Ainda que seja uma área significativa da Computação, a Segurança Computacional apresenta um nítido contraste: a crescente demanda por profissionais _versus_ a carência de profissionais capacitados.
 
-Um dos artifícios usados para atrair talentos em Segurança é o uso de **jogos** e **competições de segurança**, dentre os quais destacam-se os jogos do tipo _desafio_, também chamados de _caça ao tesouro_ e _capture the flag_ (CTF). Nestes jogos o objetivo dos jogadores é obter os textos secretos, também chamados de _flags_, ao aplicar técnicas de Segurança.
+Um dos artifícios usados para atrair talentos em Segurança é o uso de **jogos** e **competições de segurança**, dentre os quais destacam-se os jogos do tipo _desafio_, também chamados de _caça ao tesouro_ e _capture the flag_ (CTF) _Jeopardy!_. Nestes jogos o objetivo dos jogadores é obter os textos secretos, também chamados de _flags_, ao aplicar técnicas de Segurança.
 
 Apesar de atrativas aos jogadores, a elaboração dessas competições encara algumas dificuldades:
 
@@ -31,7 +31,7 @@ Apesar de atrativas aos jogadores, a elaboração dessas competições encara al
 - Elaboração de problemas: uma tarefa normalmente trabalhosa e manual, necessitando de conhecimento técnico.
 - Reaproveitamento de problemas: problemas (e soluções), quando divulgados na _web_, perdem o "fator surpresa", imprescendível para esse tipo de jogo.
 
-**TreasureHunt** é uma ferramenta destinada a profissionais interessados em organizar competições de Segurança do tipo caça ao tesouro. A ferramenta se propõe a minimizar os problemas supracitados por meio da geração de problemas e competições de forma aleatória, automática e completa.
+**TreasureHunt** é uma ferramenta destinada a profissionais interessados em organizar competições de Segurança do tipo _desafio_. A ferramenta se propõe a minimizar os problemas supracitados por meio da geração de problemas e competições de forma aleatória, automática e completa. 
 
 ---
 
@@ -48,26 +48,28 @@ Nota-se que podemos dividir o projeto em dois grandes módulos:
 
 ### Gerador de desafios: 
 
-O gerador de desafios é acionado pelo organizador e é composto por um conjunto de _scripts_ e diretórios com recursos como imagens, textos e códigos, localizados em [`TreasureHunt/Jogo`](/Jogo). Esses diretórios são usados como base para criação de instâncias únicas de problemas. Ainda que exista um conjunto de arquivos padrão, o organizador pode modificá-los, adicionando ou removendo-os a seu critério. 
+O gerador de desafios é acionado pelo organizador da competição. Ele é composto por um conjunto de _scripts_ e diretórios com recursos como imagens, textos e códigos, localizados em [`TreasureHunt/Jogo`](/Jogo). Esses diretórios são usados como base para a criação de instâncias únicas de problemas. Ainda que exista um conjunto de arquivos padrão, o organizador pode modificá-los, adicionando ou removendo arquivos a seu critério. 
 
-Os _scripts_, por sua vez, são responsáveis por montar a competição, gerar instâncias de problemas e _flags_ únicas para cada jogador, bem como configurar o Sistema de Gerenciamento de Banco de Dados (SGBD). O _script_ principal é chamado de [Jogo.sh](Jogo/Problemas/Jogo.sh). Ele recebe a quantidade de jogadores e problemas, os quais podem aplicar técnicas únicas ou compostas de acordo com as entradas do organizador. Por fim, as entradas são validadas, prosseguindo na criação dos arquivos compactados (em formato .zip) que serão enviados para o Servidor _Web_ e na configuração do SGBD. A imagem a seguir demonstra a execução do _script_ principal:
+Os _scripts_ são responsáveis por montar a competição, gerar instâncias de problemas e _flags_ únicas para cada jogador, bem como configurar o Sistema de Gerenciamento de Banco de Dados (SGBD). O _script_ principal é chamado de [Jogo.sh](Jogo/Problemas/Jogo.sh). Ele recebe a quantidade de jogadores e problemas, os quais podem aplicar técnicas únicas ou compostas de acordo com as entradas do organizador. Por fim, as entradas são validadas, prosseguindo na criação dos arquivos compactados (em formato .zip) que serão enviados para o Servidor _Web_ e na configuração do SGBD. A imagem a seguir demonstra a execução do _script_ principal:
 
 ![execução do _script_ principal](Imagens/script.png)
 
 ### Sistema Web:
 
-É o componente no qual os jogadores interagem com o jogo, localizando-se em [`TreasureHunt/TreasureHunt`](/TreasureHunt). Nele os usuários têm as seguintes funcionalidades, como também descritas no diagrama de casos de uso: 
-
-![diagrama de casos deuso](Imagens/caso_uso.png)
+É o componente no qual os jogadores interagem com o jogo, localizando-se em [`TreasureHunt/TreasureHunt`](/TreasureHunt). Através dele os usuários podem realizar as seguintes ações listadas abaixo e expostas no Diagrama de Casos de Uso:
 
 - Visualizar Instruções e o contato com os desenvolvedores
 - Baixar problemas (exige autenticação)
 - Submeter respostas (exige autenticação)
 - Visualizar o placar indivual ou geral (exige autenticação)
 
-As respostas (_flags_) estão presentes nos arquivos disponibilizados, mas precisam ser encontradas por meio da aplicação das técnicas corretas, como descriptografia de _base64_ ou Cifra de César, por exemplo. 
+![diagrama de casos deuso](Imagens/caso_uso.png)
 
-Ao fim das competições, os resultados podem ser observados pelo organizador no Banco de Dados TreasureHunt. Nele ficam registrados inclusive o endereço IP dos jogadores, o que garante que uma conta não tenha sido compartilhada, por exemplo. Vale lembrar que boas práticas de Segurança são aplicadas nos dados sensíveis, tais como o uso de _hash_ e _salt_.
+As respostas (_flags_) estão presentes nos arquivos disponibilizados aos jogadores. Para serem descobertas, é necessário que o jogador utilize técnicas corretas, tais como descriptografia de _base64_ ou Cifra de César, por exemplo.
+
+Os acessos e as submissões de respostas por meio do Sistema _Web_ podem ser verificados pelo organizador no Banco de Dados `TreasureHunt`. Nele ficam registrados os dados da competição, inclusive o endereço IP dos jogadores, garantindo que uma conta não tenha sido compartilhada, por exemplo. Vale lembrar que boas práticas de Segurança são aplicadas nos dados sensíveis, tais como o uso de _hash_ e _salt_.
+
+Além disso, a interface _web_ do TreasureHunt é otimizada para ser **acessível**, seguindo 78% os critérios de acessibilidade da [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) (_Web Content Accessibility Guidelines_, Diretrizes de Acessibilidade para o Conteúdo da Web). Dentre os detalhes acessíveis do TreasureHunt podemos citar sua responsividade, a relação de contraste e o modo de alto contraste, o suporte para navegação por teclado, a minimização do uso de _javascript_ e as mensagens de erro na submissão de formulários.
 
 ---
 
@@ -76,7 +78,7 @@ Ao fim das competições, os resultados podem ser observados pelo organizador no
 Para promover uma competição com o TreasureHunt é necessário seguir os seguintes passos:
 
 1. Clonagem do repositório
-2. Execução do _script_ de instalação de requisistos
+2. Execução do _script_ de instalação de requisitos
 3. Execução do _script_ de geração de competições
 4. Configuração e inicialização do servidor _web_
 
@@ -84,7 +86,7 @@ Passos adicionais, tais como instalação de ferramentas alternativas ou configu
 
 O restante dessa seção descreve detalhadamente cada um dos passos sugeridos.
 
-### Clonagem
+### Clonagem do repositório
 
 Para copiar o repositório, execute o seguinte comando [Git](https://git-scm.com/) em um terminal:
 
@@ -98,7 +100,7 @@ Para prosseguir a instalação, certifique-se de estar no diretório do Treasure
 cd TreasureHunt
 ```
 
-### Instalação de Requisitos e Ferramentas 
+### Execução do _script_ de instalação de requisitos
 
 Após baixar o repositório para a sua máquina, o próximo passo é fazer a instalação dos requisitos do projeto. Para isto, basta executar o _script_ [`instalador.sh`](/Instalador/instalador.sh), localizado em [`TreasureHunt/Instalador`](/Instalador), que se encarrega de instalar todos os pacotes, que por padrão se encontram no arquivo [`requisitos.txt`](/Instalador/requisitos.txt).
 
@@ -123,7 +125,7 @@ Para as máquinas dos jogadores, sugere-se que estas tenham pelo menos as seguin
 
 Cabe ao organizador da competição decidir se fornece ou não as ferramentas.
 
-### Geração da Competição
+### Execução do _script_ de geração de competições
 
 As competições de TreasureHunt precisam ser criadas pelo organizador. Para tanto, este deve escolher a quantidade de participantes, bem como quantos e quais desafios estarão presentes, podendo inclusive adicionar um problema composto, onde duas técnicas são aplicadas em conjunto.
 
@@ -133,6 +135,12 @@ Para gerar a competição, basta executar o _script_ [`Jogo.sh`](/Jogo/Problemas
 cd Jogo/Problemas
 chmod +x Jogo.sh
 ./Jogo.sh
+```
+
+Alternativamete, o _script_ pode ser executado com o comando ``bash``:
+
+```sh
+bash Jogo.sh
 ```
 
 #### Opções de Problemas
@@ -191,7 +199,7 @@ Pressupõe-se algumas condições para que a instalação ocorra com sucesso. Es
 
 - *Nota 2*: O _script_ considera que o MySQL será utilizado com usuário ``root`` e sem senha. O organizador pode alterar isso manipulando a chamada ao _script_ ``ConfiguraBD.sh`` no arquivo ``Jogo.sh``.
 
-- *Nota 3*: O _script_ considera que o MySQL será utilizado sem a diretiva ``NO_ZERO_DATE``. Para removê-la, uma dessas soluções pode ser empregada (a depender da versão do mysql) no arquivo de configuração, my.ini no _windows_ ou my.cnf (/etc/mysql/) no _linux_, após o indicador `[mysqld]:` (adicionar caso não esteja presente):
+- *Nota 3*: O _script_ considera que o MySQL será utilizado sem a diretiva ``NO_ZERO_DATE``. Para removê-la, uma dessas soluções pode ser empregada (a depender da versão do MySQL) no arquivo de configuração, my.ini no _windows_ ou my.cnf (/etc/mysql/) no _linux_, após o indicador `[mysqld]:` (adicionar caso não esteja presente):
 
 (testado na versão 5.7.30):
 
@@ -201,7 +209,7 @@ Pressupõe-se algumas condições para que a instalação ocorra com sucesso. Es
 
 ``sql_mode="ALLOW_INVALID_DATES"``
 
-Depois, reinicie o mysql (``sudo service mysql restart``) e tente novamente. Você também pode verificar se a diretiva foi removida entrando no MySQL e digitando no console: ``SHOW VARIABLES LIKE 'sql_mode';``. 
+Depois, reinicie o MySQL (``sudo service mysql restart``) e tente novamente. Você também pode verificar se a diretiva foi removida entrando no MySQL e digitando no console: ``SHOW VARIABLES LIKE 'sql_mode';``. 
 
 - *Nota 4*: O arquivo ``apache2.conf``, disponível no diretório ``TreasureHunt/TreasureHunt``, serve apenas como exemplo de configuração do servidor web. O organizador pode configurá-lo de maneira diferente, a seu critério.
 
@@ -218,11 +226,7 @@ mysql> FLUSH PRIVILEGES;
 mysql> exit;
 > service mysql restart
 ```
-- *Nota 7*: Se você obtiver a mensagem de erro `Bad substitution` ao executar o script _Jogo.sh_, tente executar o _script_ da seguinte forma:
-
-```sh
-bash Jogo.sh
-```
+- *Nota 7*: Se você obtiver a mensagem de erro `Bad substitution` ao executar o script _Jogo.sh_, tente executar o _script_ com o comando `bash Jogo.sh`.
 
 ---
 
@@ -269,6 +273,7 @@ Vale lembrar que para a execução dos problemas recomenda-se um conjunto mínim
 
 - Ricardo de la Rocha Ladeira: [ricardo.ladeira@ifc.edu.br](mailto:ricardo.ladeira@ifc.edu.br)
 - Vítor Augusto Ueno Otto: [vitoruenootto@gmail.com](mailto:vitoruenootto@gmail.com)
+- Lucas Vargas: [lucasvargas27@hotmail.com](mailto:lucasvargas27@hotmail.com)
 
 ### Contribuidores
 
@@ -281,11 +286,11 @@ Vale lembrar que para a execução dos problemas recomenda-se um conjunto mínim
 
 ## :chart_with_upwards_trend: Funcionalidades Futuras
 
-Este projeto se mantém em constante atualização, o que significa que novas funcionalidades e aperfeiçoamentos continuarão a ser feitos ao longo do tempo. Algumas dessas modificações possuem caráter duradouro, como é o caso da criação de novas possibilidades de problemas no gerador de desafios. Dentre as funcionalidades planejadas, pretende-se:
+Este projeto se mantém em constante atualização, o que significa que novas funcionalidades e aperfeiçoamentos seguem em pauta. Dentre as funcionalidades planejadas, pretende-se:
 
-- Criar novos problemas no gerador de desafios, em especial da classe de problemas _web_
+- Implementar novos problemas no gerador de desafios, em especial da classe de problemas _web_
 - Permitir que mais de duas técnicas componham um problema (por exemplo, elaborar um problema que envolva base64, base32 e Cifra de César)
-- Permitir que mais de uma ferramenta seja utilizada por técnica (por exemplo, elaborar problemas de esteganografia envolvendo `outguess`, `f5.jar` e `steghide`)
+- Permitir que mais de uma ferramenta seja utilizada por técnica (por exemplo, elaborar problemas de esteganografia envolvendo `outguess`, `f5.jar` e/ou `steghide`)
 - Permitir o cadastro autônomo e o gerenciamento das contas de usuários
 - Permitir a parametrizaço de pontos, ou seja, atribuir pontuações diferentes aos problemas
 - Implementar um recurso para inserção de dicas
