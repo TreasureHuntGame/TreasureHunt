@@ -153,8 +153,8 @@ O TreasureHunt permite que o organizador da competição gere problemas a partir
 - (De)codificação de arquivo em base32
 - (Des)criptografia de Cifra de César
 - (De)codificação de caractere ASCII (_American Standart Code for Information Interchange_)
-- Descompilação de binário e obter fonte Java
-- Descompilação de binário e obter fonte Python
+- Descompilação de binário e obtenção de código fonte Java
+- Descompilação de binário e obtenção de código fonte Python
 - Esteganografia em imagens
 
 Vale lembrar que os problemas podem ser compostos por duas técnicas, ainda que nem todas as combinações sejam possíveis (o _script_ avisará o organizador neste caso). Além disso, a ordem de composição das técnicas interfere no problema (não é comutativa) e na sequência de passos necessários para solucioná-lo.
