@@ -31,13 +31,13 @@ Apesar de atrativas aos jogadores, a elaboração dessas competições encara al
 - Elaboração de problemas: uma tarefa normalmente trabalhosa e manual, necessitando de conhecimento técnico.
 - Reaproveitamento de problemas: problemas (e soluções), quando divulgados na _web_, perdem o "fator surpresa", imprescendível para esse tipo de jogo.
 
-**TreasureHunt** é uma ferramenta destinada a profissionais interessados em organizar competições de Segurança do tipo _desafio_. A ferramenta se propõe a minimizar os problemas supracitados por meio da geração de problemas e competições de forma aleatória, automática e completa. 
+**TreasureHunt** é uma ferramenta destinada a profissionais interessados em organizar competições de Segurança do tipo _desafio_. A ferramenta se propõe a minimizar os problemas citados por meio da geração de problemas e competições de forma aleatória, automática e completa. 
 
 ---
 
 ## :construction_worker: Arquitetura
 
-A arquitetura do projeto está descrito no diagrama de atividades a seguir:
+A arquitetura do projeto está descrita no Diagrama de Atividades a seguir:
 
 ![Diagrama de atividades](Imagens/atividades.png)
 
@@ -48,9 +48,9 @@ Nota-se que podemos dividir o projeto em dois grandes módulos:
 
 ### Gerador de desafios: 
 
-O gerador de desafios é acionado pelo organizador da competição. Ele é composto por um conjunto de _scripts_ e diretórios com recursos como imagens, textos e códigos, localizados em [`TreasureHunt/Jogo`](/Jogo). Esses diretórios são usados como base para a criação de instâncias únicas de problemas. Ainda que exista um conjunto de arquivos padrão, o organizador pode modificá-los, adicionando ou removendo arquivos a seu critério. 
+O gerador de desafios é acionado pelo organizador da competição. Ele é composto por um conjunto de _scripts_, elaborados para serem executados em ambientes _Unix-like_, e diretórios com recursos como imagens, textos e códigos, localizados em [`TreasureHunt/Jogo`](/Jogo). Esses diretórios são usados como base para a criação de instâncias únicas de problemas. Ainda que exista um conjunto de arquivos (images, textos e códigos) padrão utilizado para gerar as instâncias de problemas, o organizador pode editá-los, removê-los ou adicionar novos arquivos a seu critério. 
 
-Os _scripts_ são responsáveis por montar a competição, gerar instâncias de problemas e _flags_ únicas para cada jogador, bem como configurar o Sistema de Gerenciamento de Banco de Dados (SGBD). O _script_ principal é chamado de [Jogo.sh](Jogo/Problemas/Jogo.sh). Ele recebe a quantidade de jogadores e problemas, os quais podem aplicar técnicas únicas ou compostas de acordo com as entradas do organizador. Por fim, as entradas são validadas, prosseguindo na criação dos arquivos compactados (em formato .zip) que serão enviados para o Servidor _Web_ e na configuração do SGBD. A imagem a seguir demonstra a execução do _script_ principal:
+Os _scripts_ são responsáveis por montar a competição, gerar instâncias de problemas e _flags_ únicas para cada jogador, bem como configurar o Sistema de Gerenciamento de Banco de Dados (SGBD). O _script_ principal é chamado de [Jogo.sh](Jogo/Problemas/Jogo.sh). Ele recebe a quantidade de jogadores e problemas, depois, em ordem, recebe as técnicas que comporão cada problema. Um problema pode aplicar técnicas únicas ou compostas de acordo com as entradas do organizador. Por fim, as entradas são validadas, prosseguindo na criação dos arquivos compactados (em formato .zip) que serão enviados para o Servidor _Web_ e na configuração do SGBD. A imagem a seguir demonstra a execução do _script_ principal:
 
 ![execução do _script_ principal](Imagens/script.png)
 
@@ -69,7 +69,7 @@ As respostas (_flags_) estão presentes nos arquivos disponibilizados aos jogado
 
 Os acessos e as submissões de respostas por meio do Sistema _Web_ podem ser verificados pelo organizador no Banco de Dados `TreasureHunt`. Nele ficam registrados os dados da competição, inclusive o endereço IP dos jogadores, garantindo que uma conta não tenha sido compartilhada, por exemplo. Vale lembrar que boas práticas de Segurança são aplicadas nos dados sensíveis, tais como o uso de _hash_ e _salt_.
 
-Além disso, a interface _web_ do TreasureHunt é otimizada para ser **acessível**, seguindo 78% os critérios de acessibilidade da [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) (_Web Content Accessibility Guidelines_, Diretrizes de Acessibilidade para o Conteúdo da Web). Dentre os detalhes acessíveis do TreasureHunt podemos citar sua responsividade, a relação de contraste e o modo de alto contraste, o suporte para navegação por teclado, a minimização do uso de _javascript_ e as mensagens de erro na submissão de formulários.
+Além disso, a interface _web_ do TreasureHunt é responsiva e foi otimizada para ser **acessível**, seguindo 78% os critérios de acessibilidade da [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) (_Web Content Accessibility Guidelines_, Diretrizes de Acessibilidade para o Conteúdo da Web). Dentre os detalhes acessíveis do TreasureHunt podemos citar a relação de contraste e o modo de alto contraste, o suporte para navegação por teclado, a minimização do uso de _javascript_ e as mensagens de erro na submissão de formulários.
 
 ---
 
@@ -153,8 +153,8 @@ O TreasureHunt permite que o organizador da competição gere problemas a partir
 - (De)codificação de arquivo em base32
 - (Des)criptografia de Cifra de César
 - (De)codificação de caractere ASCII (_American Standart Code for Information Interchange_)
-- Descompilador binário e obter fonte Java
-- Descompilador binário e obter fonte Python
+- Descompilação de binário e obter fonte Java
+- Descompilação de binário e obter fonte Python
 - Esteganografia em imagens
 
 Vale lembrar que os problemas podem ser compostos por duas técnicas, ainda que nem todas as combinações sejam possíveis (o _script_ avisará o organizador neste caso). Além disso, a ordem de composição das técnicas interfere no problema (não é comutativa) e na sequência de passos necessários para solucioná-lo.
