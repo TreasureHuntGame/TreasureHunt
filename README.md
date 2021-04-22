@@ -242,13 +242,16 @@ Por meio da interface _web_, os jogadores podem:
 - Exibir o placar individual 
 - Exibir o placar geral
 
-Apesar disso, para visualizar o placar, baixar os problemas e submeter as respostas é preciso estar autenticado, ou seja, é preciso fazer _login_ com o ID e senha fornecidos pelo organizardor da competição.
+Apesar disso, para visualizar o placar, baixar os problemas e submeter as respostas é preciso acessar a página principal, o que requer que o usuário esteja autenticado, ou seja, é preciso fazer _login_ com o ID e senha fornecidos pelo organizardor da competição. A figura a seguir mostra a página principal que contém os recursos descritos anteriormente. O placar geral, que também é um recurso que depende de autenticação, pode ser acessado na opção ``Placar`` na barra de navegação (topo da figura).  
+
+![tela principal do TreasureHunt](/Imagens/principal.png)
+
 
 Dessa forma, os passos necessários para jogar o TreasureHunt são:
 
 1. Autenticar-se no _site_ com ID e senha. 
-2. Baixar o arquivo compactado com os problemas e descompactá-lo. Os diretórios dentro do arquivo compactado são números que representam o ID do problema. Dentro de cada diretório há um ou mais arquivos que precisam ser analisados para se obter a _flag_ do respectivo problema.
-3. Utilizar as ferramentas adequadas e encontrar as _flags_ nos arquivos. As _flags_ estaro sempre no formato ``TreasureHunt{TEXTO_ALEATÓRIO}``. Exemplo: ``TreasureHunt{xjYui87aZl}``.
+2. Baixar o arquivo compactado com os problemas e descompactá-lo. Sugere-se o comando ``unzip jogadorX.zip``, em que X é o ID numérico do usuário. Os diretórios dentro do arquivo compactado são números que representam o ID do problema. Dentro de cada diretório há um ou mais arquivos que precisam ser analisados para se obter a _flag_ do respectivo problema.
+3. Utilizar as ferramentas adequadas e encontrar as _flags_ nos arquivos. O jogador tem a liberdade de resolver os problemas na ordem que preferir, pois o jogo não é linear. As _flags_ estarão sempre no formato ``TreasureHunt{TEXTO_ALEATÓRIO}``. Exemplo: ``TreasureHunt{xjYui87aZl}``.
 4. Submeter a _flag_ juntamente do número identificador do diretório (ID do problema) no qual a _flag_ foi encontrada.
 
 Após submeter uma _flag_, o jogador receberá uma das seguintes respostas:
