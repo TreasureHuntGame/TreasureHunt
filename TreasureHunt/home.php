@@ -285,7 +285,7 @@ if (!isset($_SESSION['usuario'])) {
                     </a>
                     <br>
                     <p>Esta obra está licenciada com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><span lang="en">Creative Commons</span> Atribuição-NãoComercial 4.0 Internacional</a>.</p>
-                    <p><span lang="en">©</span> 2017-2021</p>
+                    <p><span lang="en">©</span> 2017-<?php echo date("Y"); ?></p>
                 </div>
             </div>
         </footer>
