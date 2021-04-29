@@ -60,7 +60,7 @@ header('Content-Type: text/html; charset=utf-8');
         <div id="main">
             <div class="jumbotron bg-dark" id="jumbotron-index">
                 <h1 class="font-weight-bold" id="titulo-index" lang="en">
-                    TreasureHunt<span id="espaco"> </span><span class="destaque">{</span>Security<span class="destaque">}</span>
+                    TreasureHunt<span id="espaco"> </span><span class="destaque chaves-left"></span>Security<span class="destaque chaves-right"></span>
                 </h1>
                 <h2 id="subtitulo-index">Um jogo para testar suas habilidades em Segurança Computacional. <span class="smile destaque"></span></h2>
             </div>
@@ -121,6 +121,10 @@ header('Content-Type: text/html; charset=utf-8');
                 <span class="contato">
                     <span class="nome-autor">Vítor Augusto Ueno Otto</span>:
                     <span class="sinal-menor sinal-maior">vitoruenootto<span class="at font-weight-bold"></span>gmail.com</span>
+                </span>
+                <span class="contato">
+                    <span class="nome-autor">Lucas Vargas</span>:
+                    <span class="sinal-menor sinal-maior">lucasvargas27<span class="at font-weight-bold"></span>hotmail.com</span>
                 </span>
 
                 <span class="address-title">Contribuidores:</span>
