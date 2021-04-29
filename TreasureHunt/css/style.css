@@ -20,6 +20,10 @@ body {
     --input-hover: #23272B;
     --input-cor-fundo: #FFF;
     --input-cor-placeholder: #495057;
+    --bnt-cookies: #0056b3;
+    --hover-bnt-cookies: #003e80;
+    --bnt-boxshadow-cookies: white;
+    --c-bnt-boxshadow-cookies: yellow;
     --c-cor-primaria: #FFF;
     --c-cor-secundaria: white;
     --c-cor-fundo: black;
@@ -118,6 +122,10 @@ input#contrast:checked~#page-wrapper #cookie-bar {
     border-top: 1px solid var(--c-cor-primaria) !important;
 }
 
+input#contrast:checked~#page-wrapper #cookie-bar .btn-primary:focus {
+   box-shadow: 0 0 0 0.2rem var(--c-bnt-boxshadow-cookies) !important;
+}
+
 #page-wrapper {
     background-color: var(--cor-fundo) !important;
     min-height: 100%;
@@ -167,6 +175,14 @@ h3 {
 
 .smile::after {
     content: ":)";
+}
+
+.chaves-left::after{
+    content: '{';
+}
+    
+.chaves-right::after{
+    content: '}';
 }
 
 table {
@@ -627,6 +643,18 @@ caption {
 #cookie-bar .btn-primary {
     font-size: 1em;
     margin-left: 5px;
+    background-color: var(--bnt-cookies);
+    border-color: var(--bnt-cookies);
+}
+
+#cookie-bar .btn-primary:hover {
+    color: #fff;
+    background-color: var(--hover-bnt-cookies);
+    border-color: var(--hover-bnt-cookies);
+}
+
+#cookie-bar .btn-primary:focus, .btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem var(--bnt-boxshadow-cookies)
 }
 
 .noscript {
