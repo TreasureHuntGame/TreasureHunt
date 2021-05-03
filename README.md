@@ -10,7 +10,7 @@
 
 - [:scroll: Introdução](#scroll-Introdução)
 - [:construction_worker: Arquitetura](#construction_worker-Arquitetura)
-- [:electric_plug: Instalação, Configuração e Execução](#electric_plug-Instalação,-Configuração-e-Execução)
+- [:electric_plug: Instalação, Configuração e Execução](#electric_plug-Instalação-Configuração-e-Execução)
 - [:video_game: Como Jogar](#video_game-Como-Jogar)
 - [:mailbox: Autores](#mailbox-Autores)
 - [:chart_with_upwards_trend: Funcionalidades Futuras](#chart_with_upwards_trend-Funcionalidades-Futuras)
@@ -82,7 +82,7 @@ Para promover uma competição com o TreasureHunt é necessário seguir os segui
 3. Configuração e inicialização do servidor _web_
 4. Execução do _script_ de geração de competições
 
-Passos adicionais, tais como instalação de ferramentas alternativas ou configuração de servidores instalados, podem ser necessários. Leia também a seção sobre [Notas adicionais sobre instalação, configuração e execução](#Notas-adicionais-sobre-instalação,-configuração-e-execução"). 
+Passos adicionais, tais como instalação de ferramentas alternativas ou configuração de servidores instalados, podem ser necessários. Leia também a seção sobre [Notas adicionais sobre instalação, configuração e execução](#Notas-adicionais-sobre-instalação-configuração-e-execução). 
 
 O restante dessa seção descreve detalhadamente cada um dos passos sugeridos.
 
