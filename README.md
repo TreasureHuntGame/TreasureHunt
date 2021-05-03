@@ -69,7 +69,7 @@ As respostas (_flags_) estão presentes nos arquivos disponibilizados aos jogado
 
 Os acessos e as submissões de respostas por meio do Sistema _Web_ podem ser verificados pelo organizador no Banco de Dados `TreasureHunt`. Nele ficam registrados os dados da competição, inclusive o endereço IP dos jogadores, garantindo que uma conta não tenha sido compartilhada, por exemplo. Vale lembrar que boas práticas de Segurança são aplicadas nos dados sensíveis, tais como o uso de _hash_ e _salt_.
 
-Além disso, a interface _web_ do TreasureHunt é responsiva e foi otimizada para ser **acessível**, seguindo 78% dos critérios de acessibilidade previstos nas versões 2.1 e 2.2 da [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) (_Web Content Accessibility Guidelines_, Diretrizes de Acessibilidade para o Conteúdo da _Web_). Dentre os detalhes acessíveis do TreasureHunt podemos citar a relação de contraste e o modo de alto contraste, o suporte para navegação por teclado, a minimização do uso de _javascript_ e as mensagens de erro na submissão de formulários.
+Além disso, a interface _web_ do TreasureHunt é responsiva e foi otimizada para ser **acessível**, seguindo 78% dos critérios de acessibilidade previstos nas versões 2.1 e 2.2 da [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) (_Web Content Accessibility Guidelines_, Diretrizes de Acessibilidade para o Conteúdo da _Web_). Dentre os detalhes acessíveis do TreasureHunt podemos citar a relação de contraste e o modo de alto contraste, o suporte para navegação por teclado, a minimização do uso de JavaScript e as mensagens de erro na submissão de formulários.
 
 ---
 
@@ -226,7 +226,7 @@ mysql> FLUSH PRIVILEGES;
 mysql> exit;
 > service mysql restart
 ```
-- *Nota 7*: Se você obtiver a mensagem de erro `Bad substitution` ao executar o script `Jogo.sh`, tente executar o _script_ com o comando `bash Jogo.sh`.
+- *Nota 7*: Se você obtiver a mensagem de erro `Bad substitution` ao executar o _script_ `Jogo.sh`, tente executar o _script_ com o comando `bash Jogo.sh`.
 
 ---
 
