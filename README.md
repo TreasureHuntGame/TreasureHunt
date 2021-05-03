@@ -54,7 +54,7 @@ Os _scripts_ são responsáveis por montar a competição, gerar instâncias de 
 
 ![execução do _script_ principal](Imagens/script.png)
 
-### Sistema Web:
+### Sistema _Web_:
 
 É o componente com o qual os jogadores interagem, localizando-se em [`TreasureHunt/TreasureHunt`](/TreasureHunt). Através dele os usuários podem realizar as seguintes ações listadas abaixo e expostas no Diagrama de Casos de Uso:
 
@@ -121,7 +121,7 @@ Para as máquinas dos jogadores, sugere-se que estas tenham pelo menos as seguin
 - sh
 - strings
 - Editor de texto
-- Navegador web
+- Navegador _web_
 
 Cabe ao organizador da competição decidir se fornece ou não as ferramentas.
 
