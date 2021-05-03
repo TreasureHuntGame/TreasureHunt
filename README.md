@@ -10,7 +10,7 @@
 
 - [:scroll: Introdução](#scroll-Introdução)
 - [:construction_worker: Arquitetura](#construction_worker-Arquitetura)
-- [:electric_plug: Instalação](#electric_plug-Instalação)
+- [:electric_plug: Instalação, Configuração e Execução](#electric_plug-Instalação,-Configuração-e-Execução)
 - [:video_game: Como Jogar](#video_game-Como-Jogar)
 - [:mailbox: Autores](#mailbox-Autores)
 - [:chart_with_upwards_trend: Funcionalidades Futuras](#chart_with_upwards_trend-Funcionalidades-Futuras)
@@ -69,20 +69,20 @@ As respostas (_flags_) estão presentes nos arquivos disponibilizados aos jogado
 
 Os acessos e as submissões de respostas por meio do Sistema _Web_ podem ser verificados pelo organizador no Banco de Dados `TreasureHunt`. Nele ficam registrados os dados da competição, inclusive o endereço IP dos jogadores, garantindo que uma conta não tenha sido compartilhada, por exemplo. Vale lembrar que boas práticas de Segurança são aplicadas nos dados sensíveis, tais como o uso de _hash_ e _salt_.
 
-Além disso, a interface _web_ do TreasureHunt é responsiva e foi otimizada para ser **acessível**, seguindo 78% dos critérios de acessibilidade previstos nas versões 2.1 e 2.2 da [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) (_Web Content Accessibility Guidelines_, Diretrizes de Acessibilidade para o Conteúdo da Web). Dentre os detalhes acessíveis do TreasureHunt podemos citar a relação de contraste e o modo de alto contraste, o suporte para navegação por teclado, a minimização do uso de _javascript_ e as mensagens de erro na submissão de formulários.
+Além disso, a interface _web_ do TreasureHunt é responsiva e foi otimizada para ser **acessível**, seguindo 78% dos critérios de acessibilidade previstos nas versões 2.1 e 2.2 da [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) (_Web Content Accessibility Guidelines_, Diretrizes de Acessibilidade para o Conteúdo da _Web_). Dentre os detalhes acessíveis do TreasureHunt podemos citar a relação de contraste e o modo de alto contraste, o suporte para navegação por teclado, a minimização do uso de _javascript_ e as mensagens de erro na submissão de formulários.
 
 ---
 
-## :electric_plug: Instalação
+## :electric_plug: Instalação, Configuração e Execução
 
 Para promover uma competição com o TreasureHunt é necessário seguir os seguintes passos:
 
 1. Clonagem do repositório
 2. Execução do _script_ de instalação de requisitos
-3. Execução do _script_ de geração de competições
-4. Configuração e inicialização do servidor _web_
+3. Configuração e inicialização do servidor _web_
+4. Execução do _script_ de geração de competições
 
-Passos adicionais, tais como instalação de ferramentas alternativas ou configuração de servidores instalados, podem ser necessários. Leia também a seção sobre [Problemas Frequentes](#Problemas-Frequentes-na-Instalação). 
+Passos adicionais, tais como instalação de ferramentas alternativas ou configuração de servidores instalados, podem ser necessários. Leia também a seção sobre [Notas adicionais sobre instalação, configuração e execução](#Notas-adicionais-sobre-instalação,-configuração-e-execução"). 
 
 O restante dessa seção descreve detalhadamente cada um dos passos sugeridos.
 
@@ -125,6 +125,36 @@ Para as máquinas dos jogadores, sugere-se que estas tenham pelo menos as seguin
 
 Cabe ao organizador da competição decidir se fornece ou não as ferramentas.
 
+### Configuração e Inicialização do Servidor _Web_
+
+Para iniciar a interface _web_ basta seguir os seguintes passos:
+
+1. Copie o diretório [/TreasureHunt](/TreasureHunt) para o diretório do servido _web_. Dependendo do sistema operacional e do servidor _web_ este se localizará em locais diferentes. Exemplos: `C:\xampp\htdocs` com o Xampp no Windows ou `/var/www/html/TreasureHunt/` em certas distribuições Linux:
+
+```sh
+cp TreasureHunt /var/www/html/TreasureHunt/
+```
+
+2. Inicie o servidor _web_. Exemplo de inicialização do apache: 
+
+```sh
+sudo service apache2 start
+```
+
+3. Forneça acesso aos jogadores através do _link_ gerado pelo [`ngrok`](https://ngrok.com/) ou informando seu endereço IP. Neste caso, verifique em sua interface de rede, por exemplo, digitando ``ifconfig``.
+
+4. Forneça um identificador de usuário (ID) e uma senha de acesso a cada jogador. Eles usarão essas informações para se autenticar na aplicação _web_ posteriormente.
+
+5. Acompanhe o jogo pelo tempo que achar necessário. Sugere-se projetar o placar geral para os jogadores.
+
+6. Finalize a competição quando e como desejar, por exemplo, parando o servidor. Exemplo de parada do apache:
+
+```sh
+sudo service apache2 stop
+```
+
+Ao finalizar o jogo, as respostas e submissões estarão armazenadas na base de dados ``TreasureHunt`` no MySQL. Sugere-se a realização de _backup_ dos dados através do comando ``mysqldump -u root TreasureHunt > backup.sql`` (supondo usuário ``root``e _database_ ``TreasureHunt``.)
+
 ### Execução do _script_ de geração de competições
 
 As competições de TreasureHunt precisam ser criadas pelo organizador. Para tanto, este deve escolher a quantidade de participantes, bem como quantos e quais desafios estarão presentes, podendo inclusive adicionar um problema composto, com duas técnicas aplicadas em conjunto.
@@ -161,37 +191,7 @@ Vale lembrar que os problemas podem ser compostos por duas técnicas, ainda que 
 
 Com o fim desses passos, o esquema e as tabelas também terão sido criadas automaticamente no Banco de Dados.
 
-### Configuração e Inicialização do Servidor Web
-
-Para iniciar a interface _web_ basta seguir os seguintes passos:
-
-1. Copie o diretório [/TreasureHunt](/TreasureHunt) para o diretório do servido _web_. Dependendo do sistema operacional e do servidor _web_ este se localizará em locais diferentes. Exemplos: `C:\xampp\htdocs` com o Xampp no Windows ou `/var/www/html/TreasureHunt/` em certas distribuições Linux:
-
-```sh
-cp TreasureHunt /var/www/html/TreasureHunt/
-```
-
-2. Inicie o servidor _web_. Exemplo de inicialização do apache: 
-
-```sh
-sudo service apache2 start
-```
-
-3. Forneça acesso aos jogadores através do _link_ gerado pelo [`ngrok`](https://ngrok.com/) ou informando seu endereço IP. Neste caso, verifique em sua interface de rede, por exemplo, digitando ``ifconfig``.
-
-4. Forneça um identificador de usuário (ID) e uma senha de acesso a cada jogador. Eles usarão essas informações para se autenticar na aplicação _web_ posteriormente.
-
-5. Acompanhe o jogo pelo tempo que achar necessário. Sugere-se projetar o placar geral para os jogadores.
-
-6. Finalize a competição quando e como desejar, por exemplo, parando o servidor. Exemplo de parada do apache:
-
-```sh
-sudo service apache2 stop
-```
-
-Ao finalizar o jogo, as respostas e submissões estarão armazenadas na base de dados ``TreasureHunt`` no MySQL. Sugere-se a realização de _backup_ dos dados através do comando ``mysqldump -u root TreasureHunt > backup.sql`` (supondo usuário ``root``e _database_ ``TreasureHunt``.)
-
-### Problemas Frequentes na Instalação
+### Notas adicionais sobre instalação, configuração e execução
 
 Pressupõe-se algumas condições para que a instalação ocorra com sucesso. Essas indicações, bem como alguns dos erros comuns serão destacados a seguir:
 
