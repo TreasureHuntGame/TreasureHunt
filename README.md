@@ -266,7 +266,7 @@ Ao longo da competição o jogador tem a opção de visualizar quais problemas f
 
 Vencerá o jogo aquele que submeter mais respostas em menos tempo, ou seja, em caso de empate no número de acertos, permanecerá à frente aquele que submeteu a última resposta correta primeiro.
 
-Vale lembrar que para a execução dos problemas recomenda-se um conjunto mínimo de ferramentas, descritas no final da seção [Execução do _script_ de instalação de requisitos](#Execução-do-_script_-de-instalação-de-requisitos). Apesar disso, o jogador é livre para escolher a forma como resolverá os problemas, incluindo ferramentas alternativas ou _scripts_ automatizados para a resolução dos problemas.
+Vale lembrar que para a execução dos problemas recomenda-se um conjunto mínimo de ferramentas, descritas no final da seção [Execução do _script_ de instalação de requisitos](#Execução-do-script-de-instalação-de-requisitos). Apesar disso, o jogador é livre para escolher a forma como resolverá os problemas, incluindo ferramentas alternativas ou _scripts_ automatizados para a resolução dos problemas.
 
 ---
 
