@@ -1,5 +1,9 @@
 $(function() {
 
+    $('#modal-privacy').on('shown.bs.modal', function () {
+        console.log('hi');
+     });
+
     // habilita o tooltip do bootstrap (mensagem no hover) 
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -29,6 +33,11 @@ $(function() {
 
     // adiciona clique pelo teclado nos botões da cookie bar
     $('#open-modal-btn').keydown(function(e) {
+        set_keyboard_click(e);
+    });
+    
+    // adiciona clique pelo teclado no botão do modal
+    $('#close-modal').keydown(function(e) {
         set_keyboard_click(e);
     });
 
@@ -90,17 +99,55 @@ $(function() {
         $('#contrast').prop('checked', true);
     }
 
-    // quando o modal é aberto adiciona a classe que trava o scroll
+    // quando o modal é aberto adiciona a classe que trava o scroll,
+    // cria variável contendo o modal e ativa função para prender o foco.
     $('#open-modal-btn').click(function() {
         $('body, html').addClass('disable-scroll');
+        var modal = document.querySelector('#modal-privacy');
+        trap_focus(modal);
+        
     });
-
 
     // quando o modal é fechado remove a classe que trava o scroll
     $('#close-modal').click(function(e) {
         $('body, html').removeClass('disable-scroll');
     });
 
+    // função que faz um loop dos elementos focáveis de um modal,
+    // prendendo o foco do usuário dentro do modal em questão.
+    function trap_focus(modal) {
+        var focusableEls = modal.querySelectorAll("a[href]:not([disabled]), div.contnt");
+        var firstFocusableEl = focusableEls[0];
+        var lastFocusableEl = focusableEls[focusableEls.length - 1];
+        console.log(lastFocusableEl)
+
+        modal.addEventListener('keydown', function(e) {
+            var isTabPressed = (e.key === 'Tab' || e.keyCode == 9);
+            var isEscPressed = (e.key === 'Escape' || e.keyCorde == 27);
+
+            if (isTabPressed && document.activeElement === modal){
+                lastFocusableEl.focus();
+            }
+            if (isEscPressed){
+                modal.querySelector('.close').click();
+            }
+            else if (!isTabPressed) {
+                return;
+            }
+            
+            if (e.shiftKey) { 
+                if (document.activeElement === firstFocusableEl) {
+                    lastFocusableEl.focus();
+                    e.preventDefault();
+                }
+            }else {
+                if (document.activeElement === lastFocusableEl) {
+                    firstFocusableEl.focus();
+                        e.preventDefault();
+                }
+            }
+        });
+    }
 
     // função para permitir que os botões 'enter' e 'espaço' sejam 
     // considerados cliques

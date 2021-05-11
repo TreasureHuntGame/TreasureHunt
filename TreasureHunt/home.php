@@ -59,11 +59,11 @@ if (!isset($_SESSION['usuario'])) {
                     </li>
                 </ul>
             </div>
-            <ul class="navbar-nav ml-auto" id="contrast-container">
+            <ul class="navbar-nav ml-auto" id="contrast-container" role="presentation">
                 <li>
                     <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
                         <span class="material-icons" aria-hidden="true">invert_colors</span>
-                        <span class="sr-only">Recurso de alto Contraste</span>
+                        <span class="sr-only">Botão para ativar Recurso de alto Contraste</span>
                     </label>
                 </li>
             </ul>
@@ -255,18 +255,22 @@ if (!isset($_SESSION['usuario'])) {
         <div id="contatos">
             <div class="jumbotron bg-dark">
                 <h2 class="font-weight-bold page-title">Contato<span class="destaque">!</span></h2>
-                <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque"></span></h3>
+                <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque" aria-hidden="true"></span></h3>
             </div>
             <address>
 
                 <span class="address-title">Equipe atual:</span>
                 <span class="contato">
                     <span class="nome-autor">Ricardo de la Rocha Ladeira</span>:
-                    <span class="sinal-menor sinal-maior">ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br</span>
+                    <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior" aria-hidden="true"></span></span>
                 </span>
                 <span class="contato">
                     <span class="nome-autor">Vítor Augusto Ueno Otto</span>:
-                    <span class="sinal-menor sinal-maior">vitoruenootto<span class="at font-weight-bold"></span>gmail.com</span>
+                    <span><span class="sinal-menor" aria-hidden="true"></span>vitoruenootto<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
+                </span>
+                <span class="contato">
+                    <span class="nome-autor">Lucas Vargas</span>:
+                    <span><span class="sinal-menor" aria-hidden="true"></span>lucasvargas27<span class="at font-weight-bold"></span>hotmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
                 </span>
 
                 <span class="address-title">Contribuidores:</span>
@@ -280,11 +284,10 @@ if (!isset($_SESSION['usuario'])) {
         <footer class="page-footer font-small">
             <div class="col">
                 <div class="footer-copyright">
-                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons">
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons" target="_blank">
                         <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png">
-                    </a>
                     <br>
-                    <p>Esta obra está licenciada com uma Licença <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><span lang="en">Creative Commons</span> Atribuição-NãoComercial 4.0 Internacional</a>.</p>
+                    <span>Esta obra está licenciada com uma Licença <span lang="en">Creative Commons</span> Atribuição-NãoComercial 4.0 Internacional</span> (Abre em nova janela).</a>
                     <p><span lang="en">©</span> 2017-<?php echo date("Y"); ?></p>
                 </div>
             </div>
@@ -309,11 +312,13 @@ if (!isset($_SESSION['usuario'])) {
              </div>
              </div>';
 
-            echo '<div id="modal-privacy" class="overlay noscript">
+            echo '<div id="modal-privacy" class="overlay noscript" role="dialog" tabindex="-1" aria-labelledby="dialog_label">
                 <div class="popup">
-                    <h2>Valorizamos sua privacidade</h2>
-                    <a class="close" id="close-modal" href="#">&times;</a>
-                    <div class="contnt">
+                    <h2 id="dialog_label">Valorizamos sua privacidade</h2>
+                    <a class="close" id="close-modal" href="#open-modal-btn" role="button" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                    <div class="contnt" tabindex="0">
                         <p>                            
                             Este site utiliza cookies para melhorar a experiência de navegação do usuário ao salvar sua preferência de contraste. A preferência será salva somente se você clicar em "Sim". Essa informação visa a melhorar a acessibilidade do website por pessoas com baixa visibilidade, que, dessa forma, não precisam reativar essa opção em um acesso futuro. Esse cookie é mantido por 30 dias.
                         </p>

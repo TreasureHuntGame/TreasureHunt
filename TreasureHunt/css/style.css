@@ -417,6 +417,7 @@ input#rank:not(:checked)~#ranking,
 input#regras:not(:checked)~#como-jogar,
 input#contato:not(:checked)~#contatos {
     background-color: transparent !important;
+    visibility: hidden;
 }
 
 #inicio:checked~nav div ul li #inicio-label,
@@ -502,14 +503,9 @@ address {
     font-style: normal;
 }
 
-address .at {
-    visibility: hidden;
-}
-
 address .at:after {
     color: var(--cor-secundaria);
-    content: '@';
-    visibility: visible;
+    content: '@'; 
 }
 
 address .sinal-menor:before {
@@ -525,8 +521,8 @@ address .sinal-maior {
     color: var(--cor-primaria);
 }
 
-address a:hover {
-    color: var(--cor-primaria);
+address a{
+    color: var(--cor-primaria) !important;
 }
 
 .contato {
@@ -673,12 +669,15 @@ caption {
     opacity: 0;
     overflow: hidden;
     color: var(--cor-secundaria) !important;
+    visibility: hidden;
 }
 
 .overlay:target {
     opacity: 1;
     min-height: 100%;
+    visibility: visible;
 }
+
 
 .overlay .cancel {
     position: absolute;
@@ -699,8 +698,10 @@ caption {
 
 .popup .close {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    text-align: center;
+    line-height: 30px;
+    width: 35px;
+    height: 35px;
     top: 20px;
     right: 20px;
     opacity: 0.8;
@@ -708,8 +709,17 @@ caption {
     font-size: 24px;
     font-weight: bold;
     text-decoration: none;
-    color: #666;
+    color: #666; 
 }
+
+.popup .close:focus{
+   outline: none;
+   transition: none;
+   border-radius: 5px;
+   box-shadow: 0 0 0 2px var(--cor-secundaria);
+   color: #000;
+}
+
 
 .close {
     position: absolute;
