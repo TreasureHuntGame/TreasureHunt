@@ -1,6 +1,6 @@
 ﻿# Guia do Instalador
 
-Alguns programas precisam estar instalados na máquina do organizador para que os _scripts_ geradores de competição funcionem. O instalador desse diretório pode ser utilizado para instalar tais dependências (descritas no arquivo [requisitos.txt](requisitos.txt)). Essa é a execução padrão do _script_ [instalador.sh](instalador.sh). 
+Alguns programas precisam estar instalados na máquina do organizador para que os _scripts_ geradores de competição funcionem. O instalador deste diretório pode ser utilizado para instalar tais dependências (descritas no arquivo [requisitos.txt](requisitos.txt)). Essa é a execução padrão do _script_ [instalador.sh](instalador.sh). 
 
 Opcionalmente, esse mesmo instalador pode ser executado nas máquinas dos jogadores para instalar um pacote mínimo de ferramentas que solucionam qualquer competição do TreasureHunt. Para usar o _script_ com esse intuito, basta usar o parâmetro [requisitos_user.txt](requisitos_user.txt) ao executar o instalador.     
 
@@ -34,11 +34,11 @@ Para instalar as ferramentas mínimas recomendadas aos usuários, execute os com
     # ou sudo bash instalador.sh requisitos_user.txt
 ```
 
-Nota 1: esse script pode facilitar a tarefa de instalar as ferramentas mínimas em múltiplos computadores, caso esteja trabalhando em uma rede local ou remota. Ele também pode ser passado diretamente aos usuários, a depender das intenções do organizador. 
+Nota 1: esse _script_ pode facilitar a tarefa de instalar as ferramentas mínimas em múltiplos computadores, caso esteja trabalhando em uma rede local ou remota. Ele também pode ser passado diretamente aos usuários, a depender das intenções do organizador.
 
-Nota 2: essas ferramentas são apenas sugestões. O usuário é livre para resolver os problemas com as ferramentas desejar. Fica a cargo do organizador decidir se recomenda a instalação dessas ferramentas ou não.  
+Nota 2: essas ferramentas são apenas sugestões. O usuário é livre para resolver os problemas com as ferramentas desejar. Fica a cargo do organizador decidir se recomenda a instalação dessas ferramentas ou não.
 
-Nota 3: grande parte dessas ferramentas já são instaladas por padrão em grande parte das distribuições `linux`:  
+Nota 3: grande parte dessas ferramentas já são instaladas por padrão em grande parte das distribuições Linux:
 
 ### lista de ferramentas recomendadas 
 - awk
