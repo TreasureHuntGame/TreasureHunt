@@ -1,0 +1,6 @@
+gawk
+outguess
+sed 
+binutils
+bsdgames
+coreutils
