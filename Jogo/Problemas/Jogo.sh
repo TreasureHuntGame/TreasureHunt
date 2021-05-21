@@ -107,32 +107,180 @@ erroComposicao () {
 	LOCK=1
 }
 
-# Variáveis que armazenarão nº de desafios e jogadores da competição
-QUANT_DESAFIOS=0
-QUANT_JOGADORES=0
+
+# verifica se existe um Log já criado
+# se existe retorna 0 
+existeLog () {
+	[ -f "Log" ] && return 0
+}
+
+# verifica se existe algum diretório numérico
+# se existir algum retorna 0
+existeDirNumericos () {
+	for d in ../*; do 
+        f=`echo $d | cut -b 4-`
+        [[ $f =~ ^[0-9]+$ ]] && return 0
+    done 
+}
+
+# verifica se existe arquivo de resposta
+# se existir retorna 0
+existeRespostas () {
+	mkdir -p ../Respostas
+    for f in ../Respostas/*; do 
+        [ -s $f ] && return 0    
+    done  
+}
+
+existeZip () {
+	for f in ../../TreasureHunt/Desafios/*; do 
+        [ -s $f ] && return 0
+	done
+}
+
+# Função que cria o log do jogo
+criarLog () {
+	NOME_LOG="Log"
+	IDC=`date +%d/%m/%Y_%H:%M:%S`
+	echo "---------- BEGIN TH{LOG} ----------" > $NOME_LOG
+	echo "IDC: Competição_$IDC  " >> $NOME_LOG
+	echo "QUANT_DESAFIOS: $QUANT_DESAFIOS" >> $NOME_LOG
+	echo "QUANT_JOGADORES: $QUANT_JOGADORES" >> $NOME_LOG
+	for (( i=1; i<=$QUANT_DESAFIOS; i++ )); do
+		echo "Desafio $i: ${LISTA_DESAFIOS[$i-1]}" >> $NOME_LOG
+	done 
+	echo -e "---------- Log Detalhado ----------" >> $NOME_LOG
+	cat Logger >> Log 
+	echo "---------- END TH{LOG} ----------" >> $NOME_LOG
+	rm -f Logger 
+}
+
+# move os arquivos de log, diretórios numéricos, respostas e zips
+# para um diretório nomeado com timestamp 
+moverArquivosCompeticoes () {
+	echo -e "\n\nMovendo arquivos para o diretório OLD" && sleep 1
+	TS=`date +%d-%m-%y_%H-%M-%S`
+	OLD_DIR="../OLD_$TS"
+	mkdir -p $OLD_DIR
+	existeLog && mv Log $OLD_DIR # move o log 
+	if existeDirNumericos; then # move os diretóritos numéricos
+		for d in ../*; do 
+			f=`echo $d | cut -b 4-`
+			if [[ $f =~ ^[0-9]+$ ]]; then 
+				cp -r $d $OLD_DIR && rm -rf $d
+			fi 
+		done 
+	fi
+	if existeRespostas; then #move as respostas
+		cp -r ../Respostas $OLD_DIR && rm -rf ../Respostas   
+		mkdir -p ../Respostas/
+	fi 
+
+	if existeZip; then #move os zips
+		for f in ../../TreasureHunt/Desafios/*; do 
+			rm -f $f 
+		done
+	fi
+	logger "Usuário escolheu mover os arquivos de competições anteriores para o diretórito $OLD_DIR"
+	echo "----------"
+}
+
+# exclui os arquivos de log, diretórios numéricos, respostas e zips
+excluirArquivosCompeticao () {
+	echo -e "\n\nRemovendo arquivos\n"  && sleep 1
+	existeLog && rm -f Log # apagar log
+	if existeRespostas; then # apagar respostas
+		rm -rf ../Respostas 
+		mkdir -p ../Respostas/ 
+	fi
+	for d in ../*; do  # apagar diretórios numéricos
+		f=`echo $d | cut -b 4-`
+		if [[ $f =~ ^[0-9]+$ ]]; then 
+			rm -rf $d 		
+		fi  
+	done 
+	if existeZip; then # apagar zips
+		for f in ../../TreasureHunt/Desafios/*; do 
+			rm -f $f 
+		done
+	fi 
+	logger "Usuário escolheu excluir arquivos de competições anteriores"
+	echo "----------"
+}
+
+# aborta script 
+abortarScript () {
+	echo -e "\n\nAbortando o script! \n"  && sleep 1
+	logger "Usuário escolheu abortar script"
+	exit 1
+}
+
+# verifica se existe algum arquivo de competição antigo. 
+# Se existir pergunta ao usuário o que ele deseja fazer
+manejarArquivosCompeticoesAntigos () {
+	# se algum arquivo de outra competição já estiver criado 
+	if existeLog || existeDirNumericos || existeRespostas; then
+		logger "Arquivos de competições anteriores foram encontrados"
+		while true; do  # pergunta o que o usuário deseja fazer
+			echo -e "\nArquivos de competições anteriores foram encontrados! "
+			read -p "Você deseja movê-los [1], excluí-los [2] ou abortar o script [3]? [1,2,3]: " OPCAO
+			case $OPCAO in 
+				1|2|3) break;;
+				*) echo "Opção inválida, digite novamente! " && sleep 1;;
+			esac 
+		done
+
+		if [ $OPCAO = "1" ]; then  # se escolher 1, move tudo para a pasta OLD
+			moverArquivosCompeticoes
+
+		elif [ $OPCAO = "2" ]; then # se escolher 2, exclui os arquivos
+			excluirArquivosCompeticao
+
+		elif [ $OPCAO = "3" ]; then # se escolher 3, sai do script
+			abortarScript
+		fi    
+	fi 
+}
+
+# função que loga detalhadamente 
+# $1 mensagem
+logger () {
+	[ ! -f Logger ] && touch Logger
+	ts=`date +%d-%m-%y_%H-%M-%S`
+	echo "$ts: $1" >> Logger
+}
 
 echo "----------"
 echo "Treasure Hunt!"
 echo "----------"
 
-echo "---------- BEGIN TH{LOG} ----------" > Log
-echo "IDC: " >> Log
+logger "Script iniciado"
+
+manejarArquivosCompeticoesAntigos 
+
+# Variáveis que armazenarão nº de desafios e jogadores da competição
+QUANT_DESAFIOS=0
+QUANT_JOGADORES=0
 
 LOCAL=0
 obterValor "DESAFIOS"
 QUANT_DESAFIOS=$LOCAL
 
+logger "Usuário determinou que a competição terá $QUANT_DESAFIOS desafio(s)"
+
 LOCAL=0
 obterValor "JOGADORES"
 QUANT_JOGADORES=$LOCAL
 
-echo "QUANT_DESAFIOS: $QUANT_DESAFIOS" >> Log
-echo "QUANT_JOGADORES: $QUANT_JOGADORES" >> Log
+logger "Usuário determinou que a competição terá $QUANT_JOGADORES jogador(es)"
+
+LISTA_DESAFIOS=()
 
 echo "----------"
 echo "Vamos criar os desafios!"
 echo "----------"
 
+logger "Iniciado criação de desafios"
 for i in $(seq $QUANT_DESAFIOS)
 do
 	LOCK=1
@@ -152,9 +300,11 @@ do
 		echo "----------"
 
 		read -p "Informe o(s) problema(s) do desafio $i: " PROBLEMA1 PROBLEMA2
+		DESAFIO_ATUAL="$PROBLEMA1 $PROBLEMA2"
 		verificaParametros $PROBLEMA1 $PROBLEMA2
 
-		echo "Desafio $i: $PROBLEMA1 $PROBLEMA2" >> Log
+		logger "Desafio $DESAFIO_ATUAL adicionado a competição"
+		LISTA_DESAFIOS+=("$DESAFIO_ATUAL")
 
 		if [ $LOCK -eq 0 ]
 		then
@@ -169,39 +319,52 @@ do
 done
 
 echo "Obtendo as soluções..."
+logger "Obtenção das soluções dos desafios..."
 # Caso não exista, cria o diretório que conterá as respostas
 mkdir -p ../Respostas/
+
 for i in $(seq $QUANT_DESAFIOS)
 do
 	sh "../Solucoes/sol${PROBLEMAS[$i]}.sh" $QUANT_JOGADORES $i > "../Respostas/Respostas_Desafio_$i"
 	echo "Resposta(s) do desafio $i gerada(s) em Respostas_Desafio_$i (diretório Respostas)."
+	dir=`readlink -f ../Respostas`
+	logger "Resposta(s) do desafio $i gerada(s) em Respostas_Desafio_$i ($dir)."
 done
 
 # Comprime os desafios do jogador em um arquivo zip
 for i in $(seq $QUANT_JOGADORES)
 do
  	zip -r -q "../Jogador$i.zip" "../$i/"
+	logger "Compressão do arquivo do jogador $i (Jogador$i.zip)"
 done
 
 # Se o usuário teclar 1, mantém os arquivos originais. Caso contrário exclui as pastas dos jogadores
 read -p "Deseja manter os arquivos originais? (Tecle <ENTER> para SIM) " RESOLVER
 
-if [ ! $RESOLVER = "" ]
-then
+if [ ! $RESOLVER = "" ]; then
+	logger "Usuário decidiu excluir arquivos originais"
 	for i in $(seq $QUANT_JOGADORES)
 	do
 		echo "Removendo o diretório do jogador $i."
 		rm -rf "../$i/"
+		logger "Removendo o diretório do jogador $i."
 	done
+else 
+	logger "Usuário decidiu manter arquivos originais"
 fi
 
 mkdir -p $DESTINO_DESAFIOS
 for i in $(seq $QUANT_JOGADORES)
 do
 	mv "../Jogador$i.zip" $DESTINO_DESAFIOS
+	dir=`readlink -f $DESTINO_DESAFIOS`
+	logger "Jogador$i.zip enviado para diretório Desafios ($dir)"
 done
 
 # Se o seu mysql estiver com senha, altere aqui com --password
 sh ConfiguraBD.sh $QUANT_JOGADORES $QUANT_DESAFIOS | mysql --user=root
+logger "Banco de dados 'TreasureHunt' configurado"
 
-echo "---------- END TH{LOG} ----------" >> Log
+logger "Script finalizado"
+
+criarLog 
