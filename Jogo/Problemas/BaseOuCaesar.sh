@@ -18,7 +18,7 @@ do
 	then ARQUIVO=$5
 	else
 		ARQUIVO=$(ls "$DIRETORIO" | shuf -n 1)
-		echo $ARQUIVO ####
+
 		if [ ! $DIRETORIO = "/" ]
 			# Copia o arquivo sorteado para o diretório do jogador
 			then cp $DIRETORIO$ARQUIVO ${SAIDA}PROVISORIA
@@ -29,10 +29,10 @@ do
 	[ -d "$DIRETORIO$ARQUIVO" ] || break
 done
 
-# Verifica se são 3 parâmetros e se o terceiro parâmetro é 1
-# Este caso é para a execução do problema não-composto
+# Verifica se são 3 parâmetros e se o terceiro parâmetro é 1, 2 ou 9.
+# Estes casos são para a execução dos problemas não-compostos.
 case $3 in
-	1|2)
+	1|2|9)
 	# Define (Q1;Q3) como intervalo no qual a flag poderá ser inserida
 	MAXIMO=$(wc -l < $DIRETORIO$ARQUIVO)
 	Q1=$(expr $MAXIMO / 4)
@@ -49,14 +49,17 @@ case $3 in
 	fi ;;
 esac
 
-# Codifica o arquivo sorteado em base64 (ou criptografa com Cifra de César) e redireciona o resultado para o arquivo de saída
+# Codifica o arquivo sorteado em base64 ou base32, ou criptografa com Cifra de César, e redireciona o resultado para o arquivo de saída
 case $3 in 
 	0) base64 "$DIRETORIO$ARQUIVO" >> "$SAIDA" ;;
 	1) base64 "${SAIDA}PROVISORIA" >> "$SAIDA" ;;
 	2) cat "${SAIDA}PROVISORIA" | caesar $(seq 1 25 | shuf -n 1) >> "$SAIDA" ;;
 	3) cat "$DIRETORIO$ARQUIVO" | caesar $(seq 1 25 | shuf -n 1) >> "$SAIDA" ;;
 	4) echo $FLAG | base64 >> "$SAIDA" ;;
-	5) echo $3; echo $FLAG | caesar $(seq 1 25 | shuf -n 1) >> "$SAIDA" ;;
+	5) echo $FLAG | caesar $(seq 1 25 | shuf -n 1) >> "$SAIDA" ;;
+	6) base32 "$DIRETORIO$ARQUIVO" >> "$SAIDA" ;;
+	8) echo $FLAG | base32 >> "$SAIDA" ;;
+	9) base32 "${SAIDA}PROVISORIA" >> "$SAIDA" ;;
 esac
 
 # Remove o arquivo copiado

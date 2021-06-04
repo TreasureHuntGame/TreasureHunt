@@ -30,7 +30,6 @@ case $# in
   	2) TEXTO=$(cat $2) ;;
 
 	# Caso para composição com problemas que geram arquivos binários
-	#3) xxd -p $2 | sed 's/.\{2\}/& /g' | sed 's/[^ ]* */0x&/g' | awk '{ for(i=1;i<=NF;i++) printf("%i ",$i); print ""; }' > $1 ;;
 	3) xxd -p $2 | sed 's/.\{2\}/& /g' | sed 's/[^ ]* */0x&/g' | awk '{ for(i=1;i<=NF;i++) printf("%i ",strtonum($i)); print ""; }' > $1 ;;
 esac
 

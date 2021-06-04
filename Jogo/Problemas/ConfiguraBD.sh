@@ -15,13 +15,14 @@ echo "CREATE TABLE IF NOT EXISTS TreasureHunt.Resposta (idUsuario INT(11) NOT NU
 
 # Cria a tabela que conterá as submissões
 # Para verificar se há cópia de flag
-echo "CREATE TABLE IF NOT EXISTS TreasureHunt.Submissao (idUsuario INT(11) NOT NULL, idProblema INT(11) NOT NULL, respostaInformada VARCHAR(64) NOT NULL, hora TIMESTAMP, PRIMARY KEY (idUsuario, idProblema, hora)) ENGINE=InnoDB CHARSET=big5;"
+# echo "CREATE TABLE IF NOT EXISTS TreasureHunt.Submissao (idUsuario INT(11) NOT NULL, idProblema INT(11) NOT NULL, respostaInformada VARCHAR(64) NOT NULL, hora TIMESTAMP, PRIMARY KEY (idUsuario, idProblema, hora)) ENGINE=InnoDB CHARSET=big5;"
+echo "CREATE TABLE IF NOT EXISTS TreasureHunt.Submissao (idUsuario INT(11) NOT NULL, idProblema INT(11) NOT NULL, respostaInformada VARCHAR(64) NOT NULL, ip VARCHAR(16) NOT NULL, hora TIMESTAMP, PRIMARY KEY (idUsuario, idProblema, hora)) ENGINE=InnoDB CHARSET=big5;"
 
 # Cria registros de usuários com ID e senha padrão '$i$i$i' (3x o ID)
 for i in $(seq $1)
 do
 	SALT=$(cat /dev/urandom | tr -cd 'a-z' | head -c 9)
-	SENHA=$(echo -n $i-$i-$i$SALT | sha256sum | head -c-4)
+	SENHA=$(echo -n "$i$i$i???$SALT" | sha256sum | head -c-4)
 	echo "INSERT INTO TreasureHunt.Usuario (saltpass, pass) VALUES ('$SALT', '$SENHA');"
 done
 
