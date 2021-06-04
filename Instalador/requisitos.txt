@@ -12,6 +12,7 @@ mysql-server
 mysql-client
 ngrok
 outguess
+python3
 php
 php-common
 php-mysql

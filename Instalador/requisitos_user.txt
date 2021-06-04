@@ -4,3 +4,4 @@ sed
 binutils
 bsdgames
 coreutils
+python2
