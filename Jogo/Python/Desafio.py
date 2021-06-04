@@ -1,7 +1,7 @@
 import time
 
 def printFlag():
-	FLAG = "";
+	FLAG = ""
 
 def mainFunction():
 	while True:
