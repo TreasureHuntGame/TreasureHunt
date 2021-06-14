@@ -1,9 +1,5 @@
 $(function() {
 
-    $('#modal-privacy').on('shown.bs.modal', function () {
-        console.log('hi');
-     });
-
     // habilita o tooltip do bootstrap (mensagem no hover) 
     $('[data-toggle="tooltip"]').tooltip();
 
@@ -19,6 +15,15 @@ $(function() {
     // adiciona clique pelo teclado nos itens do nav
     $('.label-link').keydown(function(event) {
         set_keyboard_click(event);
+    });
+
+    // adiciona clique pelo teclado no logout da nav
+    $('#logout').keydown(function(e) {
+        set_keyboard_click(e);
+    });
+
+    $('#arquivo').keydown(function(e) {
+        set_keyboard_click(e);
     });
 
     // adiciona clique pelo teclado nos botões da cookie bar
@@ -38,6 +43,11 @@ $(function() {
     
     // adiciona clique pelo teclado no botão do modal
     $('#close-modal').keydown(function(e) {
+        set_keyboard_click(e);
+    });
+
+    // adiciona clique pelo teclado no link da creative commons
+    $('#creative-commons').keydown(function(e) {
         set_keyboard_click(e);
     });
 
@@ -119,7 +129,6 @@ $(function() {
         var focusableEls = modal.querySelectorAll("a[href]:not([disabled]), div.contnt");
         var firstFocusableEl = focusableEls[0];
         var lastFocusableEl = focusableEls[focusableEls.length - 1];
-        console.log(lastFocusableEl)
 
         modal.addEventListener('keydown', function(e) {
             var isTabPressed = (e.key === 'Tab' || e.keyCode == 9);
@@ -143,7 +152,7 @@ $(function() {
             }else {
                 if (document.activeElement === lastFocusableEl) {
                     firstFocusableEl.focus();
-                        e.preventDefault();
+                    e.preventDefault();
                 }
             }
         });
@@ -208,5 +217,43 @@ $(function() {
             document.cookie = name + "=" + ";expires=Thu, 01 Jan 1970 00:00:01 GMT;" + secure;
         }
     }
+
+    // reimplementando os titles que são automaticamente excluidos pelo bootstrap
+    // precisam ser usados para mostrar as mensagens personalizadas de erro de formulário
+    var inputs = ['#usuario', '#senha', '#id-problema', '#flag-interno', '#arquivo', '#table-individual'];
+    for (input of inputs) {
+        switch (input) {
+            case '#usuario':
+                $(input).attr('title', 'Credencial numérica atribuída a você. Precisa ser um número')
+                break;
+            case '#senha':
+                $(input).attr('title', 'Senha fornecida junto à credencial.')
+                break;
+            case '#id-problema':
+                $(input).attr('title', 'Número do diretório cujo exercício foi resolvido. Precisa ser um número.')
+                break;
+            case '#flag-interno':
+                $(input).attr('title', 'Resposta encontrada. Formato: TreasureHunt{texto-aleatório}')
+                break;
+            default:
+                break;
+        }
+        // quando o input recebe hover ele tira o title temporariamente para não
+        // mostrar uma mensagem que já é mostrada pelos tooltips
+        $(input).hover(function() {
+                var title = $(this).attr('title');
+                $(this).attr('tmp_title', title);
+                $(this).attr('title', '')
+            },
+            function() {
+                var recoveredTitle = $(this).attr('tmp_title');
+                $(this).attr('title', recoveredTitle);
+            });
+        $(input).click(function() {
+            var oldTitle = $(this).attr("tmp_title");
+            $(this).attr("title", oldTitle);
+        })
+    }
+
 
 });

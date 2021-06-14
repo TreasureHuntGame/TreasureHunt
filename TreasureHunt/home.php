@@ -47,13 +47,13 @@ if (!isset($_SESSION['usuario'])) {
         </noscript>
         <nav class="navbar navbar-expand-sm navbar-dark justify-content-center">
             <input type="checkbox" name="collapse-btn" id="collapse-btn" role="button">
-            <label for="collapse-btn" class="navbar-toggler"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
+            <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0" accesskey="i">Início</label></li>
-                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0" accesskey="p">Placar</label></li>
-                    <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" accesskey="j">Como Jogar?</label></li>
-                    <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" accesskey="c">Contato</label></li>
+                    <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0" accesskey="i"><span class="sr-only">Página atual:</span>Início</label></li>
+                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0" accesskey="p"><span class="sr-only">Página atual:</span>Placar</label></li>
+                    <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" accesskey="j"><span class="sr-only">Página atual:</span>Como Jogar?</label></li>
+                    <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" accesskey="c"><span class="sr-only">Página atual:</span>Contato</label></li>
                     <li class="nav-item">
                         <a id="logout" accesskey="l" href="logout.php" class="mostrar">Logout</a>
                     </li>
@@ -62,13 +62,13 @@ if (!isset($_SESSION['usuario'])) {
             <ul class="navbar-nav ml-auto" id="contrast-container" role="presentation">
                 <li>
                     <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
-                        <span class="material-icons" aria-hidden="true">invert_colors</span>
-                        <span class="sr-only">Botão para ativar Recurso de alto Contraste</span>
+                        <span id="botao-contraste" title="Recurso de alto contraste"></span>
+                        <span class="sr-only">Botão para ativar recurso de alto contraste</span>
                     </label>
                 </li>
             </ul>
         </nav>
-        <div id="main">
+        <div id="main" role="main">
             <div class="jumbotron bg-dark" id="jumbotron-home-title">
                 <h2 class="font-weight-bold page-title">Principal<span class="destaque">!</span></h2>
             </div>
@@ -111,7 +111,7 @@ if (!isset($_SESSION['usuario'])) {
                         <form action="checkflag.php" method="POST" class="form-signin">
                             <h3>Submeta sua <i lang="en">flag</i>:</h3>
                             <label for="id-problema" class="sr-only">Informe o ID do problema</label>
-                            <input type="number" min="1" name="problema" id="id-problema" class="form-control input-sm" placeholder="Informe o ID do problema" required data-trigger="hover" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido." autofocus>
+                            <input type="number" min="1" name="problema" id="id-problema" class="form-control input-sm" placeholder="Informe o ID do problema" required data-trigger="hover" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
                             <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span></label>
                             <input type="text" id="flag-interno" name="flag" class="form-control" placeholder="Informe a flag" required data-trigger="hover" data-toggle="tooltip" data-placement="top" title="Resposta encontrada.">
                             <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
@@ -238,7 +238,7 @@ if (!isset($_SESSION['usuario'])) {
             </div>
             <ul id="lista-de-regras">
                 <li><span class="prompt"></span> Na tela de início, insira seu ID e sua senha e clique em
-                    <button class="btn btn-sm btn-dark" name="enviar">Entrar</button>.
+                    <button class="btn btn-sm btn-dark" name="enviar" tabindex="-1">Entrar</button>.
                 </li>
                 <li><span class="prompt"></span> Baixe e descompacte o arquivo zip disponível (sugestão: <code id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém diretórios representados por números inteiros. Cada diretório contém pelo menos um arquivo.
                 </li>
@@ -248,7 +248,7 @@ if (!isset($_SESSION['usuario'])) {
                 </li>
                 <li><span class="prompt"></span> Cada <em lang="en">flag</em> descoberta é um desafio resolvido! Você só precisa realizar a submissão no sistema, informando o ID do problema (número do diretório) e a <em lang="en">flag</em> encontrada. O sistema informará se a <em lang="en">flag</em> está (in)correta.
                 </li>
-                <li><span class="prompt"></span> As <em lang="en">flags</em> possuem o formato <code> <span>TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <em lang="en">flag</em>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
+                <li><span class="prompt"></span> As <em lang="en">flags</em> possuem o formato <code> <span lang="en">TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <em lang="en">flag</em>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
                 </li>
             </ul>
         </div>
@@ -260,24 +260,32 @@ if (!isset($_SESSION['usuario'])) {
             <address>
 
                 <span class="address-title">Equipe atual:</span>
-                <span class="contato">
+                <div class="contato">
                     <span class="nome-autor">Ricardo de la Rocha Ladeira</span>:
                     <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior" aria-hidden="true"></span></span>
-                </span>
-                <span class="contato">
+                </div>
+                <div class="contato">
                     <span class="nome-autor">Vítor Augusto Ueno Otto</span>:
                     <span><span class="sinal-menor" aria-hidden="true"></span>vitoruenootto<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
-                </span>
-                <span class="contato">
+                </div>
+                <div class="contato">
                     <span class="nome-autor">Lucas Vargas</span>:
                     <span><span class="sinal-menor" aria-hidden="true"></span>lucasvargas27<span class="at font-weight-bold"></span>hotmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
-                </span>
+                </div>
 
                 <span class="address-title">Contribuidores:</span>
-                <span class="contato nome-contrib">Henrique Arnicheski Dalposso</span>
-                <span class="contato nome-contrib">Rafael Rodrigues Obelheiro</span>
-                <span class="contato nome-contrib">Richard Robert Dias Custódio</span>
-                <span class="contato nome-contrib">Vinícius Manuel Martins</span>
+                <div class="contato nome-contrib">
+                    <span>Henrique Arnicheski Dalposso</span>
+                </div>
+                <div class="contato nome-contrib">
+                    <span>Rafael Rodrigues Obelheiro</span>
+                </div>
+                <div class="contato nome-contrib">
+                   <span>Richard Robert Dias Custódio</span>
+                </div>
+                <div class="contato nome-contrib">
+                   <span>Vinícius Manuel Martins</span>
+                </div>
 
             </address>
         </div>

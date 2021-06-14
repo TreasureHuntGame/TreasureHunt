@@ -40,24 +40,25 @@ header('Content-Type: text/html; charset=utf-8');
         </noscript>
         <nav class="navbar navbar-expand-sm navbar-dark justify-content-center">
             <input type="checkbox" name="collapse-btn" id="collapse-btn" role="button">
-            <label for="collapse-btn" class="navbar-toggler"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
+            <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0" accesskey="i">Início</label></li>
-                    <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" accesskey="j">Como Jogar?</label></li>
-                    <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" accesskey="c">Contato</label></li>
+                    <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0" accesskey="i"><span class="sr-only">Página atual:</span>Início
+                    </label></li>
+                    <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" accesskey="j"><span class="sr-only">Página atual:</span>Como Jogar?</label></li>
+                    <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" accesskey="c"><span class="sr-only">Página atual:</span>Contato</label></li>
                 </ul>
             </div>
             <ul class="navbar-nav ml-auto" id="contrast-container" role="presentation">
                 <li>
                     <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
-                        <span class="material-icons" aria-hidden="true">invert_colors</span>
-                        <span class="sr-only">Botão para ativar Recurso de alto Contraste</span>
+                        <span id="botao-contraste" title="Recurso de alto contraste"></span>
+                        <span class="sr-only">Botão para ativar recurso de alto contraste</span>
                     </label>
                 </li>
             </ul>
         </nav>
-        <div id="main">
+        <div id="main" role="main">
             <div class="jumbotron bg-dark" id="jumbotron-index">
                 <h1 class="font-weight-bold" id="titulo-index" lang="en">
                     TreasureHunt<span id="espaco"> </span><span class="destaque chaves-left" aria-hidden="true"></span>Security<span class="destaque chaves-right" aria-hidden="true"></span>
@@ -66,10 +67,10 @@ header('Content-Type: text/html; charset=utf-8');
             </div>
             <form action="acesso.php" method="POST" class="form-signin">
                 <label>Autentique-se:</label>
-                <label for="usuario" class="sr-only">Informe seu ID</label>
-                <input type="number" min="1" name="usuario" id="usuario" class="form-control input-sm" placeholder="Informe seu ID" required autofocus data-trigger="hover" data-toggle="tooltip" data-placement="top" title="Credencial numérica atribuída a você.">
-                <label for="senha" class="sr-only">Informe sua senha</label>
-                <input type="password" id="senha" name="senha" class="form-control" placeholder="Informe sua senha" data-trigger="hover" data-toggle="tooltip" data-placement="top" title="Senha fornecida junto à credencial." required>
+                <label for="usuario" class="sr-only">Informe seu ID *</label>
+                <input type="number" min="1" name="usuario" id="usuario" class="form-control input-sm" placeholder="Informe seu ID" title="Credencial numérica atribuída a você." data-trigger="hover" data-toggle="tooltip" data-placement="top" required>
+                <label for="senha" class="sr-only">Informe sua senha *</label>
+                <input type="password" id="senha" name="senha" class="form-control" placeholder="Informe sua senha" title="Senha fornecida junto à credencial." data-trigger="hover" data-toggle="tooltip" data-placement="top" required>
                 <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                 <button class="btn btn-dark btn-block" type="submit" name="enviar">Entrar</button>
                 <?php
@@ -92,7 +93,7 @@ header('Content-Type: text/html; charset=utf-8');
             </div>
             <ul id="lista-de-regras">
                 <li><span class="prompt"></span> Na tela de início, insira seu ID e sua senha e clique em
-                    <button class="btn btn-sm btn-dark" name="enviar">Entrar</button>.
+                    <button class="btn btn-sm btn-dark" name="enviar" tabindex="-1">Entrar</button>.
                 </li>
                 <li><span class="prompt"></span> Baixe e descompacte o arquivo zip disponível (sugestão: <code id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém diretórios representados por números inteiros. Cada diretório contém pelo menos um arquivo.
                 </li>
@@ -102,7 +103,7 @@ header('Content-Type: text/html; charset=utf-8');
                 </li>
                 <li><span class="prompt"></span> Cada <em lang="en">flag</em> descoberta é um desafio resolvido! Você só precisa realizar a submissão no sistema, informando o ID do problema (número do diretório) e a <em lang="en">flag</em> encontrada. O sistema informará se a <em lang="en">flag</em> está (in)correta.
                 </li>
-                <li><span class="prompt"></span> As <em lang="en">flags</em> possuem o formato <code> <span>TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <em lang="en">flag</em>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
+                <li><span class="prompt"></span> As <em lang="en">flags</em> possuem o formato <code> <span lang="en">TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <em lang="en">flag</em>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
                 </li>
             </ul>
         </div>
@@ -114,24 +115,32 @@ header('Content-Type: text/html; charset=utf-8');
             <address>
 
                 <span class="address-title">Equipe atual:</span>
-                <span class="contato">
+                <div class="contato">
                     <span class="nome-autor">Ricardo de la Rocha Ladeira</span>:
                     <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior" aria-hidden="true"></span></span>
-                </span>
-                <span class="contato">
+                </div>
+                <div class="contato">
                     <span class="nome-autor">Vítor Augusto Ueno Otto</span>:
                     <span><span class="sinal-menor" aria-hidden="true"></span>vitoruenootto<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
-                </span>
-                <span class="contato">
+                </div>
+                <div class="contato">
                     <span class="nome-autor">Lucas Vargas</span>:
                     <span><span class="sinal-menor" aria-hidden="true"></span>lucasvargas27<span class="at font-weight-bold"></span>hotmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
-                </span>
+                </div>
 
                 <span class="address-title">Contribuidores:</span>
-                <span class="contato nome-contrib">Henrique Arnicheski Dalposso</span>
-                <span class="contato nome-contrib">Rafael Rodrigues Obelheiro</span>
-                <span class="contato nome-contrib">Richard Robert Dias Custódio</span>
-                <span class="contato nome-contrib">Vinícius Manuel Martins</span>
+                <div class="contato nome-contrib">
+                    <span>Henrique Arnicheski Dalposso</span>
+                </div>
+                <div class="contato nome-contrib">
+                    <span>Rafael Rodrigues Obelheiro</span>
+                </div>
+                <div class="contato nome-contrib">
+                   <span>Richard Robert Dias Custódio</span>
+                </div>
+                <div class="contato nome-contrib">
+                   <span>Vinícius Manuel Martins</span>
+                </div>
 
             </address>
         </div>

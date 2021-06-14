@@ -16,14 +16,16 @@ body {
     --success-background: #155724;
     --success: #FFF;
     --input-box-shadow: rgba(108, 108, 108, .25);
-    --form-border-color: #767676;
+    --input-focus-box-shadow: rgb(162, 163, 163);
+    --btn-dark-boxshadow: rgb(162, 163, 163);
+    --form-border-color: #2b2b2b;
     --input-hover: #23272B;
     --input-cor-fundo: #FFF;
     --input-cor-placeholder: #495057;
-    --bnt-cookies: #0056b3;
-    --hover-bnt-cookies: #003e80;
-    --bnt-boxshadow-cookies: white;
-    --c-bnt-boxshadow-cookies: yellow;
+    --btn-cookies: #0056b3;
+    --hover-btn-cookies: #003e80;
+    --btn-boxshadow-cookies: white;
+    --c-btn-boxshadow-cookies: yellow;
     --c-cor-primaria: #FFF;
     --c-cor-secundaria: white;
     --c-cor-fundo: black;
@@ -32,6 +34,8 @@ body {
     --c-success-background: #155724;
     --c-success: #FFF;
     --c-input-box-shadow: rgba(255, 255, 255, .25);
+    --c-input-focus-box-shadow: yellow;
+    --c-btn-dark-boxshadow: yellow;
     --c-form-border-color: #767676;
     --c-input-hover: #23272B;
     --c-input-cor-fundo: #FFF;
@@ -59,6 +63,18 @@ input#contrast:checked~#page-wrapper nav ul li label#contrast-label {
 
 input#contrast:not(:checked)~#page-wrapper nav ul li label#contrast-label {
     cursor: url('../img/cursor_fechado.png'), pointer;
+}
+
+input#contrast:checked~#page-wrapper nav ul li label span#botao-contraste
+{
+    filter: invert(100%)
+}
+
+nav ul li label span#botao-contraste{
+    background-image: url(../img/botao_contraste.svg);
+    background-repeat: no-repeat;
+    height: 25px; 
+    width: 25px;
 }
 
 input#contrast:checked~#page-wrapper nav ul li label:focus,
@@ -108,8 +124,17 @@ input#contrast:checked~#page-wrapper button {
     box-shadow: 0 0 0 .2rem var(--c-input-box-shadow);
 }
 
+input#contrast:checked~#page-wrapper .btn-dark:focus {
+    box-shadow: 0 0 0 0.2rem var(--c-btn-dark-boxshadow) !important;
+    border: 2px solid var(--c-cor-fundo) !important;
+}
+
 input#contrast:checked~#page-wrapper input {
-    box-shadow: 0 0 0 .2rem var(--c-input-box-shadow);
+    box-shadow: 0 0 0 0.2rem var(--c-input-box-shadow);
+}
+
+input#contrast:checked~#page-wrapper .form-signin .form-control:focus{
+    box-shadow: 0 0 0 .2rem var(--c-input-focus-box-shadow);
 }
 
 input#contrast:checked~#page-wrapper .btn-primary {
@@ -123,7 +148,8 @@ input#contrast:checked~#page-wrapper #cookie-bar {
 }
 
 input#contrast:checked~#page-wrapper #cookie-bar .btn-primary:focus {
-   box-shadow: 0 0 0 0.2rem var(--c-bnt-boxshadow-cookies) !important;
+    box-shadow: 0 0 0 0.2rem var(--c-btn-boxshadow-cookies) !important;
+    border: 2px solid var(--c-cor-fundo) !important;
 }
 
 #page-wrapper {
@@ -205,6 +231,7 @@ label[for="contrast"] {
 
 footer {
     font-size: 0.7em;
+    padding: 0 32px 0 32px;
 }
 
 footer a {
@@ -410,6 +437,7 @@ input#regras:checked~#como-jogar,
 input#contato:checked~#contatos {
     opacity: 1;
     height: auto;
+    
 }
 
 input#inicio:not(:checked)~#main,
@@ -425,6 +453,13 @@ input#contato:not(:checked)~#contatos {
 #regras:checked~nav div ul li #regras-label,
 #contato:checked~nav div ul li #contato-label {
     font-weight: bold;
+}
+
+#inicio:not(:checked)~nav div ul li #inicio-label .sr-only,
+#rank:not(:checked)~nav div ul li #rank-label .sr-only,
+#regras:not(:checked)~nav div ul li #regras-label .sr-only,
+#contato:not(:checked)~nav div ul li #contato-label .sr-only {
+    visibility: hidden;
 }
 
 #placar {
@@ -446,6 +481,7 @@ input#contato:not(:checked)~#contatos {
 input {
     min-width: 70px !important;
     max-width: 99.99% !important;
+    margin: 0 0 3px 0;
     transition: width 0.25s;
     height: 20px;
     text-align: center;
@@ -486,12 +522,12 @@ input:-webkit-autofill:focus {
 
 button {
     border-radius: 5px;
+    border: 2px solid transparent !important;
     cursor: pointer;
     margin: 5px 0 0 0;
     width: 100px;
     background-color: var(--cor-fundo) !important;
     color: var(--cor-primaria) !important;
-    border-color: var(--cor-fundo) !important;
 }
 
 button.navbar-toggler {
@@ -563,6 +599,10 @@ address a{
     margin: 0 auto;
 }
 
+.form-signin label{
+    margin-bottom: 3px;
+}
+
 .form-signin .form-control {
     position: relative;
     box-sizing: border-box;
@@ -576,7 +616,16 @@ address a{
 .form-signin .form-control:hover {
     z-index: 2;
     border-color: var(--form-border-color);
-    box-shadow: 0 0 0 .2rem var(--input-box-shadow);
+    box-shadow: 0 0 0 .2rem var(--input-focus-box-shadow);
+}
+
+ .btn-dark:focus {
+    box-shadow: 0 0 0 0.2rem var(--btn-dark-boxshadow);
+}
+
+#lista-de-regras .btn-dark {
+    box-shadow: 0 0 0 0.2rem var(--btn-dark-boxshadow);
+    margin: 5px 5px 5px 5px;
 }
 
 .form-signin input[type="number"],
@@ -637,20 +686,21 @@ caption {
 }
 
 #cookie-bar .btn-primary {
+    border: 2px solid transparent;
     font-size: 1em;
     margin-left: 5px;
-    background-color: var(--bnt-cookies);
-    border-color: var(--bnt-cookies);
+    background-color: var(--btn-cookies);
+    border-color: var(--btn-cookies);
 }
 
 #cookie-bar .btn-primary:hover {
     color: #fff;
-    background-color: var(--hover-bnt-cookies);
-    border-color: var(--hover-bnt-cookies);
+    background-color: var(--hover-btn-cookies);
+    border-color: var(--hover-btn-cookies);
 }
 
 #cookie-bar .btn-primary:focus, .btn-primary.focus {
-  box-shadow: 0 0 0 0.2rem var(--bnt-boxshadow-cookies)
+  box-shadow: 0 0 0 0.2rem var(--btn-boxshadow-cookies)
 }
 
 .noscript {
@@ -856,7 +906,7 @@ caption {
         height: 60%;
     }
     .popup h2 {
-        margin-right: 5px;
+        margin-right: 35px;
     }
     .contnt {
         height: 85%;
