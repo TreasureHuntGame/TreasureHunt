@@ -13,18 +13,23 @@ if (!isset($_SESSION['usuario']) == true) {
 
 $problema = filter_input(INPUT_POST, 'problema');
 $flagPura = filter_input(INPUT_POST, 'flag');
-$flag = hash("sha256", $flagPura);
+// não precisamos mais do hash da flag para verificar se a resposta coincide com o hash do bd
+// $flag = hash("sha256", $flagPura); 
 $usuario = $_SESSION['usuario'];
 
-// Insere idUsuario, idResposta e flagPura na tabela submissão
-//$sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', date('Y-m-d H:i:s'))";
+
+// Mesmo insert abaixo porém de versões anteriores
+// $sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', date('Y-m-d H:i:s'))";
 // $sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', CURRENT_TIMESTAMP)";
+
+// Insere idUsuario, idResposta e flagPura na tabela submissão
 $ip = $_SERVER['REMOTE_ADDR'];
 $sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', '$ip', CURRENT_TIMESTAMP)";
 $stmt = $conexao->prepare($sql);
 $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 $stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
-$stmt->bindParam(':flag', $flag, PDO::PARAM_STR);
+// $stmt->bindParam(':flag', $flag, PDO::PARAM_STR); // Versão anterior enviava o hash ao invés da "flag pura" para o bd
+$stmt->bindParam(':flag', $flagPura, PDO::PARAM_STR);
 $stmt->bindParam(':ip', $ip, PDO::PARAM_STR);
 $stmt->execute();
 
@@ -36,7 +41,7 @@ $stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
 $stmt->execute();
 
 // Se retornar resultado, usuário já havia respondido corretamente
-if ($stmt->rowCount() > 0) {
+if ($stmt->rowCount() > 0) { // "erro" (aviso): questão já acertada
 	header('Location:home.php?message=duplicada&id='.$problema);
 	exit();
 } else {
@@ -47,15 +52,23 @@ if ($stmt->rowCount() > 0) {
 
 	// Poderia informar quando a resposta correta já foi submetida
 	// e o usuário segue submetendo para o mesmo problema
-	$sql = "SELECT * FROM TreasureHunt.Resposta WHERE idUsuario='$usuario' AND idProblema='$problema' AND resposta='$flag'";
+
+	// versão antiga do select abaixo: atualizado para usar bcrypt
+	// $sql = "SELECT * FROM TreasureHunt.Resposta WHERE idUsuario='$usuario' AND idProblema='$problema' AND resposta='$flag'";
+	$sql = "SELECT resposta FROM TreasureHunt.Resposta WHERE idUsuario='$usuario' AND idProblema='$problema'";
 	$stmt = $conexao->prepare($sql);
 	$stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 	$stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
-	$stmt->bindParam(':flag', $flag, PDO::PARAM_STR);
+	// $stmt->bindParam(':flag', $flag, PDO::PARAM_STR); // não usamos mais o hash da flag digitada no select
 	$stmt->execute();
+	$resposta_hash = $stmt->fetch();
 
-	// Se retornar resultado, resposta correta
-	if ($stmt->rowCount() > 0) {
+
+	// versão antiga desse if: fazia uso do select comentado (versão 256)
+	// if ($stmt->rowCount() > 0) {
+
+	// verifica a flag digitada com o hash da resposta armazenado no bd; se retornar true é a resposta correta
+	if (password_verify($flagPura, $resposta_hash[0])) {
 		$acertou = true;
 		atualiza($acertou, $usuario, $problema);
 
@@ -66,14 +79,14 @@ if ($stmt->rowCount() > 0) {
 		$stmt = $conexao->prepare("SELECT COUNT(*) AS Acertos FROM TreasureHunt.Resposta WHERE idUsuario=$usuario and acertou=1");
 		$stmt->execute();
 		$linhaAcertos = $stmt->fetch(PDO::FETCH_OBJ);
-
+		// enviar mensagem de que usuário acertou questão (mostra na caixa verde)
 		header('Location:home.php?message=acertou&acertos='.$linhaAcertos->Acertos.'&total='.$linhaTotal->Total);
 		exit();
-	} else {
+	} else { // se resposta não coincidir com hash do bd, resposta digitada é incorreta
 		$stmt = $conexao->prepare("SELECT MAX(idProblema) AS Max FROM TreasureHunt.Resposta");
 		$stmt->execute();
 		$linhaTotal = $stmt->fetch(PDO::FETCH_OBJ);
-		if ($problema < 1 or $problema > $linhaTotal->Max) {
+		if ($problema < 1 or $problema > $linhaTotal->Max) { // erro: id inválido
 			header('Location:home.php?message=id_invalido');
 			exit();
 		} else {
@@ -83,14 +96,14 @@ if ($stmt->rowCount() > 0) {
 		$tamanho = strlen($flagPura);
     	$verificaPadrao = (substr($flagPura, 0, 13) === 'TreasureHunt{') && (substr($flagPura, $tamanho - 1, $tamanho) === '}');
     	$mensagem = "Errou!";
-    	if ($verificaPadrao != 1) {
+    	if ($verificaPadrao != 1) { // erro: flag no formato incorreto
 			$mensagem .= " Considere submeter a flag no seguinte formato: TreasureHunt{texto-aleatorio}";
 			header('Location:home.php?message=formato');
 			exit();
 		}
 		header('Location:home.php?message=erro');
 		exit();
-		}
+		} 
 	}
 }
 
