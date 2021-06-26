@@ -9,8 +9,12 @@ MAX=8
 # Define o diretório que receberá os desafios
 DESTINO_DESAFIOS="/var/www/html/TreasureHunt/Desafios/"
 
+# Diretório desse script
+DIR_SCRIPT=`dirname $0` 
+
 # Array que armazenará o identificador de cada problema
 PROBLEMAS=
+
 
 # Função que verifica se o parâmetor informado é positivo.
 obterValor() {
@@ -163,9 +167,9 @@ criarLog () {
 # move os arquivos de log, diretórios numéricos, respostas e zips
 # para um diretório nomeado com timestamp 
 moverArquivosCompeticoes () {
-	echo -e "\n\nMovendo arquivos para o diretório OLD" && sleep 1
 	TS=`date +%d-%m-%y_%H-%M-%S`
 	OLD_DIR="../OLD_$TS"
+	echo -e "Movendo arquivos para o diretório TreasureHunt/Jogo/OLD_$TS" && sleep 1
 	mkdir -p $OLD_DIR
 	existeLog && mv Log $OLD_DIR # move o log 
 	if existeDirNumericos; then # move os diretóritos numéricos
@@ -199,7 +203,7 @@ moverArquivosCompeticoes () {
 # $1 = mensagem que será passada ao logger
 excluirArquivosCompeticao () {
 	if [ $# -eq 0 ]; then 
-		echo -e "\n\nRemovendo arquivos\n"  && sleep 1
+		echo -e "Removendo arquivos"  && sleep 1
 	fi 
 
 	existeLog && rm -f Log # apagar log
@@ -237,10 +241,10 @@ excluirArquivosCompeticao () {
 abortarScript () {
 	if [ $# -eq 0 ]; then
 		logger "Usuário escolheu abortar script"
-		echo -e "\n\nAbortando o script! \n"  && sleep 1
+		echo -e "Abortando o script! "  && sleep 1
 	else 
 		logger $1
-		echo -e "\n$1"  && sleep 1
+		echo -e "$1"  && sleep 1
 	fi 
 	exit 1
 }
@@ -258,8 +262,15 @@ manejarArquivosCompeticoesAntigos () {
 	if existeLog || existeDirNumericos || existeRespostas; then
 		logger "Arquivos de competições anteriores foram encontrados"
 		while true; do  # pergunta o que o usuário deseja fazer
-			echo -e "\nArquivos de competições anteriores foram encontrados! "
-			read -p "Você deseja movê-los [1], excluí-los [2] ou abortar o script [3]? [1,2,3]: " OPCAO
+			echo "Arquivos de competições anteriores foram encontrados! "
+			echo "----------"
+			echo "lista de opções disponíveis: "
+			echo "1: Mover arquivos antigos para um diretório criado automaticamente"
+			echo "2: Excluir todos os arquivos antigos"
+			echo "3: Abortar o script"
+			echo "----------"
+			read -p "Informe uma das opções acima: " OPCAO
+			echo "----------"
 			case $OPCAO in 
 				1|2|3) break;;
 				*) echo "Opção inválida, digite novamente! " && sleep 1;;
@@ -308,7 +319,7 @@ verificarRespostas () {
 	# se não existe arquivo de respostas retorna status de erro
 	[ ! existeRespostas ] && return 1 
 	logger "Checando arquivos de resposta da competição..." 
-	echo -e "\nVerificando se o número de jogadores coincide com o número de respostas geradas..." && sleep 0.2
+	echo -e "Verificando se o número de jogadores coincide com o número de respostas geradas..." && sleep 0.2
 	recriar="0"
 	for f in ../Respostas/*; do 
 		L=`cat $f | sed '/^\s*$/d' | wc -l` 
@@ -367,7 +378,7 @@ gerarArquivosResposta () {
 	mkdir -pm 755 ../Respostas/
 	for i in $(seq $QUANT_DESAFIOS); do
 		sh "../Solucoes/sol${PROBLEMAS[$i]}.sh" $QUANT_JOGADORES $i > "../Respostas/Respostas_Desafio_$i"
-		echo -e "Resposta(s) do desafio $i gerada(s) em Respostas_Desafio_$i (diretório Respostas)."
+		echo -e "Resposta(s) do desafio $i gerada(s) em TreasureHunt/Jogo/Respostas/Respostas_Desafio_$i."
 		dir=`readlink -f ../Respostas`
 		logger "Resposta(s) do desafio $i gerada(s) em Respostas_Desafio_$i ($dir)."
 	done
@@ -383,9 +394,8 @@ compactarDesafios () {
 
 # Se o usuário teclar 1, mantém os arquivos originais. Caso contrário exclui as pastas dos jogadores
 manejarArquivosAtuais () {
-	echo -e "\n----------"
+	echo -e "----------"
 	read -p "Deseja manter os arquivos originais? (Tecle <ENTER> para SIM) " RESOLVER
-	echo ""
 	if [ ! $RESOLVER = "" ]; then
 		logger "Usuário decidiu excluir arquivos originais"
 		for i in $(seq $QUANT_JOGADORES); do
@@ -410,7 +420,7 @@ enviarDesafiosCompactados () {
 # Função principal que recebe os desafios do usuário, valindando-os 
 # e salvando-os num array em sequência o problema é gerado 
 manejarEscolhaDesafios () {
-	echo -e "\n----------"
+	echo -e "----------"
 	echo "Vamos criar os desafios!"
 	echo "----------"
 
@@ -428,7 +438,8 @@ manejarEscolhaDesafios () {
 			echo "6: Descompilar binário e obter fonte Java"
 			echo "7: Descompilar binário e obter fonte Python"
 			echo "8: Esteganografia em imagens"
-			echo "Obs.: escolha 1 ou 2 problemas. Exibiremos uma mensagem de erro se a composição não existir."
+			echo "Obs.: escolha 1 ou 2 problemas. Exibiremos uma mensagem de erro"
+			echo "se a composição não existir."
 			echo "----------"
 
 			read -p "Informe o(s) problema(s) do desafio $i: " PROBLEMA1 PROBLEMA2
@@ -438,9 +449,57 @@ manejarEscolhaDesafios () {
 
 		echo "----------"
 		echo "Problema gerado!"
-		echo -e "----------\n"
+		echo -e "----------"
 	done
 
+}
+
+
+# função que verifica se usuário quer ativar o ngrok
+# caso alguma instância do ngrok já esteja ativa, o avisa que
+# todas as instâncias (exceto a desse script) serão fechadas 
+manejarAtivacaoNgrok () {
+	logger "Verificando se usuário quer iniciar o ngrok"
+	while true; do
+		echo -e "----------"
+		echo "Você deseja iniciar o ngrok para criar uma url de acesso a um túnel de rede seguro?"
+		echo "Essa url pode ser compartilhada para que os jogadores tenham acesso ao jogo"
+		echo "----------"
+		echo "Lista de opções: "
+		echo "1: Ativar ngrok"
+		echo "2: Não ativar o ngrok (finalizar o script)"
+		if pgrep -U $USER ngrok > /dev/null 2>&1 ; then
+			echo "Obs: Uma ou mais instâncias do ngrok já estão ativas no seu computador." 
+			echo "Se você optar por ativar o ngrok, as demais instâncias serão finalizadas."
+		fi
+		echo "----------"
+		read -p "Digite uma das opções acima: " OPCAO
+		echo "----------"
+		case $OPCAO in
+			1|2) break ;; 
+			*) echo -e "Opção inválida, digite novamente! " && sleep 1;;
+		esac 
+	done	
+	
+	if [ $OPCAO = "2" ]; then 
+		logger "Usuário decidiu não iniciar o ngrok: finalizando script"
+		echo "Script finalizado"
+		echo "----------"
+		return 0
+	fi 
+	logger "Usuário decidiu iniciar o ngrok"
+
+	if  pgrep -U $USER ngrok > /dev/null 2>&1 ; then 
+		logger "Outras instâncias do ngrok foram encontradas: finalizando-as"
+		killall -u $USER ngrok
+	fi
+
+	echo "Script finalizado"
+	echo "----------"
+	logger "Ativando ngrok"
+	logger "Script finalizado"
+	criarLog
+	exec ngrok http 80
 }
 
 # Início da execução das funções 
@@ -448,6 +507,9 @@ manejarEscolhaDesafios () {
 echo "----------"
 echo "Treasure Hunt!"
 echo "----------"
+
+# garantindo que o diretório de trabalho é o diretório do script
+cd $DIR_SCRIPT
 
 excluirLogger
 logger "Script iniciado"
@@ -497,6 +559,12 @@ enviarDesafiosCompactados
 # Se o seu mysql estiver com senha, altere aqui com --password
 sh ConfiguraBD.sh $QUANT_JOGADORES $QUANT_DESAFIOS | mysql --user=root
 logger "Banco de dados 'TreasureHunt' configurado"
+echo -e "Banco de dados configurado com sucesso"
+
+logger "Fim da criação da competição"
+echo -e "Fim da criação da Competição"
+
+manejarAtivacaoNgrok
 
 logger "Script finalizado"
 
