@@ -42,11 +42,11 @@ if (!isset($_SESSION['usuario'])) {
         <input type="radio" name="nav" id="contato">
         <input type="radio" name="nav" id="acessibilidade">
         <noscript>
-            <div class="jumbotron bg-dark col-sm-12 col-md-10 col-lg-12">
+            <div class="jumbotron bg-dark col-sm-12 col-md-10 col-lg-12" aria-atomic="true">
                 <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
             </div>
         </noscript>
-        <nav class="navbar navbar-expand-sm navbar-dark justify-content-center">
+        <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
             <input type="checkbox" name="collapse-btn" id="collapse-btn" role="button">
             <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
@@ -113,7 +113,7 @@ if (!isset($_SESSION['usuario'])) {
                         <form action="checkflag.php" method="POST" class="form-signin">
                             <h3>Submeta sua <i lang="en">flag</i>:</h3>
                             <label for="id-problema" class="sr-only">Informe o ID do problema</label>
-                            <input autocomplete="off" type="text" pattern="[0-9]{1,10}" inputmode="numeric" name="problema" id="id-problema" class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
+                            <input autocomplete="off" type="number" name="problema" id="id-problema" class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
                             <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span></label>
                             <input autocomplete="off" type="text" id="flag-interno" name="flag" class="form-control" placeholder="TreasureHunt{texto-aleatorio}" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Resposta encontrada no exercício.">
                             <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
@@ -303,10 +303,11 @@ if (!isset($_SESSION['usuario'])) {
                 </p> 
                 <p>
                     A equipe busca aprimorar a interface do <em lang="en">TreasureHunt</em> 
-                    para cumprir principalmente o nível A da <em lang="en">WCAG (Web Content Accessibility Guidelines)</em>, 
+                    para cumprir principalmente o nível A da <em lang="en">WCAG (Web Content Accessibility Guidelines,</em>
+                    Diretrizes de Acessibilidade para Conteúdo Web), 
                     bem como satisfazer o maior número possível de critérios dos níveis AA e AAA. 
                     Juntamente, busca-se conformidade com os padrões HTML e CSS da 
-                    <em lang="en">W3C (World Wide Web Consortium)</em>.
+                    <em lang="en">W3C (World Wide Web Consortium,</em> Consórcio da Rede Mundial de Internet).
                 </p>
                 <p>
                     A interface web conta com atalhos que possibilitam navegar pela barra de navegação 

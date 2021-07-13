@@ -234,7 +234,7 @@ label[for="contrast"] {
 
 footer {
     font-size: 0.7em;
-    padding: 0 32px 0 32px;
+    padding: 0 32px 10px 32px;
 }
 
 footer a {
@@ -466,7 +466,7 @@ input#acessibilidade:not(:checked)~#sobre-acessibilidade{
 #rank:not(:checked)~nav div ul li #rank-label .sr-only,
 #regras:not(:checked)~nav div ul li #regras-label .sr-only,
 #contato:not(:checked)~nav div ul li #contato-label .sr-only,
-#acessibilidade:not(checked)~nav div ul li #acessibilidade-label .sr-only{
+#acessibilidade:not(:checked)~nav div ul li #acessibilidade-label .sr-only{
     visibility: hidden;
 }
 
@@ -853,12 +853,9 @@ caption {
     .popup .contnt p {
         font-size: 0.9em;
     }
-    footer {
-        padding-bottom: 9em;
-    }
 }
 
-@media (max-width: 575px) {
+@media (max-width: 767px) {
     img.access-button {
         width: 20% !important;
     }

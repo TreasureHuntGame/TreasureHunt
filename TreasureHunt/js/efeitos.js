@@ -22,6 +22,7 @@ $(function() {
         set_keyboard_click(e);
     });
 
+    // adiciona clique pelo teclado no arquivo de desafios
     $('#arquivo').keydown(function(e) {
         set_keyboard_click(e);
     });
@@ -51,6 +52,14 @@ $(function() {
         set_keyboard_click(e);
     });
 
+    // Checa se a CookieBar existe, se sim, aumenta o padding bottom do footer para
+    // não cobrir nada na página.
+    var cookieBar = document.getElementById('cookie-bar');
+    if(cookieBar){
+        footer = document.getElementsByTagName('footer');
+        footer[0].style.padding = "0 32px 100px 32px"
+    }; 
+
     // cria o cookie de aceitação com valor true quando
     // "sim" é pressionado na cookie bar, 
     // em seguida exclui a cookie bar
@@ -73,6 +82,7 @@ $(function() {
                 $('#cookie-bar').remove();
                 $('#modal-privacy').remove();
                 $('body').removeAttr('style');
+                footer[0].style.padding = "0 32px 10px 32px";
             }, 800);
     });
 
@@ -88,6 +98,7 @@ $(function() {
                 $('#cookie-bar').remove();
                 $('#modal-privacy').remove();
                 $('body').removeAttr('style');
+                footer[0].style.padding = "0 32px 10px 32px";
             }, 800);
     });
 

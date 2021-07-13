@@ -35,11 +35,11 @@ header('Content-Type: text/html; charset=utf-8');
         <input type="radio" name="nav" id="contato" tabindex="-1" class="tab">
         <input type="radio" name="nav" id="acessibilidade" tabindex="-1" class="tab">
         <noscript>
-            <div class="jumbotron bg-dark col">
+            <div class="jumbotron bg-dark col" aria-atomic="true">
                 <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
             </div>
         </noscript>
-        <nav class="navbar navbar-expand-sm navbar-dark justify-content-center">
+        <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
             <input type="checkbox" name="collapse-btn" id="collapse-btn">
             <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
@@ -70,7 +70,7 @@ header('Content-Type: text/html; charset=utf-8');
             <form action="acesso.php" method="POST" class="form-signin" autocomplete="on">
                 <h3 class="h6">Autentique-se:</h3>
                 <label for="usuario" class="sr-only">Informe seu ID *</label>
-                <input type="text" name="usuario" id="usuario" pattern="[0-9]{1,10}" inputmode="numeric" autocomplete="username" class="form-control input-sm" placeholder="ID da conta (Exemplo: 1)" title="Credencial numérica atribuída a você." data-trigger="focus" data-offset="400" data-toggle="tooltip" data-placement="top" required>
+                <input type="number" name="usuario" id="usuario" class="form-control input-sm" placeholder="ID da conta (Exemplo: 1)" title="Credencial numérica atribuída a você." data-trigger="focus" data-offset="400" data-toggle="tooltip" data-placement="top" required>
                 <label for="senha" class="sr-only">Informe sua senha *</label>
                 <input type="password" id="senha" name="senha" class="form-control" autocomplete="current-password" placeholder="Informe sua senha" title="Senha fornecida junto à credencial." data-trigger="focus" data-toggle="tooltip"  data-offset="400" data-placement="top" required>
                 <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
@@ -158,10 +158,11 @@ header('Content-Type: text/html; charset=utf-8');
 	            </p> 
 	            <p>
 					A equipe busca aprimorar a interface do <em lang="en">TreasureHunt</em> 
-	            	para cumprir principalmente o nível A da <em lang="en">WCAG (Web Content Accessibility Guidelines)</em>, 
+	            	para cumprir principalmente o nível A da <em lang="en">WCAG (Web Content Accessibility Guidelines,</em>
+	            	Diretrizes de Acessibilidade para Conteúdo Web), 
 	            	bem como satisfazer o maior número possível de critérios dos níveis AA e AAA. 
 	            	Juntamente, busca-se conformidade com os padrões HTML e CSS da 
-	            	<em lang="en">W3C (World Wide Web Consortium)</em>.
+	            	<em lang="en">W3C (World Wide Web Consortium,</em> Consórcio da Rede Mundial de Internet).
 	            </p>
 	            <p>
 	            	A interface web conta com atalhos que possibilitam navegar pela barra de navegação 
@@ -184,7 +185,7 @@ header('Content-Type: text/html; charset=utf-8');
                 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons" target="_blank">
                     <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png">
                 <br>
-                <span>Esta obra está licenciada com uma Licença <span lang="en">Creative Commons</span> Atribuição-NãoComercial 4.0 Internacional</span> (Abre em nova janela).</a>
+                <span>Esta obra está licenciada com uma Licença <span lang="en">Creative Commons</span> Atribuição-NãoComercial 4.0 Internacional</span> (abre em nova janela).</a>
                 <p><span lang="en">©</span> 2017-<?php echo date("Y");?></p>
             </div>
         </footer>
