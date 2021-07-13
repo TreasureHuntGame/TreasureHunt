@@ -17,7 +17,7 @@ body {
     --success: #FFF;
     --input-box-shadow: rgba(108, 108, 108, .25);
     --input-focus-box-shadow: rgb(162, 163, 163);
-    --btn-dark-boxshadow: rgb(162, 163, 163);
+    --btn-boxshadow: rgb(162, 163, 163);
     --form-border-color: #2b2b2b;
     --input-hover: #23272B;
     --input-cor-fundo: #FFF;
@@ -124,7 +124,8 @@ input#contrast:checked~#page-wrapper button {
     box-shadow: 0 0 0 .2rem var(--c-input-box-shadow);
 }
 
-input#contrast:checked~#page-wrapper .btn-dark:focus {
+input#contrast:checked~#page-wrapper button:focus, 
+input#contrast:checked~#page-wrapper button:hover{
     box-shadow: 0 0 0 0.2rem var(--c-btn-dark-boxshadow) !important;
     border: 2px solid var(--c-cor-fundo) !important;
 }
@@ -133,7 +134,8 @@ input#contrast:checked~#page-wrapper input {
     box-shadow: 0 0 0 0.2rem var(--c-input-box-shadow);
 }
 
-input#contrast:checked~#page-wrapper .form-signin .form-control:focus{
+input#contrast:checked~#page-wrapper .form-signin .form-control:focus,
+input#contrast:checked~#page-wrapper .form-signin .form-control:hover{
     box-shadow: 0 0 0 .2rem var(--c-input-focus-box-shadow);
 }
 
@@ -147,7 +149,8 @@ input#contrast:checked~#page-wrapper #cookie-bar {
     border-top: 1px solid var(--c-cor-primaria) !important;
 }
 
-input#contrast:checked~#page-wrapper #cookie-bar .btn-primary:focus {
+input#contrast:checked~#page-wrapper #cookie-bar .btn-primary:focus,
+input#contrast:checked~#page-wrapper #cookie-bar .btn-primary:hover {
     box-shadow: 0 0 0 0.2rem var(--c-btn-boxshadow-cookies) !important;
     border: 2px solid var(--c-cor-fundo) !important;
 }
@@ -375,7 +378,7 @@ nav ul li {
 nav ul li label,
 nav ul li a {
     display: block;
-    font-size: 20px;
+    font-size: 1.25em;
     line-height: 60px;
     padding: 0 10px;
     text-decoration: none;
@@ -424,7 +427,8 @@ input#contrast,
 #main,
 #como-jogar,
 #contatos,
-#ranking {
+#ranking, 
+#sobre-acessibilidade{
     opacity: 0;
     height: 0;
     overflow: hidden;
@@ -434,7 +438,8 @@ input#contrast,
 input#inicio:checked~#main,
 input#rank:checked~#ranking,
 input#regras:checked~#como-jogar,
-input#contato:checked~#contatos {
+input#contato:checked~#contatos,
+input#acessibilidade:checked~#sobre-acessibilidade{
     opacity: 1;
     height: auto;
     
@@ -443,7 +448,8 @@ input#contato:checked~#contatos {
 input#inicio:not(:checked)~#main,
 input#rank:not(:checked)~#ranking,
 input#regras:not(:checked)~#como-jogar,
-input#contato:not(:checked)~#contatos {
+input#contato:not(:checked)~#contatos, 
+input#acessibilidade:not(:checked)~#sobre-acessibilidade{
     background-color: transparent !important;
     visibility: hidden;
 }
@@ -451,14 +457,16 @@ input#contato:not(:checked)~#contatos {
 #inicio:checked~nav div ul li #inicio-label,
 #rank:checked~nav div ul li #rank-label,
 #regras:checked~nav div ul li #regras-label,
-#contato:checked~nav div ul li #contato-label {
+#contato:checked~nav div ul li #contato-label,
+#acessibilidade:checked~nav div ul li #acessibilidade-label{
     font-weight: bold;
 }
 
 #inicio:not(:checked)~nav div ul li #inicio-label .sr-only,
 #rank:not(:checked)~nav div ul li #rank-label .sr-only,
 #regras:not(:checked)~nav div ul li #regras-label .sr-only,
-#contato:not(:checked)~nav div ul li #contato-label .sr-only {
+#contato:not(:checked)~nav div ul li #contato-label .sr-only,
+#acessibilidade:not(checked)~nav div ul li #acessibilidade-label .sr-only{
     visibility: hidden;
 }
 
@@ -481,9 +489,9 @@ input#contato:not(:checked)~#contatos {
 input {
     min-width: 70px !important;
     max-width: 99.99% !important;
-    margin: 0 0 3px 0;
+    margin: 0 0 5px 0;
     transition: width 0.25s;
-    height: 20px;
+    height: 1.25em;
     text-align: center;
     font-family: 'Muli', sans-serif;
     border-radius: 1px;
@@ -528,6 +536,12 @@ button {
     width: 100px;
     background-color: var(--cor-fundo) !important;
     color: var(--cor-primaria) !important;
+    height: 45px;
+}
+
+button:focus, 
+button:hover {
+    box-shadow: 0 0 0 0.2rem var(--btn-boxshadow) !important;
 }
 
 button.navbar-toggler {
@@ -619,13 +633,34 @@ address a{
     box-shadow: 0 0 0 .2rem var(--input-focus-box-shadow);
 }
 
- .btn-dark:focus {
-    box-shadow: 0 0 0 0.2rem var(--btn-dark-boxshadow);
+#lista-de-regras .btn-dark {
+    box-shadow: 0 0 0 0.2rem var(--btn-boxshadow);
+    margin: 5px 5px 5px 5px;
+    height: 35px;
 }
 
-#lista-de-regras .btn-dark {
-    box-shadow: 0 0 0 0.2rem var(--btn-dark-boxshadow);
-    margin: 5px 5px 5px 5px;
+#sobre-acessibilidade .acess-conteudo{ 
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+}
+
+#sobre-acessibilidade .acess-conteudo p{
+    padding: 0 0 20px 0; 
+}
+
+#accesskey-span{
+    display: block;
+    margin-bottom: 1em;
+}
+
+#acceskey-ul{
+    display: inline-block;
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0.5em;
+    
 }
 
 .form-signin input[type="number"],
@@ -756,7 +791,7 @@ caption {
     right: 20px;
     opacity: 0.8;
     transition: all 200ms;
-    font-size: 24px;
+    font-size: 1.5em;
     font-weight: bold;
     text-decoration: none;
     color: #666; 
@@ -779,11 +814,12 @@ caption {
     right: 20px;
     opacity: 0.8;
     transition: all 200ms;
-    font-size: 24px;
+    font-size: 1.5em;
     font-weight: bold;
     text-decoration: none;
     color: #666;
 }
+
 
 .close:hover {
     opacity: 1;
@@ -816,6 +852,9 @@ caption {
     }
     .popup .contnt p {
         font-size: 0.9em;
+    }
+    footer {
+        padding-bottom: 9em;
     }
 }
 
@@ -937,9 +976,17 @@ caption {
     #como-jogar .jumbotron {
         padding-bottom: 1.3em;
     }
-    #como-jogar ul li {
+    #como-jogar ul li{
         margin-bottom: 15px;
     }
+    /* página accesibilidade */
+    #sobre-acessibilidade ul li{
+        margin-bottom: 15px;
+    }
+    .acess-conteudo{
+        font-size: 0.95em;
+    }
+
     /* home */
     #jumbotron-home-title {
         padding-bottom: 0.9em;

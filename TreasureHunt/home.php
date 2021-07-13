@@ -40,6 +40,7 @@ if (!isset($_SESSION['usuario'])) {
         <input type="radio" name="nav" id="rank">
         <input type="radio" name="nav" id="regras">
         <input type="radio" name="nav" id="contato">
+        <input type="radio" name="nav" id="acessibilidade">
         <noscript>
             <div class="jumbotron bg-dark col-sm-12 col-md-10 col-lg-12">
                 <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
@@ -54,8 +55,9 @@ if (!isset($_SESSION['usuario'])) {
                     <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0" accesskey="p"><span class="sr-only">Página atual:</span>Placar</label></li>
                     <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" accesskey="j"><span class="sr-only">Página atual:</span>Como Jogar?</label></li>
                     <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" accesskey="c"><span class="sr-only">Página atual:</span>Contato</label></li>
+                    <li class="nav-item"><label id="acessibilidade-label" class="label-link" for="acessibilidade" tabindex="0" accesskey="s"><span class="sr-only">Página atual:</span>Acessibilidade</label></li>
                     <li class="nav-item">
-                        <a id="logout" accesskey="l" href="logout.php" class="mostrar">Logout</a>
+                        <a id="logout" accesskey="l" href="logout.php" class="mostrar" lang="en">Logout</a>
                     </li>
                 </ul>
             </div>
@@ -63,7 +65,7 @@ if (!isset($_SESSION['usuario'])) {
                 <li>
                     <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
                         <span id="botao-contraste" title="Recurso de alto contraste"></span>
-                        <span class="sr-only">Botão para ativar recurso de alto contraste</span>
+                        <span class="sr-only">Botão para ativar e desativar recurso de alto contraste</span>
                     </label>
                 </li>
             </ul>
@@ -111,28 +113,28 @@ if (!isset($_SESSION['usuario'])) {
                         <form action="checkflag.php" method="POST" class="form-signin">
                             <h3>Submeta sua <i lang="en">flag</i>:</h3>
                             <label for="id-problema" class="sr-only">Informe o ID do problema</label>
-                            <input type="number" min="1" name="problema" id="id-problema" class="form-control input-sm" placeholder="Informe o ID do problema" required data-trigger="hover" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
+                            <input autocomplete="off" type="text" pattern="[0-9]{1,10}" inputmode="numeric" name="problema" id="id-problema" class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
                             <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span></label>
-                            <input type="text" id="flag-interno" name="flag" class="form-control" placeholder="Informe a flag" required data-trigger="hover" data-toggle="tooltip" data-placement="top" title="Resposta encontrada.">
+                            <input autocomplete="off" type="text" id="flag-interno" name="flag" class="form-control" placeholder="TreasureHunt{texto-aleatorio}" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Resposta encontrada no exercício.">
                             <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                             <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
                             <?php
                             if (isset($_GET['message'])) {
                                 switch ($_GET['message']) {
                                     case 'erro':
-                                        echo '<div class="alert alert-danger" role="alert"> Errou! Verifique se a resposta informada não contém espaço ou outros caracteres adicionais.</div>';
+                                        echo '<div class="alert alert-danger" role="alert" aria-atomic="true"> Errou! Verifique se a resposta informada não contém espaço ou outros caracteres adicionais.</div>';
                                         break;
                                     case 'duplicada':
-                                        echo '<div class="alert alert-danger" role="alert"> Você já acertou a questão ' . $_GET['id'] . '! Verifique o ID do problema.</div>';
+                                        echo '<div class="alert alert-danger" role="alert" aria-atomic="true"> Você já acertou a questão ' . $_GET['id'] . '! Verifique o ID do problema.</div>';
                                         break;
                                     case 'formato':
-                                        echo '<div class="alert alert-danger" role="alert"> Errou! Considere submeter a flag no seguinte formato: TreasureHunt{texto-aleatório}.</div>';
+                                        echo '<div class="alert alert-danger" role="alert" aria-atomic="true"> Errou! Considere submeter a flag no seguinte formato: TreasureHunt{texto-aleatório}.</div>';
                                         break;
                                     case 'id_invalido':
-                                        echo '<div class="alert alert-danger" role="alert"> Problema com ID inválido! Verifique a numeração dos diretórios recebidos.</div>';
+                                        echo '<div class="alert alert-danger" role="alert" aria-atomic="true"> Problema com ID inválido! Verifique a numeração dos diretórios recebidos.</div>';
                                         break;
                                     case 'acertou':
-                                        echo '<div class="alert alert-success" role="alert">Acertou! ' . $_GET['acertos'] . '/' . $_GET['total'] . '</div>';
+                                        echo '<div class="alert alert-success" role="alert" aria-atomic="true">Acertou! ' . $_GET['acertos'] . '/' . $_GET['total'] . '</div>';
                                         break;
                                 }
                             }
@@ -289,6 +291,39 @@ if (!isset($_SESSION['usuario'])) {
 
             </address>
         </div>
+        <div id="sobre-acessibilidade">
+            <div class="jumbotron bg-dark">
+                <h2 class="font-weight-bold page-title">Acessibilidade<span class="destaque">!</span></h2>
+            </div>
+            <div class="acess-conteudo">
+                <p> 
+                    A interface do TreasureHunt foi desenvolvida para ser acessível e fácil de usar para o maior 
+                    número possível de usuários. Para isso, a equipe realiza um trabalho contínuo de atualizações 
+                    e melhorias, utilizando como base diretrizes e recomendações de acessibilidade.
+                </p> 
+                <p>
+                    A equipe busca aprimorar a interface do <em lang="en">TreasureHunt</em> 
+                    para cumprir principalmente o nível A da <em lang="en">WCAG (Web Content Accessibility Guidelines)</em>, 
+                    bem como satisfazer o maior número possível de critérios dos níveis AA e AAA. 
+                    Juntamente, busca-se conformidade com os padrões HTML e CSS da 
+                    <em lang="en">W3C (World Wide Web Consortium)</em>.
+                </p>
+                <p>
+                    A interface web conta com atalhos que possibilitam navegar pela barra de navegação 
+                    e ativar o modo de alto contraste pelo teclado. Os atalhos são:
+                </p>
+                <ul id="acceskey-ul">
+                    <li><span class="prompt"></span><span>Alt + A: ativa o modo de alto contraste </span></li>
+                    <li><span class="prompt"></span><span>Alt + I: leva para a página: “Inicío”</span></li>
+                    <li><span class="prompt"></span><span>Alt + J: leva para a página: “Como jogar?”</span></li>
+                    <li><span class="prompt"></span><span>Alt + C: leva para a página: “Contatos”</span></li>
+                    <li><span class="prompt"></span><span>Alt + S: leva para a página: “Acessibilidade”</span></li>
+                    <li><span class="prompt"></span><span>Alt + P: leva para página: “Placar” (exige autenticação)</span></li>
+                    <li><span class="prompt"></span><span>Alt + L: Faz o logout (exige autenticação)</span></li>
+                </ul>
+                <span id="accesskey-span">Se estiver usando o <em lang="en">Firefox</em>, pressione Shift + Alt + “tecla de atalho”.</span>
+            </div>  
+        </div>
         <footer class="page-footer font-small">
             <div class="col">
                 <div class="footer-copyright">
@@ -312,10 +347,10 @@ if (!isset($_SESSION['usuario'])) {
              </div>
              <div class="col-lg-5 col-sm-12 ml-auto">
              <label for="hide-cookie-bar">
-             <a class="btn btn-primary" id="cookie-yes" tabindex="0" role="button">Sim</a>
-             <a class="btn btn-primary" id="cookie-no" tabindex="0" role="button">Não</a>
+             <a class="btn btn-primary" id="cookie-yes" tabindex="0" role="button" title="Aceitar uso de cookie para armazenamento de preferências e termos de privacidade">Sim</a>
+             <a class="btn btn-primary" id="cookie-no" tabindex="0" role="button" title="Rejeitar uso de cookie para armazenamento de preferências e termos de privacidade">Não</a>
              </label>
-             <a href="#modal-privacy" id="open-modal-btn" class="btn btn-primary">Detalhes</a>
+             <a href="#modal-privacy" id="open-modal-btn" class="btn btn-primary" title="Acessar termos de privacidade">Detalhes</a>
              </div>
              </div>
              </div>';
@@ -323,18 +358,30 @@ if (!isset($_SESSION['usuario'])) {
             echo '<div id="modal-privacy" class="overlay noscript" role="dialog" tabindex="-1" aria-labelledby="dialog_label">
                 <div class="popup">
                     <h2 id="dialog_label">Valorizamos sua privacidade</h2>
-                    <a class="close" id="close-modal" href="#open-modal-btn" role="button" aria-label="Fechar">
+                    <a class="close" id="close-modal" href="#open-modal-btn" role="button" title="fechar janela de detalhes" aria-label="Fechar">
                         <span aria-hidden="true">&times;</span>
                     </a>
                     <div class="contnt" tabindex="0">
                         <p>                            
-                            Este site utiliza cookies para melhorar a experiência de navegação do usuário ao salvar sua preferência de contraste. A preferência será salva somente se você clicar em "Sim". Essa informação visa a melhorar a acessibilidade do website por pessoas com baixa visibilidade, que, dessa forma, não precisam reativar essa opção em um acesso futuro. Esse cookie é mantido por 30 dias.
+                            Este site utiliza cookies para melhorar a experiência de 
+                            navegação do usuário ao salvar sua preferência de contraste. 
+                            A preferência será salva somente se você clicar em "Sim". 
+                            Essa informação visa a melhorar a acessibilidade do website
+                            por pessoas com baixa visibilidade, que, dessa forma, 
+                            não precisam reativar essa opção em um acesso futuro.
+                            Esse cookie é mantido por 30 dias.
                         </p>
                         <p>
-                            A identidade dos competidores é preservada durante as competições do TreasureHunt, pois cada indivíduo é identificado por um número. Apenas o pesquisador responsável terá acesso aos dados brutos, sem qualquer identificação ou correlação nominal dos participantes.
+                            A identidade dos competidores é preservada durante as competições 
+                            do TreasureHunt, pois cada indivíduo é identificado por um número. 
+                            Apenas o pesquisador responsável terá acesso aos dados brutos,
+                            sem qualquer identificação ou correlação nominal dos participantes.
                         </p>
                         <p>
-                            Ressalta-se que o único dado sensível que a ferramenta recolhe é o endereço IP de quem a acessa, pois ele é utilizado para garantir a integridade da competição e identificar eventuais ataques e tentativas de trapaça.
+                            Ressalta-se que o único dado sensível que a ferramenta recolhe é 
+                            o endereço IP de quem a acessa, pois ele é utilizado para garantir 
+                            a integridade da competição e identificar eventuais ataques e 
+                            tentativas de trapaça.
                         </p>
                     </div>
                 </div>

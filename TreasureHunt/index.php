@@ -33,13 +33,14 @@ header('Content-Type: text/html; charset=utf-8');
         <input type="radio" name="nav" id="inicio" checked tabindex="-1" class="tab">
         <input type="radio" name="nav" id="regras" tabindex="-1" class="tab">
         <input type="radio" name="nav" id="contato" tabindex="-1" class="tab">
+        <input type="radio" name="nav" id="acessibilidade" tabindex="-1" class="tab">
         <noscript>
             <div class="jumbotron bg-dark col">
                 <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
             </div>
         </noscript>
         <nav class="navbar navbar-expand-sm navbar-dark justify-content-center">
-            <input type="checkbox" name="collapse-btn" id="collapse-btn" role="button">
+            <input type="checkbox" name="collapse-btn" id="collapse-btn">
             <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
                 <ul class="navbar-nav mx-auto">
@@ -47,13 +48,14 @@ header('Content-Type: text/html; charset=utf-8');
                     </label></li>
                     <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" accesskey="j"><span class="sr-only">Página atual:</span>Como Jogar?</label></li>
                     <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" accesskey="c"><span class="sr-only">Página atual:</span>Contato</label></li>
+                    <li class="nav-item"><label id="acessibilidade-label" class="label-link" for="acessibilidade" tabindex="0" accesskey="s"><span class="sr-only">Página atual:</span>Acessibilidade</label></li>
                 </ul>
             </div>
             <ul class="navbar-nav ml-auto" id="contrast-container" role="presentation">
                 <li>
                     <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
                         <span id="botao-contraste" title="Recurso de alto contraste"></span>
-                        <span class="sr-only">Botão para ativar recurso de alto contraste</span>
+                        <span class="sr-only">Botão para ativar e desativar recurso de alto contraste</span>
                     </label>
                 </li>
             </ul>
@@ -65,22 +67,22 @@ header('Content-Type: text/html; charset=utf-8');
                 </h1>
                 <h2 id="subtitulo-index">Um jogo para testar suas habilidades em Segurança Computacional. <span class="smile destaque" aria-hidden="true"></span></h2>
             </div>
-            <form action="acesso.php" method="POST" class="form-signin">
-                <label>Autentique-se:</label>
+            <form action="acesso.php" method="POST" class="form-signin" autocomplete="on">
+                <h3 class="h6">Autentique-se:</h3>
                 <label for="usuario" class="sr-only">Informe seu ID *</label>
-                <input type="number" min="1" name="usuario" id="usuario" class="form-control input-sm" placeholder="Informe seu ID" title="Credencial numérica atribuída a você." data-trigger="hover" data-toggle="tooltip" data-placement="top" required>
+                <input type="text" name="usuario" id="usuario" pattern="[0-9]{1,10}" inputmode="numeric" autocomplete="username" class="form-control input-sm" placeholder="ID da conta (Exemplo: 1)" title="Credencial numérica atribuída a você." data-trigger="focus" data-offset="400" data-toggle="tooltip" data-placement="top" required>
                 <label for="senha" class="sr-only">Informe sua senha *</label>
-                <input type="password" id="senha" name="senha" class="form-control" placeholder="Informe sua senha" title="Senha fornecida junto à credencial." data-trigger="hover" data-toggle="tooltip" data-placement="top" required>
+                <input type="password" id="senha" name="senha" class="form-control" autocomplete="current-password" placeholder="Informe sua senha" title="Senha fornecida junto à credencial." data-trigger="focus" data-toggle="tooltip"  data-offset="400" data-placement="top" required>
                 <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                 <button class="btn btn-dark btn-block" type="submit" name="enviar">Entrar</button>
                 <?php
                 if (isset($_GET['message'])) {
                     switch ($_GET['message']) {
                         case 'passwd_error':
-                            echo '<div class="alert alert-danger login" role="alert"> Senha incorreta ou não informada! Verifique se a senha não foi alterada recentemente e se as teclas Caps Lock e Num Lock estão ativadas.</div>';
+                            echo '<div class="alert alert-danger login" role="alert" aria-atomic="true"> Senha incorreta ou não informada! Verifique se a senha não foi alterada recentemente e se as teclas Caps Lock e Num Lock estão ativadas.</div>';
                             break;
                         case 'user_error':
-                            echo '<div class="alert alert-danger login" role="alert"> Usuário incorreto ou não informado! Verifique se o identificador foi digitado corretamente.</div>';
+                            echo '<div class="alert alert-danger login" role="alert" aria-atomic="true"> Usuário incorreto ou não informado! Verifique se o identificador foi digitado corretamente.</div>';
                             break;
                     }
                 }
@@ -144,6 +146,39 @@ header('Content-Type: text/html; charset=utf-8');
 
             </address>
         </div>
+        <div id="sobre-acessibilidade">
+        	<div class="jumbotron bg-dark">
+            	<h2 class="font-weight-bold page-title">Acessibilidade<span class="destaque">!</span></h2>
+            </div>
+            <div class="acess-conteudo">
+	            <p> 
+	            	A interface do TreasureHunt foi desenvolvida para ser acessível e fácil de usar para o maior 
+	            	número possível de usuários. Para isso, a equipe realiza um trabalho contínuo de atualizações 
+	            	e melhorias, utilizando como base diretrizes e recomendações de acessibilidade.
+	            </p> 
+	            <p>
+					A equipe busca aprimorar a interface do <em lang="en">TreasureHunt</em> 
+	            	para cumprir principalmente o nível A da <em lang="en">WCAG (Web Content Accessibility Guidelines)</em>, 
+	            	bem como satisfazer o maior número possível de critérios dos níveis AA e AAA. 
+	            	Juntamente, busca-se conformidade com os padrões HTML e CSS da 
+	            	<em lang="en">W3C (World Wide Web Consortium)</em>.
+	            </p>
+	            <p>
+	            	A interface web conta com atalhos que possibilitam navegar pela barra de navegação 
+	            	e ativar o modo de alto contraste pelo teclado. Os atalhos são:
+	            </p>
+	            <ul id="acceskey-ul">
+	            	<li><span class="prompt"></span><span>Alt + A: ativa o modo de alto contraste </span></li>
+	            	<li><span class="prompt"></span><span>Alt + I: leva para a página: “Inicío”</span></li>
+	            	<li><span class="prompt"></span><span>Alt + J: leva para a página: “Como jogar?”</span></li>
+	            	<li><span class="prompt"></span><span>Alt + C: leva para a página: “Contatos”</span></li>
+	            	<li><span class="prompt"></span><span>Alt + S: leva para a página: “Acessibilidade”</span></li>
+	            	<li><span class="prompt"></span><span>Alt + P: leva para página: “Placar” (exige autenticação)</span></li>
+	            	<li><span class="prompt"></span><span>Alt + L: Faz o <em lang="en">logout</em> (exige autenticação)</span></li>
+	            </ul>
+	            <span id="accesskey-span">Se estiver usando o <em lang="en">Firefox</em>, pressione Shift + Alt + “tecla de atalho”.</span>
+        	</div>  
+        </div>
         <footer class="page-footer font-small">
             <div class="footer-copyright">
                 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons" target="_blank">
@@ -165,10 +200,10 @@ header('Content-Type: text/html; charset=utf-8');
              </div>
              <div class="col-lg-5 col-sm-12 ml-auto">
              <label for="hide-cookie-bar">
-             <a class="btn btn-primary" id="cookie-yes" tabindex="0" role="button">Sim</a>
-             <a class="btn btn-primary" id="cookie-no" tabindex="0" role="button">Não</a>
+             <a class="btn btn-primary" id="cookie-yes" tabindex="0" role="button" title="Aceitar uso de cookie para armazenamento de preferências e termos de privacidade">Sim</a>
+             <a class="btn btn-primary" id="cookie-no" tabindex="0" role="button" title="Rejeitar uso de cookie para armazenamento de preferências e termos de privacidade">Não</a>
              </label>
-             <a href="#modal-privacy" id="open-modal-btn" class="btn btn-primary">Detalhes</a>
+             <a href="#modal-privacy" id="open-modal-btn" class="btn btn-primary" title="Acessar termos de privacidade">Detalhes</a>
              </div>
              </div>
              </div>';
@@ -176,18 +211,30 @@ header('Content-Type: text/html; charset=utf-8');
             echo '<div id="modal-privacy" class="overlay noscript" role="dialog" tabindex="-1" aria-labelledby="dialog_label">
                 <div class="popup"> 
                     <h2 id="dialog_label">Valorizamos sua privacidade</h2>
-                    <a class="close" id="close-modal" href="#open-modal-btn" role="button" aria-label="Fechar">
+                    <a class="close" id="close-modal" href="#open-modal-btn" role="button" title="fechar janela de detalhes" aria-label="Fechar">
                     	<span aria-hidden="true">&times;</span>
                     </a>
                     <div class="contnt" tabindex="0">
                         <p>                            
-                            Este site utiliza cookies para melhorar a experiência de navegação do usuário ao salvar sua preferência de contraste. A preferência será salva somente se você clicar em "Sim". Essa informação visa a melhorar a acessibilidade do website por pessoas com baixa visibilidade, que, dessa forma, não precisam reativar essa opção em um acesso futuro. Esse cookie é mantido por 30 dias.
+                            Este site utiliza cookies para melhorar a experiência de 
+                            navegação do usuário ao salvar sua preferência de contraste. 
+                            A preferência será salva somente se você clicar em "Sim". 
+                            Essa informação visa a melhorar a acessibilidade do website
+                            por pessoas com baixa visibilidade, que, dessa forma, 
+                            não precisam reativar essa opção em um acesso futuro.
+                            Esse cookie é mantido por 30 dias.
                         </p>
                         <p>
-                            A identidade dos competidores é preservada durante as competições do TreasureHunt, pois cada indivíduo é identificado por um número. Apenas o pesquisador responsável terá acesso aos dados brutos, sem qualquer identificação ou correlação nominal dos participantes.
+                            A identidade dos competidores é preservada durante as competições 
+                            do TreasureHunt, pois cada indivíduo é identificado por um número. 
+                            Apenas o pesquisador responsável terá acesso aos dados brutos,
+                            sem qualquer identificação ou correlação nominal dos participantes.
                         </p>
                         <p>
-                            Ressalta-se que o único dado sensível que a ferramenta recolhe é o endereço IP de quem a acessa, pois ele é utilizado para garantir a integridade da competição e identificar eventuais ataques e tentativas de trapaça.
+                            Ressalta-se que o único dado sensível que a ferramenta recolhe é 
+                            o endereço IP de quem a acessa, pois ele é utilizado para garantir 
+                            a integridade da competição e identificar eventuais ataques e 
+                            tentativas de trapaça.
                         </p>
                     </div>
                 </div>

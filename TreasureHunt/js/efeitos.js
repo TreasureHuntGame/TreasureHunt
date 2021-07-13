@@ -74,7 +74,7 @@ $(function() {
                 $('#modal-privacy').remove();
                 $('body').removeAttr('style');
             }, 800);
-    })
+    });
 
     // cria o cookie de aceitação com valor false quando
     // "não" é pressionado na cookie bar, 
@@ -89,7 +89,7 @@ $(function() {
                 $('#modal-privacy').remove();
                 $('body').removeAttr('style');
             }, 800);
-    })
+    });
 
     // se o cookie de aceitação tiver valor true ele salva a preferência de 
     // alto contraste no cookie 'contrast'  
@@ -122,6 +122,35 @@ $(function() {
     $('#close-modal').click(function(e) {
         $('body, html').removeClass('disable-scroll');
     });
+
+    var msg = getQueryParam('message');
+    if (msg != false) {
+        var input;
+
+        switch (msg) {
+            case 'user_error':
+                input = $('#usuario');
+                break;
+            case 'passwd_error':
+                input = $('#senha');
+                break;
+            case 'erro':
+                input = $('#flag-interno');
+                break;
+            case 'duplicada':
+                input = $('#id-problema');
+                break;
+            case 'formato':
+                input = $('#flag-interno');
+                break;
+            case 'id_invalido':
+                input = $('#id-problema');
+                break
+            default:
+                break;
+        }
+        input.addClass('field-error');
+    };
 
     // função que faz um loop dos elementos focáveis de um modal,
     // prendendo o foco do usuário dentro do modal em questão.
@@ -255,5 +284,25 @@ $(function() {
         })
     }
 
+    // exclui o tooltip quando o esc é pressionado
+    // isso é usado para cumprir o critério 1.4.13 da WCAG
+    $(document).keyup(function(event) {
+        if (event.which === 27) {
+            $('#usuario').tooltip('hide');
+            $('#senha').tooltip('hide');
+            $('#id-problema').tooltip('hide');
+            $('#flag-interno').tooltip('hide');
+        }
+    });
+
+    // função que procura por um query param e o retorna se encontrar
+    // recebe: nome do query param a ser procurado
+    // retorna: valor do query param ou false se não achar
+    function getQueryParam(name) {
+        var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+            .exec(window.location.search);
+
+        return (results !== null) ? results[1] || 0 : false;
+    }
 
 });
