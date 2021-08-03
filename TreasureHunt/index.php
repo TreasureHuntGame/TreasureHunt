@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -42,7 +43,11 @@ header('Content-Type: text/html; charset=utf-8');
         <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
             <input type="checkbox" name="collapse-btn" id="collapse-btn">
             <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
+            
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
+                <a class="navbar-brand nav-item" href="home.php">
+                    <img src="img/logo.svg" alt="TreasureHunt logo" id="img-logo">
+                </a>
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0" accesskey="i"><span class="sr-only">Página atual:</span>Início
                     </label></li>
@@ -65,7 +70,7 @@ header('Content-Type: text/html; charset=utf-8');
                 <h1 class="font-weight-bold" id="titulo-index" lang="en">
                     TreasureHunt<span id="espaco"> </span><span class="destaque chaves-left" aria-hidden="true"></span>Security<span class="destaque chaves-right" aria-hidden="true"></span>
                 </h1>
-                <h2 id="subtitulo-index">Um jogo para testar suas habilidades em Segurança Computacional. <span class="smile destaque" aria-hidden="true"></span></h2>
+                <h2 class="subtitulo">Um jogo para testar suas habilidades em Segurança Computacional. <span class="smile destaque" aria-hidden="true"></span></h2>
             </div>
             <form action="acesso.php" method="POST" class="form-signin" autocomplete="on">
                 <h3 class="h6">Autentique-se:</h3>
@@ -189,7 +194,7 @@ header('Content-Type: text/html; charset=utf-8');
                 <p><span lang="en">©</span> 2017-<?php echo date("Y");?></p>
             </div>
         </footer>
-
+       
         <?php
         if (!(isset($_COOKIE['cookie_notice_accepted']))) {
             echo '<input type="checkbox" name="hide-cookie-bar" id="hide-cookie-bar">

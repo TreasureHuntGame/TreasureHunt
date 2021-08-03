@@ -42,6 +42,10 @@ body {
     --c-input-cor-placeholder: #495057;
 }
 
+#img-logo {
+    width: 3.8em;
+}
+
 input#contrast:checked~#page-wrapper {
     color: var(--c-cor-primaria) !important;
     background-color: var(--c-cor-fundo) !important;
@@ -179,7 +183,7 @@ h3 {
     font-size: 1.2em;
 }
 
-#subtitulo-index {
+.subtitulo {
     font-size: 1.2em;
 }
 
@@ -855,7 +859,17 @@ caption {
     }
 }
 
+@media (max-width: 814px) {
+    nav ul li label {
+        padding: 0 5px;
+    }
+    
+}
+
 @media (max-width: 767px) {
+    .navbar-brand {
+        padding: 15px 0;
+    }
     img.access-button {
         width: 20% !important;
     }
@@ -870,7 +884,7 @@ caption {
         margin: 0 auto !important;
     }
     input#collapse-btn:checked~#collapsibleNavbar {
-        max-height: 400px;
+        max-height: 450px;
         visibility: visible;
     }
     label[for="collapse-btn"] {

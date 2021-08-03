@@ -18,7 +18,8 @@ if (!isset($_SESSION['usuario'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="TreasureHunt, um Jogo de Caça ao Tesouro de Segurança Computacional">
-    <meta name="keywords" content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
+    <meta name="keywords"
+        content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
     <meta name="author" content="Ricardo de la Rocha Ladeira">
     <title>Home -- TreasureHunt{Security}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -47,15 +48,25 @@ if (!isset($_SESSION['usuario'])) {
             </div>
         </noscript>
         <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
-            <input type="checkbox" name="collapse-btn" id="collapse-btn" role="button">
-            <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
+            <input type="checkbox" name="collapse-btn" id="collapse-btn">
+            <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span
+                        class="sr-only">Expandir menu de navegação</span></span></label>
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
+                <a class="navbar-brand nav-item" href="home.php">
+                    <img src="img/logo.svg" alt="TreasureHunt logo" id="img-logo">
+                </a>
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0" accesskey="i"><span class="sr-only">Página atual:</span>Início</label></li>
-                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0" accesskey="p"><span class="sr-only">Página atual:</span>Placar</label></li>
-                    <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" accesskey="j"><span class="sr-only">Página atual:</span>Como Jogar?</label></li>
-                    <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" accesskey="c"><span class="sr-only">Página atual:</span>Contato</label></li>
-                    <li class="nav-item"><label id="acessibilidade-label" class="label-link" for="acessibilidade" tabindex="0" accesskey="s"><span class="sr-only">Página atual:</span>Acessibilidade</label></li>
+                    <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0"
+                            accesskey="i"><span class="sr-only">Página atual:</span>Início</label></li>
+                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0"
+                            accesskey="p"><span class="sr-only">Página atual:</span>Placar</label></li>
+                    <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0"
+                            accesskey="j"><span class="sr-only">Página atual:</span>Como Jogar?</label></li>
+                    <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0"
+                            accesskey="c"><span class="sr-only">Página atual:</span>Contato</label></li>
+                    <li class="nav-item"><label id="acessibilidade-label" class="label-link" for="acessibilidade"
+                            tabindex="0" accesskey="s"><span class="sr-only">Página atual:</span>Acessibilidade</label>
+                    </li>
                     <li class="nav-item">
                         <a id="logout" accesskey="l" href="logout.php" class="mostrar" lang="en">Logout</a>
                     </li>
@@ -63,7 +74,10 @@ if (!isset($_SESSION['usuario'])) {
             </div>
             <ul class="navbar-nav ml-auto" id="contrast-container" role="presentation">
                 <li>
-                    <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
+                    <label for="contrast" id="contrast-label"
+                        class="form-inline justify-content-end label-link contrast-label" tabindex="0"
+                        data-toggle="tooltip" data-trigger="hover" data-placement="bottom"
+                        title="Recurso de alto contraste" accesskey="a">
                         <span id="botao-contraste" title="Recurso de alto contraste"></span>
                         <span class="sr-only">Botão para ativar e desativar recurso de alto contraste</span>
                     </label>
@@ -80,7 +94,8 @@ if (!isset($_SESSION['usuario'])) {
                         <h3>Seus dados:</h3>
                         <div>
                             <label class="font-weight-bold">ID:</label>
-                            <span data-toggle="tooltip" data-placement="bottom" title="Número que identifica cada jogador.">
+                            <span data-toggle="tooltip" data-placement="bottom"
+                                title="Número que identifica cada jogador.">
                                 <?php
                                 $usuario = $_SESSION['usuario'];
                                 echo $usuario
@@ -89,7 +104,8 @@ if (!isset($_SESSION['usuario'])) {
                         </div>
                         <div>
                             <label class="font-weight-bold">Arquivo:</label>
-                            <span data-toggle="tooltip" data-placement="bottom" title="Arquivo que contém os exercícios!">
+                            <span data-toggle="tooltip" data-placement="bottom"
+                                title="Arquivo que contém os exercícios!">
                                 <a id="arquivo" href="<?php print_r("Desafios/Jogador" . $usuario . ".zip") ?>">
                                     <?php
                                     function formatBytes($size, $precision = 2)
@@ -113,9 +129,15 @@ if (!isset($_SESSION['usuario'])) {
                         <form action="checkflag.php" method="POST" class="form-signin">
                             <h3>Submeta sua <i lang="en">flag</i>:</h3>
                             <label for="id-problema" class="sr-only">Informe o ID do problema</label>
-                            <input autocomplete="off" type="number" name="problema" id="id-problema" class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
+                            <input autocomplete="off" type="number" name="problema" id="id-problema"
+                                class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required
+                                data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top"
+                                title="Número do diretório cujo exercício foi resolvido.">
                             <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span></label>
-                            <input autocomplete="off" type="text" id="flag-interno" name="flag" class="form-control" placeholder="TreasureHunt{texto-aleatorio}" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Resposta encontrada no exercício.">
+                            <input autocomplete="off" type="text" id="flag-interno" name="flag" class="form-control"
+                                placeholder="TreasureHunt{texto-aleatorio}" required data-offset="400"
+                                data-trigger="focus" data-toggle="tooltip" data-placement="top"
+                                title="Resposta encontrada no exercício.">
                             <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                             <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
                             <?php
@@ -143,7 +165,8 @@ if (!isset($_SESSION['usuario'])) {
                     </div>
                     <div id="placar-individual" class="col-sm-12 col-md-12 col-lg-4 jumbotron bg-dark">
                         <h3>Seus resultados:</h3>
-                        <table class="mx-auto" data-toggle="tooltip" data-placement="left" data-trigger="hover" title="Placar individual detalhado contendo o estado e o número de tentativas por problema.">
+                        <table class="mx-auto" data-toggle="tooltip" data-placement="left" data-trigger="hover"
+                            title="Placar individual detalhado contendo o estado e o número de tentativas por problema.">
                             <caption>Placar individual detalhado.</caption>
                             <thead>
                                 <tr>
@@ -193,7 +216,8 @@ if (!isset($_SESSION['usuario'])) {
                 <h2 class="font-weight-bold page-title">Placar<span class="destaque">!</span></h2>
             </div>
             <div id="placar" class="jumbotron bg-dark">
-                <table class="mx-auto" title="Ranqueamento ordenado pelo número de acertos. O desempate é o horário da última submissão correta.">
+                <table class="mx-auto"
+                    title="Ranqueamento ordenado pelo número de acertos. O desempate é o horário da última submissão correta.">
                     <caption>Classificação do jogo.</caption>
                     <thead>
                         <tr>
@@ -242,37 +266,54 @@ if (!isset($_SESSION['usuario'])) {
                 <li><span class="prompt"></span> Na tela de início, insira seu ID e sua senha e clique em
                     <button class="btn btn-sm btn-dark" name="enviar" tabindex="-1">Entrar</button>.
                 </li>
-                <li><span class="prompt"></span> Baixe e descompacte o arquivo zip disponível (sugestão: <code id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém diretórios representados por números inteiros. Cada diretório contém pelo menos um arquivo.
+                <li><span class="prompt"></span> Baixe e descompacte o arquivo zip disponível (sugestão: <code
+                        id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém
+                    diretórios representados por números inteiros. Cada diretório contém pelo menos um arquivo.
                 </li>
-                <li><span class="prompt"></span> Seu objetivo é descobrir a palavra secreta (<em lang="en">flag</em>) escondida em cada um dos diretórios.
+                <li><span class="prompt"></span> Seu objetivo é descobrir a palavra secreta (<em lang="en">flag</em>)
+                    escondida em cada um dos diretórios.
                 </li>
-                <li><span class="prompt"></span> Vencerá o jogo aquele que submeter mais respostas corretas em menos tempo, ou seja, o ranqueamento é feito pelo número de acertos e, em caso de empate, ficará à frente aquele que obteve seu último acerto antes.
+                <li><span class="prompt"></span> Vencerá o jogo aquele que submeter mais respostas corretas em menos
+                    tempo, ou seja, o ranqueamento é feito pelo número de acertos e, em caso de empate, ficará à frente
+                    aquele que obteve seu último acerto antes.
                 </li>
-                <li><span class="prompt"></span> Cada <em lang="en">flag</em> descoberta é um desafio resolvido! Você só precisa realizar a submissão no sistema, informando o ID do problema (número do diretório) e a <em lang="en">flag</em> encontrada. O sistema informará se a <em lang="en">flag</em> está (in)correta.
+                <li><span class="prompt"></span> Cada <em lang="en">flag</em> descoberta é um desafio resolvido! Você só
+                    precisa realizar a submissão no sistema, informando o ID do problema (número do diretório) e a <em
+                        lang="en">flag</em> encontrada. O sistema informará se a <em lang="en">flag</em> está
+                    (in)correta.
                 </li>
-                <li><span class="prompt"></span> As <em lang="en">flags</em> possuem o formato <code> <span lang="en">TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <em lang="en">flag</em>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
+                <li><span class="prompt"></span> As <em lang="en">flags</em> possuem o formato
+                    <code> <span lang="en">TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <em
+                        lang="en">flag</em>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
                 </li>
             </ul>
         </div>
         <div id="contatos">
             <div class="jumbotron bg-dark">
                 <h2 class="font-weight-bold page-title">Contato<span class="destaque">!</span></h2>
-                <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque" aria-hidden="true"></span></h3>
+                <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span
+                        class="smile destaque" aria-hidden="true"></span></h3>
             </div>
             <address>
 
                 <span class="address-title">Equipe atual:</span>
                 <div class="contato">
                     <span class="nome-autor">Ricardo de la Rocha Ladeira</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior" aria-hidden="true"></span></span>
+                    <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span
+                            class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior"
+                            aria-hidden="true"></span></span>
                 </div>
                 <div class="contato">
                     <span class="nome-autor">Vítor Augusto Ueno Otto</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>vitoruenootto<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
+                    <span><span class="sinal-menor" aria-hidden="true"></span>vitoruenootto<span
+                            class="at font-weight-bold"></span>gmail.com<span class="sinal-maior"
+                            aria-hidden="true"></span></span>
                 </div>
                 <div class="contato">
                     <span class="nome-autor">Lucas Vargas</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>lucasvargas27<span class="at font-weight-bold"></span>hotmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
+                    <span><span class="sinal-menor" aria-hidden="true"></span>lucasvargas27<span
+                            class="at font-weight-bold"></span>hotmail.com<span class="sinal-maior"
+                            aria-hidden="true"></span></span>
                 </div>
 
                 <span class="address-title">Contribuidores:</span>
@@ -283,10 +324,10 @@ if (!isset($_SESSION['usuario'])) {
                     <span>Rafael Rodrigues Obelheiro</span>
                 </div>
                 <div class="contato nome-contrib">
-                   <span>Richard Robert Dias Custódio</span>
+                    <span>Richard Robert Dias Custódio</span>
                 </div>
                 <div class="contato nome-contrib">
-                   <span>Vinícius Manuel Martins</span>
+                    <span>Vinícius Manuel Martins</span>
                 </div>
 
             </address>
@@ -296,21 +337,22 @@ if (!isset($_SESSION['usuario'])) {
                 <h2 class="font-weight-bold page-title">Acessibilidade<span class="destaque">!</span></h2>
             </div>
             <div class="acess-conteudo">
-                <p> 
-                    A interface do TreasureHunt foi desenvolvida para ser acessível e fácil de usar para o maior 
-                    número possível de usuários. Para isso, a equipe realiza um trabalho contínuo de atualizações 
-                    e melhorias, utilizando como base diretrizes e recomendações de acessibilidade.
-                </p> 
                 <p>
-                    A equipe busca aprimorar a interface do <em lang="en">TreasureHunt</em> 
-                    para cumprir principalmente o nível A da <em lang="en">WCAG (Web Content Accessibility Guidelines,</em>
-                    Diretrizes de Acessibilidade para Conteúdo Web), 
-                    bem como satisfazer o maior número possível de critérios dos níveis AA e AAA. 
-                    Juntamente, busca-se conformidade com os padrões HTML e CSS da 
+                    A interface do TreasureHunt foi desenvolvida para ser acessível e fácil de usar para o maior
+                    número possível de usuários. Para isso, a equipe realiza um trabalho contínuo de atualizações
+                    e melhorias, utilizando como base diretrizes e recomendações de acessibilidade.
+                </p>
+                <p>
+                    A equipe busca aprimorar a interface do <em lang="en">TreasureHunt</em>
+                    para cumprir principalmente o nível A da <em lang="en">WCAG (Web Content Accessibility
+                        Guidelines,</em>
+                    Diretrizes de Acessibilidade para Conteúdo Web),
+                    bem como satisfazer o maior número possível de critérios dos níveis AA e AAA.
+                    Juntamente, busca-se conformidade com os padrões HTML e CSS da
                     <em lang="en">W3C (World Wide Web Consortium,</em> Consórcio da Rede Mundial de Internet).
                 </p>
                 <p>
-                    A interface web conta com atalhos que possibilitam navegar pela barra de navegação 
+                    A interface web conta com atalhos que possibilitam navegar pela barra de navegação
                     e ativar o modo de alto contraste pelo teclado. Os atalhos são:
                 </p>
                 <ul id="acceskey-ul">
@@ -319,19 +361,23 @@ if (!isset($_SESSION['usuario'])) {
                     <li><span class="prompt"></span><span>Alt + J: leva para a página: “Como jogar?”</span></li>
                     <li><span class="prompt"></span><span>Alt + C: leva para a página: “Contatos”</span></li>
                     <li><span class="prompt"></span><span>Alt + S: leva para a página: “Acessibilidade”</span></li>
-                    <li><span class="prompt"></span><span>Alt + P: leva para página: “Placar” (exige autenticação)</span></li>
+                    <li><span class="prompt"></span><span>Alt + P: leva para página: “Placar” (exige
+                            autenticação)</span></li>
                     <li><span class="prompt"></span><span>Alt + L: Faz o logout (exige autenticação)</span></li>
                 </ul>
-                <span id="accesskey-span">Se estiver usando o <em lang="en">Firefox</em>, pressione Shift + Alt + “tecla de atalho”.</span>
-            </div>  
+                <span id="accesskey-span">Se estiver usando o <em lang="en">Firefox</em>, pressione Shift + Alt + “tecla
+                    de atalho”.</span>
+            </div>
         </div>
         <footer class="page-footer font-small">
             <div class="col">
                 <div class="footer-copyright">
-                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons" target="_blank">
+                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons"
+                        target="_blank">
                         <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png">
-                    <br>
-                    <span>Esta obra está licenciada com uma Licença <span lang="en">Creative Commons</span> Atribuição-NãoComercial 4.0 Internacional</span> (Abre em nova janela).</a>
+                        <br>
+                        <span>Esta obra está licenciada com uma Licença <span lang="en">Creative Commons</span>
+                            Atribuição-NãoComercial 4.0 Internacional</span> (Abre em nova janela).</a>
                     <p><span lang="en">©</span> 2017-<?php echo date("Y"); ?></p>
                 </div>
             </div>
