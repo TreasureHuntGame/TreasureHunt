@@ -11,10 +11,25 @@ if (!isset($_SESSION['usuario']) == true) {
 	header('location:index.php');
 }
 
+function console_log( $data ){
+	echo '<script>';
+	echo 'console.log('. json_encode( $data ) .')';
+	echo '</script>';
+}
+
 $problema = filter_input(INPUT_POST, 'problema');
 $flagPura = filter_input(INPUT_POST, 'flag');
+$flagSemEspaco = preg_replace('/\s/', '', $flagPura);
+$flagSemEspaco = str_replace('\t', '', $flagSemEspaco);
+$flagSemEspaco = str_replace('\n', '', $flagSemEspaco);
+$flagSemEspaco = str_replace('\r', '', $flagSemEspaco);
+$flagSemEspaco = str_replace('\0', '', $flagSemEspaco);
+$flagSemEspaco = str_replace('\x0B', '', $flagSemEspaco);
+$flagSemEspaco = str_replace('\\', '', $flagSemEspaco);
 // não precisamos mais do hash da flag para verificar se a resposta coincide com o hash do bd
-// $flag = hash("sha256", $flagPura); 
+//  = hash("sha256", $flagPura); 
+
+
 $usuario = $_SESSION['usuario'];
 
 
@@ -22,14 +37,14 @@ $usuario = $_SESSION['usuario'];
 // $sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', date('Y-m-d H:i:s'))";
 // $sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', CURRENT_TIMESTAMP)";
 
-// Insere idUsuario, idResposta e flagPura na tabela submissão
+// Insere idUsuario, idResposta e flag na tabela submissão
 $ip = $_SERVER['REMOTE_ADDR'];
-$sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', '$ip', CURRENT_TIMESTAMP)";
+$sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagSemEspaco', '$ip', CURRENT_TIMESTAMP)";
 $stmt = $conexao->prepare($sql);
 $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 $stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
 // $stmt->bindParam(':flag', $flag, PDO::PARAM_STR); // Versão anterior enviava o hash ao invés da "flag pura" para o bd
-$stmt->bindParam(':flag', $flagPura, PDO::PARAM_STR);
+$stmt->bindParam(':flag', $flagSemEspaco, PDO::PARAM_STR);
 $stmt->bindParam(':ip', $ip, PDO::PARAM_STR);
 $stmt->execute();
 
@@ -68,7 +83,7 @@ if ($stmt->rowCount() > 0) { // "erro" (aviso): questão já acertada
 	// if ($stmt->rowCount() > 0) {
 
 	// verifica a flag digitada com o hash da resposta armazenado no bd; se retornar true é a resposta correta
-	if (password_verify($flagPura, $resposta_hash[0])) {
+	if (password_verify($flagSemEspaco, $resposta_hash[0])) {
 		$acertou = true;
 		atualiza($acertou, $usuario, $problema);
 
@@ -93,8 +108,8 @@ if ($stmt->rowCount() > 0) { // "erro" (aviso): questão já acertada
 		$acertou = false;
 		atualiza($acertou, $usuario, $problema);
 
-		$tamanho = strlen($flagPura);
-    	$verificaPadrao = (substr($flagPura, 0, 13) === 'TreasureHunt{') && (substr($flagPura, $tamanho - 1, $tamanho) === '}');
+		$tamanho = strlen($flagSemEspaco);
+    	$verificaPadrao = (substr($flagSemEspaco, 0, 13) === 'TreasureHunt{') && (substr($flagSemEspaco, $tamanho - 1, $tamanho) === '}');
     	$mensagem = "Errou!";
     	if ($verificaPadrao != 1) { // erro: flag no formato incorreto
 			$mensagem .= " Considere submeter a flag no seguinte formato: TreasureHunt{texto-aleatorio}";
@@ -128,5 +143,5 @@ function atualiza($resposta, $usuario, $problema) {
 }
 ?>
 <script>
-	window.setTimeout("location.href='home.php';");
+window.setTimeout("location.href='home.php';");
 </script>
