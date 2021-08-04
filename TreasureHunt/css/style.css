@@ -153,8 +153,8 @@ input#contrast:checked~#page-wrapper #cookie-bar {
     border-top: 1px solid var(--c-cor-primaria) !important;
 }
 
-input#contrast:checked~#page-wrapper #cookie-bar .btn-primary:focus,
-input#contrast:checked~#page-wrapper #cookie-bar .btn-primary:hover {
+input#contrast:checked~#page-wrapper .btn-primary:focus,
+input#contrast:checked~#page-wrapper .btn-primary:hover {
     box-shadow: 0 0 0 0.2rem var(--c-btn-boxshadow-cookies) !important;
     border: 2px solid var(--c-cor-fundo) !important;
 }
@@ -724,21 +724,27 @@ caption {
     transition: opacity .8s ease-in-out;
 }
 
-#cookie-bar .btn-primary {
+.btn-primary {
     border: 2px solid transparent;
+    background-color: var(--btn-cookies);
+}
+
+#cookie-bar .btn-primary {
     font-size: 1em;
     margin-left: 5px;
-    background-color: var(--btn-cookies);
     border-color: var(--btn-cookies);
 }
 
-#cookie-bar .btn-primary:hover {
+.btn-primary:hover {
     color: #fff;
     background-color: var(--hover-btn-cookies);
+}
+
+#cookie-bar .btn-primary:hover {
     border-color: var(--hover-btn-cookies);
 }
 
-#cookie-bar .btn-primary:focus, .btn-primary.focus {
+.btn-primary:focus, .btn-primary.focus, .btn-primary:hover {
   box-shadow: 0 0 0 0.2rem var(--btn-boxshadow-cookies)
 }
 
