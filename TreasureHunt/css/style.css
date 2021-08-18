@@ -46,6 +46,27 @@ body {
     width: 3.8em;
 }
 
+#link-logo{
+    border: 2px solid transparent;
+    border-radius: 5px;
+    transition: border .4s ease;
+    padding: 12px 7px 12px 7px;
+}
+
+input#contrast:checked~#page-wrapper nav a #img-logo{
+    filter: brightness(0%);
+}
+
+input#contrast:checked~.tooltip .tooltip-inner{
+    border: 2px solid yellow;
+    padding-top: 2px;
+    padding-left: 6px;
+}
+
+input#contrast:checked~.tooltip .arrow::before{
+  border-top-color:yellow!important;
+}
+
 input#contrast:checked~#page-wrapper {
     color: var(--c-cor-primaria) !important;
     background-color: var(--c-cor-fundo) !important;
@@ -84,9 +105,16 @@ nav ul li label span#botao-contraste{
 input#contrast:checked~#page-wrapper nav ul li label:focus,
 input#contrast:checked~#page-wrapper nav ul li a:focus,
 input#contrast:checked~#page-wrapper nav ul li label:active,
-input#contrast:checked~#page-wrapper nav ul li a:active {
+input#contrast:checked~#page-wrapper nav ul li a:active,
+input#contrast:checked~#page-wrapper nav a:focus {
     border-color: var(--c-cor-fundo) !important;
     cursor: url('../img/c_cursor_aberto.png'), pointer;
+}
+
+input#contrast:checked~#page-wrapper nav ul li label:hover,
+input#contrast:checked~#page-wrapper nav ul li a:hover,
+input#contrast:checked~#page-wrapper nav a:hover {
+    border-color: var(--c-cor-fundo) !important;
 }
 
 input#contrast:checked~#page-wrapper #zip {
@@ -400,7 +428,8 @@ label {
 nav ul li label:active,
 nav ul li a:active,
 nav ul li label:focus,
-nav ul li a:focus {
+nav ul li a:focus,
+#link-logo:focus {
     cursor: url('../img/cursor_aberto.png'), pointer;
     color: var(--cor-primaria);
     text-decoration: none;
@@ -410,9 +439,12 @@ nav ul li a:focus {
 }
 
 nav ul li a:hover,
-nav ul li label:hover {
+nav ul li label:hover,
+#link-logo:hover {
     color: var(--cor-primaria);
     text-decoration: none;
+    border: 2px solid var(--cor-primaria);
+    border-radius: 5px;
 }
 
 input[name=collapse-btn],
@@ -644,9 +676,10 @@ address a{
 }
 
 #sobre-acessibilidade .acess-conteudo{ 
+    text-align: justify;
     margin-left: auto;
     margin-right: auto;
-    width: 85%;
+    width: 80%;
 }
 
 #sobre-acessibilidade .acess-conteudo p{
@@ -658,13 +691,17 @@ address a{
     margin-bottom: 1em;
 }
 
-#acceskey-ul{
+.acessibilidade-ul{
     display: inline-block;
     text-align: left;
     list-style: none;
     padding: 0;
-    margin-bottom: 0.5em;
-    
+    margin-bottom: 1em; 
+}
+
+.subtitle-accessibility{
+    font-size: 1.4em;
+    font-weight: bold;
 }
 
 .form-signin input[type="number"],
@@ -807,7 +844,8 @@ caption {
     color: #666; 
 }
 
-.popup .close:focus{
+.popup .close:focus,
+.popup .close:hover{
    outline: none;
    transition: none;
    border-radius: 5px;
@@ -865,9 +903,9 @@ caption {
     }
 }
 
-@media (max-width: 814px) {
+@media (max-width: 830px) {
     nav ul li label {
-        padding: 0 5px;
+        padding: 0 4px;
     }
     
 }
@@ -998,10 +1036,11 @@ caption {
     }
     /* página accesibilidade */
     #sobre-acessibilidade ul li{
-        margin-bottom: 15px;
+        margin-bottom: 10px;
     }
-    .acess-conteudo{
+    #sobre-acessibilidade .acess-conteudo{ 
         font-size: 0.95em;
+        width: 85%;
     }
 
     /* home */

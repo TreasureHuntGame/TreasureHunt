@@ -51,6 +51,11 @@ $(function() {
     $('#creative-commons').keydown(function(e) {
         set_keyboard_click(e);
     });
+    
+    // adiciona clique pelo teclado na logo do TreasureHunt
+    $('#link-logo').keydown(function(e) {
+        set_keyboard_click(e);
+    });
 
     // Checa se a CookieBar existe, se sim, aumenta o padding bottom do footer para
     // não cobrir nada na página.

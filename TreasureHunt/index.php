@@ -43,9 +43,8 @@ header('Content-Type: text/html; charset=utf-8');
         <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
             <input type="checkbox" name="collapse-btn" id="collapse-btn">
             <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
-            
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
-                <a class="navbar-brand nav-item" href="home.php">
+                <a class="navbar-brand nav-item" id="link-logo" href="home.php">
                     <img src="img/logo.svg" alt="TreasureHunt logo" id="img-logo">
                 </a>
                 <ul class="navbar-nav mx-auto">
@@ -58,7 +57,7 @@ header('Content-Type: text/html; charset=utf-8');
             </div>
             <ul class="navbar-nav ml-auto" id="contrast-container" role="presentation">
                 <li>
-                    <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
+                    <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
                         <span id="botao-contraste" title="Recurso de alto contraste"></span>
                         <span class="sr-only">Botão para ativar e desativar recurso de alto contraste</span>
                     </label>
@@ -153,37 +152,57 @@ header('Content-Type: text/html; charset=utf-8');
         </div>
         <div id="sobre-acessibilidade">
         	<div class="jumbotron bg-dark">
-            	<h2 class="font-weight-bold page-title">Acessibilidade<span class="destaque">!</span></h2>
+                <h2 class="font-weight-bold page-title">Acessibilidade<span class="destaque">!</span></h2>
             </div>
             <div class="acess-conteudo">
-	            <p> 
-	            	A interface do TreasureHunt foi desenvolvida para ser acessível e fácil de usar para o maior 
-	            	número possível de usuários. Para isso, a equipe realiza um trabalho contínuo de atualizações 
-	            	e melhorias, utilizando como base diretrizes e recomendações de acessibilidade.
-	            </p> 
-	            <p>
-					A equipe busca aprimorar a interface do <em lang="en">TreasureHunt</em> 
-	            	para cumprir principalmente o nível A da <em lang="en">WCAG (Web Content Accessibility Guidelines,</em>
-	            	Diretrizes de Acessibilidade para Conteúdo Web), 
-	            	bem como satisfazer o maior número possível de critérios dos níveis AA e AAA. 
-	            	Juntamente, busca-se conformidade com os padrões HTML e CSS da 
-	            	<em lang="en">W3C (World Wide Web Consortium,</em> Consórcio da Rede Mundial de Internet).
-	            </p>
-	            <p>
-	            	A interface web conta com atalhos que possibilitam navegar pela barra de navegação 
-	            	e ativar o modo de alto contraste pelo teclado. Os atalhos são:
-	            </p>
-	            <ul id="acceskey-ul">
-	            	<li><span class="prompt"></span><span>Alt + A: ativa o modo de alto contraste </span></li>
-	            	<li><span class="prompt"></span><span>Alt + I: leva para a página: “Inicío”</span></li>
-	            	<li><span class="prompt"></span><span>Alt + J: leva para a página: “Como jogar?”</span></li>
-	            	<li><span class="prompt"></span><span>Alt + C: leva para a página: “Contatos”</span></li>
-	            	<li><span class="prompt"></span><span>Alt + S: leva para a página: “Acessibilidade”</span></li>
-	            	<li><span class="prompt"></span><span>Alt + P: leva para página: “Placar” (exige autenticação)</span></li>
-	            	<li><span class="prompt"></span><span>Alt + L: Faz o <em lang="en">logout</em> (exige autenticação)</span></li>
-	            </ul>
-	            <span id="accesskey-span">Se estiver usando o <em lang="en">Firefox</em>, pressione Shift + Alt + “tecla de atalho”.</span>
-        	</div>  
+                <h3 class="subtitle-accessibility">Acessibilidade do Site</h3>
+                <p> 
+                    A interface do TreasureHunt foi desenvolvida para ser acessível e fácil de usar para o maior 
+                    número possível de usuários. Para isso, a equipe realiza um trabalho contínuo de atualizações 
+                    e melhorias, utilizando como base diretrizes e recomendações de acessibilidade.
+                </p> 
+                <p>
+                    A equipe busca aprimorar a interface do <em lang="en">TreasureHunt</em> 
+                    para cumprir principalmente o nível A da WCAG (Web Content Accessibility Guidelines,
+                    Diretrizes de Acessibilidade para Conteúdo Web),
+                    bem como satisfazer o maior número possível de critérios dos níveis AA e AAA. 
+                    Juntamente, busca-se conformidade com os padrões HTML e CSS da 
+                    W3C (World Wide Web Consortium, Consórcio da Rede Mundial de Internet).
+                </p>
+                <p>
+                    O site possui em seu formato padrão uma relação de contraste de no mínimo 4:5:1 respeitando o critério 1.4.3 da WCAG,
+                    e dispõe também de um modo de alto contraste com relação superior a 7:1 satisfazendo o critério 1.4.6. São cumpridos ainda,
+                    dentre outros, os seguintes critérios: 
+                </p>
+                <ul class="acessibilidade-ul">
+                    <li><span class="prompt"></span><span>Critério 1.4.4: Zoom de até 200% sem perda de conteúdo.</span></li>
+                    <li><span class="prompt"></span><span>Critério 2.1.3: Navegação completa da página pelo teclado.</span></li>
+                    <li><span class="prompt"></span><span>Critério 2.3.1: Limite de três flashes em um segundo.</span></li>
+                    <li><span class="prompt"></span><span>Critério 2.4.7: Foco visível nos elementos.</span></li>
+                    <li><span class="prompt"></span><span>Critério 3.3.1: Identificação de erro nos formulários. </span></li>
+                </ul>
+                <h3 class="subtitle-accessibility"> Problemas ou Sugestões </h3>
+                <p>
+                    Para relatar problemas com a acessibilidade do site ou enviar sugestões de melhorias,
+                    pode-se entrar em contato com os emails disponiveis na página "Contato".
+                </p>
+                <h3 class="subtitle-accessibility"> Teclas de Atalho </h3>
+                <p>
+                    A interface web conta com atalhos que possibilitam navegar pela barra de navegação, 
+                    ativar o modo de alto contraste e desativar as animações pelo teclado. Os atalhos são:
+                </p>
+                <ul class="acessibilidade-ul">
+                    <li><span class="prompt"></span><span>Alt + A: ativa o modo de alto contraste </span></li>
+                    <li><span class="prompt"></span><span>Alt + M: desativa as animações </span></li>
+                    <li><span class="prompt"></span><span>Alt + I: leva para a página: “Inicío”</span></li>
+                    <li><span class="prompt"></span><span>Alt + J: leva para a página: “Como jogar?”</span></li>
+                    <li><span class="prompt"></span><span>Alt + C: leva para a página: “Contatos”</span></li>
+                    <li><span class="prompt"></span><span>Alt + S: leva para a página: “Acessibilidade”</span></li>
+                    <li><span class="prompt"></span><span>Alt + P: leva para página: “Placar” (exige autenticação)</span></li>
+                    <li><span class="prompt"></span><span>Alt + L: Faz o <em lang="en">logout</em> (exige autenticação)</span></li>
+                </ul>
+                <span id="accesskey-span">Se estiver usando o <em lang="en">Firefox</em>, pressione Shift + Alt + “tecla de atalho”.</span>
+            </div>
         </div>
         <footer class="page-footer font-small">
             <div class="footer-copyright">
