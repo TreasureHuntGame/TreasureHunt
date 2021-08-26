@@ -36,7 +36,7 @@ header('Content-Type: text/html; charset=utf-8');
         <input type="radio" name="nav" id="contato" tabindex="-1" class="tab">
         <input type="radio" name="nav" id="acessibilidade" tabindex="-1" class="tab">
         <noscript>
-            <div class="jumbotron bg-dark col" aria-atomic="true">
+            <div class="jumbotron bg-dark" aria-atomic="true">
                 <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
             </div>
         </noscript>
@@ -64,7 +64,7 @@ header('Content-Type: text/html; charset=utf-8');
                 </li>
             </ul>
         </nav>
-        <div id="main" role="main">
+        <div id="main" role="main" aria-label="Início">
             <div class="jumbotron bg-dark" id="jumbotron-index">
                 <h1 class="font-weight-bold" id="titulo-index" lang="en">
                     TreasureHunt<span id="espaco"> </span><span class="destaque chaves-left" aria-hidden="true"></span>Security<span class="destaque chaves-right" aria-hidden="true"></span>
@@ -93,7 +93,7 @@ header('Content-Type: text/html; charset=utf-8');
                 ?>
             </form>
         </div>
-        <div id="como-jogar">
+        <div id="como-jogar" role="main" aria-label="Como Jogar">
             <div class="jumbotron bg-dark">
                 <h2 class="font-weight-bold page-title">Como Jogar<span class="destaque">?</span></h2>
             </div>
@@ -113,7 +113,7 @@ header('Content-Type: text/html; charset=utf-8');
                 </li>
             </ul>
         </div>
-        <div id="contatos">
+        <div id="contatos" role="main" aria-label="Contatos">
             <div class="jumbotron bg-dark">
                 <h2 class="font-weight-bold page-title">Contato<span class="destaque">!</span></h2>
                 <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque" aria-hidden="true"></span></h3>
@@ -150,24 +150,24 @@ header('Content-Type: text/html; charset=utf-8');
 
             </address>
         </div>
-        <div id="sobre-acessibilidade">
+        <div id="sobre-acessibilidade" role="main" aria-label="Acessibilidade">
         	<div class="jumbotron bg-dark">
                 <h2 class="font-weight-bold page-title">Acessibilidade<span class="destaque">!</span></h2>
             </div>
             <div class="acess-conteudo">
                 <h3 class="subtitle-accessibility">Acessibilidade do Site</h3>
                 <p> 
-                    A interface do TreasureHunt foi desenvolvida para ser acessível e fácil de usar para o maior 
+                    A interface do <em lang="en">TreasureHunt</em> foi desenvolvida para ser acessível e fácil de usar para o maior 
                     número possível de usuários. Para isso, a equipe realiza um trabalho contínuo de atualizações 
                     e melhorias, utilizando como base diretrizes e recomendações de acessibilidade.
                 </p> 
                 <p>
                     A equipe busca aprimorar a interface do <em lang="en">TreasureHunt</em> 
-                    para cumprir principalmente o nível A da WCAG (Web Content Accessibility Guidelines,
+                    para cumprir principalmente o nível A da WCAG (<em lang="en">Web Content Accessibility Guidelines</em>,
                     Diretrizes de Acessibilidade para Conteúdo Web),
                     bem como satisfazer o maior número possível de critérios dos níveis AA e AAA. 
                     Juntamente, busca-se conformidade com os padrões HTML e CSS da 
-                    W3C (World Wide Web Consortium, Consórcio da Rede Mundial de Internet).
+                    W3C (<em lang="en">World Wide Web Consortium</em>, Consórcio da Rede Mundial de Internet).
                 </p>
                 <p>
                     O site possui em seu formato padrão uma relação de contraste de no mínimo 4:5:1 respeitando o critério 1.4.3 da WCAG,
