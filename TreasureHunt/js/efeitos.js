@@ -62,7 +62,7 @@ $(function() {
     var cookieBar = document.getElementById('cookie-bar');
     if(cookieBar){
         footer = document.getElementsByTagName('footer');
-        footer[0].style.padding = "0 32px 100px 32px"
+        footer[0].style.padding = "0 32px 110px 32px"
     }; 
 
     // cria o cookie de aceitação com valor true quando

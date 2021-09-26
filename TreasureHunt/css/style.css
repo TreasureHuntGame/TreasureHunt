@@ -12,6 +12,7 @@ body {
     --cor-secundaria: #000;
     --cor-fundo: #343A40;
     --warning-background: darkred;
+    --warning-close-button: white;
     --warning: #FFF;
     --success-background: #155724;
     --success: #FFF;
@@ -40,6 +41,52 @@ body {
     --c-input-hover: #23272B;
     --c-input-cor-fundo: #FFF;
     --c-input-cor-placeholder: #495057;
+    --c-link-hover-outline: yellow;
+}
+
+
+input#close-alert-button:checked~#page-wrapper noscript{
+    display: none;
+}
+
+.link-padrao{
+    color: var(--cor-primaria);
+    text-decoration: underline !important;
+    outline: 2px solid transparent;
+    outline-offset: .4rem;
+    transition: outline-offset .2s linear;   
+}
+
+.link-padrao:hover,
+.link-padrao:focus{
+    color: white;
+    outline: 2px solid var(--cor-primaria);
+    outline-offset: .125rem; 
+    font-weight: normal;
+    text-decoration: underline !important;
+}
+
+input#contrast:checked~#page-wrapper .link-padrao:hover, 
+input#contrast:checked~#page-wrapper .link-padrao:focus{
+    outline: 2px solid var(--c-link-hover-outline)
+}
+
+noscript .jumbotron .close{
+    top: 6px;
+    right: 25px;
+    opacity: 0.9;
+    text-shadow: none;
+    color: var(--warning-close-button);  
+}
+
+noscript .jumbotron .close:focus,
+noscript .jumbotron .close:hover{
+   outline: none;
+   transition: none;
+   border-radius: 5px;
+   box-shadow: 0 0 0 2px var(--warning-close-button);
+   opacity: 1 !important;
+   cursor: pointer;
 }
 
 #img-logo {
@@ -65,7 +112,7 @@ input#contrast:checked~.tooltip .tooltip-inner{
 }
 
 input#contrast:checked~.tooltip .arrow::before{
-  border-top-color:yellow!important;
+    border-top-color:yellow!important;
 }
 
 input#contrast:checked~#page-wrapper {
@@ -91,7 +138,8 @@ input#contrast:not(:checked)~#page-wrapper nav ul li label#contrast-label {
     cursor: url('../img/cursor_fechado.png'), pointer;
 }
 
-input#contrast:checked~#page-wrapper nav ul li label span#botao-contraste
+input#contrast:checked~#page-wrapper nav ul li label span#botao-contraste,
+input#contrast:checked~#page-wrapper nav ul li label span#botao-animation
 {
     filter: invert(100%)
 }
@@ -188,6 +236,27 @@ input#contrast:checked~#page-wrapper .btn-primary:hover {
     border: 2px solid var(--c-cor-fundo) !important;
 }
 
+nav ul li label span#botao-animation{
+    background-image: url(../img/botao_animacao_on.svg);
+    background-repeat: no-repeat;
+    height: 25px; 
+    width: 25px;
+}
+
+input#animation:checked~#page-wrapper nav ul li label span#botao-animation{
+    background-image: url(../img/botao_animacao_off.svg);
+}
+
+input#animation:checked~#page-wrapper, 
+input#animation:checked~#page-wrapper div,
+input#animation:checked~#page-wrapper nav ul li label,
+input#animation:checked~#page-wrapper input,
+input#animation:checked~#page-wrapper button,
+input#animation:checked~#page-wrapper a,
+input#animation:checked~.tooltip{
+    transition: none !important;
+}
+
 #page-wrapper {
     background-color: var(--cor-fundo) !important;
     min-height: 100%;
@@ -260,7 +329,8 @@ label {
     margin-bottom: 0;
 }
 
-label[for="contrast"] {
+label[for="contrast"], 
+label[for="animation"]{
     padding-top: 14px;
     padding-bottom: 14px;
 }
@@ -279,10 +349,12 @@ footer a:hover {
     font-weight: bold;
 }
 
+
 #lista-de-regras {
     list-style-type: none;
     text-align: left;
     padding: 0 1em;
+    line-height: 1.75
 }
 
 .prompt::before {
@@ -314,7 +386,8 @@ noscript div.jumbotron {
 }
 
 noscript p{
-    padding: 0px 1.4em;
+    padding: 0px 3em;
+    line-height: 1.75;
 }
 
 noscript ul {
@@ -455,6 +528,8 @@ nav ul li label:hover,
 input[name=collapse-btn],
 input[name=nav],
 input#contrast,
+input#animation,
+input#close-alert-button,
 #collapsibleNavbar {
     display: none;
 }
@@ -513,6 +588,10 @@ input#acessibilidade:not(:checked)~#sobre-acessibilidade{
 
 #placar {
     padding: 0 0 20px 0;
+}
+
+.alert{
+    line-height: 1.75;
 }
 
 .alert-success {
@@ -688,7 +767,8 @@ address a{
 }
 
 #sobre-acessibilidade .acess-conteudo p{
-    padding: 0 0 20px 0; 
+    padding: 0 0 20px 0;
+    line-height: 1.75
 }
 
 #accesskey-span{
@@ -697,14 +777,15 @@ address a{
 }
 
 .acessibilidade-ul{
-    display: inline-block;
+    display: block;
     text-align: left;
     list-style: none;
     padding: 0;
-    margin-bottom: 1em; 
+    margin-bottom: 1em;
+    line-height: 1.75 
 }
 
-.subtitle-accessibility{
+.h3-acessibilidade{
     font-size: 1.4em;
     font-weight: bold;
 }
@@ -722,15 +803,6 @@ address a{
 
 .container-fluid {
     margin: 0;
-}
-
-#arquivo {
-    color: var(--cor-primaria);
-}
-
-#arquivo:hover {
-    text-decoration: underline;
-    font-weight: bold;
 }
 
 #creative-commons:hover {
@@ -761,6 +833,7 @@ caption {
     color: var(--cor-primaria);
     margin: 0 auto;
     font-size: 0.8em;
+    line-height: 1.75;
     opacity: 1;
     overflow: hidden;
     transition: opacity .8s ease-in-out;
@@ -833,19 +906,23 @@ caption {
     text-align: left;
 }
 
-.popup .close {
+.close{
     position: absolute;
     text-align: center;
-    line-height: 30px;
-    width: 35px;
-    height: 35px;
-    top: 20px;
-    right: 20px;
-    opacity: 0.8;
+    width: 45px;
+    height: 45px;
     transition: all 200ms;
-    font-size: 1.5em;
+    font-size: 2em;
     font-weight: bold;
     text-decoration: none;
+}
+
+.popup .close{
+    font-size: 2.3em;
+    line-height: 38px;
+    top: 9px;
+    right: 15px;
+    opacity: 0.8;
     color: #666; 
 }
 
@@ -856,27 +933,6 @@ caption {
    border-radius: 5px;
    box-shadow: 0 0 0 2px var(--cor-secundaria);
    color: #000;
-}
-
-
-.close {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    top: 20px;
-    right: 20px;
-    opacity: 0.8;
-    transition: all 200ms;
-    font-size: 1.5em;
-    font-weight: bold;
-    text-decoration: none;
-    color: #666;
-}
-
-
-.close:hover {
-    opacity: 1;
-    color: #000;
 }
 
 .popup .contnt {
@@ -892,6 +948,7 @@ caption {
     color: var(--cor-secundaria) !important;
     padding: 0 10px 20px 10px;
     width: 95%;
+    line-height: 1.75
 }
 
 .disable-scroll {
@@ -908,15 +965,27 @@ caption {
     }
 }
 
-@media (max-width: 830px) {
-    nav ul li label {
+@media (max-width: 864px) {
+    nav ul li label, 
+    nav ul li a{
         padding: 0 4px;
     }
 
-    nav ul li #contrast-label{
+    nav ul li #contrast-label,
+    nav ul li #animation-label{
         padding: 14px 8px;
     }
     
+    noscript .jumbotron .close{
+        right: 5px;
+    }
+}
+
+@media (max-width: 784px) {
+    nav ul li label, 
+    nav ul li a{
+        padding: 0 2px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -961,8 +1030,18 @@ caption {
     }
     #contrast-container {
         position: absolute;
+        right: 60px;
+        top: 5px;
+    }
+    #animation-container {
+        position: absolute;
         right: 15px;
         top: 5px;
+    }
+    #link-logo{
+        position: absolute;
+        left: 10px;
+        top: 4px;
     }
 }
 
@@ -1000,7 +1079,7 @@ caption {
     }
     #cookie-bar .btn-primary {
         margin: 10px 0 0 5px;
-        font-size: 0.8em;
+        font-size: 0.9em;
     }
     #cookie-bar {
         font-size: 0.65em;
@@ -1016,7 +1095,6 @@ caption {
     }
     noscript p {
         font-size: 0.9em;
-        padding: 0px 1.8em;
     }
     /* contato */
     #contatos .jumbotron {

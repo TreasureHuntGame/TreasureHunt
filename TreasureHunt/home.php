@@ -36,6 +36,8 @@ if (!isset($_SESSION['usuario'])) {
 
 <body>
     <input type="checkbox" name="contrast-mode" id="contrast">
+    <input type="checkbox" name="animation-switch" id="animation">
+    <input type="checkbox" name="close-alert" id="close-alert-button">
     <div id="page-wrapper">
         <input type="radio" name="nav" id="inicio" checked>
         <input type="radio" name="nav" id="rank">
@@ -45,16 +47,20 @@ if (!isset($_SESSION['usuario'])) {
         <noscript>
             <div class="jumbotron bg-dark" aria-atomic="true">
                 <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
+                <label id="close-alert-label" class="close" for="close-alert-button" tabindex="0" 
+                title="fechar aviso de javascript desabilitado" aria-label="Fechar">
+                	<span aria-hidden="true">&times;</span>
+                </label>
             </div>
         </noscript>
         <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
             <input type="checkbox" name="collapse-btn" id="collapse-btn">
+            <a class="navbar-brand nav-item" id="link-logo" href="home.php">
+            	<img src="img/logo.svg" alt="TreasureHunt logo" id="img-logo" width="76" height="29">
+            </a>
             <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span
                         class="sr-only">Expandir menu de navegação</span></span></label>
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
-                <a class="navbar-brand nav-item" id="link-logo" href="home.php">
-                    <img src="img/logo.svg" alt="TreasureHunt logo" id="img-logo">
-                </a>
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0"
                             accesskey="i"><span class="sr-only">Página atual:</span>Início</label></li>
@@ -83,6 +89,14 @@ if (!isset($_SESSION['usuario'])) {
                     </label>
                 </li>
             </ul>
+            <ul class="navbar-nav ml-auto" id="animation-container" role="presentation">
+                <li>
+                    <label for="animation" id="animation-label" class="form-inline justify-content-end label-link" tabindex="0" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Recurso para ativar e desativar animações" accesskey="m">
+                        <span id="botao-animation" title="Recurso para ativar e desativar animações"></span>
+                        <span class="sr-only">Botão para ativar e desativar animações</span>
+                    </label>
+                </li>
+            </ul>
         </nav>
         <div id="main" role="main" aria-label="Principal">
             <div class="jumbotron bg-dark" id="jumbotron-home-title">
@@ -106,7 +120,7 @@ if (!isset($_SESSION['usuario'])) {
                             <label class="font-weight-bold">Arquivo:</label>
                             <span data-toggle="tooltip" data-placement="bottom"
                                 title="Arquivo que contém os exercícios!">
-                                <a id="arquivo" href="<?php print_r("Desafios/Jogador" . $usuario . ".zip") ?>">
+                                <a id="arquivo" class="link-padrao" href="<?php print_r("Desafios/Jogador" . $usuario . ".zip") ?>">
                                     <?php
                                     function formatBytes($size, $precision = 2)
                                     {
@@ -337,7 +351,7 @@ if (!isset($_SESSION['usuario'])) {
                 <h2 class="font-weight-bold page-title">Acessibilidade<span class="destaque">!</span></h2>
             </div>
             <div class="acess-conteudo">
-                <h3 class="subtitle-accessibility">Acessibilidade do Site</h3>
+                <h3 class="h3-acessibilidade">Acessibilidade do Site</h3>
                 <p> 
                     A interface do <em lang="en">TreasureHunt</em> foi desenvolvida para ser acessível e fácil de usar para o maior 
                     número possível de usuários. Para isso, a equipe realiza um trabalho contínuo de atualizações 
@@ -363,12 +377,18 @@ if (!isset($_SESSION['usuario'])) {
                     <li><span class="prompt"></span><span>Critério 2.4.7: Foco visível nos elementos.</span></li>
                     <li><span class="prompt"></span><span>Critério 3.3.1: Identificação de erro nos formulários. </span></li>
                 </ul>
-                <h3 class="subtitle-accessibility"> Problemas ou Sugestões </h3>
+                <p> 
+                	É possível conferir todos os
+                	<a class="link-padrao" rel="noopener noreferrer" target="_blank" href="https://docs.google.com/spreadsheets/d/1QwY4zQd_fF0Rss1fDj7d06v2b5BDnO0CrUsNnYmKyMU/edit#gid=0"> 
+                	critérios cumpridos pelo Treasure Hunt em uma planilha online (abre em nova janela) 
+                	</a> 
+                </p>
+                <h3 class="h3-acessibilidade"> Problemas ou Sugestões </h3>
                 <p>
                     Para relatar problemas com a acessibilidade do site ou enviar sugestões de melhorias,
                     pode-se entrar em contato com os emails disponiveis na página "Contato".
                 </p>
-                <h3 class="subtitle-accessibility"> Teclas de Atalho </h3>
+                <h3 class="h3-acessibilidade"> Teclas de Atalho </h3>
                 <p>
                     A interface web conta com atalhos que possibilitam navegar pela barra de navegação, 
                     ativar o modo de alto contraste e desativar as animações pelo teclado. Os atalhos são:
@@ -389,9 +409,9 @@ if (!isset($_SESSION['usuario'])) {
         <footer class="page-footer font-small">
             <div class="col">
                 <div class="footer-copyright">
-                    <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons"
+                    <a rel="license noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" class="link-padrao" id="creative-commons"
                         target="_blank">
-                        <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png">
+                        <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" width="80" height="15">
                         <br>
                         <span>Esta obra está licenciada com uma Licença <span lang="en">Creative Commons</span>
                             Atribuição-NãoComercial 4.0 Internacional</span> (Abre em nova janela).</a>
