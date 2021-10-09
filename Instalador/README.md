@@ -14,7 +14,7 @@ O instalador busca dar suporte aos seguintes gerenciadores de pacote:
 
 Os erros de instalação são colocados no diretório `logs`. Sinta-se livre para sugerir a adição de outro gerenciador de pacotes ou relatar algum erro de instalação abrindo um _issue_ e/ou entrando em contato com a equipe do projeto. 
 
-## Instalação - Organizador da competição
+## Instalação – Organizador da competição
 
 Para instalar as dependências do gerador de competições, basta executar os comandos abaixo. Certifique-se que você está no diretório [Instalador](/Instalador) (```cd Instalador```). Note que o _script_ precisa de privilégios de super usuário para funcionar.
 
@@ -24,7 +24,7 @@ Para instalar as dependências do gerador de competições, basta executar os co
     # ou sudo bash instalador.sh
 ```
  
-## Instalação - Usuários
+## Instalação – Usuários
 
 Para instalar as ferramentas mínimas recomendadas aos usuários, execute os comandos abaixo. De forma análoga, é preciso estar no diretório [Instalador](/Instalador) e executar o _script_ com privilégios de super usuário.  
 
