@@ -1,3 +1,7 @@
+<?php
+header('Content-Type: text/html; charset=utf-8');
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,66 +9,141 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="TreasureHunt, um Jogo de Caça ao Tesouro de Segurança Computacional">
-    <meta name="keywords"
-        content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
+    <meta name="keywords" content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
     <meta name="author" content="Ricardo de la Rocha Ladeira">
     <title>403 -- TreasureHunt{Security}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="icon" type="image/png" href="/TreasureHunt/img/favicon.png">
+    <link rel="icon" type="image/png" href="img/favicon_dark_tab.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/TreasureHunt/css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/400.css">
+    <script src="js/efeitos.js"></script>
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src=" https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
+    </script>
     <![endif]-->
 </head>
 
 <body class="text-light bg-dark">
     <input type="checkbox" name="contrast-mode" id="contrast">
+    <input type="checkbox" name="animation-switch" id="animation">
+    <input type="checkbox" name="close-alert" id="close-alert-button">
     <div id="page-wrapper">
-        <nav class="navbar navbar-expand-sm navbar-dark justify-content-center">
-            <a class="navbar-brand nav-item" href="home.php">
-                <img src="img/logo.svg" alt="TreasureHunt logo" id="img-logo">
+        <noscript>
+            <div class="jumbotron bg-dark" aria-atomic="true">
+                <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
+                <label id="close-alert-label" class="close" for="close-alert-button" tabindex="0" title="fechar aviso de javascript desabilitado" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </label>
+            </div>
+        </noscript>
+        <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
+            <input type="checkbox" name="collapse-btn" id="collapse-btn">
+            <a class="navbar-brand nav-item" id="link-logo" href="home.php">
+                <?php echo file_get_contents("img/logo.svg"); ?>
             </a>
+            <label for="collapse-btn" class="navbar-toggler" tabindex="-1"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
+            <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
+            </div>
             <ul class="navbar-nav ml-auto" id="contrast-container" role="presentation">
                 <li>
-                    <label for="contrast" id="contrast-label"
-                        class="form-inline justify-content-end label-link contrast-label" tabindex="0"
-                        data-toggle="tooltip" data-trigger="hover" data-placement="bottom"
-                        title="Recurso de alto contraste" accesskey="a">
+                    <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
                         <span id="botao-contraste" title="Recurso de alto contraste"></span>
                         <span class="sr-only">Botão para ativar e desativar recurso de alto contraste</span>
                     </label>
                 </li>
             </ul>
+            <ul class="navbar-nav ml-auto" id="animation-container" role="presentation">
+                <li>
+                    <label for="animation" id="animation-label" class="form-inline justify-content-end label-link" tabindex="0" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Recurso para ativar e desativar animações" accesskey="m">
+                        <span id="botao-animation" title="Recurso para ativar e desativar animações"></span>
+                        <span class="sr-only">Botão para ativar e desativar animações</span>
+                    </label>
+                </li>
+            </ul>
         </nav>
         <main>
-            <div class="jumbotron bg-dark">
-                <h1 class="font-weight-bold page-title" id="erro">
-                    TreasureHunt<span id="espaco"> </span><span class="destaque chaves-left"
-                        aria-hidden="true"></span>403<span class="destaque chaves-right" aria-hidden="true"></span>
+            <div class="jumbotron bg-dark" id="jumbotron-titulo">
+                <h1 class="font-weight-bold erro" id="titulo-index">
+                    TreasureHunt<span id="espaco"> </span><span class="destaque chaves-left" aria-hidden="true"></span>403<span class="destaque chaves-right" aria-hidden="true"></span>
                 </h1>
                 <h2 class="subtitulo">Página Proibida</h2>
-                <p>Você tentou acessar uma página proibida. Volte para o início clicando na logo ou no botão abaixo.
+                <p class="explicacao"> Você tentou acessar uma página proibida. Volte para o início clicando na logo ou no botão abaixo.
                     <span class="smile destaque"></span>
                 </p>
             </div>
 
             <div class="jumbotron">
-                <a role="button" class="btn btn-primary" href="home.php">Voltar para o ínicio</a>
+                <a role="button" id="voltar-inicio" class="btn btn-primary" href="home.php">Voltar para o ínicio</a>
             </div>
         </main>
         <footer class="page-footer font-small">
-            <div class="footer-copyright">
-                <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons"
-                    target="_blank">
-                    <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png">
-                    <br>
-                    <span>Esta obra está licenciada com uma Licença <span lang="en">Creative Commons</span>
-                        Atribuição-NãoComercial 4.0 Internacional</span> (abre em nova janela).</a>
-                <p><span lang="en">©</span> 2017-<?php echo date("Y");?></p>
+            <div class="col">
+                <div class="footer-copyright">
+                    <a rel="license noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" class="link-padrao" id="creative-commons" target="_blank">
+                        <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" width="80" height="15">
+                        <br>
+                        <span>Esta obra está licenciada com uma Licença <span lang="en">Creative Commons</span>
+                            Atribuição-NãoComercial 4.0 Internacional</span> (Abre em nova janela).</a>
+                    <p><span lang="en">©</span> 2017-<?php echo date("Y"); ?></p>
+                </div>
             </div>
         </footer>
+
+        <?php
+        if (!(isset($_COOKIE['cookie_notice_accepted']))) {
+            echo '<input type="checkbox" name="hide-cookie-bar" id="hide-cookie-bar">
+            <div id="cookie-bar" class="navbar fixed-bottom container-fluid noscript">
+            <div class="row mx-auto">
+            <div class="col-lg-7 col-sm-12">
+             <span>Nós usamos cookies para armazenar as preferências de contraste dos usuários.
+             Ao clicar em "Sim", assumiremos que você está de acordo com isso. </span>
+             </div>
+             <div class="col-lg-5 col-sm-12 ml-auto">
+             <label for="hide-cookie-bar">
+             <a class="btn btn-primary" id="cookie-yes" tabindex="0" role="button" title="Aceitar uso de cookie para armazenamento de preferências e termos de privacidade">Sim</a>
+             <a class="btn btn-primary" id="cookie-no" tabindex="0" role="button" title="Rejeitar uso de cookie para armazenamento de preferências e termos de privacidade">Não</a>
+             </label>
+             <a href="#modal-privacy" id="open-modal-btn" class="btn btn-primary" title="Acessar termos de privacidade">Detalhes</a>
+             </div>
+             </div>
+             </div>';
+
+            echo '<div id="modal-privacy" class="overlay noscript" role="dialog" tabindex="-1" aria-labelledby="dialog_label">
+                <div class="popup"> 
+                    <h2 id="dialog_label">Valorizamos sua privacidade</h2>
+                    <a class="close" id="close-modal" href="#open-modal-btn" role="button" title="fechar janela de detalhes" aria-label="Fechar">
+                    	<span aria-hidden="true">&times;</span>
+                    </a>
+                    <div class="contnt" tabindex="0">
+                        <p>                            
+                            Este site utiliza cookies para melhorar a experiência de 
+                            navegação do usuário ao salvar sua preferência de contraste. 
+                            A preferência será salva somente se você clicar em "Sim". 
+                            Essa informação visa a melhorar a acessibilidade do website
+                            por pessoas com baixa visibilidade, que, dessa forma, 
+                            não precisam reativar essa opção em um acesso futuro.
+                            Esse cookie é mantido por 30 dias.
+                        </p>
+                        <p>
+                            A identidade dos competidores é preservada durante as competições 
+                            do TreasureHunt, pois cada indivíduo é identificado por um número. 
+                            Apenas o pesquisador responsável terá acesso aos dados brutos,
+                            sem qualquer identificação ou correlação nominal dos participantes.
+                        </p>
+                        <p>
+                            Ressalta-se que o único dado sensível que a ferramenta recolhe é 
+                            o endereço IP de quem a acessa, pois ele é utilizado para garantir 
+                            a integridade da competição e identificar eventuais ataques e 
+                            tentativas de trapaça.
+                        </p>
+                    </div>
+                </div>
+            </div>';
+        }
+        ?>
     </div>
 </body>
 
