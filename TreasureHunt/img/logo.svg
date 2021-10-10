@@ -1,14 +1,25 @@
-<svg id="Camada_1" data-name="Camada 1"
-    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200.19 74.98">
-    <defs>
-        <style>.cls-1{fill:#2fb32f}.cls-2{fill:#fff}</style>
-    </defs>
-    <title>logo do TreasureHunt com os dizeres "$TH"</title>
-    <path class="cls-1" d="M48.72,10.69V31.41H32.42V41H48.15v9.36c-9.47.52-18.83,1.59-26.46-5.67V28c6.5-5.78,14.33-6.85,22.88-5.72V10.69Z" transform="translate(-21.69 -10.69)"/>
-    <path class="cls-1" d="M56.35,10.69V22.12c2.36,0,4.41.17,6.43,0a19,19,0,0,1,13,3.5c2.3,1.55,3.47,3,3.16,5.77a49.85,49.85,0,0,0,0,5.62H68.72l-.48-5.43h-16V10.69Z" transform="translate(-21.69 -10.69)"/>
-    <path class="cls-2" d="M103.11,44.55h-8.3c-.49-6.29-1-12.54-1.49-19.06h54.8c-.49,6.29-1,12.61-1.49,19H138.4c-.33-3-.82-5.81-.92-8.66-.08-2.23-.93-3-3.13-3a54.62,54.62,0,0,1-5.71-.49V74.41c2.18,2.49,9-1.16,7.51,6.1H105.91c-1.35-1.76-.73-3.27,1.3-3.79,5.63-1.45,6.3-5.21,6.09-10.35-.41-10-.12-20.08-.12-30.13V32.66c-.49-.17-.59-.25-.7-.24-8.33.27-8.33.28-9,8.37C103.4,41.92,103.26,43.06,103.11,44.55Z" transform="translate(-21.69 -10.69)"/>
-    <path class="cls-2" d="M158.16,27.34h11.41V48.67h18.16V59.13h-18V80.48H158.16Z" transform="translate(-21.69 -10.69)"/>
-    <path class="cls-2" d="M221.89,80.51H210.42V59.36h-18V48.8h17.73V27.53h11.72Z" transform="translate(-21.69 -10.69)"/>
-    <path class="cls-1" d="M56.39,69.49v16H52.72V60.08H68.21v-9.5H52.76v-9.5c5.48,0,10.88-.64,16,.23,3.4.58,6.43,3.32,9.61,5.12a.81.81,0,0,1,.33.59q0,8.29,0,16.6c-3.68,2-7.19,4.57-11.12,5.67C64.24,70.25,60.36,69.49,56.39,69.49Z" transform="translate(-21.69 -10.69)"/>
-    <path class="cls-1" d="M48.43,59.83V85.49l-3.77.18V69.49a42.27,42.27,0,0,0-6.69.06c-5.68.94-10-1.82-14.31-4.78a3.25,3.25,0,0,1-1.32-2.14c-.16-2.62-.06-5.26-.06-8.08h10l.36,5.28Z" transform="translate(-21.69 -10.69)"/>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" viewBox="0 0 102.65832 41.628311" version="1.1" id="img-logo" inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)" sodipodi:docname="logo_vector_project.svg">
+    <defs id="defs2" />
+    <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="2.8284271" inkscape:cx="133.66995" inkscape:cy="52.413312" inkscape:document-units="mm" inkscape:current-layer="layer1" showgrid="false" inkscape:snap-global="false" fit-margin-top="0" fit-margin-left="0" fit-margin-right="0" fit-margin-bottom="0" inkscape:window-width="1920" inkscape:window-height="1015" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" />
+    <metadata id="metadata5">
+        <rdf:RDF>
+            <cc:Work rdf:about="">
+                <dc:format>image/svg+xml</dc:format>
+                <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+                <dc:title></dc:title>
+            </cc:Work>
+        </rdf:RDF>
+    </metadata>
+    <g inkscape:label="Camada 1" inkscape:groupmode="layer" id="layer1" transform="translate(-174.29025,-82.752638)">
+        <path class="cifrao" d="m 186.99024,119.9707 v -4.40972 l -3.61597,-0.01 -3.61597,-0.01 -2.46944,-1.51633 -2.46945,-1.51634 -0.10303,-2.70726 -0.10304,-2.70726 h 2.66068 2.66067 v 1.5875 1.5875 h 4.58611 4.58611 v 7.05555 7.05556 h -1.05833 -1.05834 z" id="path72" />
+        <path class="cifrao" d="m 191.22358,117.32486 v -7.05555 h 4.58611 4.58611 v -2.64583 -2.64584 h -4.58611 -4.58611 v -2.64583 -2.645835 h 4.64469 4.6447 l 2.597,1.618645 2.597,1.61864 -0.0979,4.79205 -0.0979,4.79205 -2.46945,1.51707 -2.46944,1.51708 -3.61597,0.01 -3.61598,0.01 v 4.40972 4.40972 h -1.05833 -1.05833 z" id="path70" />
+        <path class="textos" d="M 222.26802,104.97764 V 94.394305 h -5.99722 -5.99722 v -2.64583 -2.64584 h 15.69861 15.69861 v 2.64584 2.64583 h -6.52639 -6.52639 v 10.583335 10.58334 h -3.175 -3.175 z" id="path68" />
+        <path class="textos" d="M 245.55135,102.33181 V 89.102635 h 2.82223 2.82222 v 5.29167 5.29167 h 4.40972 4.40972 v 2.645835 2.64583 h -4.40972 -4.40972 v 5.29167 5.29167 h -2.82222 -2.82223 z" id="path66" />
+        <path class="textos" d="m 271.65691,110.26931 v -5.29167 h -4.58611 -4.58611 v -2.64583 -2.645835 h 4.58611 4.58611 v -5.29167 -5.29167 h 2.64583 2.64584 v 13.229175 13.22917 h -2.64584 -2.64583 z" id="path64" />
+        <path class="cifrao" d="m 177.02427,103.34844 -2.73402,-1.61845 v -4.692645 -4.69265 l 2.76503,-1.62103 2.76503,-1.62103 h 3.58497 3.58496 v -3.175 -3.174997 h 1.05834 1.05833 v 5.820837 5.82083 h -4.58611 -4.58611 v 2.64583 2.64584 h 4.40972 4.40972 v 2.645835 2.64583 l -4.49791,-0.005 -4.49792,-0.005 z" id="path62" />
+        <path class="cifrao" d="m 200.3958,95.981805 v -1.5875 h -4.58611 -4.58611 v -5.82083 -5.820837 h 1.05833 1.05833 v 3.174997 3.175 l 3.61598,0.01 3.61597,0.01 2.46944,1.51634 2.46945,1.51633 0.10303,2.70727 0.10304,2.70727 h -2.66068 -2.66067 z" id="path126" />
+    </g>
 </svg>

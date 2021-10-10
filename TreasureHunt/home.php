@@ -18,14 +18,13 @@ if (!isset($_SESSION['usuario'])) {
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="TreasureHunt, um Jogo de Caça ao Tesouro de Segurança Computacional">
-    <meta name="keywords"
-        content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
+    <meta name="keywords" content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
     <meta name="author" content="Ricardo de la Rocha Ladeira">
     <title>Home -- TreasureHunt{Security}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="icon" type="image/png" href="img/favicon_dark_tab.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/efeitos.js"></script>
@@ -47,31 +46,25 @@ if (!isset($_SESSION['usuario'])) {
         <noscript>
             <div class="jumbotron bg-dark" aria-atomic="true">
                 <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
-                <label id="close-alert-label" class="close" for="close-alert-button" tabindex="0" 
-                title="fechar aviso de javascript desabilitado" aria-label="Fechar">
-                	<span aria-hidden="true">&times;</span>
+                <label id="close-alert-label" class="close" for="close-alert-button" tabindex="0" title="fechar aviso de javascript desabilitado" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
                 </label>
             </div>
         </noscript>
         <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
             <input type="checkbox" name="collapse-btn" id="collapse-btn">
             <a class="navbar-brand nav-item" id="link-logo" href="home.php">
-            	<img src="img/logo.svg" alt="TreasureHunt logo" id="img-logo" width="76" height="29">
+                <?php echo file_get_contents("img/logo.svg"); ?>
+                <!-- <img src="img/logo.svg" alt="TreasureHunt logo" id="img-logo" width="76" height="29"> -->
             </a>
-            <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span
-                        class="sr-only">Expandir menu de navegação</span></span></label>
+            <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0"
-                            accesskey="i"><span class="sr-only">Página atual:</span>Início</label></li>
-                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0"
-                            accesskey="p"><span class="sr-only">Página atual:</span>Placar</label></li>
-                    <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0"
-                            accesskey="j"><span class="sr-only">Página atual:</span>Como Jogar?</label></li>
-                    <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0"
-                            accesskey="c"><span class="sr-only">Página atual:</span>Contato</label></li>
-                    <li class="nav-item"><label id="acessibilidade-label" class="label-link" for="acessibilidade"
-                            tabindex="0" accesskey="s"><span class="sr-only">Página atual:</span>Acessibilidade</label>
+                    <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0" accesskey="i"><span class="sr-only">Página atual:</span>Início</label></li>
+                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0" accesskey="p"><span class="sr-only">Página atual:</span>Placar</label></li>
+                    <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" accesskey="j"><span class="sr-only">Página atual:</span>Como Jogar?</label></li>
+                    <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" accesskey="c"><span class="sr-only">Página atual:</span>Contato</label></li>
+                    <li class="nav-item"><label id="acessibilidade-label" class="label-link" for="acessibilidade" tabindex="0" accesskey="s"><span class="sr-only">Página atual:</span>Acessibilidade</label>
                     </li>
                     <li class="nav-item">
                         <a id="logout" accesskey="l" href="logout.php" class="mostrar" lang="en">Logout</a>
@@ -80,10 +73,7 @@ if (!isset($_SESSION['usuario'])) {
             </div>
             <ul class="navbar-nav ml-auto" id="contrast-container" role="presentation">
                 <li>
-                    <label for="contrast" id="contrast-label"
-                        class="form-inline justify-content-end label-link contrast-label" tabindex="0"
-                        data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom"
-                        title="Recurso de alto contraste" accesskey="a">
+                    <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
                         <span id="botao-contraste" title="Recurso de alto contraste"></span>
                         <span class="sr-only">Botão para ativar e desativar recurso de alto contraste</span>
                     </label>
@@ -108,8 +98,7 @@ if (!isset($_SESSION['usuario'])) {
                         <h3>Seus dados:</h3>
                         <div>
                             <label class="font-weight-bold">ID:</label>
-                            <span data-toggle="tooltip" data-placement="bottom"
-                                title="Número que identifica cada jogador.">
+                            <span data-toggle="tooltip" data-placement="bottom" title="Número que identifica cada jogador.">
                                 <?php
                                 $usuario = $_SESSION['usuario'];
                                 echo $usuario
@@ -118,8 +107,7 @@ if (!isset($_SESSION['usuario'])) {
                         </div>
                         <div>
                             <label class="font-weight-bold">Arquivo:</label>
-                            <span data-toggle="tooltip" data-placement="bottom"
-                                title="Arquivo que contém os exercícios!">
+                            <span data-toggle="tooltip" data-placement="bottom" title="Arquivo que contém os exercícios!">
                                 <a id="arquivo" class="link-padrao" href="<?php print_r("Desafios/Jogador" . $usuario . ".zip") ?>">
                                     <?php
                                     function formatBytes($size, $precision = 2)
@@ -143,15 +131,9 @@ if (!isset($_SESSION['usuario'])) {
                         <form action="checkflag.php" method="POST" class="form-signin">
                             <h3>Submeta sua <i lang="en">flag</i>:</h3>
                             <label for="id-problema" class="sr-only">Informe o ID do problema</label>
-                            <input autocomplete="off" type="number" name="problema" id="id-problema"
-                                class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required
-                                data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top"
-                                title="Número do diretório cujo exercício foi resolvido.">
+                            <input autocomplete="off" type="number" name="problema" id="id-problema" class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
                             <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span></label>
-                            <input autocomplete="off" type="text" id="flag-interno" name="flag" class="form-control"
-                                placeholder="TreasureHunt{texto-aleatorio}" required data-offset="400"
-                                data-trigger="focus" data-toggle="tooltip" data-placement="top"
-                                title="Resposta encontrada no exercício.">
+                            <input autocomplete="off" type="text" id="flag-interno" name="flag" class="form-control" placeholder="TreasureHunt{texto-aleatorio}" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Resposta encontrada no exercício.">
                             <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                             <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
                             <?php
@@ -179,8 +161,7 @@ if (!isset($_SESSION['usuario'])) {
                     </div>
                     <div id="placar-individual" class="col-sm-12 col-md-12 col-lg-4 jumbotron bg-dark">
                         <h3>Seus resultados:</h3>
-                        <table class="mx-auto" data-toggle="tooltip" data-placement="left" data-trigger="hover"
-                            title="Placar individual detalhado contendo o estado e o número de tentativas por problema.">
+                        <table class="mx-auto" data-toggle="tooltip" data-placement="left" data-trigger="hover" title="Placar individual detalhado contendo o estado e o número de tentativas por problema.">
                             <caption>Placar individual detalhado.</caption>
                             <thead>
                                 <tr>
@@ -196,26 +177,26 @@ if (!isset($_SESSION['usuario'])) {
                                 $i = 0;
                                 while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
                                 ?>
-                                <tr>
-                                    <td class="align-top">
-                                        <?php
-                                        echo $linha->idProblema;
-                                        ?>
-                                    </td>
-                                    <td class="align-top">
-                                        <?php
-                                        if ($linha->acertou > 0)
-                                            echo "Resolvido";
-                                        else
-                                            echo "Não Resolvido";
-                                        ?>
-                                    </td>
-                                    <td class="align-top">
-                                        <?php
-                                        echo $linha->tentativas;
-                                        ?>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td class="align-top">
+                                            <?php
+                                            echo $linha->idProblema;
+                                            ?>
+                                        </td>
+                                        <td class="align-top">
+                                            <?php
+                                            if ($linha->acertou > 0)
+                                                echo "Resolvido";
+                                            else
+                                                echo "Não Resolvido";
+                                            ?>
+                                        </td>
+                                        <td class="align-top">
+                                            <?php
+                                            echo $linha->tentativas;
+                                            ?>
+                                        </td>
+                                    </tr>
                                 <?php
                                 }
                                 ?>
@@ -230,8 +211,7 @@ if (!isset($_SESSION['usuario'])) {
                 <h2 class="font-weight-bold page-title">Placar<span class="destaque">!</span></h2>
             </div>
             <div id="placar" class="jumbotron bg-dark">
-                <table class="mx-auto"
-                    title="Ranqueamento ordenado pelo número de acertos. O desempate é o horário da última submissão correta.">
+                <table class="mx-auto" title="Ranqueamento ordenado pelo número de acertos. O desempate é o horário da última submissão correta.">
                     <caption>Classificação do jogo.</caption>
                     <thead>
                         <tr>
@@ -247,24 +227,24 @@ if (!isset($_SESSION['usuario'])) {
                         $i = 0;
                         while ($linha = $stmt->fetch(PDO::FETCH_OBJ)) {
                         ?>
-                        <tr>
-                            <td class="align-top">
-                                <?php echo ++$i . "º"; 
-                                ?>
-                            </td>
-                            <td class="align-top">
-                                <?php echo $linha->idUsuario; 
-                                ?>
-                            </td>
-                            <td class="align-top">
-                                <?php echo $linha->acertos; 
-                                ?>
-                            </td>
-                            <td class="align-top">
-                                <?php echo $linha->hora; 
-                                ?>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td class="align-top">
+                                    <?php echo ++$i . "º";
+                                    ?>
+                                </td>
+                                <td class="align-top">
+                                    <?php echo $linha->idUsuario;
+                                    ?>
+                                </td>
+                                <td class="align-top">
+                                    <?php echo $linha->acertos;
+                                    ?>
+                                </td>
+                                <td class="align-top">
+                                    <?php echo $linha->hora;
+                                    ?>
+                                </td>
+                            </tr>
                         <?php
                         }
                         ?>
@@ -280,8 +260,7 @@ if (!isset($_SESSION['usuario'])) {
                 <li><span class="prompt"></span> Na tela de início, insira seu ID e sua senha e clique em
                     <button class="btn btn-sm btn-dark" name="enviar" tabindex="-1">Entrar</button>.
                 </li>
-                <li><span class="prompt"></span> Baixe e descompacte o arquivo zip disponível (sugestão: <code
-                        id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém
+                <li><span class="prompt"></span> Baixe e descompacte o arquivo zip disponível (sugestão: <code id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém
                     diretórios representados por números inteiros. Cada diretório contém pelo menos um arquivo.
                 </li>
                 <li><span class="prompt"></span> Seu objetivo é descobrir a palavra secreta (<em lang="en">flag</em>)
@@ -292,42 +271,33 @@ if (!isset($_SESSION['usuario'])) {
                     aquele que obteve seu último acerto antes.
                 </li>
                 <li><span class="prompt"></span> Cada <em lang="en">flag</em> descoberta é um desafio resolvido! Você só
-                    precisa realizar a submissão no sistema, informando o ID do problema (número do diretório) e a <em
-                        lang="en">flag</em> encontrada. O sistema informará se a <em lang="en">flag</em> está
+                    precisa realizar a submissão no sistema, informando o ID link-padraodo problema (número do diretório) e a <em lang="en">flag</em> encontrada. O sistema informará se a <em lang="en">flag</em> está
                     (in)correta.
                 </li>
                 <li><span class="prompt"></span> As <em lang="en">flags</em> possuem o formato
-                    <code> <span lang="en">TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <em
-                        lang="en">flag</em>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
+                    <code> <span lang="en">TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <em lang="en">flag</em>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
                 </li>
             </ul>
         </div>
         <div id="contatos" role="main" aria-label="Contatos">
             <div class="jumbotron bg-dark">
                 <h2 class="font-weight-bold page-title">Contato<span class="destaque">!</span></h2>
-                <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span
-                        class="smile destaque" aria-hidden="true"></span></h3>
+                <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque" aria-hidden="true"></span></h3>
             </div>
             <address>
 
                 <span class="address-title">Equipe atual:</span>
                 <div class="contato">
                     <span class="nome-autor">Ricardo de la Rocha Ladeira</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span
-                            class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior"
-                            aria-hidden="true"></span></span>
+                    <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <div class="contato">
                     <span class="nome-autor">Vítor Augusto Ueno Otto</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>vitoruenootto<span
-                            class="at font-weight-bold"></span>gmail.com<span class="sinal-maior"
-                            aria-hidden="true"></span></span>
+                    <span><span class="sinal-menor" aria-hidden="true"></span>vitoruenootto<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <div class="contato">
                     <span class="nome-autor">Lucas Vargas</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>lucasvargas27<span
-                            class="at font-weight-bold"></span>hotmail.com<span class="sinal-maior"
-                            aria-hidden="true"></span></span>
+                    <span><span class="sinal-menor" aria-hidden="true"></span>lucasvargas27<span class="at font-weight-bold"></span>hotmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
 
                 <span class="address-title">Contribuidores:</span>
@@ -352,23 +322,23 @@ if (!isset($_SESSION['usuario'])) {
             </div>
             <div class="acess-conteudo">
                 <h3 class="h3-acessibilidade">Acessibilidade do Site</h3>
-                <p> 
-                    A interface do <em lang="en">TreasureHunt</em> foi desenvolvida para ser acessível e fácil de usar para o maior 
-                    número possível de usuários. Para isso, a equipe realiza um trabalho contínuo de atualizações 
-                    e melhorias, utilizando como base diretrizes e recomendações de acessibilidade.
-                </p> 
                 <p>
-                    A equipe busca aprimorar a interface do <em lang="en">TreasureHunt</em> 
+                    A interface do <em lang="en">TreasureHunt</em> foi desenvolvida para ser acessível e fácil de usar para o maior
+                    número possível de usuários. Para isso, a equipe realiza um trabalho contínuo de atualizações
+                    e melhorias, utilizando como base diretrizes e recomendações de acessibilidade.
+                </p>
+                <p>
+                    A equipe busca aprimorar a interface do <em lang="en">TreasureHunt</em>
                     para cumprir principalmente o nível A da WCAG (<em lang="en">Web Content Accessibility Guidelines</em>,
                     Diretrizes de Acessibilidade para Conteúdo Web),
-                    bem como satisfazer o maior número possível de critérios dos níveis AA e AAA. 
-                    Juntamente, busca-se conformidade com os padrões HTML e CSS da 
+                    bem como satisfazer o maior número possível de critérios dos níveis AA e AAA.
+                    Juntamente, busca-se conformidade com os padrões HTML e CSS da
                     W3C (<em lang="en">World Wide Web Consortium</em>, Consórcio da Rede Mundial de Internet).
                 </p>
                 <p>
                     O site possui em seu formato padrão uma relação de contraste de no mínimo 4:5:1 respeitando o critério 1.4.3 da WCAG,
                     e dispõe também de um modo de alto contraste com relação superior a 7:1 satisfazendo o critério 1.4.6. São cumpridos ainda,
-                    dentre outros, os seguintes critérios: 
+                    dentre outros, os seguintes critérios:
                 </p>
                 <ul class="acessibilidade-ul">
                     <li><span class="prompt"></span><span>Critério 1.4.4: Zoom de até 200% sem perda de conteúdo.</span></li>
@@ -377,11 +347,11 @@ if (!isset($_SESSION['usuario'])) {
                     <li><span class="prompt"></span><span>Critério 2.4.7: Foco visível nos elementos.</span></li>
                     <li><span class="prompt"></span><span>Critério 3.3.1: Identificação de erro nos formulários. </span></li>
                 </ul>
-                <p> 
-                	É possível conferir todos os
-                	<a class="link-padrao" rel="noopener noreferrer" target="_blank" href="https://docs.google.com/spreadsheets/d/1QwY4zQd_fF0Rss1fDj7d06v2b5BDnO0CrUsNnYmKyMU/edit#gid=0"> 
-                	critérios cumpridos pelo Treasure Hunt em uma planilha online (abre em nova janela) 
-                	</a> 
+                <p>
+                    É possível conferir todos os
+                    <a class="link-padrao" rel="noopener noreferrer" target="_blank" href="https://docs.google.com/spreadsheets/d/1QwY4zQd_fF0Rss1fDj7d06v2b5BDnO0CrUsNnYmKyMU/edit#gid=0">
+                        critérios cumpridos pelo Treasure Hunt em uma planilha online (abre em nova janela)
+                    </a>
                 </p>
                 <h3 class="h3-acessibilidade"> Problemas ou Sugestões </h3>
                 <p>
@@ -390,7 +360,7 @@ if (!isset($_SESSION['usuario'])) {
                 </p>
                 <h3 class="h3-acessibilidade"> Teclas de Atalho </h3>
                 <p>
-                    A interface web conta com atalhos que possibilitam navegar pela barra de navegação, 
+                    A interface web conta com atalhos que possibilitam navegar pela barra de navegação,
                     ativar o modo de alto contraste e desativar as animações pelo teclado. Os atalhos são:
                 </p>
                 <ul class="acessibilidade-ul">
@@ -404,13 +374,12 @@ if (!isset($_SESSION['usuario'])) {
                     <li><span class="prompt"></span><span>Alt + L: Faz o <em lang="en">logout</em> (exige autenticação)</span></li>
                 </ul>
                 <span id="accesskey-span">Se estiver usando o <em lang="en">Firefox</em>, pressione Shift + Alt + “tecla de atalho”.</span>
-            </div>  
+            </div>
         </div>
         <footer class="page-footer font-small">
             <div class="col">
                 <div class="footer-copyright">
-                    <a rel="license noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" class="link-padrao" id="creative-commons"
-                        target="_blank">
+                    <a rel="license noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" class="link-padrao" id="creative-commons" target="_blank">
                         <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" width="80" height="15">
                         <br>
                         <span>Esta obra está licenciada com uma Licença <span lang="en">Creative Commons</span>
