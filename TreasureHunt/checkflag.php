@@ -11,9 +11,10 @@ if (!isset($_SESSION['usuario']) == true) {
 	header('location:index.php');
 }
 
-function console_log( $data ){
+function console_log($data)
+{
 	echo '<script>';
-	echo 'console.log('. json_encode( $data ) .')';
+	echo 'console.log(' . json_encode($data) . ')';
 	echo '</script>';
 }
 
@@ -57,7 +58,7 @@ $stmt->execute();
 
 // Se retornar resultado, usuário já havia respondido corretamente
 if ($stmt->rowCount() > 0) { // "erro" (aviso): questão já acertada
-	header('Location:home.php?message=duplicada&id='.$problema);
+	header('Location:home.php?message=duplicada&id=' . $problema);
 	exit();
 } else {
 
@@ -95,7 +96,7 @@ if ($stmt->rowCount() > 0) { // "erro" (aviso): questão já acertada
 		$stmt->execute();
 		$linhaAcertos = $stmt->fetch(PDO::FETCH_OBJ);
 		// enviar mensagem de que usuário acertou questão (mostra na caixa verde)
-		header('Location:home.php?message=acertou&acertos='.$linhaAcertos->Acertos.'&total='.$linhaTotal->Total);
+		header('Location:home.php?message=acertou&acertos=' . $linhaAcertos->Acertos . '&total=' . $linhaTotal->Total);
 		exit();
 	} else { // se resposta não coincidir com hash do bd, resposta digitada é incorreta
 		$stmt = $conexao->prepare("SELECT MAX(idProblema) AS Max FROM TreasureHunt.Resposta");
@@ -105,29 +106,30 @@ if ($stmt->rowCount() > 0) { // "erro" (aviso): questão já acertada
 			header('Location:home.php?message=id_invalido');
 			exit();
 		} else {
-		$acertou = false;
-		atualiza($acertou, $usuario, $problema);
+			$acertou = false;
+			atualiza($acertou, $usuario, $problema);
 
-		$tamanho = strlen($flagSemEspaco);
-    	$verificaPadrao = (substr($flagSemEspaco, 0, 13) === 'TreasureHunt{') && (substr($flagSemEspaco, $tamanho - 1, $tamanho) === '}');
-    	$mensagem = "Errou!";
-    	if ($verificaPadrao != 1) { // erro: flag no formato incorreto
-			$mensagem .= " Considere submeter a flag no seguinte formato: TreasureHunt{texto-aleatorio}";
-			header('Location:home.php?message=formato');
+			$tamanho = strlen($flagSemEspaco);
+			$verificaPadrao = (substr($flagSemEspaco, 0, 13) === 'TreasureHunt{') && (substr($flagSemEspaco, $tamanho - 1, $tamanho) === '}');
+			$mensagem = "Errou!";
+			if ($verificaPadrao != 1) { // erro: flag no formato incorreto
+				$mensagem .= " Considere submeter a flag no seguinte formato: TreasureHunt{texto-aleatorio}";
+				header('Location:home.php?message=formato');
+				exit();
+			}
+			header('Location:home.php?message=erro');
 			exit();
 		}
-		header('Location:home.php?message=erro');
-		exit();
-		} 
 	}
 }
 
 /* Função que atualiza a tabela de respostas
    quando o usuário submeter uma flag */
-function atualiza($resposta, $usuario, $problema) {
+function atualiza($resposta, $usuario, $problema)
+{
 	include 'conexao.php';
 
-	$param="";
+	$param = "";
 
 	if ($resposta == true) {
 		$hora = date('Y-m-d H:i:s');
@@ -143,5 +145,5 @@ function atualiza($resposta, $usuario, $problema) {
 }
 ?>
 <script>
-window.setTimeout("location.href='home.php';");
+	window.setTimeout("location.href='home.php';");
 </script>
