@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Eczar&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+html{
+    overflow-y: hidden;
+}
+
 html,
 body {
     height: 100%;
@@ -47,6 +52,25 @@ body {
     --c-link-hover-outline: #FFF;
 }
 
+input#contrast:checked~#page-wrapper .popup{
+    border-color: var(--c-cor-primaria);
+    background-color: var(--c-cor-fundo);
+    color: var(--c-cor-primaria);
+}
+
+input#contrast:checked~#page-wrapper .popup .contnt p{
+    color: var(--cor-primaria) !important;
+}
+
+input#contrast:checked~#page-wrapper .popup .close{
+    color: var(--cor-primaria) !important;
+    opacity: 0.9;
+}
+
+input#contrast:checked~#page-wrapper .popup .close:focus, 
+input#contrast:checked~#page-wrapper .popup .close:hover{
+    box-shadow: 0 0 0 2px var(--cor-primaria) !important;
+}
 
 input#close-alert-button:checked~#page-wrapper noscript{
     display: none;
@@ -278,6 +302,7 @@ body {
     font-family: 'Muli', sans-serif;
     text-align: center;
     color: var(--cor-primaria);
+    overflow-y: scroll;
 }
 
 h1 {
@@ -922,7 +947,7 @@ caption {
     margin: 75px auto;
     padding: 20px;
     background: #fff;
-    border: 1px solid #666;
+    border: 6px solid white;
     width: 40%;
     box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
     position: relative;
@@ -943,8 +968,8 @@ caption {
 .popup .close{
     font-size: 2.3em;
     line-height: 38px;
-    top: 9px;
-    right: 15px;
+    top: 7px;
+    right: 12px;
     opacity: 0.8;
     color: #666; 
 }
@@ -956,6 +981,7 @@ caption {
    border-radius: 5px;
    box-shadow: 0 0 0 2px var(--cor-secundaria);
    color: #000;
+   opacity: 1 !important;
 }
 
 .popup .contnt {
@@ -976,7 +1002,7 @@ caption {
 
 .disable-scroll {
     height: 100%;
-    overflow: hidden;
+    overflow-y: scroll;
 }
 
 @media (max-width: 1200px) {
@@ -1096,6 +1122,7 @@ caption {
     }
     .popup {
         width: 80%;
+        border: 3px solid white; 
     }
     #cookie-bar .btn-primary {
         margin: 10px 0 0 5px;
@@ -1108,7 +1135,7 @@ caption {
         height: 60%;
     }
     .popup h2 {
-        margin-right: 35px;
+        margin-right: 40px;
     }
     .contnt {
         height: 85%;

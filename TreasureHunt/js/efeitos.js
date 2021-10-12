@@ -23,13 +23,19 @@ $(function () {
         });
     });
 
+    var metaTag = document.querySelector('meta[name="theme-color"]');
+    function ChangeThemeColor() {
+        let color = $("#page-wrapper").css("background-color");
+        metaTag.setAttribute('content', color);
+    }
+
     // Checa se a CookieBar existe, se sim, aumenta o padding bottom do footer para
     // não cobrir nada na página.
     var cookieBar = document.getElementById('cookie-bar');
     if (cookieBar) {
         footer = document.getElementsByTagName('footer');
-        footer[0].style.padding = "0 32px 110px 32px"
-    };
+        footer[0].style.padding = "0 32px 110px 32px";
+    }
 
     // cria o cookie de aceitação com valor true quando
     // "sim" é pressionado na cookie bar, 
@@ -83,18 +89,20 @@ $(function () {
                 setCookie('contrast', 'false', 30);
             }
         }
+        ChangeThemeColor();
     });
 
     // se o valor do cookie 'contrast' for verdadeiro ele deixa 
     // a página em alto contraste
     if (getCookie('contrast') === 'true') {
         $('#contrast').prop('checked', true);
+        ChangeThemeColor();
     }
 
     // quando o modal é aberto adiciona a classe que trava o scroll,
     // cria variável contendo o modal e ativa função para prender o foco.
     $('#open-modal-btn').click(function () {
-        $('body, html').addClass('disable-scroll');
+        $('body').addClass('disable-scroll');
         var modal = document.querySelector('#modal-privacy');
         trap_focus(modal);
 
@@ -102,7 +110,7 @@ $(function () {
 
     // quando o modal é fechado remove a classe que trava o scroll
     $('#close-modal').click(function (e) {
-        $('body, html').removeClass('disable-scroll');
+        $('body').removeClass('disable-scroll');
     });
 
     var msg = getQueryParam('message');
@@ -127,7 +135,7 @@ $(function () {
                 break;
             case 'id_invalido':
                 input = $('#id-problema');
-                break
+                break;
             default:
                 break;
         }
@@ -235,16 +243,16 @@ $(function () {
     for (input of inputs) {
         switch (input) {
             case '#usuario':
-                $(input).attr('title', 'Credencial numérica atribuída a você. Precisa ser um número')
+                $(input).attr('title', 'Credencial numérica atribuída a você. Precisa ser um número');
                 break;
             case '#senha':
-                $(input).attr('title', 'Senha fornecida junto à credencial.')
+                $(input).attr('title', 'Senha fornecida junto à credencial.');
                 break;
             case '#id-problema':
-                $(input).attr('title', 'Número do diretório cujo exercício foi resolvido. Precisa ser um número.')
+                $(input).attr('title', 'Número do diretório cujo exercício foi resolvido. Precisa ser um número.');
                 break;
             case '#flag-interno':
-                $(input).attr('title', 'Resposta encontrada. Formato: TreasureHunt{texto-aleatório}')
+                $(input).attr('title', 'Resposta encontrada. Formato: TreasureHunt{texto-aleatório}');
                 break;
             default:
                 break;
@@ -254,7 +262,7 @@ $(function () {
         $(input).hover(function () {
             var title = $(this).attr('title');
             $(this).attr('tmp_title', title);
-            $(this).attr('title', '')
+            $(this).attr('title', '');
         },
             function () {
                 var recoveredTitle = $(this).attr('tmp_title');
@@ -263,7 +271,7 @@ $(function () {
         $(input).click(function () {
             var oldTitle = $(this).attr("tmp_title");
             $(this).attr("title", oldTitle);
-        })
+        });
     }
 
     // exclui o tooltip quando o esc é pressionado
