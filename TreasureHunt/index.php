@@ -19,8 +19,8 @@ header('Content-Type: text/html; charset=utf-8');
     <link rel="icon" type="image/png" href="img/favicon_dark_tab.png">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="js/efeitos.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.min.css">
+    <script src="js/efeitos.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
