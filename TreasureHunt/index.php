@@ -49,7 +49,6 @@ header('Content-Type: text/html; charset=utf-8');
             <input type="checkbox" name="collapse-btn" id="collapse-btn">
             <a class="navbar-brand nav-item" id="link-logo" href="home.php">
                 <?php echo file_get_contents("img/logo.svg"); ?>
-                <!-- <img src="img/logo.svg" alt="TreasureHunt logo" id="img-logo" width="76" height="29"> -->
             </a>
             <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
