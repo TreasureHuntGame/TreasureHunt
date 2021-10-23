@@ -69,7 +69,16 @@ As respostas (_flags_) estão presentes nos arquivos disponibilizados aos jogado
 
 Os acessos e as submissões de respostas por meio do Sistema _Web_ podem ser verificados pelo organizador no Banco de Dados `TreasureHunt`. Nele ficam registrados os dados da competição, inclusive o endereço IP dos jogadores, garantindo que uma conta não tenha sido compartilhada, por exemplo. Vale lembrar que boas práticas de Segurança são aplicadas nos dados sensíveis, tais como o uso de _hash_ e _salt_.
 
-Além disso, a interface _web_ do TreasureHunt é responsiva e foi otimizada para ser **acessível**, seguindo 78% dos critérios de acessibilidade previstos nas versões 2.1 e 2.2 da [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) (_Web Content Accessibility Guidelines_, Diretrizes de Acessibilidade para o Conteúdo da _Web_). Dentre os detalhes acessíveis do TreasureHunt podemos citar a relação de contraste e o modo de alto contraste, o suporte para navegação por teclado, a minimização do uso de JavaScript e as mensagens de erro na submissão de formulários.
+Além disso, a interface _web_ do TreasureHunt é responsiva e foi otimizada para ser **acessível**, seguindo 82,75% dos critérios de acessibilidade previstos nas versões 2.1 e 2.2 da [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) (_Web Content Accessibility Guidelines_, Diretrizes de Acessibilidade para o Conteúdo da _Web_), que pode ser conferido na [planilha online de critérios de acessibilidade cumpridos pela interface web do TreasureHunt](https://docs.google.com/spreadsheets/d/1QwY4zQd_fF0Rss1fDj7d06v2b5BDnO0CrUsNnYmKyMU/edit#gid=0). 
+
+Com o objetivo de ser cada vez mais acessível, o _website_ é testado por meio de validadores automáticos de acessibilidade e de testes manuais, como o uso de leitores de tela e simuladores de daltonismo. Alguns dos recursos de acessibilidade da interface _web_ do TreasureHunt estão descritos na página "acessibilidade", que explica e auxilia a utilização de alguns deles. Dentre os recursos de acessibilidade do TreasureHunt podemos citar:  
+
+- relação de contraste acima de 4,5:1 em todo o website e um modo de alto contraste com relação superior a 7:1
+- suporte para navegação por teclado 
+- minimização do uso de JavaScript em recursos essenciais 
+- layout responsivo e adaptável mesmo com grande zoom 
+- mensagens significativas de correção de erros na submissão de formulários 
+- opção de desativar as animações não essenciais da página 
 
 ---
 
