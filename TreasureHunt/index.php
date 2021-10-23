@@ -17,6 +17,11 @@ header('Content-Type: text/html; charset=utf-8');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/png" href="img/favicon_dark_tab.png">
+    <link rel="preload" href="css/style.min.css" as="style">
+    <link rel="preload" href="js/efeitos.min.js" as="script">
+    <link rel='preload' as='style' href='https://fonts.googleapis.com/css?family=Eczar&display=swap'>
+    <link rel='preload' as='style' href='https://fonts.googleapis.com/css?family=Muli&display=swap'>
+    <link rel='preload' as='style' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.min.css">
@@ -86,9 +91,9 @@ header('Content-Type: text/html; charset=utf-8');
             </div>
             <form action="acesso.php" method="POST" class="form-signin" autocomplete="on">
                 <h3 class="h6">Autentique-se:</h3>
-                <label for="usuario" class="sr-only">Informe seu ID *</label>
+                <label for="usuario" class="sr-only">Informe seu ID (obrigatório)</label>
                 <input type="number" name="usuario" id="usuario" class="form-control input-sm" placeholder="ID da conta (Exemplo: 1)" title="Credencial numérica atribuída a você." data-trigger="focus" data-offset="400" data-toggle="tooltip" data-placement="top" required>
-                <label for="senha" class="sr-only">Informe sua senha *</label>
+                <label for="senha" class="sr-only">Informe sua senha (obrigatório)</label>
                 <input type="password" id="senha" name="senha" class="form-control" autocomplete="current-password" placeholder="Informe sua senha" title="Senha fornecida junto à credencial." data-trigger="focus" data-toggle="tooltip" data-offset="400" data-placement="top" required>
                 <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                 <button class="btn btn-dark btn-block" type="submit" name="enviar">Entrar</button>
@@ -212,7 +217,7 @@ header('Content-Type: text/html; charset=utf-8');
                 </p>
                 <ul class="acessibilidade-ul">
                     <li><span class="prompt"></span><span>Alt + A: ativa o modo de alto contraste </span></li>
-                    <li><span class="prompt"></span><span>Alt + M: desativa as animações </span></li>
+                    <li><span class="prompt"></span><span>Alt + M: desativa/ativa as animações </span></li>
                     <li><span class="prompt"></span><span>Alt + I: leva para a página: “Inicío”</span></li>
                     <li><span class="prompt"></span><span>Alt + J: leva para a página: “Como jogar?”</span></li>
                     <li><span class="prompt"></span><span>Alt + C: leva para a página: “Contatos”</span></li>

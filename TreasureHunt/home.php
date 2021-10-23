@@ -26,6 +26,12 @@ if (!isset($_SESSION['usuario'])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/png" href="img/favicon_dark_tab.png">
+    <link rel="preload" href="css/style.min.css" as="style">
+    <link rel="preload" href="js/efeitos.min.js" as="script">
+    <link rel='preload' as='style' href='https://fonts.googleapis.com/css?family=Eczar&display=swap'>
+    <link rel='preload' as='style' href='https://fonts.googleapis.com/css?family=Muli&display=swap'>
+    <link rel='preload' as='style' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.min.css">
     <script src="js/efeitos.min.js"></script>
@@ -130,9 +136,9 @@ if (!isset($_SESSION['usuario'])) {
                     <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark" id="jumbotron-home-form">
                         <form action="checkflag.php" method="POST" class="form-signin">
                             <h3>Submeta sua <i lang="en">flag</i>:</h3>
-                            <label for="id-problema" class="sr-only">Informe o ID do problema</label>
+                            <label for="id-problema" class="sr-only">Informe o ID do problema (obrigatório)</label>
                             <input autocomplete="off" type="number" name="problema" id="id-problema" class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
-                            <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span></label>
+                            <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span> (obrigatório)</label>
                             <input autocomplete="off" type="text" id="flag-interno" name="flag" class="form-control" placeholder="TreasureHunt{texto-aleatorio}" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Resposta encontrada no exercício.">
                             <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                             <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
@@ -365,7 +371,7 @@ if (!isset($_SESSION['usuario'])) {
                 </p>
                 <ul class="acessibilidade-ul">
                     <li><span class="prompt"></span><span>Alt + A: ativa o modo de alto contraste </span></li>
-                    <li><span class="prompt"></span><span>Alt + M: desativa as animações </span></li>
+                    <li><span class="prompt"></span><span>Alt + M: desativa/ativa as animações </span></li>
                     <li><span class="prompt"></span><span>Alt + I: leva para a página: “Inicío”</span></li>
                     <li><span class="prompt"></span><span>Alt + J: leva para a página: “Como jogar?”</span></li>
                     <li><span class="prompt"></span><span>Alt + C: leva para a página: “Contatos”</span></li>

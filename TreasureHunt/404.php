@@ -17,6 +17,12 @@ header('Content-Type: text/html; charset=utf-8');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/png" href="img/favicon_dark_tab.png">
+    <link rel="preload" href="css/style.min.css" as="style">
+    <link rel="preload" href="js/efeitos.min.js" as="script">
+    <link rel='preload' as='style' href='https://fonts.googleapis.com/css?family=Eczar&display=swap'>
+    <link rel='preload' as='style' href='https://fonts.googleapis.com/css?family=Muli&display=swap'>
+    <link rel='preload' as='style' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.min.css">
     <link rel="stylesheet" type="text/css" href="css/400.min.css">
