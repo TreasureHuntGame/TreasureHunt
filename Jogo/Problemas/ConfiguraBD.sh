@@ -1,3 +1,14 @@
+#variáveis
+
+QUANT_JOGADORES=$1 
+QUANT_DESAFIOS=$2
+ADICIONAR_EASTER_EGG=$3
+
+
+if [ $ADICIONAR_EASTER_EGG = "0" ]; then 
+	QUANT_DESAFIOS=`expr $QUANT_DESAFIOS + 1`
+fi 
+
 # Cria o Banco de Dados TreasureHunt, caso não exista
 echo "CREATE SCHEMA IF NOT EXISTS TreasureHunt;"
 #sleep 3
@@ -22,31 +33,22 @@ echo "CREATE TABLE IF NOT EXISTS TreasureHunt.Resposta (idUsuario INT(11) NOT NU
 # Para verificar se há cópia de flag
 echo "CREATE TABLE IF NOT EXISTS TreasureHunt.Submissao (idUsuario INT(11) NOT NULL, idProblema INT(11) NOT NULL, respostaInformada VARCHAR(64) NOT NULL, ip VARCHAR(16) NOT NULL, hora TIMESTAMP, PRIMARY KEY (idUsuario, idProblema, hora)) ENGINE=InnoDB CHARSET=big5;"
 
-# Antiga tabela
-# echo "CREATE TABLE IF NOT EXISTS TreasureHunt.Submissao (idUsuario INT(11) NOT NULL, idProblema INT(11) NOT NULL, respostaInformada VARCHAR(64) NOT NULL, hora TIMESTAMP, PRIMARY KEY (idUsuario, idProblema, hora)) ENGINE=InnoDB CHARSET=big5;"
 
 # Cria registros de usuários com ID e senha padrão '$i$i$i' (3x o ID)
-for i in $(seq $1)
+for i in $(seq $QUANT_JOGADORES)
 do
-	# Substituído sha256 por bcrypt: não precisa mais gerar o salt 
-	# SALT=$(cat /dev/urandom | tr -cd 'a-z' | head -c 9)
-	# SENHA=$(echo -n "$i$i$i???$SALT" | sha256sum | head -c-4)
-	# echo "INSERT INTO TreasureHunt.Usuario (saltpass, pass) VALUES ('$SALT', '$SENHA');"
-
 	SENHA=`htpasswd -bnBC 10 '' "$i$i$i???" | tr -d ':\n'`
 	echo "INSERT INTO TreasureHunt.Usuario (pass) VALUES ('$SENHA');"
 done
 
 # Insere as respostas na tabela Resposta
-for i in $(seq $1)
+for i in $(seq $QUANT_JOGADORES)
 do
-	for j in $(seq $2)
+	for j in $(seq $QUANT_DESAFIOS)
 	do
 		RESPOSTA=$(head -$i "../Respostas/Respostas_Desafio_$j" | tail -1)
-		# Subtituído sha256 por bcrypt
-		# HASH_RESPOSTA=$(echo -n $RESPOSTA | sha256sum | head -c-4)
 		HASH_RESPOSTA=`htpasswd -bnBC 10 '' $RESPOSTA | tr -d ':\n'`
-		echo "INSERT INTO TreasureHunt.Resposta  (idUsuario, idProblema, resposta, tentativas, acertou) VALUES ($i, $j, '$HASH_RESPOSTA', 0, 0);"
+		echo "INSERT INTO TreasureHunt.Resposta (idUsuario, idProblema, resposta, tentativas, acertou) VALUES ($i, $j, '$HASH_RESPOSTA', 0, 0);"
 	done
 done
 

@@ -8,6 +8,8 @@ MAX=8
 
 # Define o diretório que receberá os desafios
 DESTINO_DESAFIOS="/var/www/html/TreasureHunt/Desafios/"
+CAMINHO_SITE="/var/www/html/TreasureHunt"
+DESTINO_RESPOSTAS="../Respostas"
 
 # Diretório desse script
 DIR_SCRIPT=`dirname $0` 
@@ -227,6 +229,8 @@ excluirArquivosCompeticao () {
 	if existeZip ".."; then 
 		rm -f Jogador*.zip
 	fi
+
+	resetarEasterEgg
 
 	if [ $# -eq 0 ]; then 
 		logger "Usuário escolheu excluir arquivos de competições anteriores"
@@ -502,6 +506,115 @@ manejarAtivacaoNgrok () {
 	exec ngrok http 80
 }
 
+
+# função que busca por um termo e adiciona um texto uma linha após o termo ser encontrado
+# $1 = caminho do arquivo onde ocorrerá a adição da linha  
+# $2 = termo a ser buscado no arquivo informado  
+# $3 = texto a ser colocado uma linha após o termo buscado
+adicionarLinhaAposTermo() {
+	CAMINHO_ARQUIVO=$1
+	TERMO_BUSCA=$2
+	TEXTO=$3 
+	LINHA=$((`grep -n -m 1 $TERMO_BUSCA $CAMINHO_ARQUIVO | sed  's/\([0-9]*\).*/\1/'`+1))
+	ADICAO="$LINHA i $TEXTO"
+	sed -i "$ADICAO" $CAMINHO_ARQUIVO
+}	
+
+# função que apaga uma linha de texto se ela existir em um arquivo
+# $1 = caminho do arquivo onde ocorrerá a adição da linha  
+# $2 = termo a ser buscado no arquivo informado  
+apagarLinhaSeExiste() {
+	CAMINHO_ARQUIVO=$1
+	TERMO_BUSCA=$2
+    sed -i "/$TERMO_BUSCA/d" $CAMINHO_ARQUIVO
+}
+
+# função responsável por apagar todo o easter egg do servidor web
+# apaga linhas e arquivos do easter egg
+resetarEasterEgg() {
+	rm -f "$CAMINHO_SITE/ovos.txt"
+	rm -f "$CAMINHO_SITE/ovum.xml"
+	rm -f "$CAMINHO_SITE/css/xml.css"
+	rm -f "$CAMINHO_SITE/img/qr_code.svg"
+	rm -f "$CAMINHO_SITE/宝.php"
+	rm -f "$CAMINHO_SITE/img/ache_o_peixe.jpg"
+	ARQUIVO_RESPOSTA="Resposta_Desafio_`expr $QUANT_DESAFIOS + 1`"
+	rm -f "$DESTINO_RESPOSTAS/$ARQUIVO_RESPOSTA"
+
+	apagarLinhaSeExiste "$CAMINHO_SITE/index.php" "ovos"
+	apagarLinhaSeExiste "$CAMINHO_SITE/home.php" "ovos"
+	apagarLinhaSeExiste "$CAMINHO_SITE/404.php" "ovum"
+	apagarLinhaSeExiste "$CAMINHO_SITE/img/logo.svg" "qr_code" 
+	# apagarLinhaSeExiste "$CAMINHO_SITE/index.php" "qr_code"
+	# apagarLinhaSeExiste "$CAMINHO_SITE/home.php" "qr_code"
+}
+
+# função que adiciona as linhas e arquivos do Easter Egg ao servidor web
+adicionarEasterEgg() {
+	logger "apagando arquivos e linhas do easter egg se existirem"
+	resetarEasterEgg
+
+
+	logger "adicionando linhas do easter egg nos respectivos arquivos"
+	CAMINHO_EASTER_EGG="../easterEgg"
+	adicionarLinhaAposTermo "$CAMINHO_SITE/index.php" "</footer>" "<!-- ovos.txt -->"
+	adicionarLinhaAposTermo "$CAMINHO_SITE/home.php" "</footer>" "<!-- ovos.txt -->"
+	adicionarLinhaAposTermo "$CAMINHO_SITE/404.php" "icon" "<script src=\"ovum.xml\"></script>"
+	adicionarLinhaAposTermo "$CAMINHO_SITE/img/logo.svg" "cifrao" "<!-- img/qr_code.svg -->"
+	# adicionarLinhaAposTermo "$CAMINHO_SITE/home.php" "logo" "<!-- img/qr_code.svg -->"
+
+	logger "copiando os arquivos do easter egg para o servidor web"
+	cp "$CAMINHO_EASTER_EGG/ovos.txt" "$CAMINHO_SITE"
+	cp "$CAMINHO_EASTER_EGG/ovum.xml" "$CAMINHO_SITE"	
+	cp "$CAMINHO_EASTER_EGG/xml.css" "$CAMINHO_SITE/css"
+	cp "$CAMINHO_EASTER_EGG/qr_code.svg" "$CAMINHO_SITE/img"	
+	cp "$CAMINHO_EASTER_EGG/宝.php" "$CAMINHO_SITE"
+	cp "$CAMINHO_EASTER_EGG/ache_o_peixe.jpg" "$CAMINHO_SITE/img"
+
+	
+	ARQUIVO_RESPOSTA="Respostas_Desafio_`expr $QUANT_DESAFIOS + 1`"
+	rm -f "$DESTINO_RESPOSTAS/$ARQUIVO_RESPOSTA"
+	for i in $(seq $QUANT_JOGADORES); do
+		echo "TreasureHunt{_OSU_}" >> "$DESTINO_RESPOSTAS/$ARQUIVO_RESPOSTA"
+	done 
+}
+
+# função que pergunta ao organizador se ele deseja adicionar o Easter Egg
+# ao Jogo. Se sim, chama a função adicionarEasterEgg.
+manejarAdicaoEasterEgg() {
+	logger "Solicitando se usuário deseja adicionar o Easter Egg ao jogo"
+	while true; do
+		echo -e "----------"
+		echo "Você deseja adicionar o Easter Egg ao Jogo?" 
+		echo "O Ester Egg será adicionado aos arquivos da interface web"
+		echo "A submissão da flag do Easter Egg deverá ser feita pela tela de submissão de flags"
+		echo "A flag adicional não contabilizará para a pontuação final, apenas como critério de desempate"
+		echo "----------"
+		echo "Lista de opções: "
+		echo "1: Adicionar Easter Egg"
+		echo "2: Não adicionar o Easter Egg"
+		echo "----------"
+		read -p "Digite uma das opções acima: " OPCAO
+		echo "----------"
+		case $OPCAO in
+			1|2) break ;; 
+			*) echo -e "Opção inválida, digite novamente! " && sleep 1;;
+		esac 
+	done	
+
+	if [ $OPCAO = "1" ]; then
+		logger "O organizador desejou adicionar o Easter Egg à competição."
+		adicionarEasterEgg
+		return 0
+	else 
+		resetarEasterEgg
+		logger "O organizador desejou não adicionar o Easter Egg à competição."
+		return 1
+	fi
+}
+
+
+
 # Início da execução das funções 
 
 echo "----------"
@@ -556,8 +669,12 @@ compactarDesafios
 manejarArquivosAtuais
 enviarDesafiosCompactados
 
+manejarAdicaoEasterEgg
+
+ADICIONAR_EASTER_EGG=$?
+
 # Se o seu mysql estiver com senha, altere aqui com --password
-sh ConfiguraBD.sh $QUANT_JOGADORES $QUANT_DESAFIOS | mysql --user=root
+sh ConfiguraBD.sh $QUANT_JOGADORES $QUANT_DESAFIOS $ADICIONAR_EASTER_EGG| mysql --user=root
 logger "Banco de dados 'TreasureHunt' configurado"
 echo -e "Banco de dados configurado com sucesso"
 
