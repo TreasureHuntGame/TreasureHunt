@@ -1,41 +1,374 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-	<head>
-		<meta charset="utf-8">
-		<title>Seja bem-vindo</title>
-	    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-		<script type="text/javascript">
-function foodel() {
-	var flag1 = "U2FsdGVkX1/JjCaQUS4z0Ld5X8l+03MwEEzbwM/K";
-	var flag2 = "2E46tqnS1/FGjcUhOatEjgN4";
-	var flagTotal = flag1.concat(flag2);
 
-	var decrypted = CryptoJS.AES.decrypt(flagTotal, "Flag");
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	window.alert(decrypted.toString(CryptoJS.enc.Utf8));
-}
-		</script>
-	</head>
-	<body>
-		<h1>Desafio</h1>
-		<p>Uma imagem vale mais que mil palavras?</p>
-		<img src="" alt="Imagem do desafio">
-		<img alt="Como resolver esse desafio?">
-		<ul>
-			<li>Nao caia em pegadinhas</li>
-			<li>Fique atento</li>
-			<li>Procure nao se distrair</li>
-			<li>Nao leia este item</li>
-			<li>Cuidado para nao perder tempo lendo textos vazios</li>
-			<li>Redobre este cuidado</li>
-		</ul>
-		<form>
-			<label style="display: none;">Caixa de texto que nao serve para nada:</label><input type="text" name="flag" autofocus required>
-			<br>
-			<br>
-			<input type="submit" value="Limpar">
-			<input type="reset" value="Enviar">
-			<button type="button" style="display: none;" onclick="foodel()">Enviar</button>
-		</form>
-	</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+    <link
+        href="data:image/x-icon;base64,AAABAAEAEBAAAAEACABoBQAAFgAAACgAAAAQAAAAIAAAAAEACAAAAAAAAAEAAAAAAAAAAAAAAAEAAAAAAACxtsMAW2KIAGVnagDJz84Ap6eXAIeXngDg5uUAd4WEAE1ZZQBLXWgAjL3QAB4fHQCCg4cAqa2yAGp0dgDU2doA29zIANTa3QCWm6oAQVJaAN7dywDLzbcAWWp0AN3d3QAmRWEAxM/PAMjPzwCWn8gAiJacALi7uAB2goUA3ejsAL/CqQClqK0AtcLEALjBwQBPXWkAvMHBAEJJSQBsgbgAT2FsAFNfZgA+QmEApbG2AH2KiwCPn6UAZneAACElJwA2OT4AcpqpANvd3gDd3tgAkYuFAOHhzwBvgIkAdIGDAJSQiwBKXGcATlhkAG5uXQCMlaMAz9DTABobHAC7vsIAk5iaAE1icAAEDRcAhKayAI+fpgAcHi4AUWVwANDd3wCXwcwAU2VwABwkLgDc3MoA393EANPe4gAJEyAAQ1NfAE1wfwDY4N8AR05iABkwQACQjIkAXGp2AIu1xADf5OIAytLRAMzS0QCcosoAFhwpABMiKQADDBUAf6i5AEBEYADFx7EAQkhaAOvs6ACSn6cAwcPJAKrV5ABVZ24AV2hxAFVpdABXaXQAkIuHALK3uADy8vEAnqCqAJmqrQCFlZwARVtmAJOPigBHW2YAdYGFALa5vgBJWmMAubi7AI21xQA6Q0wASVtmALTBxAAZGx4AYHJ9AObk4wBhcn0AlpaWALnExABQYGwAMTM4AGh0egDS19gAUWRvAExKRgCSoqgAe4amADY2QQDLzLgA8PHvAEJWYQCQioUAncbUAFpsdQCbyNoA3uPhALi6uQDL0dAA4uPhAMzR0ACzwMIAeISGAEpfagAWHyIATV9qANfVygB1f60Au8XIAKyvqwBGTE0APVFcAD5RXACot7oABg8pAKq3ugB6d2kAi4yMAIKUmwBGVmIATFZZACkrKwCSjokASFliAEdaZQCVlYMABAYGAKenpgDi5+UAZW92ADpKUQDm5+UAfIiKAE1jbgBASlEAp9LeANrayADU2dcAWmBlAF1fYgBCT1cAaXqFAMrNtACXoK0AyMrGAK+6uwBaa3QApqKYAKenlQC4vMEA4efmABgZJAB7pbQATF5pAGN0fQBeXk4ATmNvAD9LVQBrlKYABwwZANTZ2ABVY28AqtflAOvw7wBFT1gAMDZNAGp8gwCJiogAbH2GACIoLQA1PUcA3ODbAFJikABxfoAAWmt1AJKqugBUUk8AO0JEAHGCjACyv8IAjpKXAN3n5wDc6OoAZW51AM7U0wApUXEA5enkANDV1gArWW4Af6q7AIeFgwBseXsArbS0AFVncwDX3dwA7u/tAKu3vQAfJjoA4OHNAB0oQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAjlaQ4CvQTlNQMcleXu53zx/m58Yl6M5nw/LNQXChE2bHR03UlQ2X18t+aLZGcqdIbAZRD4AaYxwuFppJKJi4ZVeL81id9Yct4485CTmBCtPc9NHpGaJuBdlpeaCMZqlDlGKR7HqWRG8238p8rHE4q5szsQPCIhHA0lW+T4VqGFxgIOsjpIQ8UmE6JK157/jtir+6k+Q9IRLW1b2odTTIRa4V5R1ZPxdaKngpCLONVKs7BJ4CknRkMm1KQreZnybiS8XMu4Lqo7RA212vW7Lw8LkUTF8wDHZr8Q5/qvYHc94Q9wCciT7YfcGwe9oB3Sw3NfcbiC8L4aXEhqa1vCcegwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+        rel="icon" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Desafio</title>
+
+    <style>
+        img {
+            max-width: 60% !important;
+        }
+
+        .card {
+            margin: 0.5em;
+            background-color: #E9ECEF;
+        }
+
+
+        nav ul li label span#botao-contraste {
+            background-image: url("https://cdn-icons-png.flaticon.com/512/32/32408.png");
+            background-repeat: no-repeat;
+            height: 25px;
+            width: 25px;
+        }
+
+        .icon {
+            color: white;
+        }
+
+        .clicavel {
+            border: 2px solid transparent;
+            border-radius: 5px;
+            outline: none;
+            transition: border .4s ease;
+            padding: 5px;
+        }
+
+        a.sr-only {
+            color: #81FDFF;
+            text-decoration: underline;
+        }
+
+        .clicavel:focus,
+        .clicavel:active,
+        .clicavel:hover,
+        .clicavel:focus-visible {
+            border: 2px solid white;
+            border-radius: 5px;
+        }
+
+
+        .btn,
+        .btn-light,
+        .btn-primary {
+            box-shadow: none !important;
+            border: 4px solid transparent;
+        }
+
+        .btn:focus,
+        .btn:active,
+        .btn:hover,
+        .btn:focus-visible {
+            border-color: black;
+        }
+
+
+        input#contrast:checked~* .btn:focus,
+        input#contrast:checked~* .btn:active,
+        input#contrast:checked~* .btn:hover,
+        input#contrast:checked~* .btn:focus-visible {
+            border-color: #008A00;
+        }
+
+        input#contrast {
+            display: none;
+        }
+
+        input#contrast:checked~* {
+            background-color: black;
+            color: white;
+        }
+
+        input#contrast:checked~* hr {
+            background-color: white;
+        }
+
+        input#contrast:checked~div section div div .card {
+            background-color: black !important;
+            border-color: white;
+
+        }
+
+        input#contrast:checked~* .nav-link {
+            color: white;
+        }
+
+        .jumbotron {
+            margin-bottom: 0 !important;
+        }
+
+        @media (max-width: 640px) {
+            p {
+                padding: 0.5em;
+            }
+
+            h3,
+            h5 {
+                padding-left: 0.5em;
+            }
+
+
+        }
+    </style>
+
+    <script>
+        function foodel() {
+            var flag1 = "U2FsdGVkX1/JjCaQUS4z0Ld5X8l+03MwEEzbwM/K";
+            var flag2 = "2E46tqnS1/FGjcUhOatEjgN4";
+            var flagTotal = flag1.concat(flag2);
+
+            var decrypted = CryptoJS.AES.decrypt(flagTotal, "Flag");
+
+            window.alert(decrypted.toString(CryptoJS.enc.Utf8));
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+
+    <input type="checkbox" name="contrast-mode" id="contrast">
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark ">
+        <a class="sr-only sr-only-focusable clicavel" href="#content">Skip to main content</a>
+        <a class="navbar-brand clicavel" href="#topo">Desafio TreasureHunt</a>
+        <button class="navbar-toggler clicavel" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link clicavel" href="#reflexao">Reflexão</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link clicavel" href="#gatos">Fatos sobre gatos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link clicavel" href="#street-art">Filósofos contemporâneos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link clicavel" href="#segredo">Segredo secreto</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto" id="contrast-container" role="presentation">
+                <li>
+                    <label for="contrast" id="contrast-label"
+                        class="form-inline justify-content-end label-link contrast-label clicavel" tabindex="0"
+                        data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom"
+                        title="Recurso de alto contraste" accesskey="a">
+                        <span class="material-icons icon">contrast</span>
+                        <span class="sr-only">Botão para ativar e desativar recurso de alto contraste</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div class="jumbotron jumbotron-fluid">
+        <header class="container">
+            <h1 class="display-3" id="topo">Desafio</h1>
+            <h2 class="lead">Uma imagem vale mais que mil palavras, mas você acredita nisso?</h2>
+            <hr class="my-2">
+        </header>
+
+
+        <section class="mt-4 container" id="content">
+            <h3 id="reflexao">Para refletir</h3>
+
+            <p>O que é um desafio? Qual é o valor de uma flag? Sopa é janta? Essas e outras perguntas podem intoxicar
+                a mente do ser humano. Afinal de contas, podemos confiar no que lemos ou é tudo uma mentira? Procure
+                atentamente por respostas, pois elas podem estar diante de você. Não se deixe levar por distrações, pois
+                essa é uma delas, ou será que não?</p>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Friedrich Nietzsche</h5>
+                            <p class="card-text">Nenhum vencedor acredita no acaso.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Sócrates</h5>
+                            <p class="card-text">A sabedoria começa na reflexão.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Confúcio</h5>
+                            <p class="card-text">Eu não procuro saber as respostas, procuro compreender as perguntas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Desconhecido</h5>
+                            <p class="card-text">Sábio é
+                                aquele que sabe diminuir o tamanho da fonte e centralizar uma imagem com css.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Desconhecido</h5>
+                            <p class="card-text">Quem nasce em Tilambuco é o que?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Desconhecido</h5>
+                            <p class="card-text">Nunca desista de seus sonhos, continue dormindo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Desconhecido</h5>
+                            <p class="card-text">Desistir é para os fracos. Faça como eu, nem tente</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mt-5 container" id="gatos">
+            <hr>
+            <h3>Fatos aleatórios sobre gatos</h3>
+            <div class="row">
+                <p>Gatos são fofos. Você já viu um gatinho hoje? Você já fez carinho em um gatinho hoje? Eles são
+                    legais. Eles são mais fáceis de lidar do que seres humanos. Gatos gostam de sachê. Gatos são
+                    gatos. Gatos
+                    gatos gatos gatos.</p>
+                <div class="col">
+                    <img class="img-fluid d-block mx-auto mt-2"
+                        src="https://tudosobregatos.com.br/wp-content/uploads/gato-feliz-1280x720.jpg"
+                        alt="Gatinho branco e marrom fofo com olhos fechados e um fundo azul">
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-5 container" id="street-art">
+            <hr>
+            <h3>Filósofos contemporâneos</h3>
+            <div class="row">
+                <div class="col">
+                    <img class="img-fluid d-block mx-auto mt-2" src="" alt="Imagem do desafio">
+                </div>
+            </div>
+        </section>
+
+
+        <section class="mt-5 container" id="segredo">
+            <hr>
+            <h3>Segredo secreto</h3>
+            <div class="mt-4 row">
+                <div class="col">
+                    <input class="btn btn-primary" type="submit" value="Limpar">
+                    <input class="btn btn-primary" type="reset" value="Enviar">
+                    <button class="btn btn-primary" type="button" style="display: none;"
+                        onclick="foodel()">Enviar</button>
+                </div>
+            </div>
+        </section>
+
+
+
+        <footer class="mt-5 container">
+            <hr>
+            <h5>Você já encontrou o que estava procurando?</h5>
+            <p>Continue a nadar, continue a nadar, continue a nadar, continue a nadar, continue a nadar, continue a
+                nadar, continue a nadar, continue a nadar, continue a nadar, continue a nadar, continue a nadar,
+                continue a nadar, continue a nadar, continue a nadar, continue a nadar, continue a nadar, continue a
+                nadar, continue a nadar, continue a nadar, continue a nadar e quem sabe um dia você chega lá. </p>
+        </footer>
+
+    </div>
+
+
+
+    <script>
+        function trocarEstiloBotao(antigo, novo) {
+            const botoes = document.querySelectorAll('.btn');
+            botoes.forEach(
+                item => {
+                    item.classList.remove(antigo);
+                    item.classList.add(novo);
+
+                }
+            );
+        }
+
+        function set_keyboard_click(event) {
+            if (event.which == 13 || event.which == 32) {
+                event.target.click();
+            }
+        }
+
+        const componentesAtivivaveis = [
+            '.label-link', '.btn', '.nav-link'
+        ]
+
+        componentesAtivivaveis.forEach(componente => {
+            $(componente).keydown(event => {
+                set_keyboard_click(event);
+            });
+        });
+
+
+
+        const contrast = document.querySelector('#contrast');
+        const btnContrast = document.querySelector("#contrast-label");
+        btnContrast.onclick = function (e) {
+            contrast.checked ? trocarEstiloBotao('btn-light', 'btn-primary') : trocarEstiloBotao('btn-primary', 'btn-light');
+        }
+
+    </script>
+</body>
+
 </html>
