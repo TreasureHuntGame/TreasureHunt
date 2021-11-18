@@ -3,7 +3,7 @@
 // Conexão com o BD
 define('HOST', 'localhost');
 define('USER', 'root');
-//define('PASS', 'minhaSenha');
+// define('PASS', 'minhaSenha'); 
 define('DB_NAME', 'TreasureHunt');
 
 TRY {
@@ -13,5 +13,3 @@ TRY {
 } CATCH (PDOException $e) {
     echo 'Erro ao conectar com MySQL: ' . $e->getMessage();
 }
-
-?>

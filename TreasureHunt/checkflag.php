@@ -27,16 +27,9 @@ $flagSemEspaco = str_replace('\r', '', $flagSemEspaco);
 $flagSemEspaco = str_replace('\0', '', $flagSemEspaco);
 $flagSemEspaco = str_replace('\x0B', '', $flagSemEspaco);
 $flagSemEspaco = str_replace('\\', '', $flagSemEspaco);
-// não precisamos mais do hash da flag para verificar se a resposta coincide com o hash do bd
-//  = hash("sha256", $flagPura); 
-
 
 $usuario = $_SESSION['usuario'];
 
-
-// Mesmo insert abaixo porém de versões anteriores
-// $sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', date('Y-m-d H:i:s'))";
-// $sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagPura', CURRENT_TIMESTAMP)";
 
 // Insere idUsuario, idResposta e flag na tabela submissão
 $ip = $_SERVER['REMOTE_ADDR'];
@@ -44,7 +37,6 @@ $sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagSe
 $stmt = $conexao->prepare($sql);
 $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 $stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
-// $stmt->bindParam(':flag', $flag, PDO::PARAM_STR); // Versão anterior enviava o hash ao invés da "flag pura" para o bd
 $stmt->bindParam(':flag', $flagSemEspaco, PDO::PARAM_STR);
 $stmt->bindParam(':ip', $ip, PDO::PARAM_STR);
 $stmt->execute();
@@ -69,8 +61,6 @@ if ($stmt->rowCount() > 0) { // "erro" (aviso): questão já acertada
 	// Poderia informar quando a resposta correta já foi submetida
 	// e o usuário segue submetendo para o mesmo problema
 
-	// versão antiga do select abaixo: atualizado para usar bcrypt
-	// $sql = "SELECT * FROM TreasureHunt.Resposta WHERE idUsuario='$usuario' AND idProblema='$problema' AND resposta='$flag'";
 	$sql = "SELECT resposta FROM TreasureHunt.Resposta WHERE idUsuario='$usuario' AND idProblema='$problema'";
 	$stmt = $conexao->prepare($sql);
 	$stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
@@ -78,10 +68,6 @@ if ($stmt->rowCount() > 0) { // "erro" (aviso): questão já acertada
 	// $stmt->bindParam(':flag', $flag, PDO::PARAM_STR); // não usamos mais o hash da flag digitada no select
 	$stmt->execute();
 	$resposta_hash = $stmt->fetch();
-
-
-	// versão antiga desse if: fazia uso do select comentado (versão 256)
-	// if ($stmt->rowCount() > 0) {
 
 	// verifica a flag digitada com o hash da resposta armazenado no bd; se retornar true é a resposta correta
 	if (password_verify($flagSemEspaco, $resposta_hash[0])) {
@@ -134,7 +120,6 @@ function atualiza($resposta, $usuario, $problema)
 	if ($resposta == true) {
 		$hora = date('Y-m-d H:i:s');
 		$param = "acertou=1, hora='$hora',";
-		//$param = "acertou=1,";
 	}
 
 	$sql = "UPDATE TreasureHunt.Resposta SET $param tentativas=tentativas+1 WHERE idUsuario='$usuario' AND idProblema='$problema' AND acertou=0";
