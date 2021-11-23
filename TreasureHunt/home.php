@@ -59,6 +59,9 @@ if (!isset($_SESSION['usuario'])) {
             </div>
         </noscript>
         <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
+            <a id="link-skip" href="#content" class="position-absolute rounded-right">
+                Pular para o conteúdo principal
+            </a>
             <input type="checkbox" name="collapse-btn" id="collapse-btn">
             <a class="navbar-brand nav-item" id="link-logo" href="home.php">
                 <?php echo file_get_contents("img/logo.svg"); ?>
@@ -79,7 +82,8 @@ if (!isset($_SESSION['usuario'])) {
             </div>
             <ul class="navbar-nav ml-auto" id="contrast-container" role="presentation">
                 <li>
-                    <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
+                    <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip"
+                    data-trigger="hover focus" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
                         <span id="botao-contraste" title="Recurso de alto contraste"></span>
                         <span class="sr-only">Botão para ativar e desativar recurso de alto contraste</span>
                     </label>
@@ -87,13 +91,15 @@ if (!isset($_SESSION['usuario'])) {
             </ul>
             <ul class="navbar-nav ml-auto" id="animation-container" role="presentation">
                 <li>
-                    <label for="animation" id="animation-label" class="form-inline justify-content-end label-link" tabindex="0" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Recurso para ativar e desativar animações" accesskey="m">
+                    <label for="animation" id="animation-label" class="form-inline justify-content-end label-link" tabindex="0" data-toggle="tooltip"
+                    data-trigger="hover focus" data-placement="bottom" title="Recurso para ativar e desativar animações" accesskey="m">
                         <span id="botao-animation" title="Recurso para ativar e desativar animações"></span>
                         <span class="sr-only">Botão para ativar e desativar animações</span>
                     </label>
                 </li>
             </ul>
         </nav>
+        <span id="content" class="sr-only">Conteúdo Principal:</span>
         <div id="main" role="main" aria-label="Principal">
             <div class="jumbotron bg-dark" id="jumbotron-home-title">
                 <h2 class="font-weight-bold page-title">Principal<span class="destaque">!</span></h2>
@@ -136,9 +142,9 @@ if (!isset($_SESSION['usuario'])) {
                     <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark" id="jumbotron-home-form">
                         <form action="checkflag.php" method="POST" class="form-signin">
                             <h3>Submeta sua <i lang="en">flag</i>:</h3>
-                            <label for="id-problema" class="sr-only">Informe o ID do problema (obrigatório)</label>
+                            <label for="id-problema" class="sr-only">Informe o ID do problema (obrigatório):</label>
                             <input autocomplete="off" type="number" name="problema" id="id-problema" class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
-                            <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span> (obrigatório)</label>
+                            <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span> (obrigatório):</label>
                             <input autocomplete="off" type="text" id="flag-interno" name="flag" class="form-control" placeholder="TreasureHunt{texto-aleatorio}" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Resposta encontrada no exercício.">
                             <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                             <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
@@ -346,7 +352,7 @@ if (!isset($_SESSION['usuario'])) {
                     e dispõe também de um modo de alto contraste com relação superior a 7:1 satisfazendo o critério 1.4.6. São cumpridos ainda,
                     dentre outros, os seguintes critérios:
                 </p>
-                <ul class="acessibilidade-ul">
+                <ul class="ul-acessibilidade">
                     <li><span class="prompt"></span><span>Critério 1.4.4: Zoom de até 200% sem perda de conteúdo.</span></li>
                     <li><span class="prompt"></span><span>Critério 2.1.3: Navegação completa da página pelo teclado.</span></li>
                     <li><span class="prompt"></span><span>Critério 2.3.1: Limite de três flashes em um segundo.</span></li>
@@ -355,7 +361,7 @@ if (!isset($_SESSION['usuario'])) {
                 </ul>
                 <p>
                     É possível conferir todos os
-                    <a class="link-padrao" rel="noopener noreferrer" target="_blank" href="https://docs.google.com/spreadsheets/d/1QwY4zQd_fF0Rss1fDj7d06v2b5BDnO0CrUsNnYmKyMU/edit#gid=0">
+                    <a rel="noopener noreferrer" class="link-padrao" href="https://docs.google.com/spreadsheets/d/1QwY4zQd_fF0Rss1fDj7d06v2b5BDnO0CrUsNnYmKyMU/edit#gid=0" target="_blank">
                         critérios cumpridos pelo Treasure Hunt em uma planilha online (abre em nova janela)
                     </a>
                 </p>
@@ -367,19 +373,30 @@ if (!isset($_SESSION['usuario'])) {
                 <h3 class="h3-acessibilidade"> Teclas de Atalho </h3>
                 <p>
                     A interface web conta com atalhos que possibilitam navegar pela barra de navegação,
-                    ativar o modo de alto contraste e desativar as animações pelo teclado. Os atalhos são:
+                    ativar o modo de alto contraste e desativar as animações pelo teclado. Alguns navegadores
+                    possuem teclas que devem ser pressionadas em conjunto com as teclas de atalho: 
+                    No <em lang="en">Chrome, Edge e Explorer</em> é utilizado o ALT, enquanto que no <em lang="en"> Firefox </em>
+                    é utilizada a combinação ALT + SHIFT. Os atalhos são:
                 </p>
-                <ul class="acessibilidade-ul">
-                    <li><span class="prompt"></span><span>Alt + A: ativa o modo de alto contraste </span></li>
-                    <li><span class="prompt"></span><span>Alt + M: desativa/ativa as animações </span></li>
-                    <li><span class="prompt"></span><span>Alt + I: leva para a página: “Inicío”</span></li>
-                    <li><span class="prompt"></span><span>Alt + J: leva para a página: “Como jogar?”</span></li>
-                    <li><span class="prompt"></span><span>Alt + C: leva para a página: “Contatos”</span></li>
-                    <li><span class="prompt"></span><span>Alt + S: leva para a página: “Acessibilidade”</span></li>
-                    <li><span class="prompt"></span><span>Alt + P: leva para página: “Placar” (exige autenticação)</span></li>
-                    <li><span class="prompt"></span><span>Alt + L: Faz o <em lang="en">logout</em> (exige autenticação)</span></li>
+                <ul class="ul-acessibilidade">
+                    <li><span class="prompt"></span><span>A: ativa o modo de alto contraste </span></li>
+                    <li><span class="prompt"></span><span>M: desativa/ativa as animações </span></li>
+                    <li><span class="prompt"></span><span>I: leva para a página: “Inicío”</span></li>
+                    <li><span class="prompt"></span><span>J: leva para a página: “Como jogar?”</span></li>
+                    <li><span class="prompt"></span><span>C: leva para a página: “Contatos”</span></li>
+                    <li><span class="prompt"></span><span>S: leva para a página: “Acessibilidade”</span></li>
+                    <li><span class="prompt"></span><span>P: leva para página: “Placar” (exige autenticação)</span></li>
+                    <li><span class="prompt"></span><span>L: Faz o <em lang="en">logout</em> (exige autenticação)</span></li>
                 </ul>
-                <span id="accesskey-span">Se estiver usando o <em lang="en">Firefox</em>, pressione Shift + Alt + “tecla de atalho”.</span>
+                <div id="div-accesskeys" class="noscript">
+                    <span> 
+                        É possível desativar e ativar as teclas de atalho com o botão abaixo:
+                    </span>
+                    <input type="checkbox" id="checkbox-accesskeys">
+                    <label id="label-accesskeys" for="checkbox-accesskeys" tabindex="0" class="btn btn-primary btn-lg label-link" 
+                    data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" 
+                    title="Mecanismo para desativar e ativar as teclas de atalho">Desativar as teclas de atalho</label>
+                </div>
             </div>
         </div>
         <footer class="page-footer font-small">

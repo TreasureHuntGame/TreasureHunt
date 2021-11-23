@@ -47,6 +47,9 @@ header('Content-Type: text/html; charset=utf-8');
             </div>
         </noscript>
         <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
+            <a id="link-skip" href="#content" class="position-absolute rounded-right">
+                Pular para o conteúdo principal
+            </a>
             <input type="checkbox" name="collapse-btn" id="collapse-btn">
             <a class="navbar-brand nav-item" id="link-logo" href="home.php">
                 <?php echo file_get_contents("img/logo.svg"); ?>
@@ -71,6 +74,7 @@ header('Content-Type: text/html; charset=utf-8');
                 </li>
             </ul>
         </nav>
+        <span id="content" class="sr-only">Conteúdo Principal:</span>
         <main>
             <div class="jumbotron bg-dark" id="jumbotron-titulo">
                 <h1 class="font-weight-bold erro" id="titulo-index">

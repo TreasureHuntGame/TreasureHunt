@@ -1,4 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" id="img-logo" viewBox="0 0 102.65832 41.628311">
+<svg xmlns="http://www.w3.org/2000/svg" id="img-logo" viewBox="0 0 102.65832 41.628311" aria-labelledby="logo-title">
+    <title id="logo-title">Logo do TreasureHunt</title>
     <path class="cifrao"
         d="M12.7 37.218v-4.41l-3.616-.01-3.616-.01-2.47-1.516L.53 29.756l-.103-2.708-.103-2.707h5.321v3.175h9.173v14.111H12.7zM16.933 34.572v-7.055h9.173v-5.292h-9.173v-5.292h9.29l2.597 1.619 2.597 1.619-.098 4.792-.098 4.792-2.47 1.517-2.469 1.517-3.616.01-3.616.01v8.82h-2.117z" />
     <path class="textos"

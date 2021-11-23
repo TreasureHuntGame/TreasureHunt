@@ -10,11 +10,14 @@ $(function () {
     // se o JS estiver habilitado ele mostra a barra de cookie 
     $('#cookie-bar').removeClass('noscript');
     $('#modal-privacy').removeClass('noscript');
+    // se o JS estiver habilitado mostra o botão para desativar/ativar atalhos 
+    $('#div-accesskeys').removeClass('noscript');
 
     const componentesAtivivaveis = [
         '.label-link', '#logout', '#arquivo',
         '#cookie-yes', '#cookie-no', '#open-modal-btn', '#close-modal',
-        '#creative-commons', '#link-logo', '#voltar-inicio'
+        '#creative-commons', '#link-logo', '#voltar-inicio', '.link-padrao',
+        '.navbar-toggler', '#link-skip'
     ]
 
     componentesAtivivaveis.forEach(componente => {
@@ -23,6 +26,13 @@ $(function () {
         });
     });
 
+    // armazena as accesskeys nos próprios elementos por meio do data() e coloca 
+    // os elementos em uma variável para acessar depois.
+    const elementosComAtalhos = $('[accesskey]').each(function() {
+        $(this).data('teclasAtalhos', $(this).attr('accesskey'))
+    });
+
+    // Altera o atributo do meta com base na opção de contraste.
     var metaTag = document.querySelector('meta[name="theme-color"]');
     function ChangeThemeColor() {
         let color = $("#page-wrapper").css("background-color");
@@ -44,13 +54,25 @@ $(function () {
         setCookie('cookie_notice_accepted', 'true', 30);
         // por garantia vamos verificar se o valor do cookie de aceitação está verdadeiro
         //  para evitar que o cookie 'contrast' seja criado sem consentimento   
-        var cookiesAccepted = getCookie('cookie_notice_accepted');
+        let cookiesAccepted = getCookie('cookie_notice_accepted');
         if (cookiesAccepted === 'true') {
-            var contrastChecked = $('#contrast').is(":checked");
+            let contrastChecked = $('#contrast').is(":checked");
             if (contrastChecked) {
                 setCookie('contrast', 'true', 30);
             } else {
                 setCookie('contrast', 'false', 30);
+            }
+            let animationChecked = $('#animation').is(":checked");
+            if (animationChecked) {
+                setCookie('animation', 'true', 30);
+            } else {
+                setCookie('animation', 'false', 30);
+            }
+            let accesskeysChecked = $("#checkbox-accesskeys").is(":checked")
+            if (accesskeysChecked) {
+                setCookie('accesskeys-state', 'true', 30);
+            } else {
+                setCookie('accesskeys-state', 'false', 30);
             }
         }
 
@@ -70,6 +92,8 @@ $(function () {
         setCookie('cookie_notice_accepted', 'false', 30);
         // deleta o cookie contraste se ele já existir
         deleteCookie('contrast');
+        deleteCookie('animation');
+        deleteCookie('accesskeys-state');
         setTimeout(
             function () {
                 $('#cookie-bar').remove();
@@ -92,6 +116,32 @@ $(function () {
         ChangeThemeColor();
     });
 
+    // se o cookie de aceitação tiver valor true ele salva a preferência de 
+    // animação no cookie 'animation'  
+    $('#animation').change(function () {
+        if (getCookie('cookie_notice_accepted') === 'true') {
+            if ($(this).is(':checked')) {
+                setCookie('animation', 'true', 30);
+            } else {
+                setCookie('animation', 'false', 30);
+            }
+        }
+    });
+
+    // Função para ativar e desativar as teclas de atalho e atualizar cookie
+    $('#checkbox-accesskeys').change(function () {
+        setAccessKey()
+        // Se o cookie de aceitação tiver valor true, ele salva a preferência das
+        // teclas de atalho  no cookie 'accesskey-state'  
+        if (getCookie('cookie_notice_accepted') === 'true') {
+            if ($(this).is(':checked')) {
+                setCookie('accesskeys-state', 'true', 30)
+            } else {
+                setCookie('accesskeys-state', 'false', 30)
+            }
+        }
+    });
+
     // se o valor do cookie 'contrast' for verdadeiro ele deixa 
     // a página em alto contraste
     if (getCookie('contrast') === 'true') {
@@ -99,12 +149,25 @@ $(function () {
         ChangeThemeColor();
     }
 
+    // se o valor do cookie 'animation' for verdadeiro ele desativa
+    // as animações da página
+    if (getCookie('animation') === 'true') {
+        $('#animation').prop('checked', true);
+    }
+
+    // se o valor do cookie 'accesskey-state' for verdadeiro ele desativa
+    // as teclas de atalho da página
+    if (getCookie('accesskeys-state') === 'true') {
+        $('#checkbox-accesskeys').prop('checked', true);
+        setAccessKey();
+    }
+
     // quando o modal é aberto adiciona a classe que trava o scroll,
     // cria variável contendo o modal e ativa função para prender o foco.
     $('#open-modal-btn').click(function () {
         $('body').addClass('disable-scroll');
         var modal = document.querySelector('#modal-privacy');
-        trap_focus(modal);
+        trapFocus(modal);
 
     });
 
@@ -142,9 +205,25 @@ $(function () {
         input.addClass('field-error');
     };
 
+    // Função para ativar e desativar as teclas de atalho.
+    function setAccessKey(){
+        if ($('#checkbox-accesskeys').is(':checked')) {
+            $('#label-accesskeys').html("Ativar as teclas de atalho");
+            $('[accesskey]').each(function() {
+                $(this).removeAttr('accesskey')
+            });
+        // altera o texto e adiciona as teclas de atalho.    
+        } else {
+            $('#label-accesskeys').html("Desativar as teclas de atalho");
+            elementosComAtalhos.each(function(){
+                $(this).attr('accesskey', $(this).data('teclasAtalhos'))
+            }); 
+        }
+    }
+
     // função que faz um loop dos elementos focáveis de um modal,
     // prendendo o foco do usuário dentro do modal em questão.
-    function trap_focus(modal) {
+    function trapFocus(modal) {
         var focusableEls = modal.querySelectorAll("a[href]:not([disabled]), div.contnt");
         var firstFocusableEl = focusableEls[0];
         var lastFocusableEl = focusableEls[focusableEls.length - 1];
