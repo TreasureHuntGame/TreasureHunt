@@ -537,8 +537,9 @@ resetarEasterEgg() {
 	rm -f "$CAMINHO_SITE/css/xml.css"
 	rm -f "$CAMINHO_SITE/img/qr_code.svg"
 	rm -f "$CAMINHO_SITE/宝.php"
-	rm -f "$CAMINHO_SITE/img/ache_o_peixe.jpg"
+	rm -f "$CAMINHO_SITE/img/ache_a_flag.jpg"
 	ARQUIVO_RESPOSTA="Resposta_Desafio_`expr $QUANT_DESAFIOS + 1`"
+	
 	rm -f "$DESTINO_RESPOSTAS/$ARQUIVO_RESPOSTA"
 
 	apagarLinhaSeExiste "$CAMINHO_SITE/index.php" "ovos"
@@ -569,7 +570,7 @@ adicionarEasterEgg() {
 	cp "$CAMINHO_EASTER_EGG/xml.css" "$CAMINHO_SITE/css"
 	cp "$CAMINHO_EASTER_EGG/qr_code.svg" "$CAMINHO_SITE/img"	
 	cp "$CAMINHO_EASTER_EGG/宝.php" "$CAMINHO_SITE"
-	cp "$CAMINHO_EASTER_EGG/ache_o_peixe.jpg" "$CAMINHO_SITE/img"
+	cp "$CAMINHO_EASTER_EGG/ache_a_flag.jpg" "$CAMINHO_SITE/img"
 
 	
 	ARQUIVO_RESPOSTA="Respostas_Desafio_`expr $QUANT_DESAFIOS + 1`"
