@@ -560,7 +560,7 @@ adicionarEasterEgg() {
 	adicionarLinhaAposTermo "$CAMINHO_SITE/index.php" "</footer>" "<!-- ovos.txt -->"
 	adicionarLinhaAposTermo "$CAMINHO_SITE/home.php" "</footer>" "<!-- ovos.txt -->"
 	adicionarLinhaAposTermo "$CAMINHO_SITE/404.php" "icon" "<script src=\"ovum.xml\"></script>"
-	adicionarLinhaAposTermo "$CAMINHO_SITE/img/logo.svg" "cifrao" "<!-- img/qr_code.svg -->"
+	adicionarLinhaAposTermo "$CAMINHO_SITE/img/logo.svg" "img-logo" "<!-- img/qr_code.svg -->"
 	# adicionarLinhaAposTermo "$CAMINHO_SITE/home.php" "logo" "<!-- img/qr_code.svg -->"
 
 	logger "copiando os arquivos do easter egg para o servidor web"
