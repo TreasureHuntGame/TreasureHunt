@@ -17,11 +17,8 @@ header('Content-Type: text/html; charset=utf-8');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="icon" type="image/png" href="img/favicon_dark_tab.png">
-    <script src="ovum.xml"></script>
-    <script src="ovum.xml"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.min.css">
-    <link rel="stylesheet" type="text/css" href="css/400.min.css">
     <script src="js/efeitos.min.js"></script>
     <!--[if lt IE 9]>
         <script src=" https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
@@ -102,19 +99,19 @@ header('Content-Type: text/html; charset=utf-8');
         <main>
             <div class="jumbotron bg-dark" id="jumbotron-titulo">
                 <h1 class="font-weight-bold" id="titulo-index">
-                    TreasureHunt<span id="espaco"> </span><span class="destaque chaves-left" aria-hidden="true"></span>Easter Egg<span class="destaque chaves-right" aria-hidden="true"></span>
+                    TreasureHunt - Tesouro
                 </h1>
-                <h2 id="subtitulo">O VERDADEIRO TESOURO</h2>
+                <h2 id="subtitulo">Você é capaz de encontrar a flag?</h2>
                 <div class="row">
                     <div class="col">
-                        <h3>PARABÉNS, VOCÊ GANHOU!!!!</h3>
-                        <!-- IC4uLi0gIC0tLSAgLS4tLiAgLiAgICAuLi4gIC4tICAtLi4uICAuICAgIC0tLi0gIC4uLSAgLiAgICAuLSAgLi4gIC0uICAtLi4gIC4tICAgIC0uICAuLSAgLS0tICAgIC4tICAtLi0uICAuLSAgLS4uLiAgLS0tICAuLi0gIC4tLi0uLSAgICAtLi0uICAuLi4uICAuLSAgLi4uLSAgLiAgLS0tLi4uICAgIC4uLS0tICAuLi4tLSAgLi4uLi0gIC4uLi4uICAtLi4uLiAgLS0uLi4gIC0tLS4uICAg -->
+                        <h3>De que adianta ganhar um tesouro se não damos valor ao que é verdadeiramente precioso?</h3>
+                        <!--LiAuLi4gLi4uIC4tIC8gLS4tLiAuLi4uIC4tIC4uLi0gLiAvIC4gLi4uLiAvIC4uLSAtLSAvIC0gLiAuLi4gLS0tIC4uLSAuLS4gLS0tIC0tLS4uLiAvIC4tIC0uLi4gLS4tLiAtLi4gLiAuLi0uIC0tLiAuLi4uIC4uIC4tLS0gLS4tIC4tLi4gLS0gLS4gLS0tIC4tLS4g -->
                     </div>
                 </div>
                 <div class="row imagem">
                     <div class="col"></div>
                     <div class="col-md-6">
-                        <img src="img/ache_o_peixe.jpg" alt="moedas de ouro" class="img-fluid" id="tesouro">
+                        <img src="img/ache_a_flag.jpg" alt="moedas de ouro" class="img-fluid" id="tesouro">
                     </div>
                     <div class="col"></div>
                 </div>
