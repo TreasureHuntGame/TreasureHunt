@@ -19,7 +19,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="TreasureHunt, um Jogo de Caça ao Tesouro de Segurança Computacional">
     <meta name="keywords" content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
-    <meta name="theme-color" content="#343A40"/>
+    <meta name="theme-color" content="#343A40" />
     <meta name="author" content="Ricardo de la Rocha Ladeira">
     <title>Home -- TreasureHunt{Security}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -82,8 +82,7 @@ if (!isset($_SESSION['usuario'])) {
             </div>
             <ul class="navbar-nav ml-auto" id="contrast-container" role="presentation">
                 <li>
-                    <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip"
-                    data-trigger="hover focus" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
+                    <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
                         <span id="botao-contraste" title="Recurso de alto contraste"></span>
                         <span class="sr-only">Botão para ativar e desativar recurso de alto contraste</span>
                     </label>
@@ -91,8 +90,7 @@ if (!isset($_SESSION['usuario'])) {
             </ul>
             <ul class="navbar-nav ml-auto" id="animation-container" role="presentation">
                 <li>
-                    <label for="animation" id="animation-label" class="form-inline justify-content-end label-link" tabindex="0" data-toggle="tooltip"
-                    data-trigger="hover focus" data-placement="bottom" title="Recurso para ativar e desativar animações" accesskey="m">
+                    <label for="animation" id="animation-label" class="form-inline justify-content-end label-link" tabindex="0" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Recurso para ativar e desativar animações" accesskey="m">
                         <span id="botao-animation" title="Recurso para ativar e desativar animações"></span>
                         <span class="sr-only">Botão para ativar e desativar animações</span>
                     </label>
@@ -146,7 +144,6 @@ if (!isset($_SESSION['usuario'])) {
                             <input autocomplete="off" type="number" name="problema" id="id-problema" class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
                             <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span> (obrigatório):</label>
                             <input autocomplete="off" type="text" id="flag-interno" name="flag" class="form-control" placeholder="TreasureHunt{texto-aleatorio}" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Resposta encontrada no exercício.">
-                            <!--<input type="checkbox" value="lembrar-me" id="lembrar-me"><label for="lembrar-me">Lembrar-me</label>-->
                             <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
                             <?php
                             if (isset($_GET['message'])) {
@@ -374,7 +371,7 @@ if (!isset($_SESSION['usuario'])) {
                 <p>
                     A interface web conta com atalhos que possibilitam navegar pela barra de navegação,
                     ativar o modo de alto contraste e desativar as animações pelo teclado. Alguns navegadores
-                    possuem teclas que devem ser pressionadas em conjunto com as teclas de atalho: 
+                    possuem teclas que devem ser pressionadas em conjunto com as teclas de atalho:
                     No <em lang="en">Chrome, Edge e Explorer</em> é utilizado o ALT, enquanto que no <em lang="en"> Firefox </em>
                     é utilizada a combinação ALT + SHIFT. Os atalhos são:
                 </p>
@@ -389,13 +386,11 @@ if (!isset($_SESSION['usuario'])) {
                     <li><span class="prompt"></span><span>L: Faz o <em lang="en">logout</em> (exige autenticação)</span></li>
                 </ul>
                 <div id="div-accesskeys" class="noscript">
-                    <span> 
+                    <span>
                         É possível desativar e ativar as teclas de atalho com o botão abaixo:
                     </span>
                     <input type="checkbox" id="checkbox-accesskeys">
-                    <label id="label-accesskeys" for="checkbox-accesskeys" tabindex="0" class="btn btn-primary btn-lg label-link" 
-                    data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" 
-                    title="Mecanismo para desativar e ativar as teclas de atalho">Desativar as teclas de atalho</label>
+                    <label id="label-accesskeys" for="checkbox-accesskeys" tabindex="0" class="btn btn-primary btn-lg label-link" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Mecanismo para desativar e ativar as teclas de atalho">Desativar as teclas de atalho</label>
                 </div>
             </div>
         </div>

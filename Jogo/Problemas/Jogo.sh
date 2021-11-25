@@ -565,8 +565,6 @@ resetarEasterEgg() {
 	apagarLinhaSeExiste "$CAMINHO_SITE/home.php" "ovos"
 	apagarLinhaSeExiste "$CAMINHO_SITE/404.php" "ovum"
 	apagarLinhaSeExiste "$CAMINHO_SITE/img/logo.svg" "qr_code" 
-	# apagarLinhaSeExiste "$CAMINHO_SITE/index.php" "qr_code"
-	# apagarLinhaSeExiste "$CAMINHO_SITE/home.php" "qr_code"
 }
 
 # função que adiciona as linhas e arquivos do Easter Egg ao servidor web
@@ -579,7 +577,7 @@ adicionarEasterEgg() {
 	CAMINHO_EASTER_EGG="../easterEgg"
 	adicionarLinhaAposTermo "$CAMINHO_SITE/index.php" "</footer>" "<!-- ovos.txt -->"
 	adicionarLinhaAposTermo "$CAMINHO_SITE/home.php" "</footer>" "<!-- ovos.txt -->"
-	adicionarLinhaAposTermo "$CAMINHO_SITE/404.php" "icon" "<script src=\"ovum.xml\"></script>"
+	adicionarLinhaAposTermo "$CAMINHO_SITE/404.php" "icon" "<!-- <script src=\"ovum.xml\"></script> -->"
 	adicionarLinhaAposTermo "$CAMINHO_SITE/img/logo.svg" "img-logo" "<!-- img/qr_code.svg -->"
 	# adicionarLinhaAposTermo "$CAMINHO_SITE/home.php" "logo" "<!-- img/qr_code.svg -->"
 
