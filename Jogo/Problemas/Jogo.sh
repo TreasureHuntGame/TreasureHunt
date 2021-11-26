@@ -4,7 +4,7 @@
 # mysql deve estar rootado sem senha e as tabelas TreasureHunt.Usuario e TreasureHunt.Resposta, caso existam, serão esvaziadas
 
 # Identificador do último problema
-MAX=8
+MAX=9
 
 # Define o diretório que receberá os desafios
 DESTINO_DESAFIOS="/var/www/html/TreasureHunt/Desafios/"
@@ -27,9 +27,9 @@ obterValor() {
 
 # Função que verifica se o parâmetro informado é válido
 verificaParametro() {
-	# Verifica se o valor é válido (entre 1 e 8).
+	# Verifica se o valor é válido (entre 1 e 9).
 	case $1 in
-		1|2|3|4|5|6|7|8) ;;
+		1|2|3|4|5|6|7|8|9) ;;
 		*) erroParametro ;;
 	esac
 }
@@ -37,31 +37,31 @@ verificaParametro() {
 # Função que verifica se a composição informada é válida
 verificaComposicao() {
 	case $PROBLEMA1 in
-		# O problema 1 pode ser composto com todos os problemas
+		# O problema 1 e o problema 9 podem ser compostos com todos os problemas
 		# O problema 2 pode ser composto com todos, exceto
 		# com os problemas 2 e 5
 		# O problema 5 pode ser composto com todos, exceto
 		# com o problema 2
-		1|2|5) 
+		1|2|5|9) 
 		case $PROBLEMA2 in
-			1|3|4|6|7|8) ;;
+			1|3|4|6|7|8|9) ;;
 			*)
-			if ([ $PROBLEMA1 -eq  1 ] && ([ $PROBLEMA2 -eq 2 ] || [ $PROBLEMA2 -eq 5 ])) || ([ $PROBLEMA1 -eq 5 ] && [ $PROBLEMA2 -eq 5 ])
+			if ([ $PROBLEMA1 -eq  1 ] && ([ $PROBLEMA2 -eq 2 ] || [ $PROBLEMA2 -eq 5 ])) || ([ $PROBLEMA1 -eq 5 ] && [ $PROBLEMA2 -eq 5 ]) || ([ $PROBLEMA1 -eq  9 ] && ([ $PROBLEMA2 -eq 2 ] || [ $PROBLEMA2 -eq 5 ]))
 				then LOCK=0
 				else LOCK=1
 			fi ;;
 		esac ;;
 		# Os problemas 3, 4, 6, 7 e 8 são compostos
-		# somente com os problemas 1, 2, 5 e 8
+		# somente com os problemas 1, 2, 5, 8 e 9
 		3|4|6|7|8)
 		case $PROBLEMA2 in
-			1|2|5|8) ;;
+			1|2|5|8|9) ;;
 			*) LOCK=1 ;;
 		esac ;;
 	esac
 
 	# Se a variável LOCK = 1, então tem-se um erro de composição
-	if [ $LOCK -eq 1 ]; then 
+	if [ $LOCK -eq 1 ]; then
 		erroComposicao
 	fi
 }
@@ -82,7 +82,7 @@ verificaParametros() {
 		# Chama a função que verifica se a composição é válida
 		verificaComposicao ;;
 		# Um erro é exibido se o número de parâmetros não for 1 ou 2
-		*) erroNumParametros ;;
+		*) erroNumParametros ;;	
 	esac
 }
 
@@ -461,6 +461,7 @@ manejarEscolhaDesafios () {
 			echo "6: Descompilar binário e obter fonte Java."
 			echo "7: Descompilar binário e obter fonte Python."
 			echo "8: Esteganografia em imagens."
+			echo "9: (De)codificação de arquivo em base32"
 			echo "Obs.: escolha 1 ou 2 problemas. Exibiremos uma mensagem de erro"
 			echo "se a composição não existir."
 			echo "----------"
