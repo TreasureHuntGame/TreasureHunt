@@ -10,7 +10,7 @@ header('Content-Type: text/html; charset=utf-8');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="TreasureHunt, um Jogo de Caça ao Tesouro de Segurança Computacional">
     <meta name="keywords" content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
-    <meta name="theme-color" content="#343A40"/>
+    <meta name="theme-color" content="#343A40" />
     <meta name="author" content="Ricardo de la Rocha Ladeira">
     <title>403 -- TreasureHunt{Security}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -22,7 +22,7 @@ header('Content-Type: text/html; charset=utf-8');
     <link rel='preload' as='style' href='https://fonts.googleapis.com/css?family=Eczar&display=swap'>
     <link rel='preload' as='style' href='https://fonts.googleapis.com/css?family=Muli&display=swap'>
     <link rel='preload' as='style' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
-
+    <base href="/TreasureHunt/">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.min.css">
     <link rel="stylesheet" type="text/css" href="css/400.min.css">
