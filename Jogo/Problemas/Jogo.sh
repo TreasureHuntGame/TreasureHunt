@@ -171,7 +171,7 @@ criarLog () {
 moverArquivosCompeticoes () {
 	TS=`date +%d-%m-%y_%H-%M-%S`
 	OLD_DIR="../OLD_$TS"
-	echo -e "Movendo arquivos para o diretório TreasureHunt/Jogo/OLD_$TS." && sleep 1
+	echo -e "Movendo arquivos para o diretório TreasureHunt/Jogo/OLD_$TS." && sleep 0.2
 	mkdir -p $OLD_DIR
 	existeLog && mv Log $OLD_DIR # move o log 
 	if existeDirNumericos; then # move os diretóritos numéricos
@@ -205,7 +205,7 @@ moverArquivosCompeticoes () {
 # $1 = mensagem que será passada ao logger
 excluirArquivosCompeticao () {
 	if [ $# -eq 0 ]; then 
-		echo -e "Removendo arquivos."  && sleep 1
+		echo -e "Removendo arquivos."  && sleep 0.5
 	fi 
 
 	existeLog && rm -f Log # apagar log
@@ -245,7 +245,7 @@ excluirArquivosCompeticao () {
 abortarScript () {
 	if [ $# -eq 0 ]; then
 		logger "Usuário escolheu abortar script;"
-		echo -e "Abortando o script! "  && sleep 1
+		echo -e "Abortando o script! " && sleep 1
 	else 
 		logger $1
 		echo -e "$1"  && sleep 1
@@ -323,7 +323,7 @@ verificarRespostas () {
 	# se não existe arquivo de respostas retorna status de erro
 	[ ! existeRespostas ] && return 1 
 	logger "Checando arquivos de resposta da competição;" 
-	echo -e "Verificando se o número de jogadores coincide com o número de respostas geradas..." && sleep 0.2
+	echo -e "Verificando se o número de jogadores coincide com o número de respostas geradas..." && sleep 0.4
 	recriar="0"
 	for f in ../Respostas/*; do 
 		L=`cat $f | sed '/^\s*$/d' | wc -l` 
@@ -365,6 +365,7 @@ gerarDesafio () {
 	if [ $LOCK -eq 0 ]; then
 		sh Composer.sh $QUANT_JOGADORES $i $PROBLEMA1 $PROBLEMA2
 		if [ -z $3 ]; then
+			echo "Adicionando o desafio $PROBLEMA1 $PROBLEMA2 à competição." && sleep 0.5
 			# PROBLEMAS[$i]=$PROBLEMA1$PROBLEMA2
 			PROBLEMAS+=($PROBLEMA1$PROBLEMA2)
 			logger "Desafio $DESAFIO_ATUAL adicionado a competição;"
@@ -424,9 +425,9 @@ manejarArquivosAtuais () {
 	if [ $RESOLVER = "2" ]; then 
 		logger "Usuário decidiu excluir arquivos originais;"
 		for i in $(seq $QUANT_JOGADORES); do
-			echo -e "Removendo o diretório do jogador $i."
+			echo -e "Removendo o diretório do jogador $i." && sleep 0.4
 			rm -rf "../$i/"
-			logger "Removendo o diretório do jogador $i;"
+			logger "Removendo o diretório do jogador $i;" && sleep 0.4
 		done
 	fi
 }
@@ -461,7 +462,7 @@ manejarEscolhaDesafios () {
 			echo "6: Descompilar binário e obter fonte Java."
 			echo "7: Descompilar binário e obter fonte Python."
 			echo "8: Esteganografia em imagens."
-			echo "9: (De)codificação de arquivo em base32"
+			echo "9: (De)codificação de arquivo em base32."
 			echo "Obs.: escolha 1 ou 2 problemas. Exibiremos uma mensagem de erro"
 			echo "se a composição não existir."
 			echo "----------"
@@ -507,6 +508,7 @@ manejarAtivacaoNgrok () {
 	
 	if [ $OPCAO = "2" ]; then 
 		logger "Usuário decidiu não iniciar o ngrok: finalizando script;"
+		echo "Prosseguindo sem ativar o ngrok." && sleep 0.5
 		echo "Script finalizado."
 		echo "----------"
 		return 0
@@ -520,6 +522,7 @@ manejarAtivacaoNgrok () {
 
 	echo "Script finalizado."
 	echo "----------"
+	echo "Ativando o ngrok." && sleep 0.5
 	logger "Ativando ngrok;"
 	logger "Script finalizado;"
 	criarLog
@@ -604,11 +607,9 @@ manejarAdicaoEasterEgg() {
 	logger "Solicitando se usuário deseja adicionar o Easter Egg ao jogo;"
 	while true; do
 		echo -e "----------"
-		echo "Deseja adicionar o Easter Egg ao Jogo?" 
-		echo "O Ester Egg será adicionado aos arquivos da interface web."
-		echo "A submissão da flag do Easter Egg deverá ser feita pela tela de submissão de flags."
-		echo "A flag contabilizará como um desafio adicional, mas cabe aos jogadores descobrir as dicas"
-		echo "para resolvê-lo."
+		echo "Deseja adicionar o Easter Egg ao Jogo? Em caso positivo o Easter Egg será adicionado aos arquivos da interface web."
+		echo "O Easter egg é um desafio adicional com dicas e pistas espalhadas pelo site, portanto não estará disponível nos arquivos dos jogadores."
+		echo "O Easter Egg resulta em uma flag, que contabilizará como um desafio e deverá ser submetida na tela de submissão de flags."
 		echo "----------"
 		echo "Lista de opções disponíveis: "
 		echo "1: Adicionar Easter Egg."
@@ -624,9 +625,11 @@ manejarAdicaoEasterEgg() {
 
 	if [ $OPCAO = "1" ]; then
 		logger "O organizador desejou adicionar o Easter Egg à competição;"
+		echo "Gerando Easter Egg..." && sleep 0.5
 		adicionarEasterEgg
 		return 0
 	else
+		echo "Prosseguindo sem adicionar o Easter Egg." && sleep 0.5
 		resetarEasterEgg
 		logger "O organizador desejou não adicionar o Easter Egg à competição;"
 		return 1
