@@ -267,7 +267,7 @@ if (!isset($_SESSION['usuario'])) {
             </div>
             <ul id="lista-de-regras">
                 <li><span class="prompt"></span> Na tela de início, insira seu ID e sua senha e clique em
-                    <button class="btn btn-sm btn-dark" name="enviar" tabindex="-1">Entrar</button>.
+                    <span class="btn btn-sm btn-dark">Entrar</span>.
                 </li>
                 <li><span class="prompt"></span> Baixe e descompacte o arquivo zip disponível (sugestão: <code id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém
                     diretórios representados por números inteiros. Cada diretório contém pelo menos um arquivo.

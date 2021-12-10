@@ -860,6 +860,10 @@ address a{
 
 #lista-de-regras .btn-dark {
     box-shadow: 0 0 0 0.2rem var(--btn-boxshadow);
+    background-color: var(--cor-fundo)!important;
+    border: 2px solid transparent!important;
+    width: 100px;
+    padding: 0.4rem 0.5rem;
     margin: 5px 5px 5px 5px;
     height: 35px;
 }
@@ -867,6 +871,8 @@ address a{
 input#contrast:checked~#page-wrapper #lista-de-regras .btn-dark {
     box-shadow: 0 0 0 0.2rem var(--c-input-focus-box-shadow);
     border: 2px solid var(--c-cor-fundo)!important;
+    background-color: var(--c-cor-primaria)!important;
+    color: var(--c-cor-fundo)!important;
 }
 
 #sobre-acessibilidade .acess-conteudo{ 
