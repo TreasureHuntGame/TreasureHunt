@@ -264,16 +264,6 @@ $(function () {
         }
     }
 
-    // se o navegador em questão for o firefox e não estiver usando https
-    // ele recarrega a página com https -> resolve o bug do firefox
-    var isFirefox = typeof InstallTrigger !== 'undefined';
-    var oldUrl = window.location.href;
-    var notUsingHttps = oldUrl.substring(4, 5) !== 's';
-    if (isFirefox && notUsingHttps) {
-        window.location.href = 'https://' + oldUrl.substring(7, oldUrl.length);
-    }
-
-
     // função para facilitar a criação do cookie;
     // recebe: nome do cookie, valor do cookie e tempo de expiração em dias
     // retorna: nada
