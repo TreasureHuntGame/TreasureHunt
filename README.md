@@ -237,6 +237,8 @@ mysql> exit;
 ```
 - *Nota 7*: Se você obtiver a mensagem de erro `Bad substitution` ao executar o _script_ `Jogo.sh`, tente executar o _script_ com o comando `bash Jogo.sh`.
 
+- *Nota 8*: alguns navegadores podem restringir o acesso a _websites_ que não possuem um certificado SSL/TLS (HTTPS). Caso a sua hospedagem do TreasureHunt esteja limitada ao HTTP, certifique-se de orientar os competidores a desativarem tal configuração.
+
 ---
 
 ## :video_game: Como Jogar
