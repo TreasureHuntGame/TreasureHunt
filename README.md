@@ -253,7 +253,7 @@ Por meio da interface _web_, os jogadores podem:
 - Exibir o placar individual 
 - Exibir o placar geral
 
-Apesar disso, para visualizar o placar individual, baixar os problemas e submeter as respostas é preciso acessar a página principal, o que requer que o usuário esteja autenticado, ou seja, é preciso fazer _login_ com o ID e senha fornecidos pelo organizardor da competição. A figura a seguir mostra a página principal que contém os recursos citados. O placar geral, outro recurso que depende de autenticação, pode ser acessado na opção ``Placar`` na barra de navegação (topo da figura).  
+Apesar disso, para visualizar o placar individual, baixar os problemas e submeter as respostas é preciso acessar a página principal, o que requer que o usuário esteja autenticado, ou seja, é preciso fazer _login_ com o ID e senha fornecidos pelo organizador da competição. A figura a seguir mostra a página principal que contém os recursos citados. O placar geral, outro recurso que depende de autenticação, pode ser acessado na opção ``Placar`` na barra de navegação (topo da figura).  
 
 ![tela principal do TreasureHunt](/Imagens/principal.png)
 
