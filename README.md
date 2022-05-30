@@ -286,15 +286,17 @@ Vale lembrar que para a execução dos problemas recomenda-se um conjunto mínim
 ### Equipe atual
 
 - Ricardo de la Rocha Ladeira: [ricardo.ladeira@ifc.edu.br](mailto:ricardo.ladeira@ifc.edu.br)
-- Vítor Augusto Ueno Otto: [vitoruenootto@gmail.com](mailto:vitoruenootto@gmail.com)
-- Lucas Vargas: [lucasvargas27@hotmail.com](mailto:lucasvargas27@hotmail.com)
+- Camily do Nascimento Ghellar: [ghellarcamily@gmail.com](mailto:ghellarcamily@gmail.com)
+- Gabriel Eduardo Lima: [limaedugabriel@gmail.com](mailto:limaedugabriel@gmail.com)
 
 ### Contribuidores
 
 - Henrique Arnicheski Dalposso
+- Lucas Vargas
 - Rafael Rodrigues Obelheiro
 - Richard Robert Dias Custódio
 - Vinícius Manuel Martins
+- Vitor Augusto Ueno Otto
 
 ---
 
