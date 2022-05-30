@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Eczar&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
@@ -373,7 +373,7 @@ body {
 }
 
 h1 {
-    font-family: 'Eczar', serif !important;
+    font-family: 'Space Grotesk', serif !important;
     font-size: 3em;
 }
 
@@ -390,7 +390,7 @@ h3 {
 }
 
 .page-title {
-    font-family: 'Eczar', serif !important;
+    font-family: 'Space Grotesk', serif !important;
     font-size: 3em;
 }
 
@@ -823,7 +823,7 @@ address a{
 }
 
 .nome-contrib {
-    font-size: 0.7em;
+    font-size: 0.65em;
 }
 
 .destaque {
@@ -860,10 +860,6 @@ address a{
 
 #lista-de-regras .btn-dark {
     box-shadow: 0 0 0 0.2rem var(--btn-boxshadow);
-    background-color: var(--cor-fundo)!important;
-    border: 2px solid transparent!important;
-    width: 100px;
-    padding: 0.4rem 0.5rem;
     margin: 5px 5px 5px 5px;
     height: 35px;
 }
@@ -871,8 +867,6 @@ address a{
 input#contrast:checked~#page-wrapper #lista-de-regras .btn-dark {
     box-shadow: 0 0 0 0.2rem var(--c-input-focus-box-shadow);
     border: 2px solid var(--c-cor-fundo)!important;
-    background-color: var(--c-cor-primaria)!important;
-    color: var(--c-cor-fundo)!important;
 }
 
 #sobre-acessibilidade .acess-conteudo{ 
