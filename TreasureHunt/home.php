@@ -313,6 +313,9 @@ if (!isset($_SESSION['usuario'])) {
                     <span>Henrique Arnicheski Dalposso</span>
                 </div>
                 <div class="contato nome-contrib">
+                    <span>Lucas Vargas</span>
+                </div>
+                <div class="contato nome-contrib">
                     <span>Rafael Rodrigues Obelheiro</span>
                 </div>
                 <div class="contato nome-contrib">

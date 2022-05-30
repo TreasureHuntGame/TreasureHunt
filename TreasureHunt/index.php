@@ -159,6 +159,9 @@ header('Content-Type: text/html; charset=utf-8');
                     <span>Henrique Arnicheski Dalposso</span>
                 </div>
                 <div class="contato nome-contrib">
+                    <span>Lucas Vargas</span>
+                </div>
+                <div class="contato nome-contrib">
                     <span>Rafael Rodrigues Obelheiro</span>
                 </div>
                 <div class="contato nome-contrib">
