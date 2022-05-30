@@ -25,15 +25,15 @@ if (!isset($_SESSION['usuario'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="icon" type="image/png" href="img/favicon_dark_tab.png">
+    <link rel="icon" href="img/favicon_dark_tab.png">
     <link rel="preload" href="css/style.min.css" as="style">
     <link rel="preload" href="js/efeitos.min.js" as="script">
-    <link rel='preload' as='style' href='https://fonts.googleapis.com/css?family=Eczar&display=swap'>
+    <link rel='preload' as='style' href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap'>
     <link rel='preload' as='style' href='https://fonts.googleapis.com/css?family=Muli&display=swap'>
     <link rel='preload' as='style' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
     <script src="js/efeitos.min.js"></script>
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -45,7 +45,58 @@ if (!isset($_SESSION['usuario'])) {
     <input type="checkbox" name="animation-switch" id="animation">
     <input type="checkbox" name="close-alert" id="close-alert-button">
     <div id="page-wrapper">
-        <?php include "header.php" ?>
+        <input type="radio" name="nav" id="inicio" checked>
+        <input type="radio" name="nav" id="rank">
+        <input type="radio" name="nav" id="regras">
+        <input type="radio" name="nav" id="contato">
+        <input type="radio" name="nav" id="acessibilidade">
+        <noscript>
+            <div class="jumbotron bg-dark" aria-atomic="true">
+                <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
+                <label id="close-alert-label" class="close" for="close-alert-button" tabindex="0" title="fechar aviso de javascript desabilitado" aria-label="Fechar">
+                    <span aria-hidden="true">&times;</span>
+                </label>
+            </div>
+        </noscript>
+        <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
+            <a id="link-skip" href="#content" class="position-absolute rounded-right">
+                Pular para o conteúdo principal
+            </a>
+            <input type="checkbox" name="collapse-btn" id="collapse-btn">
+            <a class="navbar-brand nav-item" id="link-logo" href="home.php">
+                <?php echo file_get_contents("img/logo.svg"); ?>
+            </a>
+            <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
+            <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0" accesskey="i"><span class="sr-only">Página atual:</span>Início</label></li>
+                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0" accesskey="p"><span class="sr-only">Página atual:</span>Placar</label></li>
+                    <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" accesskey="j"><span class="sr-only">Página atual:</span>Como Jogar?</label></li>
+                    <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" accesskey="c"><span class="sr-only">Página atual:</span>Contato</label></li>
+                    <li class="nav-item"><label id="acessibilidade-label" class="label-link" for="acessibilidade" tabindex="0" accesskey="s"><span class="sr-only">Página atual:</span>Acessibilidade</label>
+                    </li>
+                    <li class="nav-item">
+                        <a id="logout" accesskey="l" href="logout.php" class="mostrar" lang="en">Logout</a>
+                    </li>
+                </ul>
+            </div>
+            <ul class="navbar-nav ml-auto" id="contrast-container" role="presentation">
+                <li>
+                    <label for="contrast" id="contrast-label" class="form-inline justify-content-end label-link contrast-label" tabindex="0" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Recurso de alto contraste" accesskey="a">
+                        <span id="botao-contraste" title="Recurso de alto contraste"></span>
+                        <span class="sr-only">Botão para ativar e desativar recurso de alto contraste</span>
+                    </label>
+                </li>
+            </ul>
+            <ul class="navbar-nav ml-auto" id="animation-container" role="presentation">
+                <li>
+                    <label for="animation" id="animation-label" class="form-inline justify-content-end label-link" tabindex="0" data-toggle="tooltip" data-trigger="hover focus" data-placement="bottom" title="Recurso para ativar e desativar animações" accesskey="m">
+                        <span id="botao-animation" title="Recurso para ativar e desativar animações"></span>
+                        <span class="sr-only">Botão para ativar e desativar animações</span>
+                    </label>
+                </li>
+            </ul>
+        </nav>
         <span id="content" class="sr-only">Conteúdo Principal:</span>
         <div id="main" role="main" aria-label="Principal">
             <div class="jumbotron bg-dark" id="jumbotron-home-title">
@@ -216,7 +267,7 @@ if (!isset($_SESSION['usuario'])) {
             </div>
             <ul id="lista-de-regras">
                 <li><span class="prompt"></span> Na tela de início, insira seu ID e sua senha e clique em
-                    <span class="btn btn-sm btn-dark">Entrar</span>.
+                    <button class="btn btn-sm btn-dark" name="enviar" tabindex="-1">Entrar</button>.
                 </li>
                 <li><span class="prompt"></span> Baixe e descompacte o arquivo zip disponível (sugestão: <code id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém
                     diretórios representados por números inteiros. Cada diretório contém pelo menos um arquivo.
@@ -250,14 +301,13 @@ if (!isset($_SESSION['usuario'])) {
                     <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <div class="contato">
-                    <span class="nome-autor">Vítor Augusto Ueno Otto</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>vitoruenootto<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
-                </div>
+                    <span class="nome-autor">Camily do Nascimento Ghellar</span>:
+                    <span><span class="sinal-menor" aria-hidden="true"></span>ghellarcamily<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
+                </div>                
                 <div class="contato">
-                    <span class="nome-autor">Lucas Vargas</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>lucasvargas27<span class="at font-weight-bold"></span>hotmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
+                    <span class="nome-autor">Gabriel Eduardo Lima</span>:
+                    <span><span class="sinal-menor" aria-hidden="true"></span>limaedugabriel<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
-
                 <span class="address-title">Contribuidores:</span>
                 <div class="contato nome-contrib">
                     <span>Henrique Arnicheski Dalposso</span>
@@ -271,7 +321,9 @@ if (!isset($_SESSION['usuario'])) {
                 <div class="contato nome-contrib">
                     <span>Vinícius Manuel Martins</span>
                 </div>
-
+                <div class="contato nome-contrib">
+                    <span>Vitor Augusto Ueno Otto</span>
+                </div>
             </address>
         </div>
         <div id="sobre-acessibilidade" role="main" aria-label="Acessibilidade">
@@ -343,8 +395,71 @@ if (!isset($_SESSION['usuario'])) {
                 </div>
             </div>
         </div>
+        <footer class="page-footer font-small">
+            <div class="col">
+                <div class="footer-copyright">
+                    <a rel="license noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" class="link-padrao" id="creative-commons" target="_blank">
+                        <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" width="80" height="15">
+                        <br>
+                        <span>Esta obra está licenciada com uma Licença <span lang="en">Creative Commons</span>
+                            Atribuição-NãoComercial 4.0 Internacional</span> (Abre em nova janela).</a>
+                    <p><span lang="en">©</span> 2017-<?php echo date("Y"); ?></p>
+                </div>
+            </div>
+        </footer>
 
-        <?php include "footer.php" ?>
+        <?php
+        if (!(isset($_COOKIE['cookie_notice_accepted']))) {
+            echo '<input type="checkbox" name="hide-cookie-bar" id="hide-cookie-bar">
+            <div id="cookie-bar" class="navbar fixed-bottom container-fluid noscript">
+            <div class="row mx-auto">
+            <div class="col-lg-7 col-sm-12">
+             <span>Nós usamos cookies para armazenar as preferências de contraste dos usuários.
+             Ao clicar em "Sim", assumiremos que você está de acordo com isso. </span>
+             </div>
+             <div class="col-lg-5 col-sm-12 ml-auto">
+             <label for="hide-cookie-bar">
+             <a class="btn btn-primary" id="cookie-yes" tabindex="0" role="button" title="Aceitar uso de cookie para armazenamento de preferências e termos de privacidade">Sim</a>
+             <a class="btn btn-primary" id="cookie-no" tabindex="0" role="button" title="Rejeitar uso de cookie para armazenamento de preferências e termos de privacidade">Não</a>
+             </label>
+             <a href="#modal-privacy" id="open-modal-btn" class="btn btn-primary" title="Acessar termos de privacidade">Detalhes</a>
+             </div>
+             </div>
+             </div>';
+
+            echo '<div id="modal-privacy" class="overlay noscript" role="dialog" tabindex="-1" aria-labelledby="dialog_label">
+                <div class="popup">
+                    <h2 id="dialog_label">Valorizamos sua privacidade</h2>
+                    <a class="close" id="close-modal" href="#open-modal-btn" role="button" title="fechar janela de detalhes" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </a>
+                    <div class="contnt" tabindex="0">
+                        <p>                            
+                            Este site utiliza cookies para melhorar a experiência de 
+                            navegação do usuário ao salvar sua preferência de contraste. 
+                            A preferência será salva somente se você clicar em "Sim". 
+                            Essa informação visa a melhorar a acessibilidade do website
+                            por pessoas com baixa visibilidade, que, dessa forma, 
+                            não precisam reativar essa opção em um acesso futuro.
+                            Esse cookie é mantido por 30 dias.
+                        </p>
+                        <p>
+                            A identidade dos competidores é preservada durante as competições 
+                            do TreasureHunt, pois cada indivíduo é identificado por um número. 
+                            Apenas o pesquisador responsável terá acesso aos dados brutos,
+                            sem qualquer identificação ou correlação nominal dos participantes.
+                        </p>
+                        <p>
+                            Ressalta-se que o único dado sensível que a ferramenta recolhe é 
+                            o endereço IP de quem a acessa, pois ele é utilizado para garantir 
+                            a integridade da competição e identificar eventuais ataques e 
+                            tentativas de trapaça.
+                        </p>
+                    </div>
+                </div>
+            </div>';
+        }
+        ?>
     </div>
 </body>
 
