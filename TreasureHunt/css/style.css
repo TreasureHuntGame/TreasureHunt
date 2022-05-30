@@ -804,7 +804,7 @@ address a{
     display: block;
     color: var(--cor-primaria);
     font-weight: normal;
-    font-size: 0.9em;
+    font-size: 0.82em;
 }
 
 .address-title {
@@ -815,15 +815,15 @@ address a{
 }
 
 .address-title:first-child {
-    font-size: 1.2em;
+    font-size: 1.1em;
 }
 
-.address-title:nth-child(4) {
-    font-size: 0.9em;
+.address-title:nth-child(5) {
+    font-size: 0.88em;
 }
 
 .nome-contrib {
-    font-size: 0.65em;
+    font-size: 0.62em;
 }
 
 .destaque {
@@ -1221,17 +1221,17 @@ caption {
     }
     .address-title:first-child {
         margin: 2px 0;
-        font-size: 0.9em;
+        font-size: 0.88em;
     }
     .address-title:nth-child(4) {
         margin: 2px 0;
-        font-size: 0.8em;
+        font-size: 0.78em;
     }
     .contato {
-        font-size: 0.65em;
+        font-size: 0.62em;
     }
     .nome-contrib {
-        font-size: 0.6em;
+        font-size: 0.54em;
     }
     /* como jogar */
     #como-jogar .jumbotron {
