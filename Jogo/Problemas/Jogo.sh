@@ -4,7 +4,7 @@
 # mysql deve estar rootado sem senha e as tabelas TreasureHunt.Usuario e TreasureHunt.Resposta, caso existam, serão esvaziadas
 
 # Identificador do último problema
-MAX=9
+MAX=11
 
 # Define o diretório que receberá os desafios
 DESTINO_DESAFIOS="/var/www/html/TreasureHunt/Desafios/"
@@ -17,7 +17,6 @@ DIR_SCRIPT=`dirname $0`
 # Array que armazenará o identificador de cada problema
 PROBLEMAS=
 
-
 # Função que verifica se o parâmetor informado é positivo.
 obterValor() {
 	while [ $LOCAL -le 0 ]; do
@@ -29,7 +28,7 @@ obterValor() {
 verificaParametro() {
 	# Verifica se o valor é válido (entre 1 e 9).
 	case $1 in
-		1|2|3|4|5|6|7|8|9) ;;
+		1|2|3|4|5|6|7|8|9|10|11) ;;
 		*) erroParametro ;;
 	esac
 }
@@ -112,24 +111,20 @@ erroComposicao () {
 	LOCK=1
 }
 
-
-# verifica se existe um Log já criado
-# se existe retorna 0 
+# Verifica se existe um Log já criado; se existe retorna 0 
 existeLog () {
 	[ -f "Log" ] && return 0
 }
 
-# verifica se existe algum diretório numérico
-# se existir algum retorna 0
-existeDirNumericos () {
+# Verifica se existe algum diretório numérico; se existe retorna 0
+existeDirNumerico () {
 	for d in ../*; do 
         f=`echo $d | cut -b 4-`
         [[ $f =~ ^[0-9]+$ ]] && return 0
     done 
 }
 
-# verifica se existe arquivo de resposta
-# se existir retorna 0
+# Verifica se existe algum arquivo de resposta; se existe retorna 0
 existeRespostas () {
 	mkdir -pm 755 ../Respostas
     for f in ../Respostas/*; do 
@@ -137,9 +132,8 @@ existeRespostas () {
     done  
 }
 
-# verifica se existe arquivos de respostas compactados no diretório 
-# Desafios do servidor web
-# Se existir retorna 0 
+# Verifica se existe algum arquivo de respostas compactados no diretório 
+# Desafios do servidor web; se existir retorna 0 
 # $1 diretório
 existeZip () {
 	local="$1*"
@@ -148,9 +142,8 @@ existeZip () {
 	done
 }
 
-
 # Função que cria o log do jogo
-criarLog () {
+criaLog () {
 	NOME_LOG="Log"
 	IDC=`date +%d/%m/%Y_%H:%M:%S`
 	echo "---------- BEGIN TH{LOG} ----------" > $NOME_LOG
@@ -168,13 +161,13 @@ criarLog () {
 
 # move os arquivos de log, diretórios numéricos, respostas e zips
 # para um diretório nomeado com timestamp 
-moverArquivosCompeticoes () {
+moveArquivosCompeticoes () {
 	TS=`date +%d-%m-%y_%H-%M-%S`
 	OLD_DIR="../OLD_$TS"
-	echo -e "Movendo arquivos para o diretório TreasureHunt/Jogo/OLD_$TS." && sleep 0.2
+	echo -e "Movendo arquivos para o diretório TreasureHunt/Jogo/OLD_$TS." && sleep 1
 	mkdir -p $OLD_DIR
 	existeLog && mv Log $OLD_DIR # move o log 
-	if existeDirNumericos; then # move os diretóritos numéricos
+	if existeDirNumerico; then # move os diretóritos numéricos
 		for d in ../*; do 
 			f=`echo $d | cut -b 4-`
 			if [[ $f =~ ^[0-9]+$ ]]; then 
@@ -203,9 +196,9 @@ moverArquivosCompeticoes () {
 
 # Função exclui os arquivos de log, diretórios numéricos, respostas e zips
 # $1 = mensagem que será passada ao logger
-excluirArquivosCompeticao () {
+excluiArquivosCompeticao () {
 	if [ $# -eq 0 ]; then 
-		echo -e "Removendo arquivos."  && sleep 0.5
+		echo -e "Removendo arquivos."  && sleep 1
 	fi 
 
 	existeLog && rm -f Log # apagar log
@@ -230,7 +223,7 @@ excluirArquivosCompeticao () {
 		rm -f Jogador*.zip
 	fi
 
-	resetarEasterEgg
+	resetaEasterEgg
 
 	if [ $# -eq 0 ]; then 
 		logger "Usuário escolheu excluir arquivos de competições anteriores;"
@@ -240,12 +233,12 @@ excluirArquivosCompeticao () {
 	echo "----------"
 }
 
-# aborta script
+# Aborta script
 # $1 mensagem passada ao logger 
-abortarScript () {
+abortaScript () {
 	if [ $# -eq 0 ]; then
 		logger "Usuário escolheu abortar script;"
-		echo -e "Abortando o script! " && sleep 1
+		echo -e "Abortando o script! "  && sleep 1
 	else 
 		logger $1
 		echo -e "$1"  && sleep 1
@@ -253,22 +246,21 @@ abortarScript () {
 	exit 1
 }
 
-# exclui logger 
-excluirLogger () {
+# Exclui o logger 
+excluiLogger () {
 	[ -f Logger ] && rm "Logger"
 }
 
-
-# verifica se existe algum arquivo de competição antigo. 
-# Se existir pergunta ao usuário o que ele deseja fazer
-manejarArquivosCompeticoesAntigos () {
-	# se algum arquivo de outra competição já estiver criado 
-	if existeLog || existeDirNumericos || existeRespostas; then
+# Verifica se existe algum arquivo de competição antigo.
+# Se existir, pergunta ao usuário o que ele deseja fazer.
+manejaArquivosCompeticoesAntigos () {
+	# Se algum arquivo de outra competição já estiver criado 
+	if existeLog || existeDirNumerico || existeRespostas; then
 		logger "Arquivos de competições anteriores foram encontrados;"
 		while true; do  # pergunta o que o usuário deseja fazer
 			echo "Arquivos de competições anteriores foram encontrados! "
 			echo "----------"
-			echo "lista de opções disponíveis: "
+			echo "Lista de opções disponíveis: "
 			echo "1: Mover arquivos antigos para um diretório criado automaticamente."
 			echo "2: Excluir todos os arquivos antigos."
 			echo "3: Abortar o script."
@@ -281,19 +273,19 @@ manejarArquivosCompeticoesAntigos () {
 			esac 
 		done
 
-		if [ $OPCAO = "1" ]; then  # se escolher 1, move tudo para a pasta OLD
-			moverArquivosCompeticoes
+		if [ $OPCAO = "1" ]; then  # Se escolher 1, move tudo para a pasta OLD
+			moveArquivosCompeticoes
 
-		elif [ $OPCAO = "2" ]; then # se escolher 2, exclui os arquivos
-			excluirArquivosCompeticao
+		elif [ $OPCAO = "2" ]; then # Se escolher 2, exclui os arquivos
+			excluiArquivosCompeticao
 
-		elif [ $OPCAO = "3" ]; then # se escolher 3, sai do script
-			abortarScript
+		elif [ $OPCAO = "3" ]; then # Se escolher 3, sai do script
+			abortaScript
 		fi    
 	fi 
 }
 
-# função que loga detalhadamente 
+# Função que loga detalhadamente 
 # $1 mensagem
 logger () {
 	[ ! -f Logger ] && touch Logger
@@ -301,13 +293,11 @@ logger () {
 	echo "$ts: $1" >> Logger
 }
 
-
-# exclui arquivos da competição atual e tenta recriá-la 
-# usando a lista de problemas $PROBLEMAS
-recriarCompeticao() {
+# Exclui arquivos da competição atual e tenta recriá-la usando a lista de problemas $PROBLEMAS
+recriaCompeticao() {
 	logger "Iniciando processo de recriação;"
 	echo -e "Tentando recriar competição para solucionar o problema" && sleep 0.5
-	excluirArquivosCompeticao "Excluindo arquivos da competição para tentar recriá-la"
+	excluiArquivosCompeticao "Excluindo arquivos da competição para tentar recriá-la"
 	for i in $(seq $QUANT_DESAFIOS); do   # para cada desafio
 		PROB1=`echo ${PROBLEMAS[$i]} | cut -c1`
 		PROB2=`echo ${PROBLEMAS[$i]} | cut -c2`
@@ -317,13 +307,13 @@ recriarCompeticao() {
 	gerarArquivosResposta
 }
 
-# para cada arquivo de resposta verifica se o número de respostas bate 
-# com o número de jogadores; se não bater tenta recriar competição 
-verificarRespostas () {
+# Para cada arquivo de resposta verifica se o número de respostas bate 
+# Com o número de jogadores; se não bater tenta recriar competição 
+verificaRespostas () {
 	# se não existe arquivo de respostas retorna status de erro
 	[ ! existeRespostas ] && return 1 
 	logger "Checando arquivos de resposta da competição;" 
-	echo -e "Verificando se o número de jogadores coincide com o número de respostas geradas..." && sleep 0.4
+	echo -e "Verificando se o número de jogadores coincide com o número de respostas geradas..." && sleep 0.2
 	recriar="0"
 	for f in ../Respostas/*; do 
 		L=`cat $f | sed '/^\s*$/d' | wc -l` 
@@ -331,14 +321,14 @@ verificarRespostas () {
 		# echo "linhas: $L; linhas - 1: $LINHAS; quantidade de jogadores: $QUANT_JOGADORES"
 		if [ $L != $QUANT_JOGADORES ]; then 
 			logger "Erro: o número de respostas do arquivo $f não bate com o número de jogadores ($QUANT_JOGADORES);"
-			$recriar="1"
+			recriar="1"
 		else 
 			logger "Arquivos de resposta $f checado com sucesso: número de respostas bate com número de jogadores;"
 		fi 
 	done 
 	
 	if [ $recriar = "1" ]; then 
-		recriarCompeticao
+		recriaCompeticao
 		echo "Número de respostas de um ou mais arquivos não coincide com o total de jogadores"
 		return "1"
 	fi
@@ -348,7 +338,7 @@ verificarRespostas () {
 # $1 problema 1
 # $2 problema 2
 # $3 mensagem pro log
-gerarDesafio () {
+geraDesafio () {
 	PROBLEMA1=$1
 	if ! [[ "$2" =~ ^[0-9]+$ ]]; then 
 		PROBLEMA2=""
@@ -359,15 +349,14 @@ gerarDesafio () {
 	fi
 
 	verificaParametros $PROBLEMA1 $PROBLEMA2
-	DESAFIO_ATUAL="$PROBLEMA1 $PROBLEMA2"
+	DESAFIO_ATUAL="$PROBLEMA1-$PROBLEMA2"
  
 
 	if [ $LOCK -eq 0 ]; then
 		sh Composer.sh $QUANT_JOGADORES $i $PROBLEMA1 $PROBLEMA2
 		if [ -z $3 ]; then
-			echo "Adicionando o desafio $PROBLEMA1 $PROBLEMA2 à competição." && sleep 0.5
 			# PROBLEMAS[$i]=$PROBLEMA1$PROBLEMA2
-			PROBLEMAS+=($PROBLEMA1$PROBLEMA2)
+			PROBLEMAS+=($PROBLEMA1-$PROBLEMA2)
 			logger "Desafio $DESAFIO_ATUAL adicionado a competição;"
 		else 
 			logger $MENSAGEM
@@ -376,7 +365,7 @@ gerarDesafio () {
 }
 
 # Função que gera arquivos de resposta que são enviados ao diretório Respostas
-gerarArquivosResposta () {
+geraArquivosResposta () {
 	echo -e "Obtendo as soluções..."
 	logger "Obtenção das soluções dos desafios..."
 	# Caso não exista, cria o diretório que conterá as respostas
@@ -390,7 +379,7 @@ gerarArquivosResposta () {
 }
 
 # Comprime os desafios do jogador em um arquivo zip
-compactarDesafios () {
+compactaDesafios () {
 	for i in $(seq $QUANT_JOGADORES); do
 		zip -r -q "../Jogador$i.zip" "../$i/"
 		logger "Compressão do arquivo do jogador $i (Jogador$i.zip);"
@@ -398,7 +387,7 @@ compactarDesafios () {
 }
 
 # Se o usuário teclar 1, mantém os arquivos originais. Caso contrário exclui as pastas dos jogadores
-manejarArquivosAtuais () {
+manejaArquivosAtuais () {
 	while true; do
 		echo -e "----------"
 		echo "Deseja manter os arquivos originais na pasta do jogo? Caso negativo, os"
@@ -425,14 +414,14 @@ manejarArquivosAtuais () {
 	if [ $RESOLVER = "2" ]; then 
 		logger "Usuário decidiu excluir arquivos originais;"
 		for i in $(seq $QUANT_JOGADORES); do
-			echo -e "Removendo o diretório do jogador $i." && sleep 0.4
+			echo -e "Removendo o diretório do jogador $i."
 			rm -rf "../$i/"
-			logger "Removendo o diretório do jogador $i;" && sleep 0.4
+			logger "Removendo o diretório do jogador $i;"
 		done
 	fi
 }
 
-enviarDesafiosCompactados () {
+enviaDesafiosCompactados () {
 	mkdir -pm 755 $DESTINO_DESAFIOS
 	for i in $(seq $QUANT_JOGADORES); do
 		mv "../Jogador$i.zip" $DESTINO_DESAFIOS
@@ -443,7 +432,7 @@ enviarDesafiosCompactados () {
 
 # Função principal que recebe os desafios do usuário, valindando-os 
 # e salvando-os num array em sequência o problema é gerado 
-manejarEscolhaDesafios () {
+manejaEscolhaDesafios () {
 	echo -e "----------"
 	echo "Vamos criar os desafios!"
 	echo "----------"
@@ -462,14 +451,15 @@ manejarEscolhaDesafios () {
 			echo "6: Descompilar binário e obter fonte Java."
 			echo "7: Descompilar binário e obter fonte Python."
 			echo "8: Esteganografia em imagens."
-			echo "9: (De)codificação de arquivo em base32."
-			echo "Obs.: escolha 1 ou 2 problemas. Exibiremos uma mensagem de erro"
-			echo "se a composição não existir."
+			echo "9: (De)codificação de arquivo em base32"
+			echo "10: QRCode"
+			echo "11: Metadado em QRCode"
+			echo "Obs.: escolha 1 ou 2 problemas. Exibiremos uma mensagem de erro se a composição não existir."
 			echo "----------"
 
 			read -p "Informe o(s) problema(s) do desafio $i: " PROBLEMA1 PROBLEMA2
 
-			gerarDesafio $PROBLEMA1 $PROBLEMA2  
+			geraDesafio $PROBLEMA1 $PROBLEMA2  
 		done
 
 		echo "----------"
@@ -479,11 +469,10 @@ manejarEscolhaDesafios () {
 
 }
 
-
-# função que verifica se usuário quer ativar o ngrok
-# caso alguma instância do ngrok já esteja ativa, o avisa que
-# todas as instâncias (exceto a desse script) serão fechadas 
-manejarAtivacaoNgrok () {
+# Função que verifica se usuário quer ativar o ngrok
+# Caso alguma instância do ngrok já esteja ativa, o avisa que
+# Todas as instâncias (exceto a desse script) serão fechadas 
+manejaAtivacaoNgrok () {
 	logger "Verificando se usuário quer iniciar o ngrok;"
 	while true; do
 		echo -e "----------"
@@ -508,7 +497,6 @@ manejarAtivacaoNgrok () {
 	
 	if [ $OPCAO = "2" ]; then 
 		logger "Usuário decidiu não iniciar o ngrok: finalizando script;"
-		echo "Prosseguindo sem ativar o ngrok." && sleep 0.5
 		echo "Script finalizado."
 		echo "----------"
 		return 0
@@ -522,10 +510,9 @@ manejarAtivacaoNgrok () {
 
 	echo "Script finalizado."
 	echo "----------"
-	echo "Ativando o ngrok." && sleep 0.5
 	logger "Ativando ngrok;"
 	logger "Script finalizado;"
-	criarLog
+	criaLog
 	exec ngrok http 80
 }
 
@@ -534,7 +521,7 @@ manejarAtivacaoNgrok () {
 # $1 = caminho do arquivo onde ocorrerá a adição da linha  
 # $2 = termo a ser buscado no arquivo informado  
 # $3 = texto a ser colocado uma linha após o termo buscado
-adicionarLinhaAposTermo() {
+adicionaLinhaAposTermo() {
 	CAMINHO_ARQUIVO=$1
 	TERMO_BUSCA=$2
 	TEXTO=$3 
@@ -543,18 +530,18 @@ adicionarLinhaAposTermo() {
 	sed -i "$ADICAO" $CAMINHO_ARQUIVO
 }	
 
-# função que apaga uma linha de texto se ela existir em um arquivo
+# Função que apaga uma linha de texto se ela existir em um arquivo
 # $1 = caminho do arquivo onde ocorrerá a adição da linha  
 # $2 = termo a ser buscado no arquivo informado  
-apagarLinhaSeExiste() {
+apagaLinhaSeExiste() {
 	CAMINHO_ARQUIVO=$1
 	TERMO_BUSCA=$2
     sed -i "/$TERMO_BUSCA/d" $CAMINHO_ARQUIVO
 }
 
-# função responsável por apagar todo o easter egg do servidor web
-# apaga linhas e arquivos do easter egg
-resetarEasterEgg() {
+# Função responsável por apagar todo o easter egg do servidor web
+# Apaga linhas e arquivos do easter egg
+resetaEasterEgg() {
 	rm -f "$CAMINHO_SITE/ovos.txt"
 	rm -f "$CAMINHO_SITE/ovum.xml"
 	rm -f "$CAMINHO_SITE/css/xml.css"
@@ -565,25 +552,25 @@ resetarEasterEgg() {
 	
 	rm -f "$DESTINO_RESPOSTAS/$ARQUIVO_RESPOSTA"
 
-	apagarLinhaSeExiste "$CAMINHO_SITE/index.php" "ovos"
-	apagarLinhaSeExiste "$CAMINHO_SITE/home.php" "ovos"
-	apagarLinhaSeExiste "$CAMINHO_SITE/404.php" "ovum"
-	apagarLinhaSeExiste "$CAMINHO_SITE/img/logo.svg" "qr_code" 
+	apagaLinhaSeExiste "$CAMINHO_SITE/index.php" "ovos"
+	apagaLinhaSeExiste "$CAMINHO_SITE/home.php" "ovos"
+	apagaLinhaSeExiste "$CAMINHO_SITE/404.php" "ovum"
+	apagaLinhaSeExiste "$CAMINHO_SITE/img/logo.svg" "qr_code" 
 }
 
-# função que adiciona as linhas e arquivos do Easter Egg ao servidor web
-adicionarEasterEgg() {
+# Função que adiciona as linhas e arquivos do Easter Egg ao servidor web
+adicionaEasterEgg() {
 	logger "Apagando arquivos e linhas do easter egg se existirem;"
-	resetarEasterEgg
+	resetaEasterEgg
 
 
 	logger "Adicionando linhas do easter egg nos respectivos arquivos;"
 	CAMINHO_EASTER_EGG="../easterEgg"
-	adicionarLinhaAposTermo "$CAMINHO_SITE/index.php" "</footer>" "<!-- ovos.txt -->"
-	adicionarLinhaAposTermo "$CAMINHO_SITE/home.php" "</footer>" "<!-- ovos.txt -->"
-	adicionarLinhaAposTermo "$CAMINHO_SITE/404.php" "icon" "<!-- <script src=\"ovum.xml\"></script> -->"
-	adicionarLinhaAposTermo "$CAMINHO_SITE/img/logo.svg" "img-logo" "<!-- img/qr_code.svg -->"
-	# adicionarLinhaAposTermo "$CAMINHO_SITE/home.php" "logo" "<!-- img/qr_code.svg -->"
+	adicionaLinhaAposTermo "$CAMINHO_SITE/index.php" "</footer>" "<!-- ovos.txt -->"
+	adicionaLinhaAposTermo "$CAMINHO_SITE/home.php" "</footer>" "<!-- ovos.txt -->"
+	adicionaLinhaAposTermo "$CAMINHO_SITE/404.php" "icon" "<!-- <script src=\"ovum.xml\"></script> -->"
+	adicionaLinhaAposTermo "$CAMINHO_SITE/img/logo.svg" "img-logo" "<!-- img/qr_code.svg -->"
+	# adicionaLinhaAposTermo "$CAMINHO_SITE/home.php" "logo" "<!-- img/qr_code.svg -->"
 
 	logger "Copiando os arquivos do easter egg para o servidor web;"
 	cp "$CAMINHO_EASTER_EGG/ovos.txt" "$CAMINHO_SITE"
@@ -593,7 +580,6 @@ adicionarEasterEgg() {
 	cp "$CAMINHO_EASTER_EGG/宝.php" "$CAMINHO_SITE"
 	cp "$CAMINHO_EASTER_EGG/ache_a_flag.jpg" "$CAMINHO_SITE/img"
 
-	
 	ARQUIVO_RESPOSTA="Respostas_Desafio_`expr $QUANT_DESAFIOS + 1`"
 	rm -f "$DESTINO_RESPOSTAS/$ARQUIVO_RESPOSTA"
 	for i in $(seq $QUANT_JOGADORES); do
@@ -602,14 +588,16 @@ adicionarEasterEgg() {
 }
 
 # função que pergunta ao organizador se ele deseja adicionar o Easter Egg
-# ao Jogo. Se sim, chama a função adicionarEasterEgg.
-manejarAdicaoEasterEgg() {
+# ao Jogo. Se sim, chama a função adicionaEasterEgg.
+manejaAdicaoEasterEgg() {
 	logger "Solicitando se usuário deseja adicionar o Easter Egg ao jogo;"
 	while true; do
 		echo -e "----------"
-		echo "Deseja adicionar o Easter Egg ao Jogo? Em caso positivo o Easter Egg será adicionado aos arquivos da interface web."
-		echo "O Easter egg é um desafio adicional com dicas e pistas espalhadas pelo site, portanto não estará disponível nos arquivos dos jogadores."
-		echo "O Easter Egg resulta em uma flag, que contabilizará como um desafio e deverá ser submetida na tela de submissão de flags."
+		echo "Deseja adicionar o Easter Egg ao Jogo?" 
+		echo "O Ester Egg será adicionado aos arquivos da interface web."
+		echo "A submissão da flag do Easter Egg deverá ser feita pela tela de submissão de flags."
+		echo "A flag contabilizará como um desafio adicional, mas cabe aos jogadores descobrirem as dicas"
+		echo "para resolvê-lo."
 		echo "----------"
 		echo "Lista de opções disponíveis: "
 		echo "1: Adicionar Easter Egg."
@@ -625,18 +613,14 @@ manejarAdicaoEasterEgg() {
 
 	if [ $OPCAO = "1" ]; then
 		logger "O organizador desejou adicionar o Easter Egg à competição;"
-		echo "Gerando Easter Egg..." && sleep 0.5
-		adicionarEasterEgg
+		adicionaEasterEgg
 		return 0
 	else
-		echo "Prosseguindo sem adicionar o Easter Egg." && sleep 0.5
-		resetarEasterEgg
+		resetaEasterEgg
 		logger "O organizador desejou não adicionar o Easter Egg à competição;"
 		return 1
 	fi
 }
-
-
 
 # Início da execução das funções 
 
@@ -647,10 +631,10 @@ echo "----------"
 # garantindo que o diretório de trabalho é o diretório do script
 cd $DIR_SCRIPT
 
-excluirLogger
+excluiLogger
 logger "Script iniciado;"
 
-manejarArquivosCompeticoesAntigos 
+manejaArquivosCompeticoesAntigos 
 
 # Variáveis que armazenarão nº de desafios e jogadores da competição
 
@@ -670,29 +654,29 @@ QUANT_JOGADORES=$LOCAL
 
 logger "Usuário determinou que a competição terá $QUANT_JOGADORES jogador(es);"
 
-manejarEscolhaDesafios
-gerarArquivosResposta
+manejaEscolhaDesafios
+geraArquivosResposta
 
 # executa uma vez
-verificarRespostas
+verificaRespostas
 if [ $? != "0" ]; then
 	# se deu errado é porque ele já recriou, então tentamos de novo
 	# se mesmo assim não der ele sai do script
 	MSG_LOG="O erro persistiu mesmo depois de recriar a competição. Abortando Script."
-	verificarRespostas 
+	verificaRespostas 
 	if [ $? != "0" ]; then 
-		abortarScript $MSG_LOG
+		abortaScript $MSG_LOG
 	fi
 else 
 	echo -e "Verificação concluída com sucesso!"
 	logger "Sucesso: a quantidade de respostas coincide com o n° de jogadores;"
 fi
 
-compactarDesafios
-manejarArquivosAtuais
-enviarDesafiosCompactados
+compactaDesafios
+manejaArquivosAtuais
+enviaDesafiosCompactados
 
-manejarAdicaoEasterEgg
+manejaAdicaoEasterEgg
 
 ADICIONAR_EASTER_EGG=$?
 
@@ -704,8 +688,8 @@ echo -e "Banco de dados configurado com sucesso."
 logger "Fim da criação da competição;"
 echo -e "Fim da criação da Competição."
 
-manejarAtivacaoNgrok
+manejaAtivacaoNgrok
 
 logger "Script finalizado;"
 
-criarLog 
+criaLog 
