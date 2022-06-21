@@ -39,9 +39,11 @@ if ($stmt->rowCount() > 0) {
 		// loga usuário e redireciona para home
 		$_SESSION['usuario'] = $usuario;
 		header('location:home.php');
-	} else {
+	}
+	else {
 		header('Location:index.php?message=passwd_error'); // erro: senha incorreta
 	}
-} else { // se o primeiro select não retornou usário é porque o id está incorreto
+}
+else { // se o primeiro select não retornou usário é porque o id está incorreto
 	header('Location:index.php?message=user_error');
 }

@@ -1,4 +1,6 @@
 <?php
+header("Content-type: text/html; charset=utf-8");
+header("X-Frame-Options: DENY");
 
 // Conexão com o BD
 define('HOST', 'localhost');
@@ -13,3 +15,4 @@ TRY {
 } CATCH (PDOException $e) {
     echo 'Erro ao conectar com MySQL: ' . $e->getMessage();
 }
+?>

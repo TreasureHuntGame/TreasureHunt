@@ -1,6 +1,5 @@
 <?php
 // Codifica os caracteres
-header("Content-type: text/html; charset=utf-8");
 require_once 'conexao.php';
 
 ob_start();
@@ -11,8 +10,7 @@ if (!isset($_SESSION['usuario']) == true) {
 	header('location:index.php');
 }
 
-function console_log($data)
-{
+function console_log($data) {
 	echo '<script>';
 	echo 'console.log(' . json_encode($data) . ')';
 	echo '</script>';
@@ -52,8 +50,8 @@ $stmt->execute();
 if ($stmt->rowCount() > 0) { // "erro" (aviso): questão já acertada
 	header('Location:home.php?message=duplicada&id=' . $problema);
 	exit();
-} else {
-
+}
+else {
 	// Se acerta a resposta e depois segue informando,
 	// informa se está certa ou errada, mas não incrementa
 	// as tentativas.
@@ -111,8 +109,7 @@ if ($stmt->rowCount() > 0) { // "erro" (aviso): questão já acertada
 
 /* Função que atualiza a tabela de respostas
    quando o usuário submeter uma flag */
-function atualiza($resposta, $usuario, $problema)
-{
+function atualiza($resposta, $usuario, $problema) {
 	include 'conexao.php';
 
 	$param = "";
