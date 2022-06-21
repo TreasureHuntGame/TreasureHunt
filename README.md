@@ -202,7 +202,7 @@ Com o fim desses passos, o esquema e as tabelas também terão sido criadas auto
 
 ### Notas adicionais sobre instalação, configuração e execução
 
-Pressupõe-se algumas condições para que a instalação ocorra com sucesso. Essas indicações, bem como alguns dos erros comuns serão destacados a seguir:
+Pressupõe-se algumas condições para que instalação, configuração e execução ocorram com sucesso. Essas indicações, bem como alguns dos erros comuns serão destacados a seguir:
 
 - *Nota 1*: É necessário obter privilégios de leitura e escrita no diretório do servidor _web_ (por exemplo: ``/var/www/html/TreasureHunt/``).
 
@@ -238,6 +238,19 @@ mysql> exit;
 - *Nota 7*: Se você obtiver a mensagem de erro `Bad substitution` ao executar o _script_ `Jogo.sh`, tente executar o _script_ com o comando `bash Jogo.sh`.
 
 - *Nota 8*: alguns navegadores podem restringir o acesso a _websites_ que não possuem um certificado SSL/TLS (HTTPS). Caso a sua hospedagem do TreasureHunt esteja limitada ao HTTP, certifique-se de orientar os competidores a desativarem tal configuração.
+
+- *Nota 9*: A fim de evitar ataques de _Clickjacking_, sugere-se a configuração do cabeçalho de resposta HTTP `X-Frame-Options`. Para isso, o módulo de cabeçalhos (_headers_) precisa estar ativo:
+```
+> a2enmod headers
+> service apache2 restart
+```
+Depois disso, altere o arquivo `/etc/apache2/conf-enabled/security.conf` ou equivalente para definir o valor de `X-Frame-Options`. Sugestão de diretiva:
+```
+Header set X-Frame-Options: "DENY"
+```
+Novamente é necessário reiniciar o servidor: `service apache2 start`.
+
+Outra solução possível, esta mais simples, seria adicionar o cabeçalho diretamente por PHP com `header("X-Frame-Options: DENY");`, o que já foi feito nos arquivos PHP deste jogo. No entanto, tal medida ainda não impede que arquivos de outros tipos (por exemplo, XML) possam ser carregados em _frames_.
 
 ---
 
