@@ -6,8 +6,7 @@ html{
     overflow-y: scroll;
 }
 
-html,
-body {
+html, body {
     height: 100%;
     margin: 0;
 }
@@ -51,7 +50,7 @@ body {
     --c-linkskip-border: yellow;
 }
 
-#link-skip{
+#link-skip {
     background-color: var(--cor-secundaria) !important;
     color: var(--cor-primaria);
     outline: none !important;
@@ -65,21 +64,20 @@ body {
     transition: transform 0.5s;
 }
 
-#link-skip:hover,
-#link-skip:focus{
+#link-skip:hover, #link-skip:focus {
     border: 2px solid var(--cor-primaria);
     border-left: none;
     transform: translateX(0%);
 }
 
 input#contrast:checked~#page-wrapper #link-skip:hover,
-input#contrast:checked~#page-wrapper #link-skip:focus{
+input#contrast:checked~#page-wrapper #link-skip:focus {
     color: var(--cor-primaria) !important;
     border: 2px solid var(--c-linkskip-border) !important;
     border-left: none !important;
 }
 
-#label-accesskeys{
+#label-accesskeys {
     font-size: 1rem;
     width: 16em;
     margin-bottom: 20px;
@@ -89,62 +87,62 @@ input#contrast:checked~#page-wrapper #link-skip:focus{
 }
 
 #label-accesskeys:hover,
-#label-accesskeys:focus{
+#label-accesskeys:focus {
     box-shadow: 0 0 0 0.2rem var(--btn-boxshadow)
 }
 
-#checkbox-accesskeys:checked~#label-accesskeys{
+#checkbox-accesskeys:checked~#label-accesskeys {
     background-color: var(--checkbox-accesskeys-off) !important;
     border-color: var(--checkbox-accesskeys-off) !important;
 }
 
-table{
+table {
     border-collapse: collapse;
 }
 
-th{
+th {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
 }
 
-tbody tr:nth-child(odd){
+tbody tr:nth-child(odd) {
     background-color: var(--table-background);
 }
 
-tbody tr td{
+tbody tr td {
     padding-top: 0.1rem;
     padding-bottom: 0.1rem;
 }
 
-input#contrast:checked~#page-wrapper tbody tr:nth-child(odd){
+input#contrast:checked~#page-wrapper tbody tr:nth-child(odd) {
     background-color: var(--c-table-background);
 }
 
-input#contrast:checked~#page-wrapper .popup{
+input#contrast:checked~#page-wrapper .popup {
     border-color: var(--c-cor-primaria);
     background-color: var(--c-cor-fundo);
     color: var(--c-cor-primaria);
 }
 
-input#contrast:checked~#page-wrapper .popup .contnt p{
+input#contrast:checked~#page-wrapper .popup .contnt p {
     color: var(--cor-primaria) !important;
 }
 
-input#contrast:checked~#page-wrapper .popup .close{
+input#contrast:checked~#page-wrapper .popup .close {
     color: var(--cor-primaria) !important;
     opacity: 0.9;
 }
 
 input#contrast:checked~#page-wrapper .popup .close:focus, 
-input#contrast:checked~#page-wrapper .popup .close:hover{
+input#contrast:checked~#page-wrapper .popup .close:hover {
     box-shadow: 0 0 0 2px var(--cor-primaria) !important;
 }
 
-input#close-alert-button:checked~#page-wrapper noscript{
+input#close-alert-button:checked~#page-wrapper noscript {
     display: none;
 }
 
-.link-padrao{
+.link-padrao {
     color: var(--cor-links);
     text-decoration: underline var(--cor-links) !important;
     outline: 2px solid transparent;
@@ -152,8 +150,7 @@ input#close-alert-button:checked~#page-wrapper noscript{
     transition: outline-offset .2s linear;   
 }
 
-.link-padrao:hover,
-.link-padrao:focus{
+.link-padrao:hover, .link-padrao:focus {
     color: var(--cor-links);
     outline: 2px solid var(--cor-primaria);
     outline-offset: .125rem; 
@@ -162,11 +159,11 @@ input#close-alert-button:checked~#page-wrapper noscript{
 }
 
 input#contrast:checked~#page-wrapper .link-padrao:hover, 
-input#contrast:checked~#page-wrapper .link-padrao:focus{
+input#contrast:checked~#page-wrapper .link-padrao:focus {
     outline: 2px solid var(--c-link-hover-outline)
 }
 
-noscript .jumbotron .close{
+noscript .jumbotron .close {
     top: 6px;
     right: 25px;
     opacity: 0.9;
@@ -175,7 +172,7 @@ noscript .jumbotron .close{
 }
 
 noscript .jumbotron .close:focus,
-noscript .jumbotron .close:hover{
+noscript .jumbotron .close:hover {
    outline: none;
    transition: none;
    border-radius: 5px;
@@ -196,7 +193,7 @@ noscript .jumbotron .close:hover{
     fill: var(--cor-primaria);
 }
 
-#link-logo{
+#link-logo {
     border: 2px solid transparent;
     border-radius: 5px;
     transition: border .4s ease;
@@ -209,13 +206,13 @@ input#contrast:checked~#page-wrapper nav a .textos {
     fill: var(--c-cor-fundo);
 }
 
-input#contrast:checked~.tooltip .tooltip-inner{
+input#contrast:checked~.tooltip .tooltip-inner {
     border: 2px solid yellow !important;
     padding-top: 2px;
     padding-left: 6px;
 }
 
-input#contrast:checked~.tooltip .arrow::before{
+input#contrast:checked~.tooltip .arrow::before {
     border-top-color:yellow!important;
 }
 
@@ -243,12 +240,11 @@ input#contrast:not(:checked)~#page-wrapper nav ul li label#contrast-label {
 }
 
 input#contrast:checked~#page-wrapper nav ul li label span#botao-contraste,
-input#contrast:checked~#page-wrapper nav ul li label span#botao-animation
-{
+input#contrast:checked~#page-wrapper nav ul li label span#botao-animation {
     filter: invert(100%)
 }
 
-nav ul li label span#botao-contraste{
+nav ul li label span#botao-contraste {
     background-image: url(../img/botao_contraste.svg);
     background-repeat: no-repeat;
     height: 25px; 
@@ -310,7 +306,7 @@ input#contrast:checked~#page-wrapper button {
 }
 
 input#contrast:checked~#page-wrapper button:focus, 
-input#contrast:checked~#page-wrapper button:hover{
+input#contrast:checked~#page-wrapper button:hover {
     box-shadow: 0 0 0 0.2rem var(--c-btn-boxshadow) !important;
     border: 2px solid var(--c-cor-fundo) !important;
 }
@@ -320,7 +316,7 @@ input#contrast:checked~#page-wrapper input {
 }
 
 input#contrast:checked~#page-wrapper .form-signin .form-control:focus,
-input#contrast:checked~#page-wrapper .form-signin .form-control:hover{
+input#contrast:checked~#page-wrapper .form-signin .form-control:hover {
     box-shadow: 0 0 0 .2rem var(--c-input-focus-box-shadow);
 }
 
@@ -340,15 +336,15 @@ input#contrast:checked~#page-wrapper .btn-primary:hover {
     border: 2px solid var(--c-cor-fundo) !important;
 }
 
-nav ul li label span#botao-animation{
-    background-image: url(../img/botao_animacao_on.svg);
+nav ul li label span#botao-animation {
+    background-image: url("../img/botao_animacao_on.svg");
     background-repeat: no-repeat;
     height: 25px; 
     width: 25px;
 }
 
-input#animation:checked~#page-wrapper nav ul li label span#botao-animation{
-    background-image: url(../img/botao_animacao_off.svg);
+input#animation:checked~#page-wrapper nav ul li label span#botao-animation {
+    background-image: url("../img/botao_animacao_off.svg");
 }
 
 input#animation:checked~#page-wrapper, 
@@ -357,7 +353,7 @@ input#animation:checked~#page-wrapper nav ul li label,
 input#animation:checked~#page-wrapper input,
 input#animation:checked~#page-wrapper button,
 input#animation:checked~#page-wrapper a,
-input#animation:checked~.tooltip{
+input#animation:checked~.tooltip {
     transition: none !important;
 }
 
@@ -412,11 +408,11 @@ h3 {
     content: ":)";
 }
 
-.chaves-left::after{
+.chaves-left::after {
     content: '{';
 }
     
-.chaves-right::after{
+.chaves-right::after {
     content: '}';
 }
 
@@ -433,8 +429,7 @@ label {
     margin-bottom: 0;
 }
 
-label[for="contrast"], 
-label[for="animation"]{
+label[for="contrast"], label[for="animation"] {
     padding-top: 14px;
     padding-bottom: 14px;
 }
@@ -469,8 +464,7 @@ footer a:hover {
     border-right: 0.5em solid var(--cor-secundaria);
 }
 
-code,
-.prompt {
+code, .prompt {
     background-color: var(--cor-secundaria);
     color: var(--cor-primaria);
     font-weight: bold;
@@ -489,7 +483,7 @@ noscript div.jumbotron {
     color: var(--warning) !important;
 }
 
-noscript p{
+noscript p {
     padding: 0px 3em;
     line-height: 1.75;
 }
@@ -512,24 +506,20 @@ li:hover .prompt {
 
 
 /*
-
 O efeito abaixo foi comentado para evitar problemas a indivíduos com epilepsia fotossensível.
 Se for desejável utilizar o efeito, basta comentar o estilo acima e descomentar o estilo abaixo.
-
 */
 
 
 /*
-
 li:hover .prompt {
-animation: blinker 0.5s step-end infinite alternate;
-border-right-color: black;
+    animation: blinker 0.5s step-end infinite alternate;
+    border-right-color: black;
 }
 
 @keyframes blinker { 
-50% { border-right-color: #FFF; } 
+    50% { border-right-color: #FFF; } 
 }
-
 */
 
 #espaco {
@@ -546,24 +536,20 @@ border-right-color: black;
 
 
 /*
-
 O efeito abaixo foi comentado para evitar problemas a indivíduos com epilepsia fotossensível.
 Se for desejável utilizar o efeito, basta comentar o estilo acima e descomentar o estilo abaixo.
-
 */
 
 
 /*
-
 #unzip:hover {
-animation: blink 0.5s step-end infinite alternate;
-border-left-color: #000;
+    animation: blink 0.5s step-end infinite alternate;
+    border-left-color: #000;
 }
 
 @keyframes blink { 
-50% { border-left-color: #FFF; } 
+    50% { border-left-color: #FFF; } 
 }
-
 */
 
 ::placeholder {
@@ -589,8 +575,7 @@ nav ul li {
     display: inline-block;
 }
 
-nav ul li label,
-nav ul li a {
+nav ul li label, nav ul li a {
     display: block;
     font-size: 1.25em;
     line-height: 60px;
@@ -649,7 +634,7 @@ input#close-alert-button,
 #como-jogar,
 #contatos,
 #ranking, 
-#sobre-acessibilidade{
+#sobre-acessibilidade {
     opacity: 0;
     height: 0;
     overflow: hidden;
@@ -660,17 +645,16 @@ input#inicio:checked~#main,
 input#rank:checked~#ranking,
 input#regras:checked~#como-jogar,
 input#contato:checked~#contatos,
-input#acessibilidade:checked~#sobre-acessibilidade{
+input#acessibilidade:checked~#sobre-acessibilidade {
     opacity: 1;
     height: auto;
-    
 }
 
 input#inicio:not(:checked)~#main,
 input#rank:not(:checked)~#ranking,
 input#regras:not(:checked)~#como-jogar,
 input#contato:not(:checked)~#contatos, 
-input#acessibilidade:not(:checked)~#sobre-acessibilidade{
+input#acessibilidade:not(:checked)~#sobre-acessibilidade {
     background-color: transparent !important;
     visibility: hidden;
 }
@@ -679,7 +663,7 @@ input#acessibilidade:not(:checked)~#sobre-acessibilidade{
 #rank:checked~nav div ul li #rank-label,
 #regras:checked~nav div ul li #regras-label,
 #contato:checked~nav div ul li #contato-label,
-#acessibilidade:checked~nav div ul li #acessibilidade-label{
+#acessibilidade:checked~nav div ul li #acessibilidade-label {
     font-weight: bold;
 }
 
@@ -687,7 +671,7 @@ input#acessibilidade:not(:checked)~#sobre-acessibilidade{
 #rank:not(:checked)~nav div ul li #rank-label .sr-only,
 #regras:not(:checked)~nav div ul li #regras-label .sr-only,
 #contato:not(:checked)~nav div ul li #contato-label .sr-only,
-#acessibilidade:not(:checked)~nav div ul li #acessibilidade-label .sr-only{
+#acessibilidade:not(:checked)~nav div ul li #acessibilidade-label .sr-only {
     visibility: hidden;
 }
 
@@ -796,7 +780,7 @@ address .sinal-maior {
     color: var(--cor-primaria);
 }
 
-address a{
+address a {
     color: var(--cor-primaria) !important;
 }
 
@@ -838,7 +822,7 @@ address a{
     margin: 0 auto;
 }
 
-.form-signin label{
+.form-signin label {
     margin-bottom: 3px;
 }
 
@@ -869,24 +853,24 @@ input#contrast:checked~#page-wrapper #lista-de-regras .btn-dark {
     border: 2px solid var(--c-cor-fundo)!important;
 }
 
-#sobre-acessibilidade .acess-conteudo{ 
+#sobre-acessibilidade .acess-conteudo { 
     text-align: left;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
 }
 
-#sobre-acessibilidade .acess-conteudo p{
+#sobre-acessibilidade .acess-conteudo p {
     padding: 0 0 20px 0;
     line-height: 1.75
 }
 
-#div-accesskeys span{
+#div-accesskeys span {
     display: block;
     margin-bottom: 0.5em;
 }
 
-.ul-acessibilidade{
+.ul-acessibilidade {
     display: block;
     text-align: left;
     list-style: none;
@@ -895,7 +879,7 @@ input#contrast:checked~#page-wrapper #lista-de-regras .btn-dark {
     line-height: 1.75 
 }
 
-.h3-acessibilidade{
+.h3-acessibilidade {
     font-size: 1.4em;
     font-weight: bold;
 }
@@ -1046,8 +1030,7 @@ caption {
     color: #666; 
 }
 
-.popup .close:focus,
-.popup .close:hover{
+.popup .close:focus, .popup .close:hover{
    outline: none;
    transition: none;
    border-radius: 5px;
@@ -1093,11 +1076,11 @@ caption {
     }
 
     nav ul li #contrast-label,
-    nav ul li #animation-label{
+    nav ul li #animation-label {
         padding: 14px 8px;
     }
     
-    noscript .jumbotron .close{
+    noscript .jumbotron .close {
         right: 5px;
     }
 }
@@ -1241,10 +1224,10 @@ caption {
         margin-bottom: 15px;
     }
     /* página accesibilidade */
-    #sobre-acessibilidade ul li{
+    #sobre-acessibilidade ul li {
         margin-bottom: 10px;
     }
-    #sobre-acessibilidade .acess-conteudo{ 
+    #sobre-acessibilidade .acess-conteudo { 
         font-size: 0.95em;
         width: 85%;
     }
