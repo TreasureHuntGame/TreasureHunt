@@ -3,7 +3,7 @@ desafio {
     padding: 3.5em 5em;
 }
 
-titulo, aviso, dica, acrostico, p{
+titulo, aviso, dica, acrostico, p {
     color: white;
     display: block;
 }
@@ -23,7 +23,6 @@ p {
     padding: 0.5em 0em;
 }
 
-/* ignore o gambito */
 espaco::after {
     content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
 }
