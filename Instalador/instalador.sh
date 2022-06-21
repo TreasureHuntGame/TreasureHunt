@@ -7,7 +7,7 @@ pkg_managers=(dnf yum packman apt-get apt)
 installed_pkgs=() 
 
 #$1 = mensagem de alerta antes de finalizar o script
-finalizar_script(){
+finalizar_script() {
 	echo "$1"
 	echo "$1" >> $arquivo_log
 	echo "Script finalizado sem sucesso!"
@@ -61,7 +61,7 @@ instalar_pacote() {
 
 
 #$1 = mensagem de alerta antes de finalizar o script
-finalizar_script(){
+finalizar_script() {
 	echo "$1"
 	echo "$1" >> $arquivo_log
 	echo "Script finalizado sem sucesso!"
