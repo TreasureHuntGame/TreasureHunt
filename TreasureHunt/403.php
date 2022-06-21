@@ -1,10 +1,10 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
+header("X-Frame-Options: DENY");
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <base href="/TreasureHunt/">
     <meta charset="utf-8">
@@ -33,7 +33,6 @@ header('Content-Type: text/html; charset=utf-8');
     </script>
     <![endif]-->
 </head>
-
 <body class="text-light bg-dark">
     <input type="checkbox" name="contrast-mode" id="contrast">
     <input type="checkbox" name="animation-switch" id="animation">
@@ -86,7 +85,6 @@ header('Content-Type: text/html; charset=utf-8');
                     <span class="smile destaque"></span>
                 </p>
             </div>
-
             <div class="jumbotron">
                 <a role="button" id="voltar-inicio" class="btn btn-primary" href="home.php">Voltar para o ínicio</a>
             </div>
@@ -103,26 +101,26 @@ header('Content-Type: text/html; charset=utf-8');
                 </div>
             </div>
         </footer>
-
         <?php
         if (!(isset($_COOKIE['cookie_notice_accepted']))) {
             echo '<input type="checkbox" name="hide-cookie-bar" id="hide-cookie-bar">
             <div id="cookie-bar" class="navbar fixed-bottom container-fluid noscript">
-            <div class="row mx-auto">
-            <div class="col-lg-7 col-sm-12">
-             <span>Nós usamos cookies para armazenar as preferências de contraste dos usuários.
-             Ao clicar em "Sim", assumiremos que você está de acordo com isso. </span>
-             </div>
-             <div class="col-lg-5 col-sm-12 ml-auto">
-             <label for="hide-cookie-bar">
-             <a class="btn btn-primary" id="cookie-yes" tabindex="0" role="button" title="Aceitar uso de cookie para armazenamento de preferências e termos de privacidade">Sim</a>
-             <a class="btn btn-primary" id="cookie-no" tabindex="0" role="button" title="Rejeitar uso de cookie para armazenamento de preferências e termos de privacidade">Não</a>
-             </label>
-             <a href="#modal-privacy" id="open-modal-btn" class="btn btn-primary" title="Acessar termos de privacidade">Detalhes</a>
-             </div>
-             </div>
+                <div class="row mx-auto">
+                    <div class="col-lg-7 col-sm-12">
+                        <span>
+                            Nós usamos cookies para armazenar as preferências de contraste dos usuários.
+                            Ao clicar em "Sim", assumiremos que você está de acordo com isso.
+                        </span>
+                    </div>
+                    <div class="col-lg-5 col-sm-12 ml-auto">
+                        <label for="hide-cookie-bar">
+                            <a class="btn btn-primary" id="cookie-yes" tabindex="0" role="button" title="Aceitar uso de cookie para armazenamento de preferências e termos de privacidade">Sim</a>
+                            <a class="btn btn-primary" id="cookie-no" tabindex="0" role="button" title="Rejeitar uso de cookie para armazenamento de preferências e termos de privacidade">Não</a>
+                        </label>
+                        <a href="#modal-privacy" id="open-modal-btn" class="btn btn-primary" title="Acessar termos de privacidade">Detalhes</a>
+                    </div>
+                </div>
              </div>';
-
             echo '<div id="modal-privacy" class="overlay noscript" role="dialog" tabindex="-1" aria-labelledby="dialog_label">
                 <div class="popup"> 
                     <h2 id="dialog_label">Valorizamos sua privacidade</h2>
@@ -158,5 +156,4 @@ header('Content-Type: text/html; charset=utf-8');
         ?>
     </div>
 </body>
-
 </html>

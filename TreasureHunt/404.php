@@ -1,10 +1,10 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
+header("X-Frame-Options: DENY");
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <base href="/TreasureHunt/">
     <meta charset="utf-8">
@@ -18,12 +18,12 @@ header('Content-Type: text/html; charset=utf-8');
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="icon" href="img/favicon_dark_tab.png">
+    <!-- <script src="ovum.xml"></script> -->
     <link rel="preload" href="css/style.min.css" as="style">
     <link rel="preload" href="js/efeitos.min.js" as="script">
     <link rel='preload' as='style' href='https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap'>
     <link rel='preload' as='style' href='https://fonts.googleapis.com/css?family=Muli&display=swap'>
     <link rel='preload' as='style' href='https://fonts.googleapis.com/icon?family=Material+Icons'>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.min.css">
     <link rel="stylesheet" href="css/400.min.css">
@@ -32,9 +32,7 @@ header('Content-Type: text/html; charset=utf-8');
         <script src=" https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js">
         </script>
     <![endif] -->
-
 </head>
-
 <body class="text-light bg-dark">
     <input type="checkbox" name="contrast-mode" id="contrast">
     <input type="checkbox" name="animation-switch" id="animation">
@@ -103,7 +101,6 @@ header('Content-Type: text/html; charset=utf-8');
                 </div>
             </div>
         </footer>
-
         <?php
         if (!(isset($_COOKIE['cookie_notice_accepted']))) {
             echo '<input type="checkbox" name="hide-cookie-bar" id="hide-cookie-bar">
@@ -122,7 +119,6 @@ header('Content-Type: text/html; charset=utf-8');
              </div>
              </div>
              </div>';
-
             echo '<div id="modal-privacy" class="overlay noscript" role="dialog" tabindex="-1" aria-labelledby="dialog_label">
                 <div class="popup"> 
                     <h2 id="dialog_label">Valorizamos sua privacidade</h2>
@@ -158,5 +154,4 @@ header('Content-Type: text/html; charset=utf-8');
         ?>
     </div>
 </body>
-
 </html>
