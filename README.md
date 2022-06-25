@@ -50,7 +50,7 @@ Nota-se que podemos dividir o projeto em dois módulos:
 
 O gerador de desafios é acionado pelo organizador da competição. Ele é composto por um conjunto de _scripts_, elaborados para serem executados em ambientes _Unix-like_, e diretórios com recursos como imagens, textos e códigos, localizados em [`TreasureHunt/Jogo`](/Jogo). Esses diretórios são usados como base para a criação de instâncias únicas de problemas. Ainda que exista um conjunto de arquivos (images, textos e códigos) padrão utilizado para gerar as instâncias de problemas, o organizador pode editá-los, removê-los ou adicionar novos arquivos a seu critério. 
 
-Os _scripts_ são responsáveis por montar a competição, gerar instâncias de problemas e _flags_ únicas para cada jogador, bem como configurar o Sistema de Gerenciamento de Banco de Dados (SGBD). O _script_ principal é chamado de [`Jogo.sh`](Jogo/Problemas/Jogo.sh). Ele recebe a quantidade de jogadores e problemas, depois, em ordem, recebe as técnicas que comporão cada problema. Um problema pode aplicar técnicas únicas ou compostas de acordo com as entradas do organizador. Por fim, as entradas são validadas, prosseguindo na criação dos arquivos compactados (em formato .zip) que serão enviados para o Servidor _Web_ e na configuração do SGBD. A imagem a seguir demonstra a execução do _script_ principal:
+Os _scripts_ são responsáveis por montar a competição, gerar instâncias de problemas e _flags_ únicas para cada jogador, bem como configurar o Sistema de Gerenciamento de Banco de Dados (SGBD). O _script_ principal é chamado de [`Jogo.sh`](Jogo/Scripts/Jogo.sh). Ele recebe a quantidade de jogadores e problemas, depois, em ordem, recebe as técnicas que comporão cada problema. Um problema pode aplicar técnicas únicas ou compostas de acordo com as entradas do organizador. Por fim, as entradas são validadas, prosseguindo na criação dos arquivos compactados (em formato .zip) que serão enviados para o Servidor _Web_ e na configuração do SGBD. A imagem a seguir demonstra a execução do _script_ principal:
 
 ![execução do _script_ principal](Imagens/script.png)
 
@@ -168,10 +168,10 @@ Ao finalizar o jogo, as respostas e submissões estarão armazenadas na base de 
 
 As competições de TreasureHunt precisam ser criadas pelo organizador. Para tanto, este deve escolher a quantidade de participantes, bem como quantos e quais desafios estarão presentes, podendo inclusive adicionar um problema composto, com duas técnicas aplicadas em conjunto.
 
-Para gerar a competição, basta executar o _script_ [`Jogo.sh`](/Jogo/Problemas/Jogo.sh) do diretório [TreasureHunt/Jogo/Problemas/](/Jogo/Problemas).
+Para gerar a competição, basta executar o _script_ [`Jogo.sh`](/Jogo/Scripts/Jogo.sh) do diretório [TreasureHunt/Jogo/Scripts/](/Jogo/Scripts).
 
 ```sh
-cd Jogo/Problemas
+cd Jogo/Scripts
 chmod +x Jogo.sh
 ./Jogo.sh
 ```
