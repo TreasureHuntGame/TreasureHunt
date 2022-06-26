@@ -1,5 +1,6 @@
 <?php
 header("Content-type: text/html; charset=utf-8");
+header("Content-Security-Policy: frame-ancestors 'none'");
 header("X-Frame-Options: DENY");
 
 // Conexão com o BD

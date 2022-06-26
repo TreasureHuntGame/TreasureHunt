@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
+header("Content-Security-Policy: frame-ancestors 'none'");
 header("X-Frame-Options: DENY");
 ?>
 
@@ -251,7 +252,7 @@ header("X-Frame-Options: DENY");
                 <p><span lang="en">©</span> 2017-<?php echo date("Y"); ?></p>
             </div>
         </footer>
-        <!-- ovos.txt -->
+<!-- ovos.txt -->
         <?php
         if (!(isset($_COOKIE['cookie_notice_accepted']))) {
             echo '<input type="checkbox" name="hide-cookie-bar" id="hide-cookie-bar">

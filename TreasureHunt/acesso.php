@@ -1,6 +1,6 @@
 <?php
 // Codifica os caracteres
-header("Content-type: text/html; charset=utf-8");
+//header("Content-type: text/html; charset=utf-8");
 require_once 'conexao.php';
 
 // filtrar input do id de usuário

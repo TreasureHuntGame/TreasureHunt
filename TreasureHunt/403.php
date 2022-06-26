@@ -1,5 +1,6 @@
 <?php
 header('Content-Type: text/html; charset=utf-8');
+header("Content-Security-Policy: frame-ancestors 'none'");
 header("X-Frame-Options: DENY");
 ?>
 

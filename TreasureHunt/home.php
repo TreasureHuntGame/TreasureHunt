@@ -1,6 +1,7 @@
 <?php
-header('Content-Type: text/html; charset=utf-8');
-header("X-Frame-Options: DENY");
+// header('Content-Type: text/html; charset=utf-8');
+// header("Content-Security-Policy: frame-ancestors 'none'");
+// header("X-Frame-Options: DENY");
 require_once 'conexao.php';
 
 ob_start();
@@ -399,7 +400,7 @@ if (!isset($_SESSION['usuario'])) {
                 </div>
             </div>
         </footer>
-        <!-- ovos.txt -->
+<!-- ovos.txt -->
         <?php
         if (!(isset($_COOKIE['cookie_notice_accepted']))) {
             echo '<input type="checkbox" name="hide-cookie-bar" id="hide-cookie-bar">
