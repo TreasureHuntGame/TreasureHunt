@@ -239,18 +239,20 @@ mysql> exit;
 
 - *Nota 8*: alguns navegadores podem restringir o acesso a _websites_ que não possuem um certificado SSL/TLS (HTTPS). Caso a sua hospedagem do TreasureHunt esteja limitada ao HTTP, certifique-se de orientar os competidores a desativarem tal configuração.
 
-- *Nota 9*: A fim de evitar ataques de _Clickjacking_, sugere-se a configuração do cabeçalho de resposta HTTP `X-Frame-Options`. Para isso, o módulo de cabeçalhos (_headers_) precisa estar ativo:
+- *Nota 9*: A fim de evitar ataques de _Clickjacking_ e _Cross Frame Scripting
+_ (XFS), sugere-se a configuração dos cabeçalhos de resposta HTTP `Content-Security-Policy` e `X-Frame-Options`. Para isso, o módulo de cabeçalhos (_headers_) precisa estar ativo:
 ```
 > a2enmod headers
 > service apache2 restart
 ```
-Depois disso, altere o arquivo `/etc/apache2/conf-enabled/security.conf` ou equivalente para definir o valor de `X-Frame-Options`. Sugestão de diretiva:
+Depois disso, caso utilize o Apache, altere o arquivo `/etc/apache2/conf-enabled/security.conf` ou equivalente para definir os valores de `Content-Security-Policy` e `X-Frame-Options`. Sugestão de diretivas:
 ```
+Header set Content-Security-Policy: "frame-ancestors 'none'"
 Header set X-Frame-Options: "DENY"
 ```
 Novamente é necessário reiniciar o servidor: `service apache2 start`.
 
-Outra solução possível, esta mais simples, seria adicionar o cabeçalho diretamente por PHP com `header("X-Frame-Options: DENY");`, o que já foi feito nos arquivos PHP deste jogo. No entanto, tal medida ainda não impede que arquivos de outros tipos (por exemplo, XML) possam ser carregados em _frames_.
+Outra solução possível é adicionar os cabeçalhos diretamente por PHP com `header("Content-Security-Policy: frame-ancestors 'none'");` e `header("X-Frame-Options: DENY");`, o que já foi feito nos arquivos PHP deste jogo. No entanto, tal medida ainda não impede que arquivos de outros tipos (por exemplo, XML) possam ser carregados em _frames_.
 
 ---
 
