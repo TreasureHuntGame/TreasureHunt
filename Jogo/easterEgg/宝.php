@@ -9,7 +9,7 @@ header('Content-Type: text/html; charset=utf-8');
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="TreasureHunt, um Jogo de Caça ao Tesouro de Segurança Computacional">
     <meta name="keywords" content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
-    <meta name="theme-color" content="#343A40" />
+    <meta name="theme-color" content="#343A40">
     <meta name="author" content="Ricardo de la Rocha Ladeira">
     <title>宝 -- TreasureHunt{Security}</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -107,7 +107,7 @@ header('Content-Type: text/html; charset=utf-8');
                 <div class="row imagem">
                     <div class="col"></div>
                     <div class="col-md-6">
-                        <img src="img/ache_a_flag.jpg" alt="moedas de ouro" class="img-fluid" id="tesouro">
+                        <img src="img/ache_a_flag.jpg" alt="moedas de ouro" class="img-fluid" id="tesouro" width="1920" height="1275">
                     </div>
                     <div class="col"></div>
                 </div>
