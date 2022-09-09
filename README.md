@@ -270,7 +270,7 @@ Por meio da interface _web_, os jogadores podem:
 
 Apesar disso, para visualizar o placar individual, baixar os problemas e submeter as respostas é preciso acessar a página principal, o que requer que o usuário esteja autenticado, ou seja, é preciso fazer _login_ com o ID e senha fornecidos pelo organizador da competição. A figura a seguir mostra a página principal que contém os recursos citados. O placar geral, outro recurso que depende de autenticação, pode ser acessado na opção ``Placar`` na barra de navegação (topo da figura).  
 
-![tela principal do TreasureHunt](/Imagens/principal.png)
+![tela principal do TreasureHunt](/Imagens/tela_principal.png)
 
 
 Dessa forma, os passos necessários para jogar o TreasureHunt são:
