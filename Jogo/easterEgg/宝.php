@@ -107,7 +107,8 @@ header('Content-Type: text/html; charset=utf-8');
                 <div class="row imagem">
                     <div class="col"></div>
                     <div class="col-md-6">
-                        <img src="img/ache_a_flag.jpg" alt="moedas de ouro" class="img-fluid" id="tesouro" width="1920" height="1275">
+                        <!-- <img src="img/ache_a_flag.jpg" alt="moedas de ouro" class="img-fluid" id="tesouro" width="1920" height="1275"> -->
+                        <img src="img/ache_a_flag.jpg" alt="moedas de ouro" class="img-fluid" id="tesouro" width="430" height="319">
                     </div>
                     <div class="col"></div>
                 </div>
