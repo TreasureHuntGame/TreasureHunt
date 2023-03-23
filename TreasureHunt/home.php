@@ -20,12 +20,12 @@ if (!isset($_SESSION['usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="TreasureHunt, um Jogo de Caça ao Tesouro de Segurança Computacional">
     <meta name="keywords" content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
-    <meta name="theme-color" content="#343A40">
+    <meta name="theme-color" content="#343A40" />
     <meta name="author" content="Ricardo de la Rocha Ladeira">
     <title>Home -- TreasureHunt{Security}</title>
     <link rel="preload" href="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" as="script">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" as="script">
-    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" as="script">    
+    <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" as="script">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" defer></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" defer></script>
@@ -294,17 +294,19 @@ if (!isset($_SESSION['usuario'])) {
                     <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <div class="contato">
-                    <span class="nome-autor">Camily do Nascimento Ghellar</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>ghellarcamily<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
-                </div>                
-                <div class="contato">
-                    <span class="nome-autor">Gabriel Eduardo Lima</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>limaedugabriel<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
+                    <span class="nome-autor">Fernanda Ribeiro Martins</span>:
+                    <span><span class="sinal-menor" aria-hidden="true"></span>fernandamartins.rm<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <span class="address-title">Contribuidores:</span>
                 <div class="contato nome-contrib">
-                    <span>Henrique Arnicheski Dalposso</span>
+                    <span>Camily do Nascimento Ghellar</span>
                 </div>
+                <div class="contato nome-contrib">
+                    <span>Gabriel Eduardo Lima</span>
+                </div>                
+                <div class="contato nome-contrib">
+                    <span>Henrique Arnicheski Dalposso</span>
+                </div>                
                 <div class="contato nome-contrib">
                     <span>Lucas Vargas</span>
                 </div>
@@ -395,7 +397,7 @@ if (!isset($_SESSION['usuario'])) {
             <div class="col">
                 <div class="footer-copyright">
                     <a rel="license noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" class="link-padrao" id="creative-commons" target="_blank">
-                        <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" width="80" height="15">
+                        <img alt="Licença Creative Commons" src="https://licensebuttons.net/l/by-nc/4.0/88x31.png" width="88" height="31">
                         <br>
                         <span>Esta obra está licenciada com uma Licença <span lang="en">Creative Commons</span>
                             Atribuição-NãoComercial 4.0 Internacional</span> (Abre em nova janela).</a>
@@ -403,7 +405,6 @@ if (!isset($_SESSION['usuario'])) {
                 </div>
             </div>
         </footer>
-<!-- ovos.txt -->
         <?php
         if (!(isset($_COOKIE['cookie_notice_accepted']))) {
             echo '<input type="checkbox" name="hide-cookie-bar" id="hide-cookie-bar">

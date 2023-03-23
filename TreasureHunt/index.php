@@ -17,15 +17,15 @@ header("X-Frame-Options: DENY");
     <link rel="preload" href="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" as="script">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" as="script">
     <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" as="script">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" defer></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" defer></script>
-    <link rel="icon" href="img/favicon_dark_tab.png">
     <link rel="preload" href="css/style.min.css" as="style">
     <link rel="preload" href="js/efeitos.min.js" as="script">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300&display=swap">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Muli&display=swap">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" defer></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" defer></script>
+    <link rel="icon" href="img/favicon_dark_tab.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.min.css">
     <script src="js/efeitos.min.js" defer></script>
@@ -141,24 +141,25 @@ header("X-Frame-Options: DENY");
                 <h3>Interessados em fazer parte da equipe são sempre bem-vindos e podem entrar em contato. <span class="smile destaque" aria-hidden="true"></span></h3>
             </div>
             <address>
-
                 <span class="address-title">Equipe atual:</span>
                 <div class="contato">
                     <span class="nome-autor">Ricardo de la Rocha Ladeira</span>:
                     <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <div class="contato">
-                    <span class="nome-autor">Camily do Nascimento Ghellar</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>ghellarcamily<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
-                </div>                
-                <div class="contato">
-                    <span class="nome-autor">Gabriel Eduardo Lima</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>limaedugabriel<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
+                    <span class="nome-autor">Fernanda Ribeiro Martins</span>:
+                    <span><span class="sinal-menor" aria-hidden="true"></span>fernandamartins.rm<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <span class="address-title">Contribuidores:</span>
                 <div class="contato nome-contrib">
-                    <span>Henrique Arnicheski Dalposso</span>
+                    <span>Camily do Nascimento Ghellar</span>
                 </div>
+                <div class="contato nome-contrib">
+                    <span>Gabriel Eduardo Lima</span>
+                </div>                
+                <div class="contato nome-contrib">
+                    <span>Henrique Arnicheski Dalposso</span>
+                </div>                
                 <div class="contato nome-contrib">
                     <span>Lucas Vargas</span>
                 </div>
@@ -248,13 +249,12 @@ header("X-Frame-Options: DENY");
         <footer class="page-footer font-small">
             <div class="footer-copyright">
                 <a rel="license noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" id="creative-commons" class="link-padrao" target="_blank">
-                    <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" width="80" height="15">
+                    <img alt="Licença Creative Commons" src="https://licensebuttons.net/l/by-nc/4.0/88x31.png" width="88" height="31">
                     <br>
                     <span>Esta obra está licenciada com uma Licença <span lang="en">Creative Commons</span> Atribuição-NãoComercial 4.0 Internacional</span> (abre em nova janela).</a>
                 <p><span lang="en">©</span> 2017-<?php echo date("Y"); ?></p>
             </div>
         </footer>
-<!-- ovos.txt -->
         <?php
         if (!(isset($_COOKIE['cookie_notice_accepted']))) {
             echo '<input type="checkbox" name="hide-cookie-bar" id="hide-cookie-bar">
