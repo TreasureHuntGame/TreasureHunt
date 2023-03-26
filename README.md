@@ -301,11 +301,12 @@ Vale lembrar que para a execução dos problemas recomenda-se um conjunto mínim
 ### Equipe atual
 
 - Ricardo de la Rocha Ladeira: [ricardo.ladeira@ifc.edu.br](mailto:ricardo.ladeira@ifc.edu.br)
-- Camily do Nascimento Ghellar: [ghellarcamily@gmail.com](mailto:ghellarcamily@gmail.com)
-- Gabriel Eduardo Lima: [limaedugabriel@gmail.com](mailto:limaedugabriel@gmail.com)
+- Fernanda Ribeiro Martins: [fernandamartins.rm@gmail.com](mailto:fernandamartins.rm@gmail.com)
 
 ### Contribuidores
 
+- Camily do Nascimento Ghellar
+- Gabriel Eduardo Lima
 - Henrique Arnicheski Dalposso
 - Lucas Vargas
 - Rafael Rodrigues Obelheiro
