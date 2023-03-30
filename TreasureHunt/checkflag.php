@@ -31,16 +31,18 @@ $usuario = $_SESSION['usuario'];
 
 // Insere idUsuario, idResposta e flag na tabela submissão
 $ip = $_SERVER['REMOTE_ADDR'];
-$sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagSemEspaco', '$ip', CURRENT_TIMESTAMP)";
+//$sql = "INSERT INTO TreasureHunt.Submissao VALUES ($usuario, $problema, '$flagSemEspaco', '$ip', CURRENT_TIMESTAMP)";
+$sql = "INSERT INTO TreasureHunt.Submissao VALUES (:usuario, :problema, :flag, :ip, CURRENT_TIMESTAMP)";
 $stmt = $conexao->prepare($sql);
-$stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
-$stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
+$stmt->bindParam(':usuario', $usuario, PDO::PARAM_INT);
+$stmt->bindParam(':problema', $problema, PDO::PARAM_INT);
 $stmt->bindParam(':flag', $flagSemEspaco, PDO::PARAM_STR);
 $stmt->bindParam(':ip', $ip, PDO::PARAM_STR);
 $stmt->execute();
 
 // Verifica se o usuário já acertou a questão
-$sql = "SELECT * FROM TreasureHunt.Resposta WHERE idUsuario='$usuario' AND idProblema='$problema' AND acertou=true";
+//$sql = "SELECT * FROM TreasureHunt.Resposta WHERE idUsuario='$usuario' AND idProblema='$problema' AND acertou=true";
+$sql = "SELECT * FROM TreasureHunt.Resposta WHERE idUsuario=:usuario AND idProblema=:problema AND acertou=true";
 $stmt = $conexao->prepare($sql);
 $stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 $stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
@@ -59,7 +61,8 @@ else {
 	// Poderia informar quando a resposta correta já foi submetida
 	// e o usuário segue submetendo para o mesmo problema
 
-	$sql = "SELECT resposta FROM TreasureHunt.Resposta WHERE idUsuario='$usuario' AND idProblema='$problema'";
+	//$sql = "SELECT resposta FROM TreasureHunt.Resposta WHERE idUsuario='$usuario' AND idProblema='$problema'";
+	$sql = "SELECT resposta FROM TreasureHunt.Resposta WHERE idUsuario=:usuario AND idProblema=:problema";
 	$stmt = $conexao->prepare($sql);
 	$stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 	$stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
@@ -72,11 +75,15 @@ else {
 		$acertou = true;
 		atualiza($acertou, $usuario, $problema);
 
-		$stmt = $conexao->prepare("SELECT COUNT(*) AS Total FROM TreasureHunt.Resposta WHERE idUsuario=$usuario");
+		//$stmt = $conexao->prepare("SELECT COUNT(*) AS Total FROM TreasureHunt.Resposta WHERE idUsuario=$usuario");
+		$stmt = $conexao->prepare("SELECT COUNT(*) AS Total FROM TreasureHunt.Resposta WHERE idUsuario=:usuario");
+		$stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 		$stmt->execute();
 		$linhaTotal = $stmt->fetch(PDO::FETCH_OBJ);
 
-		$stmt = $conexao->prepare("SELECT COUNT(*) AS Acertos FROM TreasureHunt.Resposta WHERE idUsuario=$usuario and acertou=1");
+		//$stmt = $conexao->prepare("SELECT COUNT(*) AS Acertos FROM TreasureHunt.Resposta WHERE idUsuario=$usuario and acertou=1");
+		$stmt = $conexao->prepare("SELECT COUNT(*) AS Acertos FROM TreasureHunt.Resposta WHERE idUsuario=:usuario and acertou=1");
+		$stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 		$stmt->execute();
 		$linhaAcertos = $stmt->fetch(PDO::FETCH_OBJ);
 		// enviar mensagem de que usuário acertou questão (mostra na caixa verde)
@@ -119,7 +126,8 @@ function atualiza($resposta, $usuario, $problema) {
 		$param = "acertou=1, hora='$hora',";
 	}
 
-	$sql = "UPDATE TreasureHunt.Resposta SET $param tentativas=tentativas+1 WHERE idUsuario='$usuario' AND idProblema='$problema' AND acertou=0";
+	//$sql = "UPDATE TreasureHunt.Resposta SET $param tentativas=tentativas+1 WHERE idUsuario='$usuario' AND idProblema='$problema' AND acertou=0";
+	$sql = "UPDATE TreasureHunt.Resposta SET $param tentativas=tentativas+1 WHERE idUsuario=:usuario AND idProblema=:problema AND acertou=0";
 	$stmt = $conexao->prepare($sql);
 	$stmt->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 	$stmt->bindParam(':problema', $problema, PDO::PARAM_STR);
