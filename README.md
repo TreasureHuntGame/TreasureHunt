@@ -206,7 +206,7 @@ Pressupõe-se algumas condições para que instalação, configuração e execu�
 
 - *Nota 1*: É necessário obter privilégios de leitura e escrita no diretório do servidor _web_ (por exemplo: ``/var/www/html/TreasureHunt/``).
 
-- *Nota 2*: O _script_ considera que o MySQL será utilizado com usuário ``root`` e sem senha. O organizador pode alterar isso manipulando a chamada ao _script_ ``ConfiguraBD.sh`` no arquivo ``Jogo.sh``.
+- *Nota 2*: O _script_ considera que o MySQL será utilizado com usuário ``root`` e sem senha. O organizador pode alterar isso atualizando a chamada ao _script_ ``ConfiguraBD.sh`` no arquivo ``Jogo.sh`` e a conexão com o Banco por meio da criação do objeto `PDO` no arquivo `conexao.php`.
 
 - *Nota 3*: O _script_ considera que o MySQL será utilizado sem a diretiva ``NO_ZERO_DATE``. Para removê-la, uma dessas soluções pode ser empregada (a depender da versão do MySQL) no arquivo de configuração, `my.ini` no Windows ou `my.cnf` (`/etc/mysql/`) em sistemas _Unix-like_, após o indicador `[mysqld]:` (adicionar caso não esteja presente):
 
@@ -222,7 +222,7 @@ Depois, reinicie o MySQL (``sudo service mysql restart``) e tente novamente. Voc
 
 - *Nota 4*: O arquivo ``apache2.conf``, disponível no diretório ``TreasureHunt/TreasureHunt``, serve apenas como exemplo de configuração do servidor _web_. O organizador pode configurá-lo de maneira diferente, a seu critério.
 
-- *Nota 5*: Arquivos de texto podem apresentar problemas se codificados com iso 8859-1. Prefira utf-8 ou us-ascii.
+- *Nota 5*: Arquivos de texto podem apresentar problemas se codificados com `iso 8859-1`. Prefira `utf-8` ou `us-ascii`.
 
 - *Nota 6*: Se você obtiver a mensagem `ERROR 1698 (28000): Access denied for user 'root'@'localhost'` ao final do _script_, verifique o valor _default_ de autenticação para o seu usuário e altere-o. Isso pode ser feito seguindo os passos abaixo (exemplo para o usuário `root`):
 
@@ -253,6 +253,8 @@ Header set X-Frame-Options: "DENY"
 Novamente é necessário reiniciar o servidor: `service apache2 start`.
 
 Outra solução possível é adicionar os cabeçalhos diretamente por PHP com `header("Content-Security-Policy: frame-ancestors 'none'");` e `header("X-Frame-Options: DENY");`, o que já foi feito nos arquivos PHP deste jogo. No entanto, tal medida ainda não impede que arquivos de outros tipos (por exemplo, XML) possam ser carregados em _frames_.
+
+- *Nota 10*: Caso o _script_ aponte erros na ferramenta `caesar` ao gerar problemas (`caesar: not found`), verifique em que diretório este programa foi instalado (sugestão de comando: `which caesar`) e atualize todas as chamadas a `caesar` nos scripts do jogo para `diretorio-completo/caesar`. Isto pode ser feito manualmente ou de forma automática via linha de comando. Por exemplo (executado a partir do diretório `Jogo`): `x=$(which caesar); grep -rl 'caesar' * | xargs sed -i "s#caesar#${x}#g"`.
 
 ---
 
