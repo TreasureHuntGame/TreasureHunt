@@ -254,7 +254,7 @@ Novamente é necessário reiniciar o servidor: `service apache2 start`.
 
 Outra solução possível é adicionar os cabeçalhos diretamente por PHP com `header("Content-Security-Policy: frame-ancestors 'none'");` e `header("X-Frame-Options: DENY");`, o que já foi feito nos arquivos PHP deste jogo. No entanto, tal medida ainda não impede que arquivos de outros tipos (por exemplo, XML) possam ser carregados em _frames_.
 
-- *Nota 10*: Caso o _script_ aponte erros na ferramenta `caesar` ao gerar problemas (`caesar: not found`), verifique em que diretório este programa foi instalado (sugestão de comando: `which caesar`) e atualize todas as chamadas a `caesar` nos scripts do jogo para `diretorio-completo/caesar`. Isto pode ser feito manualmente ou de forma automática via linha de comando. Por exemplo (executado a partir do diretório `Jogo`): `x=$(which caesar); grep -rl 'caesar' * | xargs sed -i "s#caesar#${x}#g"`.
+- *Nota 10*: Caso o _script_ aponte o erro `caesar: not found` ao gerar problemas com o `caesar`, verifique em que diretório este programa foi instalado (sugestão de comando: `which caesar`) e atualize todas as chamadas a `caesar` nos scripts do jogo para `diretorio/completo/do/caesar`. Isto pode ser feito manualmente ou de forma automática via linha de comando. Por exemplo (executado a partir do diretório `Jogo`): `x=$(which caesar); grep -rl 'caesar' * | xargs sed -i "s#caesar#${x}#g"`. O arquivo `Fix-caesar-not-found.sh`, disponibilizado na pasta `Scripts`, pode ser executado para resolver este problema.
 
 ---
 
