@@ -168,7 +168,7 @@ Ao finalizar o jogo, as respostas e submissões estarão armazenadas na base de 
 
 As competições de TreasureHunt precisam ser criadas pelo organizador. Para tanto, este deve escolher a quantidade de participantes, bem como quantos e quais desafios estarão presentes, podendo inclusive adicionar um problema composto, com duas técnicas aplicadas em conjunto.
 
-Para gerar a competição, basta executar o _script_ [`Jogo.sh`](/Jogo/Scripts/Jogo.sh) do diretório [TreasureHunt/Jogo/Scripts/](/Jogo/Scripts).
+Para gerar a competição, basta executar o _script_ [`Jogo.sh`](/Jogo/Scripts/Jogo.sh) do diretório [`TreasureHunt/Jogo/Scripts/`](/Jogo/Scripts).
 
 ```sh
 cd Jogo/Scripts
