@@ -206,7 +206,7 @@ Pressupõe-se algumas condições para que instalação, configuração e execu�
 
 - *Nota 1*: É necessário obter privilégios de leitura e escrita no diretório do servidor _web_ (por exemplo: ``/var/www/html/TreasureHunt/``).
 
-- *Nota 2*: O _script_ considera que o MySQL será utilizado com usuário ``root`` e sem senha. O organizador pode alterar isso atualizando a chamada ao _script_ ``ConfiguraBD.sh`` no arquivo ``Jogo.sh`` e a conexão com o Banco por meio da criação do objeto `PDO` no arquivo `conexao.php`.
+- *Nota 2*: O _script_ considera que o MySQL será utilizado com usuário ``root`` e sem senha. O organizador pode alterar isso atualizando a chamada ao _script_ [`ConfiguraBD.sh`](/Jogo/Scripts/ConfiguraBD.sh) no arquivo [`Jogo.sh`](/Jogo/Scripts/Jogo.sh) e a conexão com o Banco por meio da criação do objeto `PDO` no arquivo `conexao.php`.
 
 - *Nota 3*: O _script_ considera que o MySQL será utilizado sem a diretiva ``NO_ZERO_DATE``. Para removê-la, uma dessas soluções pode ser empregada (a depender da versão do MySQL) no arquivo de configuração, `my.ini` no Windows ou `my.cnf` (`/etc/mysql/`) em sistemas _Unix-like_, após o indicador `[mysqld]:` (adicionar caso não esteja presente):
 
@@ -235,7 +235,7 @@ mysql> FLUSH PRIVILEGES;
 mysql> exit;
 > service mysql restart
 ```
-- *Nota 7*: Se você obtiver a mensagem de erro `Bad substitution` ao executar o _script_ `Jogo.sh`, tente executar o _script_ com o comando `bash Jogo.sh`.
+- *Nota 7*: Se você obtiver a mensagem de erro `Bad substitution` ao executar o _script_ [`Jogo.sh`](/Jogo/Scripts/Jogo.sh), tente executar o _script_ com o comando `bash Jogo.sh`.
 
 - *Nota 8*: alguns navegadores podem restringir o acesso a _websites_ que não possuem um certificado SSL/TLS (HTTPS). Caso a sua hospedagem do TreasureHunt esteja limitada ao HTTP, certifique-se de orientar os competidores a desativarem tal configuração.
 
