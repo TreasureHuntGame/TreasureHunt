@@ -206,7 +206,7 @@ Pressupõe-se algumas condições para que instalação, configuração e execu�
 
 - *Nota 1*: É necessário obter privilégios de leitura e escrita no diretório do servidor _web_ (por exemplo: ``/var/www/html/TreasureHunt/``).
 
-- *Nota 2*: O _script_ considera que o MySQL será utilizado com usuário ``root`` e sem senha. O organizador pode alterar isso atualizando a chamada ao _script_ [`ConfiguraBD.sh`](/Jogo/Scripts/ConfiguraBD.sh) no arquivo [`Jogo.sh`](/Jogo/Scripts/Jogo.sh) e a conexão com o Banco por meio da criação do objeto `PDO` no arquivo `conexao.php`.
+- *Nota 2*: O _script_ considera que o MySQL será utilizado com usuário ``root`` e sem senha. O organizador pode alterar isso atualizando a chamada ao _script_ [`ConfiguraBD.sh`](/Jogo/Scripts/ConfiguraBD.sh) no arquivo [`Jogo.sh`](/Jogo/Scripts/Jogo.sh) e a conexão com o Banco por meio da criação do objeto `PDO` no arquivo [`conexao.php`](/TreasureHunt/conexao.php).
 
 - *Nota 3*: O _script_ considera que o MySQL será utilizado sem a diretiva ``NO_ZERO_DATE``. Para removê-la, uma dessas soluções pode ser empregada (a depender da versão do MySQL) no arquivo de configuração, `my.ini` no Windows ou `my.cnf` (`/etc/mysql/`) em sistemas _Unix-like_, após o indicador `[mysqld]:` (adicionar caso não esteja presente):
 
