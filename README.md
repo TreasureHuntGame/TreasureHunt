@@ -138,7 +138,7 @@ Cabe ao organizador da competição decidir se fornece ou não as ferramentas.
 
 Para iniciar a interface _web_ basta seguir os seguintes passos:
 
-1. Copie o diretório [/TreasureHunt](/TreasureHunt) para o diretório do servido _web_. Dependendo do sistema operacional e do servidor _web_ este se localizará em locais diferentes. Exemplos: `C:\xampp\htdocs` com o Xampp no Windows ou `/var/www/html/TreasureHunt/` em certas distribuições Linux:
+1. Copie o diretório [`/TreasureHunt`](/TreasureHunt) para o diretório do servido _web_. Dependendo do sistema operacional e do servidor _web_ este se localizará em locais diferentes. Exemplos: `C:\xampp\htdocs` com o Xampp no Windows ou `/var/www/html/TreasureHunt/` em certas distribuições Linux:
 
 ```sh
 cp TreasureHunt /var/www/html/TreasureHunt/
