@@ -99,7 +99,7 @@ header("X-Frame-Options: DENY");
             <div class="col">
                 <div class="footer-copyright">
                     <a rel="license noopener noreferrer" href="http://creativecommons.org/licenses/by-nc/4.0/" class="link-padrao" id="creative-commons" target="_blank">
-                        <img alt="Licença Creative Commons" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" width="80" height="15">
+                        <img alt="Licença Creative Commons" src="https://licensebuttons.net/l/by-nc/4.0/88x31.png" width="88" height="31">
                         <br>
                         <span>Esta obra está licenciada com uma Licença <span lang="en">Creative Commons</span>
                             Atribuição-NãoComercial 4.0 Internacional</span> (Abre em nova janela).</a>
