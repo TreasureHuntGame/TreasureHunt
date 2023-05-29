@@ -833,6 +833,7 @@ address a {
     padding: 10px;
     font-size: 1em;
     border: 2px solid var(--cor-fundo);
+    color: var(--cor-secundaria);
 }
 
 .form-signin .form-control:focus,
