@@ -20,7 +20,7 @@ if (!isset($_SESSION['usuario'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="TreasureHunt, um Jogo de Caça ao Tesouro de Segurança Computacional">
     <meta name="keywords" content="TreasureHunt, Treasure Hunt, Segurança Computacional, Cibersegurança, Cybersecurity, Computer Security">
-    <meta name="theme-color" content="#343A40" />
+    <meta name="theme-color" content="#343A40">
     <meta name="author" content="Ricardo de la Rocha Ladeira">
     <title>Home -- TreasureHunt{Security}</title>
     <link rel="preload" href="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" as="script">
