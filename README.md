@@ -204,7 +204,7 @@ Com o fim desses passos, o esquema e as tabelas também terão sido criadas auto
 
 Pressupõe-se algumas condições para que instalação, configuração e execução ocorram com sucesso. Essas indicações, bem como alguns dos erros comuns serão destacados a seguir:
 
-- *Nota 1*: É necessário obter privilégios de leitura e escrita no diretório do servidor _web_ (por exemplo: ``/var/www/html/TreasureHunt/``).
+- *Nota 1*: É necessário obter privilégios de leitura e escrita nos diretórios do jogo e do servidor _web_ (por exemplo: ``/var/www/html/TreasureHunt/``).
 
 - *Nota 2*: O _script_ considera que o MySQL será utilizado com usuário ``root`` e sem senha. O organizador pode alterar isso atualizando a chamada ao _script_ [`ConfiguraBD.sh`](/Jogo/Scripts/ConfiguraBD.sh) no arquivo [`Jogo.sh`](/Jogo/Scripts/Jogo.sh) e a conexão com o Banco por meio da criação do objeto `PDO` no arquivo [`conexao.php`](/TreasureHunt/conexao.php).
 
