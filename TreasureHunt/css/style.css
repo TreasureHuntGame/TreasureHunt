@@ -11,7 +11,7 @@ html, body {
     margin: 0;
 }
 
- :root {
+:root {
     --cor-primaria: #FFF;
     --cor-secundaria: #000;
     --cor-fundo: #343A40;
@@ -448,12 +448,14 @@ footer a:hover {
     font-weight: bold;
 }
 
-
 #lista-de-regras {
     list-style-type: none;
     text-align: left;
-    padding: 0 1em;
-    line-height: 1.75
+    padding: 0;
+    line-height: 1.75;
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .prompt::before {
@@ -479,12 +481,12 @@ noscript div.jumbotron {
     font-size: 1.15em;
     padding: 15px 0;
     background-color: var(--warning-background) !important;
-    border-radius: 0px;
+    border-radius: 0;
     color: var(--warning) !important;
 }
 
 noscript p {
-    padding: 0px 3em;
+    padding: 0 3em;
     line-height: 1.75;
 }
 
@@ -509,7 +511,6 @@ li:hover .prompt {
 O efeito abaixo foi comentado para evitar problemas a indivíduos com epilepsia fotossensível.
 Se for desejável utilizar o efeito, basta comentar o estilo acima e descomentar o estilo abaixo.
 */
-
 
 /*
 li:hover .prompt {
@@ -627,7 +628,11 @@ input#close-alert-button,
 .navbar-toggler {
     width: 5em;
     margin: 5px 0;
-    border: 1px solid var(--cor-fundo) !important;
+    border: 2px solid var(--cor-primaria) !important;
+}
+
+.navbar-toggler:hover {
+    cursor: pointer;
 }
 
 #main,
@@ -1119,19 +1124,20 @@ caption {
     }
     span.navbar-toggler-icon {
         transition: background-image .5s linear;
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='1.9' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
     }
     input#contrast:checked~#page-wrapper nav label[for="collapse-btn"] {
         border-color: var(--c-cor-fundo) !important;
     }
     input#contrast:checked~#page-wrapper nav label span.navbar-toggler-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba( 0, 0, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 0, 0, 1)' stroke-width='1.9' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
     }
     input#collapse-btn:checked~label {
-        border: 1px solid var(--cor-primaria) !important;
+        border: 2px solid var(--cor-primaria) !important;
         border-radius: 5px;
     }
     input#collapse-btn:checked~label span.navbar-toggler-icon {
-        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba( 255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+        background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='1.9' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
     }
     #contrast-container {
         position: absolute;
