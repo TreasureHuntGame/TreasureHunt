@@ -210,7 +210,7 @@ header("X-Frame-Options: DENY");
                 </ul>
                 <p>
                     É possível conferir todos os
-                    <a rel="noopener noreferrer" class="link-padrao" href="https://docs.google.com/spreadsheets/d/1QwY4zQd_fF0Rss1fDj7d06v2b5BDnO0CrUsNnYmKyMU/edit#gid=0" target="_blank">
+                    <a rel="noopener noreferrer" class="link-padrao" href="https://docs.google.com/spreadsheets/d/1r6ifZskz3rcLPS9CdXQj9zscRncGMhmOs81W8IWGYfA/edit?usp=sharing" target="_blank">
                         critérios cumpridos pelo Treasure Hunt em uma planilha online (abre em nova janela)
                     </a>
                 </p>
