@@ -679,6 +679,7 @@ manejaAdicaoEasterEgg() {
 
 encerraPrograma() {
 	restauraCores
+ 	echo ""
 	exit 1
 }
 
