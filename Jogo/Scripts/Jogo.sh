@@ -18,27 +18,31 @@ DIR_SCRIPT=`dirname $0`
 PROBLEMAS=
 
 # Função que habilita o alto contraste no terminal
+# Inicialmente esta função testa se a tela já está no contraste máximo, ou seja, se as cores
+# branco e preto já estão sendo utilizadas em background e foreground. Se não estiver, fornece
+# as opções para o usuário.
 altoContraste() {
-    while true; do
-        echo "Habilitar alto contraste?"
-        echo "1: Sim"
-        echo "2: Não"
-        echo "Obs.: ao finalizar o script, suas cores padrão serão restauradas."
-        echo "----------"
-        read -p "Digite uma das opções acima: " OPCAO
-        echo "----------"   
-        case $OPCAO in
-            1|2) break ;; 
-            *) echo -e "Opção inválida, digite novamente! " && sleep 1;;
-        esac
-    done
+	if [[ (($R1 != "rgb:ffff/ffff/ffff" && $R1 != "rgb:FFFF/FFFF/FFFF") || $R2 != "rgb:0000/0000/0000") && (($R2 != "rgb:ffff/ffff/ffff" && $R2 != "rgb:FFFF/FFFF/FFFF") || $R1 != "rgb:0000/0000/0000") ]]; then
+	    while true; do
+	        echo "Habilitar alto contraste?"
+	        echo "1: Sim"
+	        echo "2: Não"
+	        echo "Obs.: ao finalizar o script, suas cores padrão serão restauradas."
+	        echo "----------"
+	        read -p "Digite uma das opções acima: " OPCAO
+	        echo "----------"   
+	        case $OPCAO in
+	            1|2) break ;; 
+	            *) echo -e "Opção inválida, digite novamente! " && sleep 1;;
+	        esac
+	    done
 
-    if [ $OPCAO = 1 ]; then
-        BG_DEFAULT=$(echo -ne '\e]11;?\a')
-        FG_DEFAULT=$(echo -ne '\e]10;?\a')
-        echo -ne '\e]11;#FFFFFF\e\\'
-        echo -ne '\e]10;#000000\e\\'
-    fi  
+	    # Se optar pelo alto contraste, o texto ficará preto e o fundo branco.
+	    if [ $OPCAO = 1 ]; then
+	        echo -ne '\e]11;#FFFFFF\e\\'
+	        echo -ne '\e]10;#000000\e\\'
+	    fi  
+	fi
 }
 
 pegaCoresTerminal() {
@@ -294,6 +298,8 @@ abortaScript() {
 		logger $1
 		echo -e "$1"  && sleep 1
 	fi 
+
+	restauraCores
 	exit 1
 }
 
