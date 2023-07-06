@@ -17,6 +17,57 @@ DIR_SCRIPT=`dirname $0`
 # Array que armazenará o identificador de cada problema
 PROBLEMAS=
 
+# Função que habilita o alto contraste no terminal
+altoContraste() {
+    while true; do
+        echo "Habilitar alto contraste?"
+        echo "1: Sim"
+        echo "2: Não"
+        echo "Obs.: ao finalizar o script, suas cores padrão serão restauradas."
+        echo "----------"
+        read -p "Digite uma das opções acima: " OPCAO
+        echo "----------"   
+        case $OPCAO in
+            1|2) break ;; 
+            *) echo -e "Opção inválida, digite novamente! " && sleep 1;;
+        esac
+    done
+
+    if [ $OPCAO = 1 ]; then
+        BG_DEFAULT=$(echo -ne '\e]11;?\a')
+        FG_DEFAULT=$(echo -ne '\e]10;?\a')
+        echo -ne '\e]11;#FFFFFF\e\\'
+        echo -ne '\e]10;#000000\e\\'
+    fi  
+}
+
+pegaCoresTerminal() {
+    oldstty=$(stty -g)
+    Ps=${1:-11}
+    stty raw -echo min 0 time 0
+    printf "\033]$Ps;?\033\\"
+    sleep 0.2
+    read -r answer
+    result1=${answer#*;}
+    stty $oldstty
+    sleep 0.2
+    oldstty=$(stty -g)
+    Ps=${1:-10}
+    stty raw -echo min 0 time 0
+    printf "\033]$Ps;?\033\\"
+    sleep 0.2
+    read -r answer
+    result2=${answer#*;}
+    stty $oldstty
+    R1=$(echo $result1 | sed 's/[^rgb:0-9a-f/]\+$//')
+    R2=$(echo $result2 | sed 's/[^rgb:0-9a-f/]\+$//')
+}
+
+restauraCores() {
+    echo -ne "\033]11;$R1\007"
+    echo -ne "\033]10;$R2\007"
+}
+
 # Função que verifica se o parâmetor informado é positivo.
 obtemValor() {
 	while [ $LOCAL -le 0 ]; do
@@ -622,6 +673,7 @@ manejaAdicaoEasterEgg() {
 }
 
 # Ponto de partida do script
+pegaCoresTerminal
 
 echo "----------"
 echo "Treasure Hunt!"
@@ -630,6 +682,7 @@ echo "----------"
 # Garantindo que o diretório de trabalho é o diretório do script
 cd $DIR_SCRIPT
 
+altoContraste
 excluiLogger
 logger "Script iniciado;"
 
@@ -691,4 +744,6 @@ manejaAtivacaoNgrok
 
 logger "Script finalizado;"
 
-criaLog 
+criaLog
+
+restauraCores
