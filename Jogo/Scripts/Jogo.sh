@@ -171,15 +171,15 @@ existeLog() {
 	[ -f "Log" ] && return 0
 }
 
-# Verifica se existe algum diretório numérico; se existir algum retorna 0
-existeDirNumericos() {
+# Verifica se existe algum diretório numérico; se existe retorna 0
+existeDirNumerico() {
 	for d in ../*; do 
         f=`echo $d | cut -b 4-`
         [[ $f =~ ^[0-9]+$ ]] && return 0
     done 
 }
 
-# verifica se existe arquivo de resposta; se existir retorna 0
+# Verifica se existe algum arquivo de resposta; se existe retorna 0
 existeRespostas() {
 	mkdir -pm 755 ../Respostas
     for f in ../Respostas/*; do 
@@ -187,7 +187,7 @@ existeRespostas() {
     done  
 }
 
-# verifica se existe arquivos de respostas compactados no diretório 
+# Verifica se existe algum arquivo de respostas compactado no diretório 
 # Desafios do servidor web; se existir retorna 0 
 # $1 diretório
 existeZip() {
@@ -222,7 +222,7 @@ moveArquivosCompeticoes() {
 	echo -e "Movendo arquivos para o diretório TreasureHunt/Jogo/OLD_$TS." && sleep 0.2
 	mkdir -p $OLD_DIR
 	existeLog && mv Log $OLD_DIR # move o log 
-	if existeDirNumericos; then # move os diretóritos numéricos
+	if existeDirNumerico; then # move os diretóritos numéricos
 		for d in ../*; do 
 			f=`echo $d | cut -b 4-`
 			if [[ $f =~ ^[0-9]+$ ]]; then 
@@ -299,11 +299,10 @@ abortaScript() {
 		echo -e "$1"  && sleep 1
 	fi 
 
-	restauraCores
-	exit 1
+	encerraPrograma
 }
 
-# Exclui logger 
+# Exclui o logger 
 excluiLogger() {
 	[ -f Logger ] && rm "Logger"
 }
@@ -312,7 +311,7 @@ excluiLogger() {
 # Se existir, pergunta ao usuário o que ele deseja fazer
 manejaArquivosCompeticoesAntigos() {
 	# Se algum arquivo de outra competição já estiver criado 
-	if existeLog || existeDirNumericos || existeRespostas; then
+	if existeLog || existeDirNumerico || existeRespostas; then
 		logger "Arquivos de competições anteriores foram encontrados;"
 		while true; do  # Pergunta o que o usuário deseja fazer
 			echo "Arquivos de competições anteriores foram encontrados! "
@@ -678,8 +677,14 @@ manejaAdicaoEasterEgg() {
 	fi
 }
 
+encerraPrograma() {
+	restauraCores
+	exit 1
+}
+
 # Ponto de partida do script
 pegaCoresTerminal
+trap encerraPrograma SIGINT
 
 echo "----------"
 echo "Treasure Hunt!"
@@ -752,4 +757,4 @@ logger "Script finalizado;"
 
 criaLog
 
-restauraCores
+encerraPrograma
