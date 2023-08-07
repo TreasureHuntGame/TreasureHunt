@@ -51,7 +51,7 @@ Para cadastrar questões no Serena, é necessário seguir os passos abaixo:
   	
     f) clicar no botão `"Do it!"`
     	
-        f.1) pode ir no banco de dados e verificar se realmente incluiu o vínculo da questão na tabela `questaodocirculo`
+        i. pode ir no banco de dados verificar se realmente incluiu o vínculo da questão na tabela `questaodocirculo`
         
   	g) voltar ao passo "e)" enquanto desejar incluir outras questões no círculo
  
