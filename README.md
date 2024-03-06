@@ -239,8 +239,7 @@ mysql> exit;
 
 - *Nota 8*: alguns navegadores podem restringir o acesso a _websites_ que não possuem um certificado SSL/TLS (HTTPS). Caso a sua hospedagem do TreasureHunt esteja limitada ao HTTP, certifique-se de orientar os competidores a desativarem tal configuração.
 
-- *Nota 9*: A fim de evitar ataques de _Clickjacking_ e _Cross Frame Scripting
-_ (XFS), sugere-se a configuração dos cabeçalhos de resposta HTTP `Content-Security-Policy` e `X-Frame-Options`. Para isso, o módulo de cabeçalhos (_headers_) precisa estar ativo:
+- *Nota 9*: A fim de evitar ataques de _Clickjacking_ e _Cross Frame Scripting_ (XFS), sugere-se a configuração dos cabeçalhos de resposta HTTP `Content-Security-Policy` e `X-Frame-Options`. Para isso, o módulo de cabeçalhos (_headers_) precisa estar ativo:
 ```
 > a2enmod headers
 > service apache2 restart
@@ -255,6 +254,8 @@ Novamente é necessário reiniciar o servidor: `service apache2 start`.
 Outra solução possível é adicionar os cabeçalhos diretamente por PHP com `header("Content-Security-Policy: frame-ancestors 'none'");` e `header("X-Frame-Options: DENY");`, o que já foi feito nos arquivos PHP deste jogo. No entanto, tal medida ainda não impede que arquivos de outros tipos (por exemplo, XML) possam ser carregados em _frames_.
 
 - *Nota 10*: Caso o _script_ aponte o erro `caesar: not found` ao gerar problemas com o `caesar`, verifique em que diretório este programa foi instalado (sugestão de comando: `which caesar`) e atualize todas as chamadas a `caesar` nos _scripts_ do jogo para `diretorio/completo/do/caesar`. Isto pode ser feito manualmente ou de forma automática via linha de comando. Por exemplo (executado a partir do diretório [`Jogo`](/Jogo/)): `x=$(which caesar); grep -rl 'caesar' * | xargs sed -i "s#caesar#${x}#g"`. O arquivo [`Fix-caesar-not-found.sh`](/Jogo/Scripts/Fix-caesar-not-found.sh), disponibilizado na pasta [`Scripts`](/Jogo/Scripts/), pode ser executado para resolver este problema.
+
+- *Nota 11*: A função `altoContraste` definida no arquivo [`Jogo.sh`](/Jogo/Scripts/Jogo.sh) tem comportamento adequado se utilizada do Gnome Terminal e do XFCE4 Terminal. Ela não foi testada a partir de outros terminais e seu comportamento pode variar em outros ambientes de terminal.
 
 ---
 
