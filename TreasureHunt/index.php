@@ -37,7 +37,9 @@ header("X-Frame-Options: DENY");
 <body>
     <input type="checkbox" name="contrast-mode" id="contrast">
     <input type="checkbox" name="animation-switch" id="animation">
-    <input type="checkbox" name="close-alert" id="close-alert-button">
+    <noscript>
+        <input type="checkbox" name="close-alert" id="close-alert-button">
+    </noscript>
     <div id="page-wrapper">
         <input type="radio" name="nav" id="inicio" checked tabindex="-1" class="tab">
         <input type="radio" name="nav" id="regras" tabindex="-1" class="tab">
