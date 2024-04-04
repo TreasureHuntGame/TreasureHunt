@@ -1,0 +1,4 @@
+php-pear
+outguess
+python2-bin
+ngrok
