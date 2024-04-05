@@ -45,6 +45,8 @@ if (!isset($_SESSION['usuario'])) {
 <body>
     <input type="checkbox" name="contrast-mode" id="contrast">
     <input type="checkbox" name="animation-switch" id="animation">
+    <!-- TODO quando o javascript é desabilitado, o input não funciona (não fecha o aviso)
+         Quando achar solução, aplicar para todos os .php que tem isso -->
     <noscript>
         <input type="checkbox" name="close-alert" id="close-alert-button">
     </noscript>
@@ -141,7 +143,7 @@ if (!isset($_SESSION['usuario'])) {
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark" id="jumbotron-home-form">
-                        <form action="checkflag.php" method="POST" class="form-signin">
+                        <form action="checkflag.php" method="POST" class="form-signin" onSubmit="return confirm('Confirme o envio')">
                             <h3>Submeta sua <i lang="en">flag</i>:</h3>
                             <label for="id-problema" class="sr-only">Informe o ID do problema (obrigatório):</label>
                             <input autocomplete="off" type="number" name="problema" id="id-problema" class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
