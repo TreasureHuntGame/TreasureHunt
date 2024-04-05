@@ -5,9 +5,13 @@ Para você instalar o _software_, é necessário fazer manualmente seguindo as s
 
 Primeiramente, assegure-se que você tenha o _yay_ instalado em sua máquina. Veja: [https://github.com/Jguer/yay](https://github.com/Jguer/yay).
 
+Atualize o sistema:
 ```bash
 yay -Syu
 ```
+
+Existe uma lista de depêndencias (pacotes) para o Arch, presentes no mesmo diretório deste arquivo.
+Siga os próximos comandos para instalá-las. Esse processo pode demorar um pouco.
 
 Instale os requisitos providos pelo pacman:
 ```bash
@@ -28,14 +32,17 @@ pois o MariaDB tem compatibilidade com o MySQL.
 Para configuração veja: [https://wiki.archlinux.org/title/MariaDB](https://wiki.archlinux.org/title/MariaDB)
 
 Após a configuração inicial, caso não consiga acessar o MariaDB utilizando `mariadb -u root`, use `sudo mariadb`.
-Dentro do MariaDB:
+Após entrar no CLI do MariaDB:
 ```sql
 FLUSH PRIVILEGES;
 ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
 exit
 ```
 Deixe o campo _new_password_ vazio caso queira que seja possível acessar o usuário root sem senha
-(Recomendado caso seja apenas um desenvolvedor). Agora `sudo systemctl restart mariadb.service`
+(Recomendado caso seja um desenvolvedor).
+Caso opte por colocar senha, verifique posteriormente se o MariaDB funciona normalmente junto com o TreasureHunt e
+se não é necessário mudança em algum dos scripts do jogo.
+Após isso, reinicie o serviço `sudo systemctl restart mariadb.service`
 
 ## Configuração do Apache
 Veja [https://wiki.archlinux.org/title/Apache_HTTP_Server](https://wiki.archlinux.org/title/Apache_HTTP_Server).
@@ -49,10 +56,10 @@ CAMINHO_SITE="/var/www/html/TreasureHunt"
 ```
 Você tem duas opções:
 1. Modificar as variáveis `DESTINO_DESAFIOS` e `CAMINHO_SITE` no script citado.
-2. Modificar o diretório de conteúdo nas configurações do Apache. Veja
+2. Modificar o diretório de conteúdo nas configurações do Apache. Veja sobre _DocumentRoot_
 [https://wiki.archlinux.org/title/Apache_HTTP_Server#Advanced_options](https://wiki.archlinux.org/title/Apache_HTTP_Server#Advanced_options)
 
-É preferível a 2 opção. Caso faça essa escolha lembre-se de criar o diretório `/var/www/html/`
+É preferível a 2 opção caso seja um desenvolvedor. Caso faça essa escolha lembre-se de criar o diretório `/var/www/html/`
 antes de mudar a configuração no Apache.
 
 Obs.: Caso o PHP não esteja funcionando com o Apache veja
