@@ -1,0 +1,11 @@
+coreutils
+bash
+apache
+bsd-games
+php
+php-apache
+php-fpm
+grep
+zip
+mariadb
+bc
