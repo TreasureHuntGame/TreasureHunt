@@ -143,13 +143,26 @@ if (!isset($_SESSION['usuario'])) {
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark" id="jumbotron-home-form">
-                        <form action="checkflag.php" method="POST" class="form-signin" onSubmit="return confirm('Confirme o envio')">
+                        <form action="checkflag.php" method="POST" class="form-signin">
+                            <!-- Bloqueia envio do form diretamente pelo Enter -->
+                            <button style="display: none;" disabled></button>
                             <h3>Submeta sua <i lang="en">flag</i>:</h3>
                             <label for="id-problema" class="sr-only">Informe o ID do problema (obrigatório):</label>
                             <input autocomplete="off" type="number" name="problema" id="id-problema" class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
                             <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span> (obrigatório):</label>
                             <input autocomplete="off" type="text" id="flag-interno" name="flag" class="form-control" placeholder="TreasureHunt{texto-aleatorio}" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Resposta encontrada no exercício.">
-                            <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
+                            <div id="confirmation-submit">
+                                <div id="confirmation">
+                                    <p>Tem certeza que deseja submeter a <i lang="en">flag</i>?</p>
+                                    <div class="flexbox-buttons">
+                                        <a href="#id-problema" class="fake-btn btn btn-dark btn-block">Cancelar</a>
+                                        <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
+                                    </div>
+                                </div>
+                                <a href="#confirmation-submit" class="fake-btn fake-submit-btn btn btn-dark btn-block" role="button">
+                                    Enviar
+                                </a>
+                            </div>
                             <?php
                             if (isset($_GET['message'])) {
                                 switch ($_GET['message']) {

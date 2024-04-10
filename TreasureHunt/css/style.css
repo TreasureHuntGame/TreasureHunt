@@ -51,6 +51,66 @@ html, body {
     --c-linkskip-border: yellow;
 }
 
+.flexbox-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+.flexbox-buttons button {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.flexbox-buttons a.fake-btn {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.fake-btn {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+    border-radius: 5px;
+    border: 2px solid transparent !important;
+    cursor: pointer;
+    margin: 8px 0 0 0;
+    background-color: var(--cor-fundo) !important;
+    color: var(--cor-primaria) !important;
+    height: 45px;
+    text-decoration: none;
+}
+
+.fake-btn:focus,
+.fake-btn:hover {
+    box-shadow: 0 0 0 0.2rem var(--btn-boxshadow) !important;
+}
+
+input#contrast:checked~#page-wrapper .fake-btn {
+    background-color: var(--c-cor-primaria) !important;
+    color: var(--c-cor-fundo) !important;
+    box-shadow: 0 0 0 .2rem var(--c-input-box-shadow);
+}
+
+input#contrast:checked~#page-wrapper .fake-btn:focus,
+input#contrast:checked~#page-wrapper .fake-btn:hover {
+    box-shadow: 0 0 0 0.2rem var(--c-btn-boxshadow) !important;
+    border: 2px solid var(--c-cor-fundo) !important;
+}
+
+#confirmation-submit {
+    display: block;
+}
+
+#confirmation {
+    display: none;
+}
+
+#confirmation-submit:target .fake-submit-btn {
+    display: none;
+}
+
+#confirmation-submit:target #confirmation {
+    display: block;
+}
+
 #link-skip {
     background-color: var(--cor-secundaria) !important;
     color: var(--cor-primaria);
@@ -1065,6 +1125,10 @@ caption {
 .disable-scroll {
     height: 100%;
     overflow-y: hidden;
+}
+
+.disable-click {
+    pointer-events: none;
 }
 
 @media (max-width: 1200px) {
