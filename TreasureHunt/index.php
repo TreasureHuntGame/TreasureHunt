@@ -149,12 +149,15 @@ header("X-Frame-Options: DENY");
                     <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <div class="contato">
-                    <span class="nome-autor">Fernanda Ribeiro Martins</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>fernandamartins.rm<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
+                    <span class="nome-autor">João Vitor Espig</span>:
+                    <span><span class="sinal-menor" aria-hidden="true"></span>jotaespig<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <span class="address-title">Contribuidores:</span>
                 <div class="contato nome-contrib">
                     <span>Camily do Nascimento Ghellar</span>
+                </div>
+                <div class="contato nome-contrib">
+                    <span>Fernanda Ribeiro Martins</span>
                 </div>
                 <div class="contato nome-contrib">
                     <span>Gabriel Eduardo Lima</span>
