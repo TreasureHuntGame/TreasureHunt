@@ -155,7 +155,7 @@ if (!isset($_SESSION['usuario'])) {
                                 <div id="confirmation">
                                     <p>Confirme o envio da <i lang="en">flag</i></p>
                                     <div class="flexbox-buttons">
-                                        <a href="#id-problema" class="fake-btn btn btn-dark btn-block">Cancelar</a>
+                                        <a href="#id-problema" class="fake-btn btn btn-dark btn-block" role="button">Cancelar</a>
                                         <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
                                     </div>
                                 </div>
