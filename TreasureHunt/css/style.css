@@ -16,7 +16,7 @@ html, body {
     --cor-secundaria: #000;
     --cor-fundo: #343A40;
     --cor-destaque: #008A00;
-    --cor-destaque-lighter: #00eb00;
+    --cor-destaque-lighter: #20ff35;
     --cor-destaque-darker: #006e00;
     --cor-links: #20FF35;
     --warning-background: darkred;
@@ -357,7 +357,7 @@ input#contrast:checked~#page-wrapper li:hover .prompt {
 
 input#contrast:checked~#page-wrapper .destaque,
 input#contrast:checked~#page-wrapper address .at:after {
-    color: var(--c-cor-secundaria);
+    color: var(--cor-destaque-lighter);
 }
 
 input#contrast:checked~#page-wrapper button {
@@ -829,7 +829,7 @@ address {
 }
 
 address .at:after {
-    color: var(--cor-secundaria);
+    color: var(--cor-destaque-lighter);
     content: '@'; 
 }
 
