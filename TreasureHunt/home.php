@@ -153,7 +153,7 @@ if (!isset($_SESSION['usuario'])) {
                             <input autocomplete="off" type="text" id="flag-interno" name="flag" class="form-control" placeholder="TreasureHunt{texto-aleatorio}" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Resposta encontrada no exercício.">
                             <div id="confirmation-submit">
                                 <div id="confirmation">
-                                    <p>Tem certeza que deseja submeter a <i lang="en">flag</i>?</p>
+                                    <p>Confirme o envio da <i lang="en">flag</i></p>
                                     <div class="flexbox-buttons">
                                         <a href="#id-problema" class="fake-btn btn btn-dark btn-block">Cancelar</a>
                                         <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
