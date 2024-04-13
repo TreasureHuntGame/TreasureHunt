@@ -111,7 +111,15 @@ cd TreasureHunt
 
 ### Execução do _script_ de instalação de requisitos
 
-Após baixar o repositório para a sua máquina, o próximo passo é fazer a instalação dos requisitos do projeto. Para isto, basta executar o _script_ [`instalador.sh`](/Instalador/instalador.sh), localizado em [`TreasureHunt/Instalador`](/Instalador), que se encarrega de instalar todos os pacotes, que por padrão se encontram no arquivo [`requisitos.txt`](/Instalador/requisitos.txt).
+Após baixar o repositório para a sua máquina, o próximo passo é fazer a instalação dos requisitos do projeto.
+
+#### Arch
+Para instalar o projeto em distribuições arch, você precisará instalar manualmente seguindo um passo a passo, pois o _script_ [`instalador.sh`](/Instalador/instalador.sh) ainda não funciona no arch.
+O manual de instalação se encontra no arquivo [`instalador_arch.md`](/Instalador/Arch/instalador_arch.md), localizado em [`TreasureHunt/Instalador/Arch`](/Instalador/Arch).
+
+#### Demais distribuições Linux 
+
+Para instalar o projeto, basta executar o _script_ [`instalador.sh`](/Instalador/instalador.sh), localizado em [`TreasureHunt/Instalador`](/Instalador), que se encarrega de instalar todos os pacotes, que por padrão se encontram no arquivo [`requisitos.txt`](/Instalador/requisitos.txt).
 
 ```sh
 cd Instalador
