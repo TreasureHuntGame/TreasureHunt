@@ -131,9 +131,12 @@ input#contrast:checked~#page-wrapper .fake-btn:hover {
     transform: translateX(0%);
 }
 
+input#contrast:checked~#page-wrapper #link-skip {
+    color: var(--cor-primaria) !important;
+}
+
 input#contrast:checked~#page-wrapper #link-skip:hover,
 input#contrast:checked~#page-wrapper #link-skip:focus {
-    color: var(--cor-primaria) !important;
     border: 2px solid var(--c-linkskip-border) !important;
     border-left: none !important;
 }
