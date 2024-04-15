@@ -304,11 +304,12 @@ Vale lembrar que para a execução dos problemas recomenda-se um conjunto mínim
 ### Equipe atual
 
 - Ricardo de la Rocha Ladeira: [ricardo.ladeira@ifc.edu.br](mailto:ricardo.ladeira@ifc.edu.br)
-- Fernanda Ribeiro Martins: [fernandamartins.rm@gmail.com](mailto:fernandamartins.rm@gmail.com)
+- João Vitor Espig: [jotinha1300@gmail.com](mailto:jotinha1300@gmail.com)
 
 ### Contribuidores
 
 - Camily do Nascimento Ghellar
+- Fernanda Ribeiro Martins
 - Gabriel Eduardo Lima
 - Henrique Arnicheski Dalposso
 - Lucas Vargas
