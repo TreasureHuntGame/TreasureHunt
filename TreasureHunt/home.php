@@ -146,14 +146,14 @@ if (!isset($_SESSION['usuario'])) {
                         <form action="checkflag.php" method="POST" class="form-signin">
                             <!-- Bloqueia envio do form diretamente pelo Enter -->
                             <button style="display: none;" disabled></button>
-                            <h3>Submeta sua <i lang="en">flag</i>:</h3>
+                            <h3>Submeta sua <em lang="en">flag</em>:</h3>
                             <label for="id-problema" class="sr-only">Informe o ID do problema (obrigatório):</label>
                             <input autocomplete="off" type="number" name="problema" id="id-problema" class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
                             <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span> (obrigatório):</label>
                             <input autocomplete="off" type="text" id="flag-interno" name="flag" class="form-control" placeholder="TreasureHunt{texto-aleatorio}" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Resposta encontrada no exercício.">
                             <div id="confirmation-submit">
                                 <div id="confirmation">
-                                    <p>Confirme o envio da <i lang="en">flag</i></p>
+                                    <p>Confirme o envio da <em lang="en">flag</em></p>
                                     <div class="flexbox-buttons">
                                         <a href="#id-problema" class="fake-btn btn btn-dark btn-block" role="button">Cancelar</a>
                                         <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
