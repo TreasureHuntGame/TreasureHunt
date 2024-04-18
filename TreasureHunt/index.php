@@ -37,16 +37,14 @@ header("X-Frame-Options: DENY");
 <body>
     <input type="checkbox" name="contrast-mode" id="contrast">
     <input type="checkbox" name="animation-switch" id="animation">
-    <noscript>
-        <input type="checkbox" name="close-alert" id="close-alert-button">
-    </noscript>
     <div id="page-wrapper">
         <input type="radio" name="nav" id="inicio" checked tabindex="-1" class="tab">
         <input type="radio" name="nav" id="regras" tabindex="-1" class="tab">
         <input type="radio" name="nav" id="contato" tabindex="-1" class="tab">
         <input type="radio" name="nav" id="acessibilidade" tabindex="-1" class="tab">
         <noscript>
-            <div class="jumbotron bg-dark" aria-atomic="true">
+            <input type="checkbox" name="close-alert" id="close-alert-button">
+            <div class="jumbotron bg-dark" aria-atomic="true" id="noscript-msg">
                 <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
                 <label id="close-alert-label" class="close" for="close-alert-button" tabindex="0" title="fechar aviso de javascript desabilitado" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
@@ -149,12 +147,15 @@ header("X-Frame-Options: DENY");
                     <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <div class="contato">
-                    <span class="nome-autor">Fernanda Ribeiro Martins</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>fernandamartins.rm<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
+                    <span class="nome-autor">João Vitor Espig</span>:
+                    <span><span class="sinal-menor" aria-hidden="true"></span>jotaespig<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <span class="address-title">Contribuidores:</span>
                 <div class="contato nome-contrib">
                     <span>Camily do Nascimento Ghellar</span>
+                </div>
+                <div class="contato nome-contrib">
+                    <span>Fernanda Ribeiro Martins</span>
                 </div>
                 <div class="contato nome-contrib">
                     <span>Gabriel Eduardo Lima</span>

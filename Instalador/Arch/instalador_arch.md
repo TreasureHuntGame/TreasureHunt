@@ -1,6 +1,6 @@
 # Instalação no Arch Linux
 
-A instalação ainda não pode ser feita utilizando o _script_ `instalador.sh` presente no diretório `Instalador`.
+A instalação ainda não pode ser feita utilizando o _script_ [`instalador.sh`](../instalador.sh) presente no diretório [`TreasureHunt/Instalador`](..).
 Para você instalar o _software_, é necessário fazer manualmente seguindo as seguintes instruções.
 
 Primeiramente, assegure-se que você tenha o _yay_ instalado em sua máquina. Veja: [https://github.com/Jguer/yay](https://github.com/Jguer/yay).

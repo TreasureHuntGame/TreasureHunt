@@ -45,9 +45,8 @@ if (!isset($_SESSION['usuario'])) {
 <body>
     <input type="checkbox" name="contrast-mode" id="contrast">
     <input type="checkbox" name="animation-switch" id="animation">
-    <noscript>
-        <input type="checkbox" name="close-alert" id="close-alert-button">
-    </noscript>
+    <!-- TODO quando o javascript é desabilitado, o input não funciona (não fecha o aviso)
+         Quando achar solução, aplicar para todos os .php que tem isso -->
     <div id="page-wrapper">
         <input type="radio" name="nav" id="inicio" checked>
         <input type="radio" name="nav" id="rank">
@@ -55,7 +54,8 @@ if (!isset($_SESSION['usuario'])) {
         <input type="radio" name="nav" id="contato">
         <input type="radio" name="nav" id="acessibilidade">
         <noscript>
-            <div class="jumbotron bg-dark" aria-atomic="true">
+            <input type="checkbox" name="close-alert" id="close-alert-button">
+            <div class="jumbotron bg-dark" aria-atomic="true" id="noscript-msg">
                 <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
                 <label id="close-alert-label" class="close" for="close-alert-button" tabindex="0" title="fechar aviso de javascript desabilitado" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>
@@ -142,12 +142,25 @@ if (!isset($_SESSION['usuario'])) {
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-4 jumbotron bg-dark" id="jumbotron-home-form">
                         <form action="checkflag.php" method="POST" class="form-signin">
-                            <h3>Submeta sua <i lang="en">flag</i>:</h3>
+                            <!-- Bloqueia envio do form diretamente pelo Enter -->
+                            <button style="display: none;" disabled></button>
+                            <h3>Submeta sua <em lang="en">flag</em>:</h3>
                             <label for="id-problema" class="sr-only">Informe o ID do problema (obrigatório):</label>
                             <input autocomplete="off" type="number" name="problema" id="id-problema" class="form-control input-sm" placeholder="ID do problema (Exemplo: 1)" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Número do diretório cujo exercício foi resolvido.">
                             <label for="flag-interno" class="sr-only">Informe a <span lang="en">flag</span> (obrigatório):</label>
                             <input autocomplete="off" type="text" id="flag-interno" name="flag" class="form-control" placeholder="TreasureHunt{texto-aleatorio}" required data-offset="400" data-trigger="focus" data-toggle="tooltip" data-placement="top" title="Resposta encontrada no exercício.">
-                            <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
+                            <div id="confirmation-submit">
+                                <div id="confirmation">
+                                    <p>Confirme o envio da <em lang="en">flag</em></p>
+                                    <div class="flexbox-buttons">
+                                        <a href="#id-problema" class="fake-btn btn btn-dark btn-block" role="button">Cancelar</a>
+                                        <button class="btn btn-dark btn-block" type="submit" name="enviar">Enviar</button>
+                                    </div>
+                                </div>
+                                <a href="#confirmation-submit" class="fake-btn fake-submit-btn btn btn-dark btn-block" role="button">
+                                    Enviar
+                                </a>
+                            </div>
                             <?php
                             if (isset($_GET['message'])) {
                                 switch ($_GET['message']) {
@@ -296,12 +309,15 @@ if (!isset($_SESSION['usuario'])) {
                     <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <div class="contato">
-                    <span class="nome-autor">Fernanda Ribeiro Martins</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>fernandamartins.rm<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
+                    <span class="nome-autor">João Vitor Espig</span>:
+                    <span><span class="sinal-menor" aria-hidden="true"></span>jotaespig<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <span class="address-title">Contribuidores:</span>
                 <div class="contato nome-contrib">
                     <span>Camily do Nascimento Ghellar</span>
+                </div>
+                <div class="contato nome-contrib">
+                    <span>Fernanda Ribeiro Martins</span>
                 </div>
                 <div class="contato nome-contrib">
                     <span>Gabriel Eduardo Lima</span>
