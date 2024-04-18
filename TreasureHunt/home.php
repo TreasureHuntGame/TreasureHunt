@@ -47,9 +47,6 @@ if (!isset($_SESSION['usuario'])) {
     <input type="checkbox" name="animation-switch" id="animation">
     <!-- TODO quando o javascript é desabilitado, o input não funciona (não fecha o aviso)
          Quando achar solução, aplicar para todos os .php que tem isso -->
-    <noscript>
-        <input type="checkbox" name="close-alert" id="close-alert-button">
-    </noscript>
     <div id="page-wrapper">
         <input type="radio" name="nav" id="inicio" checked>
         <input type="radio" name="nav" id="rank">
@@ -57,7 +54,8 @@ if (!isset($_SESSION['usuario'])) {
         <input type="radio" name="nav" id="contato">
         <input type="radio" name="nav" id="acessibilidade">
         <noscript>
-            <div class="jumbotron bg-dark" aria-atomic="true">
+            <input type="checkbox" name="close-alert" id="close-alert-button">
+            <div class="jumbotron bg-dark" aria-atomic="true" id="noscript-msg">
                 <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
                 <label id="close-alert-label" class="close" for="close-alert-button" tabindex="0" title="fechar aviso de javascript desabilitado" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>

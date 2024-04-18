@@ -37,16 +37,14 @@ header("X-Frame-Options: DENY");
 <body>
     <input type="checkbox" name="contrast-mode" id="contrast">
     <input type="checkbox" name="animation-switch" id="animation">
-    <noscript>
-        <input type="checkbox" name="close-alert" id="close-alert-button">
-    </noscript>
     <div id="page-wrapper">
         <input type="radio" name="nav" id="inicio" checked tabindex="-1" class="tab">
         <input type="radio" name="nav" id="regras" tabindex="-1" class="tab">
         <input type="radio" name="nav" id="contato" tabindex="-1" class="tab">
         <input type="radio" name="nav" id="acessibilidade" tabindex="-1" class="tab">
         <noscript>
-            <div class="jumbotron bg-dark" aria-atomic="true">
+            <input type="checkbox" name="close-alert" id="close-alert-button">
+            <div class="jumbotron bg-dark" aria-atomic="true" id="noscript-msg">
                 <p>Javascript desabilitado! Algumas funcionalidades podem apresentar limitações.</p>
                 <label id="close-alert-label" class="close" for="close-alert-button" tabindex="0" title="fechar aviso de javascript desabilitado" aria-label="Fechar">
                     <span aria-hidden="true">&times;</span>

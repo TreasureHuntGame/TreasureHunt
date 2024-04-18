@@ -200,7 +200,7 @@ input#contrast:checked~#page-wrapper .popup .close:hover {
     box-shadow: 0 0 0 2px var(--cor-primaria) !important;
 }
 
-input#close-alert-button:checked~#page-wrapper noscript {
+input#close-alert-button:checked+#noscript-msg {
     display: none;
 }
 
