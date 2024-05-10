@@ -16,7 +16,7 @@ function console_log($data) {
 	echo '</script>';
 }
 
-$problema = filter_input(INPUT_POST, 'problema');
+$problema = filter_input(INPUT_POST, 'problema', FILTER_SANITIZE_NUMBER_INT);
 $flagPura = filter_input(INPUT_POST, 'flag');
 $flagSemEspaco = preg_replace('/\s/', '', $flagPura);
 $flagSemEspaco = str_replace('\t', '', $flagSemEspaco);

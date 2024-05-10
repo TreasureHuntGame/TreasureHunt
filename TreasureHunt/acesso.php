@@ -4,7 +4,7 @@
 require_once 'conexao.php';
 
 // filtrar input do id de usuário
-$usuario = filter_input(INPUT_POST, 'usuario');
+$usuario = filter_input(INPUT_POST, 'usuario', FILTER_SANITIZE_NUMBER_INT);
 // "montar" comando sql, prepará-lo, inserir variáveis e executar
 //$sql = "SELECT * FROM Usuario where id='$usuario'";
 $sql = "SELECT * FROM Usuario where id=:usuario";
