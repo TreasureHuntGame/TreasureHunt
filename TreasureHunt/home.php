@@ -168,7 +168,7 @@ if (!isset($_SESSION['usuario'])) {
                                         echo '<div class="alert alert-danger" role="alert" aria-atomic="true"> Errou! Verifique se a resposta informada não contém espaço ou outros caracteres adicionais.</div>';
                                         break;
                                     case 'duplicada':
-                                        echo '<div class="alert alert-danger" role="alert" aria-atomic="true"> Você já acertou a questão ' . $_GET['id'] . '! Verifique o ID do problema.</div>';
+                                        echo '<div class="alert alert-danger" role="alert" aria-atomic="true"> Você já acertou a questão ' . filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT) . '! Verifique o ID do problema.</div>';
                                         break;
                                     case 'formato':
                                         echo '<div class="alert alert-danger" role="alert" aria-atomic="true"> Errou! Considere submeter a flag no seguinte formato: TreasureHunt{texto-aleatório}.</div>';
@@ -177,7 +177,7 @@ if (!isset($_SESSION['usuario'])) {
                                         echo '<div class="alert alert-danger" role="alert" aria-atomic="true"> Problema com ID inválido! Verifique a numeração dos diretórios recebidos.</div>';
                                         break;
                                     case 'acertou':
-                                        echo '<div class="alert alert-success" role="alert" aria-atomic="true">Acertou! ' . $_GET['acertos'] . '/' . $_GET['total'] . '</div>';
+                                        echo '<div class="alert alert-success" role="alert" aria-atomic="true">Acertou! ' . filter_input(INPUT_GET, 'acertos', FILTER_SANITIZE_NUMBER_INT) . '/' . filter_input(INPUT_GET, 'total', FILTER_SANITIZE_NUMBER_INT) . '</div>';
                                         break;
                                 }
                             }
