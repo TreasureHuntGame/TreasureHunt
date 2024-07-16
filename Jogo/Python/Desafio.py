@@ -1,11 +1,14 @@
 import time
 
+
 def printFlag():
-	FLAG = ""
+    FLAG = ""
+
 
 def mainFunction():
-	while True:
-		time.sleep(1)
-		print "TEXTO"
+    while True:
+        time.sleep(1)
+        print("TEXTO")
+
 
 mainFunction()

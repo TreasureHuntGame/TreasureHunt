@@ -10,7 +10,6 @@ O instalador busca dar suporte aos seguintes gerenciadores de pacote:
 - apt-get
 - yum 
 - dnf
-- packman
 
 Os erros de instalação são colocados no diretório `logs`. Sinta-se livre para sugerir a adição de outro gerenciador de pacotes ou relatar algum erro de instalação abrindo um _issue_ e/ou entrando em contato com a equipe do projeto. 
 

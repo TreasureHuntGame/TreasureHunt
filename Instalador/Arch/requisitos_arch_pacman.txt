@@ -9,3 +9,4 @@ grep
 zip
 mariadb
 bc
+python
