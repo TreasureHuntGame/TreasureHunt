@@ -1,6 +1,10 @@
+#!/bin/bash
+
 format_float_value() {
     printf "%.2f" $1
 }
+
+echo -e "--------------------\nScript de geração de estatísticas\n--------------------\n"
 
 # Verifica se o serviço mysql está rodando
 if [ "$(systemctl is-active mysql)" != "active" ]; then
@@ -38,3 +42,5 @@ echo "Desempenho da turma com o easteregg: $desempenho%"
 echo "Quantidade total de submissoes: $quantidade_submissoes"
 echo "Quantidade total de submissoes corretas: $quantidade_submissoes_corretas"
 echo "Taxa de submissoes corretas: $taxa_submissoes_corretas%"
+
+sleep 1
