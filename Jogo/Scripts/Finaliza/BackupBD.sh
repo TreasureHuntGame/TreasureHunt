@@ -10,14 +10,12 @@ fi
 
 usuario=$1
 timestamp=$2
-hoje=$(date +%d/%m/%Y)
-arquivo=/home/$usuario/th-backup/$timestamp/backup.sql
+arquivo=/home/$usuario/th-backups/$timestamp/backup.sql
 
-echo "Dump do banco de dados da competição TreasureHunt do dia $hoje"
-echo -e "no diretório $arquivo\n"
-mkdir -p /home/$usuario/th-backup/$timestamp
+echo "Dump do banco de dados da competição TreasureHunt salvo em:"
+echo -e "$arquivo\n"
+mkdir -p /home/$usuario/th-backups/$timestamp
 mysqldump -u root TreasureHunt > $arquivo
-
 
 opcao=""
 while true; do

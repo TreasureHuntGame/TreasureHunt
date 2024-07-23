@@ -36,9 +36,15 @@ fi
 mysql_servico="mysql"
 
 echo
-bash EstatisticasBD.sh
+bash EstatisticasBD.sh $usuario $timestamp
+echo
+read -n 1 -s -r -p "Pressione qualquer tecla para continuar..."
+echo
 echo
 bash BackupBD.sh $usuario $timestamp
+echo
+read -n 1 -s -r -p "Pressione qualquer tecla para continuar..."
+echo
 echo
 
 opcao=""
@@ -58,4 +64,26 @@ done
 if [[ $opcao -eq 1 ]]; then
     sudo systemctl stop $apache_servico
     sudo systemctl stop $mysql_servico
+fi
+
+opcao=""
+while true; do
+    echo "Deseja fazer o relatório do questionário?"
+    echo "1: Sim"
+    echo "2: Não"
+    echo "----------"
+    read -p "Digite uma das opções acima: " opcao
+    echo "----------"
+    case $opcao in
+        1|2 ) break;;
+        *) echo -e "Opção inválida, digite novamente! " && sleep 1;;
+    esac
+done
+
+if [[ $opcao -eq 1 ]]; then
+    read -e -p "Digite o caminho do arquivo do questionário (arquivo .dat): " caminho
+    arquivo="/home/$usuario/th-relatorios/$timestamp/relatorio_questionario.md"
+    Rscript EstatisticasQuestionario.r $caminho 1> $arquivo
+    echo -e "\nRelatório do questionário salvo em: "
+    echo "$arquivo"
 fi
