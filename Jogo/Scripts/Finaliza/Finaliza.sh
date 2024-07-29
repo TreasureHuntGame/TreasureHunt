@@ -7,7 +7,7 @@ echo -e "--------------------\nScript de finalização\n--------------------\n"
 echo "Este script:"
 echo " * gerará as estatísticas da competição;"
 echo " * fará um backup do banco de dados; e"
-echo -e " * parará os serviços apache e mysql\n"
+echo -e " * poderá redefinir as regras de acesso da pasta TreasureHunt no servidor web\n"
 echo "Você tem certeza que deseja iniciar esta ação?"
 echo "Obs.: Certifique-se de ter removido eventuais dados inválidos, tais como submissões realizadas após o tempo"
 echo "estipulado para a atividade ou de usuários não participantes, tais como o(s) organizador(es)."
@@ -28,13 +28,6 @@ while true; do
     esac
 done
 
-# Verifica se o serviço do apache é chamado de apache2, se não for, tenta chamar de httpd
-apache_servico="apache2"
-if [ -z "$(systemctl list-unit-files | grep $apache_servico)" ]; then
-    apache_servico="httpd"
-fi
-mysql_servico="mysql"
-
 echo
 bash EstatisticasBD.sh $usuario $timestamp
 echo
@@ -49,7 +42,7 @@ echo
 
 opcao=""
 while true; do
-    echo "Deseja parar os serviços apache e mysql?"
+    echo "Deseja bloquear o acesso a pasta do Treasure Hunt no servidor web?"
     echo "1: Sim"
     echo "2: Não"
     echo "----------"
@@ -62,8 +55,9 @@ while true; do
 done
 
 if [[ $opcao -eq 1 ]]; then
-    sudo systemctl stop $apache_servico
-    sudo systemctl stop $mysql_servico
+    # Adiciona regra no arquivo .htaccess para impedir o acesso a página
+    echo "Deny from all" | sudo tee /var/www/html/TreasureHunt/.htaccess > /dev/null
+    echo
 fi
 
 opcao=""

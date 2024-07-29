@@ -754,6 +754,9 @@ echo -e "Fim da criação da Competição."
 
 manejaAtivacaoNgrok
 
+# Cria arquivo .htaccess no diretório do servidor web
+echo "Allow from all" | sudo tee $CAMINHO_SITE/.htaccess > /dev/null
+
 logger "Script finalizado;"
 
 criaLog
