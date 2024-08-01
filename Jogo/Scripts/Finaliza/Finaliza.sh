@@ -42,7 +42,7 @@ echo
 
 opcao=""
 while true; do
-    echo "Deseja bloquear o acesso a pasta do Treasure Hunt no servidor web?"
+    echo "Deseja bloquear o acesso a pasta do Treasure Hunt no servidor web e desligar o ngrok?"
     echo "1: Sim"
     echo "2: Não"
     echo "----------"
@@ -56,8 +56,10 @@ done
 
 if [[ $opcao -eq 1 ]]; then
     # Adiciona regra no arquivo .htaccess para impedir o acesso a página
-    echo "Deny from all" | sudo tee /var/www/html/TreasureHunt/.htaccess > /dev/null
+    echo -e "Order Deny,Allow\nDeny from all\nAllow from 127.0.0.1" | sudo tee /var/www/html/TreasureHunt/.htaccess > /dev/null
     echo
+    # Desliga ngrok
+    killall ngrok 2> /dev/null
 fi
 
 opcao=""
