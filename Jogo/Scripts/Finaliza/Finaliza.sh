@@ -3,6 +3,76 @@
 usuario=$(whoami)
 timestamp=$(date +%Y%m%d%H%M%S)
 
+# Função que habilita o alto contraste no terminal
+# Inicialmente esta função testa se a tela já está no contraste máximo, ou seja, se as cores
+# branco e preto já estão sendo utilizadas em background e foreground. Se não estiver, fornece
+# as opções para o usuário.
+altoContraste() {
+	if [[ (($R1 != "rgb:ffff/ffff/ffff" && $R1 != "rgb:FFFF/FFFF/FFFF") || $R2 != "rgb:0000/0000/0000") && (($R2 != "rgb:ffff/ffff/ffff" && $R2 != "rgb:FFFF/FFFF/FFFF") || $R1 != "rgb:0000/0000/0000") ]]; then
+	    while true; do
+	        echo "Habilitar alto contraste?"
+	        echo "1: Sim"
+	        echo "2: Não"
+	        echo "Obs.: ao finalizar o script, suas cores padrão serão restauradas."
+	        echo "----------"
+	        read -p "Digite uma das opções acima: " OPCAO
+	        echo "----------"   
+	        case $OPCAO in
+	            1|2) break ;; 
+	            *) echo -e "Opção inválida, digite novamente! " && sleep 1;;
+	        esac
+	    done
+
+	    # Se optar pelo alto contraste, o texto ficará preto e o fundo branco.
+	    if [ $OPCAO = 1 ]; then
+	        echo -ne '\e]11;#FFFFFF\e\\'
+	        echo -ne '\e]10;#000000\e\\'
+	    fi  
+	fi
+}
+
+pegaCoresTerminal() {
+    oldstty=$(stty -g)
+    Ps=${1:-11}
+    stty raw -echo min 0 time 0
+    printf "\033]$Ps;?\033\\"
+    sleep 0.2
+    read -r answer
+    result1=${answer#*;}
+    stty $oldstty
+    sleep 0.2
+    oldstty=$(stty -g)
+    Ps=${1:-10}
+    stty raw -echo min 0 time 0
+    printf "\033]$Ps;?\033\\"
+    sleep 0.2
+    read -r answer
+    result2=${answer#*;}
+    stty $oldstty
+    R1=$(echo $result1 | sed 's/[^rgb:0-9a-f/]\+$//')
+    R2=$(echo $result2 | sed 's/[^rgb:0-9a-f/]\+$//')
+}
+
+restauraCores() {
+    echo -ne "\033]11;$R1\007"
+    echo -ne "\033]10;$R2\007"
+}
+
+encerraPrograma() {
+	restauraCores
+ 	echo ""
+	exit $1
+}
+
+abortaScript() {
+	encerraPrograma
+}
+
+pegaCoresTerminal
+trap encerraPrograma SIGINT
+
+altoContraste
+
 echo -e "--------------------\nScript de finalização\n--------------------\n"
 echo "Este script:"
 echo " * gerará as estatísticas da competição;"
@@ -23,7 +93,7 @@ while true; do
     echo "----------"   
     case $opcao in
         1 ) break;;
-        2 ) exit 0;;
+        2 ) encerraPrograma 0;;
         *) echo -e "Opção inválida, digite novamente! " && sleep 1;;
     esac
 done
@@ -83,3 +153,5 @@ if [[ $opcao -eq 1 ]]; then
     echo -e "\nRelatório do questionário salvo em: "
     echo "$arquivo"
 fi
+
+encerraPrograma
