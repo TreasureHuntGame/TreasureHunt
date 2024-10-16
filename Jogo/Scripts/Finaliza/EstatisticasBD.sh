@@ -106,8 +106,8 @@ done
 # -- Detector de possíveis tentativas de brute force --
 tempo_comeco=$(echo "SELECT MIN(hora) FROM Submissao" | mysql -u root TreasureHunt -N 2> /dev/null)
 tempo_fim=$(echo "SELECT MAX(hora) FROM Submissao" | mysql -u root TreasureHunt -N 2> /dev/null)
-quantidades_de_envios_aceitaves=$(echo "$quantidade_questoes * 2" | bc -l)
-query="SELECT idUsuario, COUNT(*) AS media FROM Submissao WHERE hora BETWEEN '$tempo_comeco' AND '$tempo_fim' GROUP BY idUsuario HAVING media > $quantidades_de_envios_aceitaves ORDER BY media;"
+quantidades_de_envios_aceitaveis=$(echo "$quantidade_questoes * 2" | bc -l)
+query="SELECT idUsuario, COUNT(*) AS media FROM Submissao WHERE hora BETWEEN '$tempo_comeco' AND '$tempo_fim' GROUP BY idUsuario HAVING media > $quantidades_de_envios_aceitaveis ORDER BY media;"
 usuarios_que_enviaram_muitas_respostas=$(echo $query | mysql -u root TreasureHunt -N 2> /dev/null)
 echo -e "\n" >> $arquivo
 if [ -n "$usuarios_que_enviaram_muitas_respostas" ]; then
