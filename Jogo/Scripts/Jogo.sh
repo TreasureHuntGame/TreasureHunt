@@ -756,6 +756,8 @@ manejaAtivacaoNgrok
 
 # Cria arquivo .htaccess no diretório do servidor web
 echo "Allow from all" | sudo tee $CAMINHO_SITE/.htaccess > /dev/null
+# Cria arquivo .htaccess no diretório de desafios do servidor web
+echo "Deny from all" | sudo tee $DESTINO_DESAFIOS/.htaccess > /dev/null
 
 logger "Script finalizado;"
 

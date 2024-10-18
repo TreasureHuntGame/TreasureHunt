@@ -122,7 +122,7 @@ if (!isset($_SESSION['usuario'])) {
                         <div>
                             <label class="font-weight-bold">Arquivo:</label>
                             <span data-toggle="tooltip" data-placement="bottom" title="Arquivo que contém os exercícios!">
-                                <a id="arquivo" class="link-padrao" href="<?php print_r("Desafios/Jogador" . $usuario . ".zip") ?>">
+                                <a id="arquivo" class="link-padrao" href="download_desafios.php">
                                     <?php
                                     function formatBytes($size, $precision = 2) {
                                         $base = log($size, 1024);
