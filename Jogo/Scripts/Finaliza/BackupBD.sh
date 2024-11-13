@@ -52,7 +52,7 @@ while true; do
     read -p "Digite uma das opções acima: " opcao
     echo "----------"   
     case $opcao in
-        1 ) echo "Limpando banco de dados atual"; mysql -u root TreasureHunt < sql_queries/limpar.sql; break;;
+        1 ) echo "Limpando o banco de dados atual"; mysql -u root TreasureHunt < sql_queries/limpar.sql; break;;
         2 ) exit 0;;
         *) echo -e "Opção inválida, digite novamente! " && sleep 1;;
     esac
