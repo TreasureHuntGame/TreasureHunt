@@ -71,7 +71,7 @@ Os acessos e as submissões de respostas por meio do Sistema _Web_ podem ser ver
 
 Além disso, a interface _web_ do TreasureHunt é responsiva e foi otimizada para ser **acessível** de acordo com os critérios da [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) (_Web Content Accessibility Guidelines_, Diretrizes de Acessibilidade para o Conteúdo da _Web_). Dos 87 critérios de acessibilidade avaliados (versão 2.2 da WCAG), 13 deles não se aplicam à interface _web_ do TreasureHunt. A interface _web_ do TreasureHunt cumpre os outros 74 critérios, o que corresponde a 100% do total aplicável. A avaliação dos critérios pode ser observada na [planilha online de critérios de acessibilidade cumpridos pela interface web do TreasureHunt](https://docs.google.com/spreadsheets/d/1r6ifZskz3rcLPS9CdXQj9zscRncGMhmOs81W8IWGYfA/edit?usp=sharing). Essa planilha também contém uma análise histórica das interfaces do TreasureHunt, permitindo observar sua evolução e atualização frente aos critérios da WCAG. Em 2020, a interface web de outros jogos de Segurança Computacional também foi avaliada e está disponível na planilha.
 
-Com o objetivo de ser cada vez mais acessível, o _website_ é testado por meio de validadores automáticos de acessibilidade e de testes manuais, como o uso de leitores de tela e simuladores de daltonismo. Alguns dos recursos de acessibilidade da interface _web_ do TreasureHunt estão descritos na página "acessibilidade", que explica e auxilia a utilização de alguns deles. Dentre os recursos de acessibilidade do TreasureHunt podemos citar:  
+Com o objetivo de ser cada vez mais acessível, o _website_ é testado por meio de validadores automáticos de acessibilidade e de testes manuais, como o uso de leitores de tela e simuladores de daltonismo. Alguns dos recursos de acessibilidade da interface _web_ do TreasureHunt estão descritos na página "acessibilidade", que explica e auxilia a utilização de alguns deles. Dentre os recursos de acessibilidade do TreasureHunt, podemos citar:  
 
 - relação de contraste acima de 4,5:1 em todo o website e um modo de alto contraste com relação superior a 7:1
 - suporte para navegação por teclado 
@@ -114,7 +114,7 @@ cd TreasureHunt
 Após baixar o repositório para a sua máquina, o próximo passo é fazer a instalação dos requisitos do projeto.
 
 #### Arch
-Para instalar o projeto em distribuições arch, você precisará instalar manualmente seguindo um passo a passo, pois o _script_ [`instalador.sh`](/Instalador/instalador.sh) ainda não funciona no arch.
+Para o TreasureHunt funcionar em distribuições `arch`, é necessário instalar manualmente seguindo um passo a passo, pois o _script_ [`instalador.sh`](/Instalador/instalador.sh) ainda não funciona no `arch`.
 O manual de instalação se encontra no arquivo [`instalador_arch.md`](/Instalador/Arch/instalador_arch.md), localizado em [`TreasureHunt/Instalador/Arch`](/Instalador/Arch).
 
 #### Demais distribuições Linux 
