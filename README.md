@@ -228,11 +228,9 @@ Pressupõe-se algumas condições para que instalação, configuração e execu�
 
 Depois, reinicie o MySQL (``sudo service mysql restart``) e tente novamente. Você também pode verificar se a diretiva foi removida entrando no MySQL e digitando no console: ``SHOW VARIABLES LIKE 'sql_mode';``. 
 
-- *Nota 4*: O arquivo ``apache2.conf``, disponível no diretório ``TreasureHunt/TreasureHunt``, serve apenas como exemplo de configuração do servidor _web_. O organizador pode configurá-lo de maneira diferente, a seu critério.
+- *Nota 4*: Arquivos de texto podem apresentar problemas se codificados com `iso 8859-1`. Prefira `utf-8` ou `us-ascii`.
 
-- *Nota 5*: Arquivos de texto podem apresentar problemas se codificados com `iso 8859-1`. Prefira `utf-8` ou `us-ascii`.
-
-- *Nota 6*: Se você obtiver a mensagem `ERROR 1698 (28000): Access denied for user 'root'@'localhost'` ao final do _script_, verifique o valor _default_ de autenticação para o seu usuário e altere-o. Isso pode ser feito seguindo os passos abaixo (exemplo para o usuário `root`):
+- *Nota 5*: Se você obtiver a mensagem `ERROR 1698 (28000): Access denied for user 'root'@'localhost'` ao final do _script_, verifique o valor _default_ de autenticação para o seu usuário e altere-o. Isso pode ser feito seguindo os passos abaixo (exemplo para o usuário `root`):
 
 ```SQL
 > sudo mysql -u root
@@ -243,11 +241,11 @@ mysql> FLUSH PRIVILEGES;
 mysql> exit;
 > service mysql restart
 ```
-- *Nota 7*: Se você obtiver a mensagem de erro `Bad substitution` ao executar o _script_ [`Jogo.sh`](/Jogo/Scripts/Jogo.sh), tente executar o _script_ com o comando `bash Jogo.sh`.
+- *Nota 6*: Se você obtiver a mensagem de erro `Bad substitution` ao executar o _script_ [`Jogo.sh`](/Jogo/Scripts/Jogo.sh), tente executar o _script_ com o comando `bash Jogo.sh`.
 
-- *Nota 8*: alguns navegadores podem restringir o acesso a _websites_ que não possuem um certificado SSL/TLS (HTTPS). Caso a sua hospedagem do TreasureHunt esteja limitada ao HTTP, certifique-se de orientar os competidores a desativarem tal configuração.
+- *Nota 7*: alguns navegadores podem restringir o acesso a _websites_ que não possuem um certificado SSL/TLS (HTTPS). Caso a sua hospedagem do TreasureHunt esteja limitada ao HTTP, certifique-se de orientar os competidores a desativarem tal configuração.
 
-- *Nota 9*: A fim de evitar ataques de _Clickjacking_ e _Cross Frame Scripting_ (XFS), sugere-se a configuração dos cabeçalhos de resposta HTTP `Content-Security-Policy` e `X-Frame-Options`. Para isso, o módulo de cabeçalhos (_headers_) precisa estar ativo:
+- *Nota 8*: A fim de evitar ataques de _Clickjacking_ e _Cross Frame Scripting_ (XFS), sugere-se a configuração dos cabeçalhos de resposta HTTP `Content-Security-Policy` e `X-Frame-Options`. Para isso, o módulo de cabeçalhos (_headers_) precisa estar ativo:
 ```
 > a2enmod headers
 > service apache2 restart
@@ -261,9 +259,9 @@ Novamente é necessário reiniciar o servidor: `service apache2 start`.
 
 Outra solução possível é adicionar os cabeçalhos diretamente por PHP com `header("Content-Security-Policy: frame-ancestors 'none'");` e `header("X-Frame-Options: DENY");`, o que já foi feito nos arquivos PHP deste jogo. No entanto, tal medida ainda não impede que arquivos de outros tipos (por exemplo, XML) possam ser carregados em _frames_.
 
-- *Nota 10*: Caso o _script_ aponte o erro `caesar: not found` ao gerar problemas com o `caesar`, verifique em que diretório este programa foi instalado (sugestão de comando: `which caesar`) e atualize todas as chamadas a `caesar` nos _scripts_ do jogo para `diretorio/completo/do/caesar`. Isto pode ser feito manualmente ou de forma automática via linha de comando. Por exemplo (executado a partir do diretório [`Jogo`](/Jogo/)): `x=$(which caesar); grep -rl 'caesar' * | xargs sed -i "s#caesar#${x}#g"`. O arquivo [`Fix-caesar-not-found.sh`](/Jogo/Scripts/Fix-caesar-not-found.sh), disponibilizado na pasta [`Scripts`](/Jogo/Scripts/), pode ser executado para resolver este problema.
+- *Nota 9*: Caso o _script_ aponte o erro `caesar: not found` ao gerar problemas com o `caesar`, verifique em que diretório este programa foi instalado (sugestão de comando: `which caesar`) e atualize todas as chamadas a `caesar` nos _scripts_ do jogo para `diretorio/completo/do/caesar`. Isto pode ser feito manualmente ou de forma automática via linha de comando. Por exemplo (executado a partir do diretório [`Jogo`](/Jogo/)): `x=$(which caesar); grep -rl 'caesar' * | xargs sed -i "s#caesar#${x}#g"`. O arquivo [`Fix-caesar-not-found.sh`](/Jogo/Scripts/Fix-caesar-not-found.sh), disponibilizado na pasta [`Scripts`](/Jogo/Scripts/), pode ser executado para resolver este problema.
 
-- *Nota 11*: A função `altoContraste` definida no arquivo [`Jogo.sh`](/Jogo/Scripts/Jogo.sh) tem comportamento adequado se utilizada do Gnome Terminal e do XFCE4 Terminal. Ela não foi testada a partir de outros terminais e seu comportamento pode variar em outros ambientes de terminal.
+- *Nota 10*: A função `altoContraste` definida no arquivo [`Jogo.sh`](/Jogo/Scripts/Jogo.sh) tem comportamento adequado se utilizada do Gnome Terminal e do XFCE4 Terminal. Ela não foi testada a partir de outros terminais e seu comportamento pode variar em outros ambientes de terminal.
 
 ---
 
