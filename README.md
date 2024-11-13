@@ -65,7 +65,7 @@ Os _scripts_ são responsáveis por montar a competição, gerar instâncias de 
 
 ![diagrama de casos deuso](Imagens/caso_uso.png)
 
-As respostas (_flags_) estão presentes nos arquivos disponibilizados aos jogadores. Para serem descobertas, é necessário que o jogador utilize técnicas corretas, tais como descriptografia de _base64_ ou Cifra de César, por exemplo.
+As respostas (_flags_) estão presentes nos arquivos disponibilizados aos jogadores. Para serem descobertas, é necessário que o jogador utilize técnicas corretas, tais como decodificação de _base64_ ou descriptografia de Cifra de César, por exemplo.
 
 Os acessos e as submissões de respostas por meio do Sistema _Web_ podem ser verificados pelo organizador no Banco de Dados `TreasureHunt`. Nele ficam registrados os dados da competição, inclusive o endereço IP dos jogadores, garantindo que uma conta não tenha sido compartilhada, por exemplo. Vale lembrar que boas práticas de Segurança são aplicadas nos dados sensíveis, tais como o uso de _hash_ e _salt_.
 
