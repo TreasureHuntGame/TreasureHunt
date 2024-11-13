@@ -2,9 +2,9 @@
 
 echo -e "--------------------\nScript de backup do banco de dados\n--------------------\n"
 
-# Verifica se o serviço mysql está rodando
+# Verifica se o serviço MySQL está rodando
 if [ "$(systemctl is-active mysql)" != "active" ]; then
-    echo "O serviço mysql não está rodando" >&2
+    echo "O serviço MySQL não está rodando." >&2
     exit 1
 fi
 
@@ -35,7 +35,7 @@ done
 
 # Verifica se o serviço mysql está rodando
 if [ "$(systemctl is-active mysql)" != "active" ]; then
-    echo "O serviço mysql não está rodando"
+    echo "O serviço MySQL não está rodando."
     exit 1
 fi
 
