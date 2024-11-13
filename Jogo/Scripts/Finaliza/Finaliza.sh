@@ -115,7 +115,7 @@ echo
 
 opcao=""
 while true; do
-    echo "Deseja modificar as permissões de acesso à pasta do Treasure Hunt no servidor web e desligar o ngrok?"
+    echo "Deseja modificar as permissões de acesso à pasta do TreasureHunt no servidor web e desligar o ngrok?"
     echo "1: Sim"
     echo "2: Não"
     echo "----------"
