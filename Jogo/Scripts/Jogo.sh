@@ -307,8 +307,8 @@ excluiLogger() {
 	[ -f Logger ] && rm "Logger"
 }
 
-# Verifica se existe algum arquivo de competição antigo. 
-# Se existir, pergunta ao usuário o que ele deseja fazer
+# Verifica se existe algum arquivo de competição antigo.
+# Se existir, pergunta ao usuário o que ele deseja fazer.
 manejaArquivosCompeticoesAntigos() {
 	# Se algum arquivo de outra competição já estiver criado 
 	if existeLog || existeDirNumerico || existeRespostas; then
@@ -316,7 +316,7 @@ manejaArquivosCompeticoesAntigos() {
 		while true; do  # Pergunta o que o usuário deseja fazer
 			echo "Arquivos de competições anteriores foram encontrados! "
 			echo "----------"
-			echo "lista de opções disponíveis: "
+			echo "Lista de opções disponíveis: "
 			echo "1: Mover arquivos antigos para um diretório criado automaticamente."
 			echo "2: Excluir todos os arquivos antigos."
 			echo "3: Abortar o script."
