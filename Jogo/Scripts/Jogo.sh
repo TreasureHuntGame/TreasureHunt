@@ -335,7 +335,7 @@ manejaArquivosCompeticoesAntigos() {
 		elif [ $OPCAO = "2" ]; then # Se escolher 2, exclui os arquivos
 			excluiArquivosCompeticao
 
-		elif [ $OPCAO = "3" ]; then # se escolher 3, sai do script
+		elif [ $OPCAO = "3" ]; then # Se escolher 3, sai do script
 			abortaScript
 		fi    
 	fi 
