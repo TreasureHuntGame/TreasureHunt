@@ -413,7 +413,7 @@ geraDesafio() {
 			echo "Adicionando o desafio $PROBLEMA1 $PROBLEMA2 à competição." && sleep 0.5
 			# PROBLEMAS[$i]=$PROBLEMA1$PROBLEMA2
 			PROBLEMAS+=($PROBLEMA1-$PROBLEMA2)
-			logger "Desafio $DESAFIO_ATUAL adicionado a competição;"
+			logger "Desafio $DESAFIO_ATUAL adicionado à competição;"
 		else 
 			logger $MENSAGEM
 		fi 
