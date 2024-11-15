@@ -58,17 +58,17 @@ FLAG=$FLAG_GERADA
 # no diretório destino e remove o arquivo compilado do diretório base
 case $3 in
     1) javac "$FONTE"
-       cp -T "${FONTE%.*}.class" "$DESTINO/${FONTE%.*}.class"
-       [ -e "${FONTE%.*}.class" ] && rm "${FONTE%.*}.class" ;;
+        cp -T "${FONTE%.*}.class" "$DESTINO/$(basename "${FONTE%.*}.class")"
+        [ -e "${FONTE%.*}.class" ] && rm "${FONTE%.*}.class" ;;
     2) python3 -m compileall -q "$FONTE"
-       sleep 1
-       # Move o arquivo .pyc do diretório __pycache__ para o destino
-	   ARQUIVO_PYC=$(find "$DIRETORIO/__pycache__" -maxdepth 1 -type f | shuf -n 1)
-       ARQUIVO_PYC_FINAL="$DESTINO/$(basename "$FONTE" .py).pyc"
-       if [ -e "$ARQUIVO_PYC" ]; then
-           mv "$ARQUIVO_PYC" "$ARQUIVO_PYC_FINAL"
-           rm -rf "$DIRETORIO/__pycache__/"
-       fi ;;
+        sleep 1
+        # Move o arquivo .pyc do diretório __pycache__ para o destino
+        ARQUIVO_PYC=$(find "$DIRETORIO/__pycache__" -maxdepth 1 -type f | shuf -n 1)
+        ARQUIVO_PYC_FINAL="$DESTINO/$(basename "$FONTE" .py).pyc"
+        if [ -e "$ARQUIVO_PYC" ]; then
+            mv "$ARQUIVO_PYC" "$ARQUIVO_PYC_FINAL"
+            rm -rf "$DIRETORIO/__pycache__/"
+        fi ;;
 esac
 
 # Recoloca os valores originais no texto inicial e na flag do código-fonte
