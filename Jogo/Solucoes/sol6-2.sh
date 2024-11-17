@@ -5,7 +5,8 @@ do
 	do
 
 		cat "../$i/$2/saida.out" | caesar $j > "../$i/$2/Desafio.class"
-		if [ ! -z "$(cat ../$i/$2/Desafio.class | grep TreasureHunt)" ]
+		#if [ ! -z "$(cat ../$i/$2/Desafio.class | grep TreasureHunt)" ]
+  		if grep -aq "TreasureHunt" "../$i/$2/Desafio.class"
 		then
 			strings "../$i/$2/Desafio.class" | grep TreasureHunt
 			rm "../$i/$2/Desafio.class"
