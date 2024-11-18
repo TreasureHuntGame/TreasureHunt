@@ -265,12 +265,20 @@ Outra solução possível é adicionar os cabeçalhos diretamente por PHP com `h
 
 - *Nota 11*: Confirme se a versão do `awk` utilizada é a GNU Awk. Há distribuições Linux que utilizam `mawk`, o que resultará em erros. Certifique-se de instalar o awk utilizando `apt install gawk`.
 
-- *Nota 12*: Confirme se o seu servidor _web_ permite que arquivos `.htaccess` gerenciem o acesso a subdiretórios. Isso é feito, por exemplo, alterando o arquivo `apache2.conf` conforme exemplo abaixo:
+- *Nota 12*: Confirme se o seu servidor _web_ permite que arquivos `.htaccess` gerenciem o acesso a subdiretórios e também que as páginas de erro estão devidamente configuradas. Isso é feito, por exemplo, alterando o arquivo `apache2.conf` conforme exemplo abaixo:
 ```
 <Directory /var/www/>
 	Options Indexes FollowSymLinks
 	AllowOverride All
 	Require all granted
+</Directory>
+
+<Directory "/var/www/html/TreasureHunt">
+    AllowOverride All
+    Require all granted
+
+    ErrorDocument 404 /TreasureHunt/404.php
+    ErrorDocument 403 /TreasureHunt/403.php
 </Directory>
 ```
 
