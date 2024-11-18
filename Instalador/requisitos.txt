@@ -6,6 +6,7 @@ default-jre
 default-jdk
 openjdk-8-jdk
 openjdk-8-jre
+gawk
 grep
 libapache2-mod-php
 mysql-server
