@@ -114,11 +114,11 @@ criaProblema () {
 		DESTINO="../$i/$NUM_DESAFIO/"
 
 		case $PROBLEMA1 in
-			1|9)
-			if [ $PROBLEMA2 -eq 1 ] || [ $PROBLEMA2 -eq 2 ] || [ $PROBLEMA2 -eq 5 ] || [ $PROBLEMA2 -eq 9 ]
-				then DESTINO="$3"
-				else DESTINO="/"
-			fi
+			1|9) DESTINO="$3"
+			#if [ $PROBLEMA2 -eq 1 ] || [ $PROBLEMA2 -eq 2 ] || [ $PROBLEMA2 -eq 5 ] || [ $PROBLEMA2 -eq 9 ]
+				#then DESTINO="$3"
+				#else DESTINO="/" #else DESTINO="../Textos/"
+			#fi
 			# Executa o problema BaseOuCaesar para base64
 			sh BaseOuCaesar.sh $DESTINO "../$i/$NUM_DESAFIO/$1" $PARAM2
 			# Diretório de destino passa a ser $i para
