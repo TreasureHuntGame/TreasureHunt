@@ -1,6 +1,7 @@
 Instalador/logs/
 Jogo/[0-9]*/
 Jogo/Scripts/Log
+Jogo/Scripts/Logger
 Jogo/Problemas/Log
 Jogo/Problemas/Logger
 Jogo/Respostas/
