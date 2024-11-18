@@ -129,7 +129,7 @@ chmod +x instalador.sh
 
 Para as máquinas dos jogadores, sugere-se que estas tenham pelo menos as seguintes ferramentas (ou equivalentes):
 
-- awk
+- awk (GNU Awk)
 - base32
 - base64
 - caesar
@@ -262,6 +262,17 @@ Outra solução possível é adicionar os cabeçalhos diretamente por PHP com `h
 - *Nota 9*: Caso o _script_ aponte o erro `caesar: not found` ao gerar problemas com o `caesar`, verifique em que diretório este programa foi instalado (sugestão de comando: `which caesar`) e atualize todas as chamadas a `caesar` nos _scripts_ do jogo para `diretorio/completo/do/caesar`. Isto pode ser feito manualmente ou de forma automática via linha de comando. Por exemplo (executado a partir do diretório [`Jogo`](/Jogo/)): `x=$(which caesar); grep -rl 'caesar' * | xargs sed -i "s#caesar#${x}#g"`. O arquivo [`Fix-caesar-not-found.sh`](/Jogo/Scripts/Fix-caesar-not-found.sh), disponibilizado na pasta [`Scripts`](/Jogo/Scripts/), pode ser executado para resolver este problema.
 
 - *Nota 10*: A função `altoContraste` definida no arquivo [`Jogo.sh`](/Jogo/Scripts/Jogo.sh) tem comportamento adequado se utilizada do Gnome Terminal e do XFCE4 Terminal. Ela não foi testada a partir de outros terminais e seu comportamento pode variar em outros ambientes de terminal.
+
+- *Nota 11*: Confirme se a versão do `awk` utilizada é a GNU Awk. Há distribuições Linux que utilizam `mawk`, o que resultará em erros. Certifique-se de instalar o awk utilizando `apt install gawk`.
+
+- *Nota 12*: Confirme se o seu servidor _web_ permite que arquivos `.htaccess` gerenciem o acesso a subdiretórios. Isso é feito, por exemplo, alterando o arquivo `apache2.conf` conforme exemplo abaixo:
+```
+<Directory /var/www/>
+	Options Indexes FollowSymLinks
+	AllowOverride All
+	Require all granted
+</Directory>
+```
 
 ---
 
