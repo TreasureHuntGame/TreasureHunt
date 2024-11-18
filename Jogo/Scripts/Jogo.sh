@@ -350,18 +350,18 @@ logger() {
 }
 
 # Exclui arquivos da competição atual e tenta recriá-la usando a lista de problemas $PROBLEMAS
-recriaCompeticao() {
-	logger "Iniciando processo de recriação;"
-	echo -e "Tentando recriar competição para solucionar o problema" && sleep 0.5
-	excluiArquivosCompeticao "Excluindo arquivos da competição para tentar recriá-la"
-	for i in $(seq $QUANT_DESAFIOS); do # Para cada desafio
-		PROB1=`echo ${PROBLEMAS[$i]} | cut -c1`
-		PROB2=`echo ${PROBLEMAS[$i]} | cut -c2`
-		MENSAGEM_LOG="Desafio $i recriado. Composição do problema: $PROBLEMA1 $PROBLEMA2"
-		geraDesafio $PROB1 $PROB2 $MENSAGEM_LOG
-	done 
-	geraArquivosResposta
-}
+# recriaCompeticao() {
+# 	logger "Iniciando processo de recriação;"
+# 	echo -e "Tentando recriar competição para solucionar o problema" && sleep 0.5
+# 	excluiArquivosCompeticao "Excluindo arquivos da competição para tentar recriá-la"
+# 	for i in $(seq $QUANT_DESAFIOS); do # Para cada desafio
+# 		PROB1=`echo ${PROBLEMAS[$i]} | cut -c1`
+# 		PROB2=`echo ${PROBLEMAS[$i]} | cut -c2`
+# 		MENSAGEM_LOG="Desafio $i recriado. Composição do problema: $PROBLEMA1 $PROBLEMA2"
+# 		geraDesafio $PROB1 $PROB2 $MENSAGEM_LOG
+# 	done
+# 	geraArquivosResposta
+# }
 
 # Para cada arquivo de resposta verifica se o número de respostas bate 
 # Com o número de jogadores; se não bater tenta recriar competição 
@@ -369,7 +369,7 @@ verificaRespostas() {
 	# Se não existe arquivo de respostas retorna status de erro
 	[ ! existeRespostas ] && return 1 
 	logger "Checando arquivos de resposta da competição;" 
-	echo -e "Verificando se o número de jogadores coincide com o número de respostas geradas..." && sleep 0.4
+	echo -e "Verificando se o número de jogadores coincide com o número de respostas geradas..." && sleep 0.2
 	RECRIAR="0"
 	for f in ../Respostas/*; do 
 		L=`cat $f | sed '/^\s*$/d' | wc -l` 
@@ -383,11 +383,11 @@ verificaRespostas() {
 		fi 
 	done 
 	
-	if [ $RECRIAR = "1" ]; then 
-		recriaCompeticao
-		echo "Número de respostas de um ou mais arquivos não coincide com o total de jogadores"
-		return "1"
-	fi
+	# if [ $RECRIAR = "1" ]; then
+	# 	recriaCompeticao
+	# 	echo "Número de respostas de um ou mais arquivos não coincide com o total de jogadores"
+	# 	return "1"
+	# fi
 }
 
 # Função que gera um desafio individualmente
@@ -405,7 +405,7 @@ geraDesafio() {
 	fi
 
 	verificaParametros $PROBLEMA1 $PROBLEMA2
-	DESAFIO_ATUAL="$PROBLEMA1 $PROBLEMA2"
+	DESAFIO_ATUAL="$PROBLEMA1-$PROBLEMA2"
 
 	if [ $LOCK -eq 0 ]; then
 		sh Composer.sh $QUANT_JOGADORES $i $PROBLEMA1 $PROBLEMA2
@@ -546,7 +546,7 @@ manejaAtivacaoNgrok() {
 		case $OPCAO in
 			1|2) break ;; 
 			*) echo -e "Opção inválida, digite novamente! " && sleep 1;;
-		esac 
+		esac
 	done	
 	
 	if [ $OPCAO = "2" ]; then 
@@ -633,7 +633,7 @@ adicionaEasterEgg() {
 	cp "$CAMINHO_EASTER_EGG/qr_code.svg" "$CAMINHO_SITE/img"	
 	cp "$CAMINHO_EASTER_EGG/宝.php" "$CAMINHO_SITE"
 	cp "$CAMINHO_EASTER_EGG/ache_a_flag.jpg" "$CAMINHO_SITE/img"
-	
+
 	ARQUIVO_RESPOSTA="Respostas_Desafio_`expr $QUANT_DESAFIOS + 1`"
 	rm -f "$DESTINO_RESPOSTAS/$ARQUIVO_RESPOSTA"
 	for i in $(seq $QUANT_JOGADORES); do
@@ -679,7 +679,7 @@ manejaAdicaoEasterEgg() {
 
 encerraPrograma() {
 	restauraCores
- 	echo ""
+	echo ""
 	exit 1
 }
 
@@ -723,18 +723,18 @@ geraArquivosResposta
 
 # Executa uma vez
 verificaRespostas
-if [ $? != "0" ]; then
-	# Se deu errado é porque ele já recriou, então tentamos de novo
-	# Se mesmo assim não der ele sai do script
-	MSG_LOG="O erro persistiu mesmo depois de recriar a competição. Abortando Script."
-	verificaRespostas 
-	if [ $? != "0" ]; then 
-		abortaScript $MSG_LOG
-	fi
-else 
-	echo -e "Verificação concluída com sucesso!"
-	logger "Sucesso: a quantidade de respostas coincide com o n° de jogadores;"
-fi
+# if [ $? != "0" ]; then
+# 	# Se deu errado é porque ele já recriou, então tentamos de novo
+# 	# Se mesmo assim não der ele sai do script
+# 	MSG_LOG="O erro persistiu mesmo depois de recriar a competição. Abortando Script."
+# 	verificaRespostas
+# 	if [ $? != "0" ]; then
+# 		abortaScript $MSG_LOG
+# 	fi
+# else
+# 	echo -e "Verificação concluída com sucesso!"
+# 	logger "Sucesso: a quantidade de respostas coincide com o n° de jogadores;"
+# fi
 
 compactaDesafios
 manejaArquivosAtuais
