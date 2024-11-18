@@ -40,7 +40,7 @@ Nota 2: essas ferramentas são apenas sugestões. O usuário é livre para resol
 Nota 3: grande parte dessas ferramentas já são instaladas por padrão em grande parte das distribuições Linux:
 
 ### Lista de ferramentas recomendadas 
-- awk
+- awk (GNU Awk)
 - base32
 - base64
 - caesar
