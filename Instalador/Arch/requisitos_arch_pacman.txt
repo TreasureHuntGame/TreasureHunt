@@ -10,3 +10,4 @@ zip
 mariadb
 bc
 python
+gawk
