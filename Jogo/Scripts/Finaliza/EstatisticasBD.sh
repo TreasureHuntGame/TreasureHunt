@@ -1,7 +1,8 @@
 #!/bin/bash
 
+# O objetivo é usar duas casas decimais e definir o formato local para números separando a parte inteira da parte fracionária com ponto em vez de vírgula.
 formataValorFloat() {
-    printf "%.2f" $1
+    LC_NUMERIC=C printf "%.2f" $1
 }
 
 usuario=$1
