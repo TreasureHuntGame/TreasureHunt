@@ -2,7 +2,7 @@
 
 > Ferramenta de geração automática de problemas e competições do tipo desafio (também conhecidas como CTF _Jeopardy!_) para ensino de Segurança Computacional. 
 
-![Interface _web_ do TreasureHunt](Imagens/tela.png)
+![Interface _web_ do TreasureHunt](Imagens/tela2024.png)
 
 ---
 
