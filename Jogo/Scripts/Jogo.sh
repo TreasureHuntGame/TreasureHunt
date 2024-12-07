@@ -637,7 +637,7 @@ adicionaEasterEgg() {
 	ARQUIVO_RESPOSTA="Respostas_Desafio_`expr $QUANT_DESAFIOS + 1`"
 	rm -f "$DESTINO_RESPOSTAS/$ARQUIVO_RESPOSTA"
 	for i in $(seq $QUANT_JOGADORES); do
-		echo "TreasureHunt{_OSU_}" >> "$DESTINO_RESPOSTAS/$ARQUIVO_RESPOSTA"
+		echo "TreasureHunt{fl4g-3xtr4}" >> "$DESTINO_RESPOSTAS/$ARQUIVO_RESPOSTA"
 	done 
 }
 
