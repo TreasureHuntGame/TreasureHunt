@@ -1,0 +1,44 @@
+networks:
+  th_network:
+    driver: bridge
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: db.Dockerfile
+    networks:
+      - th_network
+    environment:
+      MYSQL_ROOT_PASSWORD:
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      MYSQL_DATABASE: TreasureHunt
+    expose:
+      - "3306"
+
+  generator:
+    build: 
+      context: .
+      dockerfile: generator.Dockerfile
+    networks:
+      - th_network
+    volumes:
+      - ./DockerVolume:/var/www/html/TreasureHunt/
+    depends_on:
+      - db
+    command: sleep infinity
+
+  web:
+    build:
+      context: .
+      dockerfile: web.Dockerfile
+    networks:
+      - th_network
+    ports:
+      - "80:80"
+    environment:
+      TH_DB_HOST: db
+    volumes:
+      - ./DockerVolume:/var/www/html/TreasureHunt/
+    depends_on:
+      - db
