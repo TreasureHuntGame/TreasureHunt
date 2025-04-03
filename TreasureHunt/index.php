@@ -200,7 +200,7 @@ header("X-Frame-Options: DENY");
                     W3C (<em lang="en">World Wide Web Consortium</em>, Consórcio da Rede Mundial de Internet).
                 </p>
                 <p>
-                    O site possui em seu formato padrão uma relação de contraste de no mínimo 4:5:1 respeitando o critério 1.4.3 da WCAG,
+                    O site possui em seu formato padrão uma relação de contraste de no mínimo 4,5:1 respeitando o critério 1.4.3 da WCAG,
                     e dispõe também de um modo de alto contraste com relação superior a 7:1 satisfazendo o critério 1.4.6. São cumpridos ainda,
                     dentre outros, os seguintes critérios:
                 </p>
