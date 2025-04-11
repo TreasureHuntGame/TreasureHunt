@@ -2,7 +2,7 @@
 
 > Ferramenta de geração automática de problemas e competições do tipo desafio (também conhecidas como CTF _Jeopardy!_) para ensino de Segurança Computacional. 
 
-![Interface _web_ do TreasureHunt](Imagens/tela2024.png)
+![Interface _web_ do TreasureHunt](Imagens/tela2025.png)
 
 ---
 
@@ -298,7 +298,7 @@ Por meio da interface _web_, os jogadores podem:
 
 Apesar disso, para visualizar o placar individual, baixar os problemas e submeter as respostas é preciso acessar a página principal, o que requer que o usuário esteja autenticado, ou seja, é preciso fazer _login_ com o ID e senha fornecidos pelo organizador da competição. A figura a seguir mostra a página principal que contém os recursos citados. O placar geral, outro recurso que depende de autenticação, pode ser acessado na opção ``Placar`` na barra de navegação (topo da figura).  
 
-![tela principal do TreasureHunt](/Imagens/principal2024.png)
+![tela principal do TreasureHunt](/Imagens/principal2025.png)
 
 
 Dessa forma, os passos necessários para jogar o TreasureHunt são:
