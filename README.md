@@ -91,6 +91,8 @@ Para promover uma competição com o TreasureHunt é necessário seguir os segui
 3. Configuração e inicialização do servidor _web_
 4. Execução do _script_ de geração de competições
 
+Ou, alternativamente, pode-se utilizar o Docker para instalar e rodar o TreasureHunt. Veja o tópico [Instalação e execução com Docker](#Instalação-e-execução-com-Docker) para mais informações.
+
 Passos adicionais, tais como instalação de ferramentas alternativas ou configuração de servidores instalados, podem ser necessários. Leia também a seção sobre [Notas adicionais sobre instalação, configuração e execução](#Notas-adicionais-sobre-instalação-configuração-e-execução). 
 
 O restante dessa seção descreve detalhadamente cada um dos passos sugeridos.
@@ -189,6 +191,27 @@ Alternativamente, o _script_ pode ser executado com o comando ``bash``:
 ```sh
 bash Jogo.sh
 ```
+
+### Instalação e execução com Docker
+
+O TreasureHunt também pode ser instalado e executado com Docker. Para isso, siga os passos abaixo:
+```sh
+docker-compose up -d --build
+```
+
+Veja os containers criados com o comando:
+```sh
+docker ps
+```
+
+Pega o id do container (ou seu nome) do gerador dos arquivos de competição e acesse o container com o comando:
+```sh
+docker exec -it <id_ou_nome_do_container> bash
+```
+
+Dentro do bash do container, siga os passos normalmente para gerar a competição com o _script_ [`Jogo.sh`](/Jogo/Scripts/Jogo.sh). Veja a seção [Execução do _script_ de geração de competições](#execução-do-script-de-geração-de-competições) para mais informações.
+
+Você poderá acessar a interface _web_ do TreasureHunt em `http://localhost/TreasureHunt/`.
 
 #### Opções de Problemas
 

@@ -4,7 +4,7 @@ header("Content-Security-Policy: frame-ancestors 'none'");
 header("X-Frame-Options: DENY");
 
 // Conexão com o BD
-define('HOST', 'localhost');
+define('HOST', getenv('TH_DB_HOST') ?: 'localhost');
 define('USER', 'root');
 // define('PASS', 'minhaSenha'); 
 define('DB_NAME', 'TreasureHunt');
