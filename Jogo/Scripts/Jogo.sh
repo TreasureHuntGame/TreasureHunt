@@ -745,7 +745,12 @@ manejaAdicaoEasterEgg
 ADICIONAR_EASTER_EGG=$?
 
 # Se o seu MySQL estiver com senha, altere aqui com --password
-sh ConfiguraBD.sh $QUANT_JOGADORES $QUANT_DESAFIOS $ADICIONAR_EASTER_EGG| mysql --user=root
+if [ -n "$TH_DB_HOST" ]; then
+    # Permite o uso do banco de dados em outra máquina (Docker)
+    sh ConfiguraBD.sh $QUANT_JOGADORES $QUANT_DESAFIOS $ADICIONAR_EASTER_EGG| mysql --user=root -h $TH_DB_HOST
+else
+    sh ConfiguraBD.sh $QUANT_JOGADORES $QUANT_DESAFIOS $ADICIONAR_EASTER_EGG| mysql --user=root
+fi
 logger "Banco de dados 'TreasureHunt' configurado;"
 echo -e "Banco de dados configurado com sucesso."
 
@@ -755,9 +760,9 @@ echo -e "Fim da criação da Competição."
 manejaAtivacaoNgrok
 
 # Cria arquivo .htaccess no diretório do servidor web
-echo "Allow from all" | sudo tee $CAMINHO_SITE/.htaccess > /dev/null
+echo "Allow from all" | tee $CAMINHO_SITE/.htaccess > /dev/null
 # Cria arquivo .htaccess no diretório de desafios do servidor web
-echo "Deny from all" | sudo tee $DESTINO_DESAFIOS/.htaccess > /dev/null
+echo "Deny from all" | tee $DESTINO_DESAFIOS/.htaccess > /dev/null
 
 logger "Script finalizado;"
 
