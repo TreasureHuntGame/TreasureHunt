@@ -6,6 +6,7 @@ header("X-Frame-Options: DENY");
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -33,7 +34,52 @@ header("X-Frame-Options: DENY");
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <![endif]-->
+
+    <style>
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper input {
+            width: 100%;
+            padding: 10px 40px 10px 10px;
+            font-size: 16px;
+        }
+
+        .toggle-button {
+            all: unset;
+
+            background-color: #ffffff !important;
+            z-index: 3;
+            margin-top: 0px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toggle-button svg {
+            width: 20px;
+            height: 20px;
+            fill: #666;
+        }
+
+        .toggle-button:focus {
+            outline: 2px solid black;
+        }
+    </style>
+
 </head>
+
 <body>
     <input type="checkbox" name="contrast-mode" id="contrast">
     <input type="checkbox" name="animation-switch" id="animation">
@@ -99,8 +145,34 @@ header("X-Frame-Options: DENY");
                 <label for="usuario" class="sr-only">Informe seu ID (obrigatório):</label>
                 <input type="number" name="usuario" id="usuario" class="form-control input-sm" placeholder="ID da conta (Exemplo: 1)" title="Credencial numérica atribuída a você." data-trigger="focus" data-offset="400" data-toggle="tooltip" data-placement="top" required>
                 <label for="senha" class="sr-only">Informe sua senha (obrigatório):</label>
-                <input type="password" id="senha" name="senha" class="form-control" autocomplete="current-password" placeholder="Informe sua senha" title="Senha fornecida junto à credencial." data-trigger="focus" data-toggle="tooltip" data-offset="400" data-placement="top" required>
-                <button class="btn btn-dark btn-block" type="submit" name="enviar">Entrar</button>
+
+
+                <div class="input-wrapper">
+                    <input type="password" id="senha" name="senha" class="form-control"
+                        style="margin: 0px;"
+                        autocomplete="current-password"
+                        placeholder="Informe sua senha"
+                        title="Senha fornecida junto à credencial."
+                        data-trigger="focus" data-toggle="tooltip"
+                        data-offset="400" data-placement="top" required>
+                    <button type="button" id="togglePassword" class="toggle-button" aria-label="Mostrar senha" aria-pressed="false" title="Mostrar senha">
+                        <svg id="iconeOlho" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <!-- Baseado no material icons -->
+                            <path d="M12 6c3.31 0 6.31 1.72 8 4.5-.41.67-.91 1.29-1.48 1.84l1.43 1.43c.78-.8 1.47-1.7 
+                                     2.05-2.77C20.27 8.11 16 4.5 12 4.5c-1.57 0-3.06.35-4.41.98l1.49 
+                                     1.49A8.38 8.38 0 0112 6zm-9.19-.61l2.07 2.07C3.5 9.16 2.27 10.54 
+                                     1 12c1.73 3.89 6 7.5 11 7.5 1.98 0 3.85-.5 
+                                     5.5-1.38l2.12 2.12 1.41-1.41L4.22 3.98 
+                                     2.81 5.39zM12 17c-2.76 0-5-2.24-5-5 
+                                     0-.84.21-1.63.58-2.32l1.53 1.53A3.01 
+                                     3.01 0 0012 15a3 3 0 002.79-1.94l1.56 
+                                     1.56c-1.01.86-2.31 1.38-3.65 1.38z" />
+                            <!-- Acrescentei "/" porque o validador W3C reclama sem ela. Fiz isso abaixo tb-->
+                        </svg>
+                    </button>
+                </div>
+
+                <button class="btn btn-dark btn-block" style="margin-top: 5px;" type="submit" name="enviar">Entrar</button>
                 <?php
                 if (isset($_GET['message'])) {
                     switch ($_GET['message']) {
@@ -159,10 +231,10 @@ header("X-Frame-Options: DENY");
                 </div>
                 <div class="contato nome-contrib">
                     <span>Gabriel Eduardo Lima</span>
-                </div>                
+                </div>
                 <div class="contato nome-contrib">
                     <span>Henrique Arnicheski Dalposso</span>
-                </div>                
+                </div>
                 <div class="contato nome-contrib">
                     <span>Lucas Vargas</span>
                 </div>
@@ -312,5 +384,40 @@ header("X-Frame-Options: DENY");
         }
         ?>
     </div>
+
+    <script>
+        const senhaInput = document.getElementById('senha');
+        const toggleButton = document.getElementById('togglePassword');
+        const iconeOlho = document.getElementById('iconeOlho');
+        const olhoAbertoPath = `
+  <path d="M12 4.5C7 4.5 2.73 8.11 1 12c1.73 3.89 6 7.5 11 7.5
+           s9.27-3.61 11-7.5c-1.73-3.89-6-7.5-11-7.5zm0 13
+           c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5
+           -2.24 5-5 5zm0-8a3 3 0 100 6 3 3 0 000-6z"/>`;
+        const olhoFechadoPath = `
+  <path d="M12 6c3.31 0 6.31 1.72 8 4.5-.41.67-.91 1.29-1.48
+           1.84l1.43 1.43c.78-.8 1.47-1.7 2.05-2.77C20.27 8.11
+           16 4.5 12 4.5c-1.57 0-3.06.35-4.41.98l1.49
+           1.49A8.38 8.38 0 0112 6zm-9.19-.61l2.07 2.07C3.5 9.16
+           2.27 10.54 1 12c1.73 3.89 6 7.5 11 7.5 1.98 0 3.85-.5
+           5.5-1.38l2.12 2.12 1.41-1.41L4.22 3.98
+           2.81 5.39zM12 17c-2.76 0-5-2.24-5-5
+           0-.84.21-1.63.58-2.32l1.53 1.53A3.01
+           3.01 0 0012 15a3 3 0 002.79-1.94l1.56
+           1.56c-1.01.86-2.31 1.38-3.65 1.38z"/>`;
+
+        toggleButton.addEventListener('click', () => {
+            const isSenhaVisivel = senhaInput.type === 'text';
+            senhaInput.type = isSenhaVisivel ? 'password' : 'text';
+
+            toggleButton.setAttribute('aria-pressed', !isSenhaVisivel);
+            toggleButton.setAttribute('aria-label', isSenhaVisivel ? 'Mostrar senha' : 'Ocultar senha');
+            toggleButton.setAttribute('title', isSenhaVisivel ? 'Mostrar senha' : 'Ocultar senha');
+            iconeOlho.innerHTML = isSenhaVisivel ? olhoAbertoPath : olhoFechadoPath;
+        });
+
+        iconeOlho.innerHTML = olhoAbertoPath;
+    </script>
 </body>
+
 </html>
