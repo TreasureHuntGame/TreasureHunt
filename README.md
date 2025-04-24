@@ -10,6 +10,7 @@
 
 - [:scroll: Introdução](#scroll-Introdução)
 - [:construction_worker: Arquitetura](#construction_worker-Arquitetura)
+- [:wheelchair: Acessibilidade](#wheelchair-Acessibilidade) Acessibilidade
 - [:electric_plug: Instalação, Configuração e Execução](#electric_plug-Instalação-Configuração-e-Execução)
 - [:video_game: Como Jogar](#video_game-Como-Jogar)
 - [:mailbox: Autores](#mailbox-Autores)
