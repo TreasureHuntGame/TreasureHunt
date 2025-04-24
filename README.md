@@ -69,14 +69,16 @@ As respostas (_flags_) estão presentes nos arquivos disponibilizados aos jogado
 
 Os acessos e as submissões de respostas por meio do Sistema _Web_ podem ser verificados pelo organizador no Banco de Dados `TreasureHunt`. Nele ficam registrados os dados da competição, inclusive o endereço IP dos jogadores, garantindo que uma conta não tenha sido compartilhada, por exemplo. Vale lembrar que boas práticas de Segurança são aplicadas nos dados sensíveis, tais como o uso de _hash_ e _salt_.
 
-Além disso, a interface _web_ do TreasureHunt é responsiva e foi otimizada para ser **acessível** de acordo com os critérios da [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) (_Web Content Accessibility Guidelines_, Diretrizes de Acessibilidade para o Conteúdo da _Web_). Dos 87 critérios de acessibilidade avaliados (versão 2.2 da WCAG), 13 deles não se aplicam à interface _web_ do TreasureHunt. A interface _web_ do TreasureHunt cumpre os outros 74 critérios, o que corresponde a 100% do total aplicável. A avaliação dos critérios pode ser observada na [planilha online de critérios de acessibilidade cumpridos pela interface web do TreasureHunt](https://docs.google.com/spreadsheets/d/1r6ifZskz3rcLPS9CdXQj9zscRncGMhmOs81W8IWGYfA/edit?usp=sharing). Essa planilha também contém uma análise histórica das interfaces do TreasureHunt, permitindo observar sua evolução e atualização frente aos critérios da WCAG. Em 2020, a interface web de outros jogos de Segurança Computacional também foi avaliada e está disponível na planilha.
+### :wheelchair: Acessibilidade na Interface _web_
 
-Com o objetivo de ser cada vez mais acessível, o _website_ é testado por meio de validadores automáticos de acessibilidade e de testes manuais, como o uso de leitores de tela e simuladores de daltonismo. Alguns dos recursos de acessibilidade da interface _web_ do TreasureHunt estão descritos na página "acessibilidade", que explica e auxilia a utilização de alguns deles. Dentre os recursos de acessibilidade do TreasureHunt, podemos citar:  
+A interface _web_ do TreasureHunt é responsiva e foi otimizada para ser **acessível** de acordo com os critérios da [WCAG](https://www.w3.org/WAI/standards-guidelines/wcag/) (_Web Content Accessibility Guidelines_, Diretrizes de Acessibilidade para o Conteúdo da _Web_). Dos 87 critérios de acessibilidade avaliados (versão 2.2 da WCAG), 13 deles não se aplicam à interface _web_ do TreasureHunt. Dos outros 74 critérios, a interface _web_ do TreasureHunt cumpre 73, o que corresponde a 98,86% do total aplicável. A avaliação dos critérios pode ser observada na [planilha online de critérios de acessibilidade cumpridos pela interface web do TreasureHunt](https://docs.google.com/spreadsheets/d/1r6ifZskz3rcLPS9CdXQj9zscRncGMhmOs81W8IWGYfA/edit?usp=sharing). Essa planilha contém uma análise histórica das interfaces do TreasureHunt, permitindo observar sua evolução e atualização frente aos critérios da WCAG. Em 2020, a interface web de outros jogos de Segurança Computacional também foi avaliada e está disponível na planilha.
+
+Com o objetivo de ser cada vez mais acessível, o _website_ é testado por meio de validadores automáticos de acessibilidade e manualmente, como o uso de leitores de tela e simuladores de daltonismo. Alguns dos recursos de acessibilidade da interface _web_ do TreasureHunt estão descritos na página "acessibilidade", que explica e auxilia a utilização de alguns deles. Dentre os recursos de acessibilidade do TreasureHunt, podemos citar:  
 
 - relação de contraste acima de 4,5:1 em todo o website e um modo de alto contraste com relação superior a 7:1
 - suporte para navegação por teclado 
 - minimização do uso de JavaScript em recursos essenciais 
-- layout responsivo e adaptável mesmo com grande zoom 
+- _layout_ responsivo e adaptável mesmo com grande _zoom_
 - mensagens significativas de correção de erros na submissão de formulários 
 - opção de desativar as animações não essenciais da página 
 
