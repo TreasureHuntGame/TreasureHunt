@@ -70,7 +70,11 @@ header("X-Frame-Options: DENY");
         .toggle-button svg {
             width: 20px;
             height: 20px;
-            fill: #666;
+            fill: var(--cor-fundo);
+        }
+
+        input#contrast:checked~#page-wrapper .toggle-button svg {
+            fill: var(--c-cor-fundo);
         }
 
         .toggle-button:focus {
