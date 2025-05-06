@@ -15,6 +15,7 @@ if (!isset($_SESSION['usuario'])) {
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -42,6 +43,7 @@ if (!isset($_SESSION['usuario'])) {
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <![endif]-->
 </head>
+
 <body>
     <input type="checkbox" name="contrast-mode" id="contrast">
     <input type="checkbox" name="animation-switch" id="animation">
@@ -124,7 +126,8 @@ if (!isset($_SESSION['usuario'])) {
                             <span data-toggle="tooltip" data-placement="bottom" title="Arquivo que contém os exercícios!">
                                 <a id="arquivo" class="link-padrao" href="download_desafios.php">
                                     <?php
-                                    function formatBytes($size, $precision = 2) {
+                                    function formatBytes($size, $precision = 2)
+                                    {
                                         $base = log($size, 1024);
                                         $suffixes = array('B', 'kB', 'MB', 'GB', 'TB');
 
@@ -321,10 +324,10 @@ if (!isset($_SESSION['usuario'])) {
                 </div>
                 <div class="contato nome-contrib">
                     <span>Gabriel Eduardo Lima</span>
-                </div>                
+                </div>
                 <div class="contato nome-contrib">
                     <span>Henrique Arnicheski Dalposso</span>
-                </div>                
+                </div>
                 <div class="contato nome-contrib">
                     <span>Lucas Vargas</span>
                 </div>
@@ -393,14 +396,17 @@ if (!isset($_SESSION['usuario'])) {
                     é utilizada a combinação ALT + SHIFT. Os atalhos são:
                 </p>
                 <ul class="ul-acessibilidade">
-                    <li><span class="prompt"></span><span>A: ativa o modo de alto contraste </span></li>
-                    <li><span class="prompt"></span><span>M: desativa/ativa as animações </span></li>
-                    <li><span class="prompt"></span><span>I: leva para a página: “Inicío”</span></li>
-                    <li><span class="prompt"></span><span>J: leva para a página: “Como jogar?”</span></li>
-                    <li><span class="prompt"></span><span>C: leva para a página: “Contatos”</span></li>
-                    <li><span class="prompt"></span><span>S: leva para a página: “Acessibilidade”</span></li>
-                    <li><span class="prompt"></span><span>P: leva para página: “Placar” (exige autenticação)</span></li>
-                    <li><span class="prompt"></span><span>L: Faz o <em lang="en">logout</em> (exige autenticação)</span></li>
+                    <?php
+                    $eh_firefox = strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== false;
+                    ?>
+                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>A: ativa o modo de alto contraste </span></li>
+                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>M: desativa/ativa as animações </span></li>
+                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>I: leva para a página: “Inicío”</span></li>
+                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>J: leva para a página: “Como jogar?”</span></li>
+                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>C: leva para a página: “Contatos”</span></li>
+                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>S: leva para a página: “Acessibilidade”</span></li>
+                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>P: leva para página: “Placar” (exige autenticação)</span></li>
+                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>L: Faz o <em lang="en">logout</em> (exige autenticação)</span></li>
                 </ul>
                 <div id="div-accesskeys" class="noscript">
                     <span>
@@ -478,4 +484,5 @@ if (!isset($_SESSION['usuario'])) {
         ?>
     </div>
 </body>
+
 </html>
