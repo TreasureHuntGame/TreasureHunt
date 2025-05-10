@@ -159,7 +159,7 @@ header("X-Frame-Options: DENY");
                         title="Senha fornecida junto à credencial."
                         data-trigger="focus" data-toggle="tooltip"
                         data-offset="400" data-placement="top" required>
-                    <button type="button" id="togglePassword" class="toggle-button" aria-label="Mostrar senha" aria-pressed="false" title="Mostrar senha">
+                    <button type="button" id="togglePassword" class="toggle-button" aria-pressed="false" title="Mostrar senha">
                         <svg id="iconeOlho" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <!-- Baseado no material icons -->
                             <path d="M12 6c3.31 0 6.31 1.72 8 4.5-.41.67-.91 1.29-1.48 1.84l1.43 1.43c.78-.8 1.47-1.7 
@@ -171,7 +171,6 @@ header("X-Frame-Options: DENY");
                                      0-.84.21-1.63.58-2.32l1.53 1.53A3.01 
                                      3.01 0 0012 15a3 3 0 002.79-1.94l1.56 
                                      1.56c-1.01.86-2.31 1.38-3.65 1.38z" />
-                            <!-- Acrescentei "/" porque o validador W3C reclama sem ela. Fiz isso abaixo tb-->
                         </svg>
                     </button>
                 </div>
@@ -418,8 +417,6 @@ header("X-Frame-Options: DENY");
             senhaInput.type = isSenhaVisivel ? 'password' : 'text';
 
             toggleButton.setAttribute('aria-pressed', !isSenhaVisivel);
-            toggleButton.setAttribute('aria-label', isSenhaVisivel ? 'Mostrar senha' : 'Ocultar senha');
-            toggleButton.setAttribute('title', isSenhaVisivel ? 'Mostrar senha' : 'Ocultar senha');
             iconeOlho.innerHTML = isSenhaVisivel ? olhoAbertoPath : olhoFechadoPath;
         });
 
