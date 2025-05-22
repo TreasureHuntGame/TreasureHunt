@@ -4,6 +4,8 @@ RUN apt-get update && apt-get install -y
 RUN docker-php-ext-install pdo pdo_mysql
 RUN a2enmod rewrite
 
+COPY ./TreasureHunt/. /var/www/html/TreasureHunt/
+
 RUN echo '<Directory /var/www/>\n\
     AllowOverride All\n\
     Require all granted\n\

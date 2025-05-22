@@ -2,6 +2,9 @@ networks:
   th_network:
     driver: bridge
 
+volumes:
+  web_files:
+
 services:
   db:
     build:
@@ -23,7 +26,7 @@ services:
     networks:
       - th_network
     volumes:
-      - ./DockerVolume:/var/www/html/TreasureHunt/
+      - web_files:/var/www/html/TreasureHunt/
     depends_on:
       - db
     command: sleep infinity
@@ -39,6 +42,7 @@ services:
     environment:
       TH_DB_HOST: db
     volumes:
-      - ./DockerVolume:/var/www/html/TreasureHunt/
+      - web_files:/var/www/html/TreasureHunt/
     depends_on:
       - db
+      - generator
