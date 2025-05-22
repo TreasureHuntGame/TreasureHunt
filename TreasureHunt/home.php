@@ -11,6 +11,8 @@ if (!isset($_SESSION['usuario'])) {
     unset($_SESSION['usuario']);
     header('location:index.php');
 }
+
+$eh_firefox = strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== false;
 ?>
 
 <!DOCTYPE html>
@@ -65,8 +67,9 @@ if (!isset($_SESSION['usuario'])) {
             </div>
         </noscript>
         <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
-            <a id="link-skip" href="#content" class="position-absolute rounded-right">
+            <a id="link-skip" href="#content" class="position-absolute rounded-right" accesskey="l">
                 Pular para o conteúdo principal
+                (Atalho: Alt<?php echo $eh_firefox ? '+Shift' : ''; ?>+L)
             </a>
             <input type="checkbox" name="collapse-btn" id="collapse-btn">
             <a class="navbar-brand nav-item" id="link-logo" href="home.php">
@@ -396,9 +399,6 @@ if (!isset($_SESSION['usuario'])) {
                     é utilizada a combinação ALT + SHIFT. Os atalhos são:
                 </p>
                 <ul class="ul-acessibilidade">
-                    <?php
-                    $eh_firefox = strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== false;
-                    ?>
                     <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>A: ativa o modo de alto contraste </span></li>
                     <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>M: desativa/ativa as animações </span></li>
                     <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>I: leva para a página: “Inicío”</span></li>

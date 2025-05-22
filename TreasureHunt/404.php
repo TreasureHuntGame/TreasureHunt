@@ -2,10 +2,13 @@
 header("Content-Type: text/html; charset=utf-8");
 header("Content-Security-Policy: frame-ancestors 'none'");
 header("X-Frame-Options: DENY");
+
+$eh_firefox = strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== false;
 ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <base href="/TreasureHunt/">
     <meta charset="utf-8">
@@ -22,7 +25,7 @@ header("X-Frame-Options: DENY");
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js" defer></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" defer></script>
     <link rel="icon" href="img/favicon_dark_tab.png">
-<!-- <script src="ovum.xml"></script> -->
+    <!-- <script src="ovum.xml"></script> -->
     <link rel="preload" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" as="style">
     <link rel="preload" href="css/style.min.css" as="style">
     <link rel="preload" href="css/400.min.css" as="style">
@@ -39,6 +42,7 @@ header("X-Frame-Options: DENY");
         </script>
     <![endif] -->
 </head>
+
 <body class="text-light bg-dark">
     <input type="checkbox" name="contrast-mode" id="contrast">
     <input type="checkbox" name="animation-switch" id="animation">
@@ -53,8 +57,9 @@ header("X-Frame-Options: DENY");
             </div>
         </noscript>
         <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
-            <a id="link-skip" href="#content" class="position-absolute rounded-right">
+            <a id="link-skip" href="#content" class="position-absolute rounded-right" accesskey="l">
                 Pular para o conteúdo principal
+                (Atalho: Alt<?php echo $eh_firefox ? '+Shift' : ''; ?>+L)
             </a>
             <input type="checkbox" name="collapse-btn" id="collapse-btn">
             <a class="navbar-brand nav-item" id="link-logo" href="home.php">
@@ -160,4 +165,5 @@ header("X-Frame-Options: DENY");
         ?>
     </div>
 </body>
+
 </html>

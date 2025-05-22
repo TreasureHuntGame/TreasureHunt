@@ -4,7 +4,7 @@ if (isset($_SESSION['usuario'])) {
     echo '<input type="radio" name="nav" id="rank" tabindex="-1" class="tab">';
 }
 
-
+$eh_firefox = strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== false;
 ?>
 <input type="radio" name="nav" id="regras" tabindex="-1" class="tab">
 <input type="radio" name="nav" id="contato" tabindex="-1" class="tab">
@@ -18,8 +18,9 @@ if (isset($_SESSION['usuario'])) {
     </div>
 </noscript>
 <nav class="navbar navbar-expand-md navbar-dark justify-content-center">
-    <a id="link-skip" href="#content" class="position-absolute rounded-right">
+    <a id="link-skip" href="#content" class="position-absolute rounded-right" accesskey="l">
         Pular para o conteúdo principal
+        (Atalho: Alt<?php echo $eh_firefox ? '+Shift' : ''; ?>+L)
     </a>
     <input type="checkbox" name="collapse-btn" id="collapse-btn">
     <a class="navbar-brand nav-item" id="link-logo" href="home.php">
