@@ -346,6 +346,18 @@ input#contrast:checked~#page-wrapper #unzip:hover {
     border-left-color: var(--c-cor-fundo);
 }
 
+input#contrast:checked~#page-wrapper .prompt-list li::before {
+    content: '';
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    background-image: url("../img/cifrao-preto-novo.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+    margin-right: 0.7em;
+    transform: translateY(0.6em);
+}
+
 input#contrast:checked~#page-wrapper .prompt {
     border-right-color: var(--c-cor-secundaria);
     background-color: var(--c-cor-secundaria);
@@ -518,6 +530,23 @@ footer a:hover {
     width: 80%;
     margin-right: auto;
     margin-left: auto;
+}
+
+/*.prompt-list {
+    list-style-type: none;
+    list-style-image: url("../img/cifrao-preto.png") !important;
+}
+*/
+.prompt-list li::before {
+    content: '';
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    background-image: url("../img/cifrao-white-novo.png");
+    background-repeat: no-repeat;
+    background-size: auto;
+    margin-right: 0.7em;
+    transform: translateY(0.6em);
 }
 
 .prompt::before {

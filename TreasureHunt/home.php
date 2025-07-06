@@ -280,25 +280,25 @@ $eh_firefox = strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== false;
             <div class="jumbotron bg-dark">
                 <h2 class="font-weight-bold page-title">Como Jogar<span class="destaque">?</span></h2>
             </div>
-            <ul id="lista-de-regras">
-                <li><span class="prompt"></span> Na tela de início, insira seu ID e sua senha e clique em
+            <ul id="lista-de-regras" class="prompt-list">
+                <li>Na tela de início, insira seu ID e sua senha e clique em
                     <button class="btn btn-sm btn-dark" name="enviar" tabindex="-1">Entrar</button>.
                 </li>
-                <li><span class="prompt"></span> Baixe e descompacte o arquivo zip disponível (sugestão: <code id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém
+                <li>aixe e descompacte o arquivo zip disponível (sugestão: <code id="unzip"> unzip JogadorX.zip</code>, onde <code>X</code> é o seu ID). Este arquivo contém
                     diretórios representados por números inteiros. Cada diretório contém pelo menos um arquivo.
                 </li>
-                <li><span class="prompt"></span> Seu objetivo é descobrir a palavra secreta (<em lang="en">flag</em>)
+                <li>Seu objetivo é descobrir a palavra secreta (<em lang="en">flag</em>)
                     escondida em cada um dos diretórios.
                 </li>
-                <li><span class="prompt"></span> Vencerá o jogo aquele que submeter mais respostas corretas em menos
+                <li>Vencerá o jogo aquele que submeter mais respostas corretas em menos
                     tempo, ou seja, o ranqueamento é feito pelo número de acertos e, em caso de empate, ficará à frente
                     aquele que obteve seu último acerto antes.
                 </li>
-                <li><span class="prompt"></span> Cada <em lang="en">flag</em> descoberta é um desafio resolvido! Você só
+                <li>Cada <em lang="en">flag</em> descoberta é um desafio resolvido! Você só
                     precisa realizar a submissão no sistema, informando o ID link-padraodo problema (número do diretório) e a <em lang="en">flag</em> encontrada. O sistema informará se a <em lang="en">flag</em> está
                     (in)correta.
                 </li>
-                <li><span class="prompt"></span> As <em lang="en">flags</em> possuem o formato
+                <li>As <em lang="en">flags</em> possuem o formato
                     <code> <span lang="en">TreasureHunt</span>{texto-aleatorio}</code>. Na submissão, digite toda <em lang="en">flag</em>! Exemplo: <code> <span lang="en">TreasureHunt</span>{dhi2uh39}</code>.
                 </li>
             </ul>
@@ -372,12 +372,12 @@ $eh_firefox = strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== false;
                     e dispõe também de um modo de alto contraste com relação superior a 7:1 satisfazendo o critério 1.4.6. São cumpridos ainda,
                     dentre outros, os seguintes critérios:
                 </p>
-                <ul class="ul-acessibilidade">
-                    <li><span class="prompt"></span><span>Critério 1.4.4: Zoom de até 200% sem perda de conteúdo.</span></li>
-                    <li><span class="prompt"></span><span>Critério 2.1.3: Navegação completa da página pelo teclado.</span></li>
-                    <li><span class="prompt"></span><span>Critério 2.3.1: Limite de três flashes em um segundo.</span></li>
-                    <li><span class="prompt"></span><span>Critério 2.4.7: Foco visível nos elementos.</span></li>
-                    <li><span class="prompt"></span><span>Critério 3.3.1: Identificação de erro nos formulários. </span></li>
+                <ul class="ul-acessibilidade prompt-list">
+                    <li><span>Critério 1.4.4: Zoom de até 200% sem perda de conteúdo.</span></li>
+                    <li><span>Critério 2.1.3: Navegação completa da página pelo teclado.</span></li>
+                    <li><span>Critério 2.3.1: Limite de três flashes em um segundo.</span></li>
+                    <li><span>Critério 2.4.7: Foco visível nos elementos.</span></li>
+                    <li><span>Critério 3.3.1: Identificação de erro nos formulários.</span></li>
                 </ul>
                 <p>
                     É possível conferir todos os
@@ -398,15 +398,15 @@ $eh_firefox = strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== false;
                     No <em lang="en">Chrome, Edge e Explorer</em> é utilizado o ALT, enquanto que no <em lang="en"> Firefox </em>
                     é utilizada a combinação ALT + SHIFT. Os atalhos são:
                 </p>
-                <ul class="ul-acessibilidade">
-                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>A: ativa o modo de alto contraste </span></li>
-                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>M: desativa/ativa as animações </span></li>
-                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>I: leva para a página: “Inicío”</span></li>
-                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>J: leva para a página: “Como jogar?”</span></li>
-                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>C: leva para a página: “Contatos”</span></li>
-                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>S: leva para a página: “Acessibilidade”</span></li>
-                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>P: leva para página: “Placar” (exige autenticação)</span></li>
-                    <li><span class="prompt"></span><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>L: Faz o <em lang="en">logout</em> (exige autenticação)</span></li>
+                <ul class="ul-acessibilidade prompt-list">
+                    <li><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>A: ativa o modo de alto contraste </span></li>
+                    <li><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>M: desativa/ativa as animações </span></li>
+                    <li><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>I: leva para a página: “Inicío”</span></li>
+                    <li><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>J: leva para a página: “Como jogar?”</span></li>
+                    <li><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>C: leva para a página: “Contatos”</span></li>
+                    <li><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>S: leva para a página: “Acessibilidade”</span></li>
+                    <li><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>P: leva para página: “Placar” (exige autenticação)</span></li>
+                    <li><span>Alt+<?php echo $eh_firefox ? "Shift+" : ""; ?>L: Faz o <em lang="en">logout</em> (exige autenticação)</span></li>
                 </ul>
                 <div id="div-accesskeys" class="noscript">
                     <span>
