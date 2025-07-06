@@ -78,11 +78,11 @@ $eh_firefox = strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== false;
             <label for="collapse-btn" class="navbar-toggler" tabindex="0"><span class="navbar-toggler-icon"><span class="sr-only">Expandir menu de navegação</span></span></label>
             <div class="navbar-collapse collapse justify-content-center" id="collapsibleNavbar">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0" accesskey="i"><span class="sr-only">Página atual:</span>Início</label></li>
-                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0" accesskey="p"><span class="sr-only">Página atual:</span>Placar</label></li>
-                    <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" accesskey="j"><span class="sr-only">Página atual:</span>Como Jogar?</label></li>
-                    <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" accesskey="c"><span class="sr-only">Página atual:</span>Contato</label></li>
-                    <li class="nav-item"><label id="acessibilidade-label" class="label-link" for="acessibilidade" tabindex="0" accesskey="s"><span class="sr-only">Página atual:</span>Acessibilidade</label>
+                    <li class="nav-item"><label id="inicio-label" class="label-link" for="inicio" tabindex="0" accesskey="i" role="link" aria-current="page"><span class="sr-only">Página atual:</span>Início</label></li>
+                    <li class="nav-item"><label id="rank-label" class="label-link" for="rank" tabindex="0" accesskey="p" role="link"><span class="sr-only">Página atual:</span>Placar</label></li>
+                    <li class="nav-item"><label id="regras-label" class="label-link" for="regras" tabindex="0" accesskey="j" role="link"><span class="sr-only">Página atual:</span>Como Jogar?</label></li>
+                    <li class="nav-item"><label id="contato-label" class="label-link" for="contato" tabindex="0" accesskey="c" role="link"><span class="sr-only">Página atual:</span>Contato</label></li>
+                    <li class="nav-item"><label id="acessibilidade-label" class="label-link" for="acessibilidade" tabindex="0" accesskey="s" role="link"><span class="sr-only">Página atual:</span>Acessibilidade</label>
                     </li>
                     <li class="nav-item">
                         <a id="logout" accesskey="l" href="logout.php" class="mostrar" lang="en">Logout</a>
@@ -483,6 +483,59 @@ $eh_firefox = strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== false;
         }
         ?>
     </div>
+
+    <script>
+        const atualizarAriaCurrent = (id) => {
+            const labels = ['inicio-label', 'rank-label', 'regras-label', 'contato-label', 'acessibilidade-label'];
+            // remove aria-current de todos os labels
+            labels.forEach(label => {
+                document.getElementById(label).removeAttribute('aria-current');
+            });
+            // Seta aria-current no label correspondente
+            document.getElementById(id).setAttribute('aria-current', 'page');
+        };
+
+        const botaoInicio = document.getElementById('inicio');
+        botaoInicio.addEventListener('click', () => {
+            const main = document.getElementById('main');
+            main.setAttribute('tabindex', '-1');
+            atualizarAriaCurrent('inicio-label');
+            main.focus();
+        });
+
+        const botaoRank = document.getElementById('rank');
+        botaoRank.addEventListener('click', () => {
+            const placar = document.getElementById('ranking');
+            placar.setAttribute('tabindex', '-1');
+            atualizarAriaCurrent('rank-label');
+            placar.focus();
+        });
+
+        const botaoRegras = document.getElementById('regras');
+        botaoRegras.addEventListener('click', () => {
+            const regras = document.getElementById('como-jogar');
+            regras.setAttribute('tabindex', '-1');
+            atualizarAriaCurrent('regras-label');
+            regras.focus();
+        });
+
+        const botaoContato = document.getElementById('contato');
+        botaoContato.addEventListener('click', () => {
+            const contato = document.getElementById('contatos');
+            contato.setAttribute('tabindex', '-1');
+            atualizarAriaCurrent('contato-label');
+            contato.focus();
+        });
+
+        const botaoAcessibilidade = document.getElementById('acessibilidade');
+        botaoAcessibilidade.addEventListener('click', () => {
+            const acessibilidade = document.getElementById('sobre-acessibilidade');
+            acessibilidade.setAttribute('tabindex', '-1');
+            atualizarAriaCurrent('acessibilidade-label');
+            acessibilidade.focus();
+        });
+    </script>
+
 </body>
 
 </html>
