@@ -1,0 +1,108 @@
+Índice de todas as competições já aplicadas
+
+Total de participantes: 223
+Índice de submissões corretas: 71.68%
+Desempenho médio: 20.90%
+
+Critérios:
+2020 (WCAG 2.1): 91.67%
+2021 (WCAG 2.1): 97.30%
+2023 (WCAG 2.2): 98.65%
+2024 (WCAG 2.2): 98.65%
+2025 (WCAG 2.2): 100.00%
+
+OWASP Top 10:
+2024: Classe de injeção (parcial)
+2025: Classe de injeção (completo) e autenticação (completo)
+
+Funcionalidades relevantes:
+ - Checklists para análise de acessibilidade e segurança
+ - Portabilidade, funciona em múltiplas plataformas (Docker)
+ - Script de estatísticas da competição
+ - Uso de ferramentas para quantificar e qualificar pontos de acessibilidade e segurança
+ - Ótimos índices no relatório Lighthouse
+
+
+-------
+
+SELECTS usados:
+SELECT 
+    (SELECT COUNT(*) FROM Usuario20180930) +
+    (SELECT COUNT(*) FROM Usuario20181122) +
+    (SELECT COUNT(*) FROM Usuario20181127) +
+    (SELECT COUNT(*) FROM Usuario20190430) +
+    (SELECT COUNT(*) FROM Usuario20191104) +
+    (SELECT COUNT(*) FROM Usuario20191121) +
+    (SELECT COUNT(*) FROM Usuario20200701) +
+    (SELECT COUNT(*) FROM Usuario20210730) +
+    (SELECT COUNT(*) FROM Usuario20211203) +
+    (SELECT COUNT(*) FROM Usuario20220602) +
+    (SELECT COUNT(*) FROM Usuario20221011) +
+    (SELECT COUNT(*) FROM Usuario20231124) +
+    (SELECT COUNT(*) FROM Usuario20241125) AS total_rows;
+
+SELECT
+    100 * SUM(acertou) / SUM(tentativas) AS indice_submissoes_corretas
+FROM (
+    SELECT * FROM Resposta20180930
+    UNION ALL
+    SELECT * FROM Resposta20181122
+    UNION ALL
+    SELECT * FROM Resposta20181127
+    UNION ALL
+    SELECT * FROM Resposta20190430
+    UNION ALL
+    SELECT * FROM Resposta20191104
+    UNION ALL
+    SELECT * FROM Resposta20191121
+    UNION ALL
+    SELECT * FROM Resposta20200701
+    UNION ALL
+    SELECT * FROM Resposta20210730
+    UNION ALL
+    SELECT * FROM Resposta20211203
+    UNION ALL
+    SELECT * FROM Resposta20220602
+    UNION ALL
+    SELECT * FROM Resposta20221011
+    UNION ALL
+    SELECT * FROM Resposta20231124
+    UNION ALL
+    SELECT * FROM Resposta20241125
+) AS todas_respostas;
+
+SELECT
+    AVG(user_acertos) AS media_desempenho
+FROM (
+    SELECT idUsuario, SUM(acertou) AS user_acertos
+    FROM (
+        SELECT * FROM Resposta20180930
+        UNION ALL
+        SELECT * FROM Resposta20181122
+        UNION ALL
+        SELECT * FROM Resposta20181127
+        UNION ALL
+        SELECT * FROM Resposta20190430
+        UNION ALL
+        SELECT * FROM Resposta20191104
+        UNION ALL
+        SELECT * FROM Resposta20191121
+        UNION ALL
+        SELECT * FROM Resposta20200701
+        UNION ALL
+        SELECT * FROM Resposta20210730
+        UNION ALL
+        SELECT * FROM Resposta20211203
+        UNION ALL
+        SELECT * FROM Resposta20220602
+        UNION ALL
+        SELECT * FROM Resposta20221011
+        UNION ALL
+        SELECT * FROM Resposta20231124
+        UNION ALL
+        SELECT * FROM Resposta20241125
+    ) AS todas_respostas
+    GROUP BY idUsuario
+) AS t;
+
+
