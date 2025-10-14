@@ -1,8 +1,23 @@
 Índice de todas as competições já aplicadas
 
-Total de participantes: 223
-Índice de submissões corretas: 71.68%
-Desempenho médio: 20.90%
+Total de participantes: 172
+
+CSV com estatísticas por competição:
+
+"competicao","quantidadeQuestoes","quantidadeSubmissoes","quantidadeSubmissoesCorretas","mediaAcertos","desempenho","desempenhoSemEasteregg","taxaSubmissoesCorretas"
+"20180930",7,19,19,3.8000,54.2857,63.3333,100.0000
+"20181122",8,102,61,3.3889,42.3611,48.4127,59.8039
+"20181127",8,66,62,5.1667,64.5833,73.8095,93.9394
+"20190430",8,50,36,3.2727,40.9091,46.7532,72.0000
+"20191104",8,1,0,0.0000,0.0000,0.0000,0.0000
+"20191121",7,64,43,2.8667,40.9524,47.7778,67.1875
+"20200701",6,74,50,5.0000,83.3333,100.0000,67.5676
+"20210730",8,139,90,6.4286,80.3571,91.8367,64.7482
+"20211203",8,105,66,2.5385,31.7308,36.2637,62.8571
+"20220602",9,59,53,4.4167,49.0741,55.2083,89.8305
+"20221011",9,96,58,2.9000,32.2222,36.2500,60.4167
+"20231124",9,53,51,5.6667,62.9630,70.8333,96.2264
+"20241125",9,76,59,5.9000,65.5556,73.7500,77.6316
 
 Critérios:
 2020 (WCAG 2.1): 91.67%
@@ -25,84 +40,260 @@ Funcionalidades relevantes:
 
 -------
 
-SELECTS usados:
-SELECT 
-    (SELECT COUNT(*) FROM Usuario20180930) +
-    (SELECT COUNT(*) FROM Usuario20181122) +
-    (SELECT COUNT(*) FROM Usuario20181127) +
-    (SELECT COUNT(*) FROM Usuario20190430) +
-    (SELECT COUNT(*) FROM Usuario20191104) +
-    (SELECT COUNT(*) FROM Usuario20191121) +
-    (SELECT COUNT(*) FROM Usuario20200701) +
-    (SELECT COUNT(*) FROM Usuario20210730) +
-    (SELECT COUNT(*) FROM Usuario20211203) +
-    (SELECT COUNT(*) FROM Usuario20220602) +
-    (SELECT COUNT(*) FROM Usuario20221011) +
-    (SELECT COUNT(*) FROM Usuario20231124) +
-    (SELECT COUNT(*) FROM Usuario20241125) AS total_rows;
-
-SELECT
-    100 * SUM(acertou) / SUM(tentativas) AS indice_submissoes_corretas
+SELECT '20180930' AS competicao,
+       r.*, 
+       ROUND(r.quantidadeSubmissoesCorretas / NULLIF(s.quantidadeUsuarios, 0), 4) AS mediaAcertos,
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeQuestoes * s.quantidadeUsuarios, 0), 4) AS desempenho,
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF((r.quantidadeQuestoes - 1) * s.quantidadeUsuarios, 0), 4) AS desempenhoSemEasteregg,
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeSubmissoes, 0), 4) AS taxaSubmissoesCorretas
 FROM (
-    SELECT * FROM Resposta20180930
-    UNION ALL
-    SELECT * FROM Resposta20181122
-    UNION ALL
-    SELECT * FROM Resposta20181127
-    UNION ALL
-    SELECT * FROM Resposta20190430
-    UNION ALL
-    SELECT * FROM Resposta20191104
-    UNION ALL
-    SELECT * FROM Resposta20191121
-    UNION ALL
-    SELECT * FROM Resposta20200701
-    UNION ALL
-    SELECT * FROM Resposta20210730
-    UNION ALL
-    SELECT * FROM Resposta20211203
-    UNION ALL
-    SELECT * FROM Resposta20220602
-    UNION ALL
-    SELECT * FROM Resposta20221011
-    UNION ALL
-    SELECT * FROM Resposta20231124
-    UNION ALL
-    SELECT * FROM Resposta20241125
-) AS todas_respostas;
+  SELECT COUNT(DISTINCT idProblema) AS quantidadeQuestoes,
+         SUM(tentativas) AS quantidadeSubmissoes,
+         SUM(acertou) AS quantidadeSubmissoesCorretas
+  FROM Resposta20180930
+) r
+CROSS JOIN (
+  SELECT COUNT(DISTINCT idUsuario) AS quantidadeUsuarios
+  FROM Submissao20180930
+) s
 
-SELECT
-    AVG(user_acertos) AS media_desempenho
+UNION ALL
+
+SELECT '20181122',
+       r.*, 
+       ROUND(r.quantidadeSubmissoesCorretas / NULLIF(s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeQuestoes * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF((r.quantidadeQuestoes - 1) * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeSubmissoes, 0), 4)
 FROM (
-    SELECT idUsuario, SUM(acertou) AS user_acertos
-    FROM (
-        SELECT * FROM Resposta20180930
-        UNION ALL
-        SELECT * FROM Resposta20181122
-        UNION ALL
-        SELECT * FROM Resposta20181127
-        UNION ALL
-        SELECT * FROM Resposta20190430
-        UNION ALL
-        SELECT * FROM Resposta20191104
-        UNION ALL
-        SELECT * FROM Resposta20191121
-        UNION ALL
-        SELECT * FROM Resposta20200701
-        UNION ALL
-        SELECT * FROM Resposta20210730
-        UNION ALL
-        SELECT * FROM Resposta20211203
-        UNION ALL
-        SELECT * FROM Resposta20220602
-        UNION ALL
-        SELECT * FROM Resposta20221011
-        UNION ALL
-        SELECT * FROM Resposta20231124
-        UNION ALL
-        SELECT * FROM Resposta20241125
-    ) AS todas_respostas
-    GROUP BY idUsuario
-) AS t;
+  SELECT COUNT(DISTINCT idProblema) AS quantidadeQuestoes,
+         SUM(tentativas) AS quantidadeSubmissoes,
+         SUM(acertou) AS quantidadeSubmissoesCorretas
+  FROM Resposta20181122
+) r
+CROSS JOIN (
+  SELECT COUNT(DISTINCT idUsuario) AS quantidadeUsuarios
+  FROM Submissao20181122
+  WHERE respostaInformada = 'submissaoPadrao'
+) s
 
+UNION ALL
+
+SELECT '20181127',
+       r.*, 
+       ROUND(r.quantidadeSubmissoesCorretas / NULLIF(s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeQuestoes * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF((r.quantidadeQuestoes - 1) * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeSubmissoes, 0), 4)
+FROM (
+  SELECT COUNT(DISTINCT idProblema) AS quantidadeQuestoes,
+         SUM(tentativas) AS quantidadeSubmissoes,
+         SUM(acertou) AS quantidadeSubmissoesCorretas
+  FROM Resposta20181127
+) r
+CROSS JOIN (
+  SELECT COUNT(DISTINCT idUsuario) AS quantidadeUsuarios
+  FROM Submissao20181127
+  WHERE respostaInformada = 'submissaoPadrao'
+) s
+
+UNION ALL
+
+SELECT '20190430',
+       r.*, 
+       ROUND(r.quantidadeSubmissoesCorretas / NULLIF(s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeQuestoes * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF((r.quantidadeQuestoes - 1) * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeSubmissoes, 0), 4)
+FROM (
+  SELECT COUNT(DISTINCT idProblema) AS quantidadeQuestoes,
+         SUM(tentativas) AS quantidadeSubmissoes,
+         SUM(acertou) AS quantidadeSubmissoesCorretas
+  FROM Resposta20190430
+) r
+CROSS JOIN (
+  SELECT COUNT(DISTINCT idUsuario) AS quantidadeUsuarios
+  FROM Submissao20190430
+  WHERE respostaInformada = 'submissaoPadrao'
+) s
+
+UNION ALL
+
+SELECT '20191104',
+       r.*, 
+       ROUND(r.quantidadeSubmissoesCorretas / NULLIF(s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeQuestoes * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF((r.quantidadeQuestoes - 1) * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeSubmissoes, 0), 4)
+FROM (
+  SELECT COUNT(DISTINCT idProblema) AS quantidadeQuestoes,
+         SUM(tentativas) AS quantidadeSubmissoes,
+         SUM(acertou) AS quantidadeSubmissoesCorretas
+  FROM Resposta20191104
+) r
+CROSS JOIN (
+  SELECT COUNT(DISTINCT idUsuario) AS quantidadeUsuarios
+  FROM Submissao20191104
+  WHERE respostaInformada = 'submissaoPadrao'
+) s
+
+UNION ALL
+
+SELECT '20191121',
+       r.*, 
+       ROUND(r.quantidadeSubmissoesCorretas / NULLIF(s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeQuestoes * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF((r.quantidadeQuestoes - 1) * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeSubmissoes, 0), 4)
+FROM (
+  SELECT COUNT(DISTINCT idProblema) AS quantidadeQuestoes,
+         SUM(tentativas) AS quantidadeSubmissoes,
+         SUM(acertou) AS quantidadeSubmissoesCorretas
+  FROM Resposta20191121
+) r
+CROSS JOIN (
+  SELECT COUNT(DISTINCT idUsuario) AS quantidadeUsuarios
+  FROM Submissao20191121
+  WHERE respostaInformada = 'submissaoPadrao'
+) s
+
+UNION ALL
+
+SELECT '20200701',
+       r.*, 
+       ROUND(r.quantidadeSubmissoesCorretas / NULLIF(s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeQuestoes * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF((r.quantidadeQuestoes - 1) * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeSubmissoes, 0), 4)
+FROM (
+  SELECT COUNT(DISTINCT idProblema) AS quantidadeQuestoes,
+         SUM(tentativas) AS quantidadeSubmissoes,
+         SUM(acertou) AS quantidadeSubmissoesCorretas
+  FROM Resposta20200701
+) r
+CROSS JOIN (
+  SELECT COUNT(DISTINCT idUsuario) AS quantidadeUsuarios
+  FROM Submissao20200701
+  WHERE respostaInformada = 'submissaoPadrao'
+) s
+
+UNION ALL
+
+SELECT '20210730',
+       r.*, 
+       ROUND(r.quantidadeSubmissoesCorretas / NULLIF(s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeQuestoes * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF((r.quantidadeQuestoes - 1) * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeSubmissoes, 0), 4)
+FROM (
+  SELECT COUNT(DISTINCT idProblema) AS quantidadeQuestoes,
+         SUM(tentativas) AS quantidadeSubmissoes,
+         SUM(acertou) AS quantidadeSubmissoesCorretas
+  FROM Resposta20210730
+) r
+CROSS JOIN (
+  SELECT COUNT(DISTINCT idUsuario) AS quantidadeUsuarios
+  FROM Submissao20210730
+  WHERE respostaInformada = 'submissaoPadrao'
+) s
+
+UNION ALL
+
+SELECT '20211203',
+       r.*, 
+       ROUND(r.quantidadeSubmissoesCorretas / NULLIF(s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeQuestoes * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF((r.quantidadeQuestoes - 1) * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeSubmissoes, 0), 4)
+FROM (
+  SELECT COUNT(DISTINCT idProblema) AS quantidadeQuestoes,
+         SUM(tentativas) AS quantidadeSubmissoes,
+         SUM(acertou) AS quantidadeSubmissoesCorretas
+  FROM Resposta20211203
+) r
+CROSS JOIN (
+  SELECT COUNT(DISTINCT idUsuario) AS quantidadeUsuarios
+  FROM Submissao20211203
+  WHERE respostaInformada = 'submissaoPadrao'
+) s
+
+UNION ALL
+
+SELECT '20220602',
+       r.*, 
+       ROUND(r.quantidadeSubmissoesCorretas / NULLIF(s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeQuestoes * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF((r.quantidadeQuestoes - 1) * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeSubmissoes, 0), 4)
+FROM (
+  SELECT COUNT(DISTINCT idProblema) AS quantidadeQuestoes,
+         SUM(tentativas) AS quantidadeSubmissoes,
+         SUM(acertou) AS quantidadeSubmissoesCorretas
+  FROM Resposta20220602
+) r
+CROSS JOIN (
+  SELECT COUNT(DISTINCT idUsuario) AS quantidadeUsuarios
+  FROM Submissao20220602
+  WHERE respostaInformada = 'submissaoPadrao'
+) s
+
+UNION ALL
+
+SELECT '20221011',
+       r.*, 
+       ROUND(r.quantidadeSubmissoesCorretas / NULLIF(s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeQuestoes * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF((r.quantidadeQuestoes - 1) * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeSubmissoes, 0), 4)
+FROM (
+  SELECT COUNT(DISTINCT idProblema) AS quantidadeQuestoes,
+         SUM(tentativas) AS quantidadeSubmissoes,
+         SUM(acertou) AS quantidadeSubmissoesCorretas
+  FROM Resposta20221011
+) r
+CROSS JOIN (
+  SELECT COUNT(DISTINCT idUsuario) AS quantidadeUsuarios
+  FROM Submissao20221011
+  WHERE respostaInformada = 'submissaoPadrao'
+) s
+
+UNION ALL
+
+SELECT '20231124',
+       r.*, 
+       ROUND(r.quantidadeSubmissoesCorretas / NULLIF(s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeQuestoes * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF((r.quantidadeQuestoes - 1) * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeSubmissoes, 0), 4)
+FROM (
+  SELECT COUNT(DISTINCT idProblema) AS quantidadeQuestoes,
+         SUM(tentativas) AS quantidadeSubmissoes,
+         SUM(acertou) AS quantidadeSubmissoesCorretas
+  FROM Resposta20231124
+) r
+CROSS JOIN (
+  SELECT COUNT(DISTINCT idUsuario) AS quantidadeUsuarios
+  FROM Submissao20231124
+  WHERE respostaInformada = 'submissaoPadrao'
+) s
+
+UNION ALL
+
+SELECT '20241125',
+       r.*, 
+       ROUND(r.quantidadeSubmissoesCorretas / NULLIF(s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeQuestoes * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF((r.quantidadeQuestoes - 1) * s.quantidadeUsuarios, 0), 4),
+       ROUND(100 * r.quantidadeSubmissoesCorretas / NULLIF(r.quantidadeSubmissoes, 0), 4)
+FROM (
+  SELECT COUNT(DISTINCT idProblema) AS quantidadeQuestoes,
+         SUM(tentativas) AS quantidadeSubmissoes,
+         SUM(acertou) AS quantidadeSubmissoesCorretas
+  FROM Resposta20241125
+) r
+CROSS JOIN (
+  SELECT COUNT(DISTINCT idUsuario) AS quantidadeUsuarios
+  FROM Submissao20241125
+  WHERE respostaInformada = 'submissaoPadrao'
+) s;
 
