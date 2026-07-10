@@ -355,7 +355,7 @@ Vale lembrar que para a execução dos problemas recomenda-se um conjunto mínim
 ### Equipe atual
 
 - Ricardo de la Rocha Ladeira: [ricardo.ladeira@ifc.edu.br](mailto:ricardo.ladeira@ifc.edu.br)
-- João Vitor Espig: [jotaespig@gmail.com](mailto:jotaespig@gmail.com)
+- Lucas Andrei Cancelier Marin: [lucas23marin@gmail.com](mailto:lucas23marin@gmail.com)
 
 ### Contribuidores
 
@@ -363,6 +363,7 @@ Vale lembrar que para a execução dos problemas recomenda-se um conjunto mínim
 - Fernanda Ribeiro Martins
 - Gabriel Eduardo Lima
 - Henrique Arnicheski Dalposso
+- João Vitor Espig
 - Lucas Vargas
 - Rafael Rodrigues Obelheiro
 - Richard Robert Dias Custódio
