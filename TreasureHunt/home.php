@@ -315,8 +315,8 @@ $eh_firefox = strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== false;
                     <span><span class="sinal-menor" aria-hidden="true"></span>ricardo.ladeira<span class="at font-weight-bold"></span>ifc.edu.br<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <div class="contato">
-                    <span class="nome-autor">João Vitor Espig</span>:
-                    <span><span class="sinal-menor" aria-hidden="true"></span>jotaespig<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
+                    <span class="nome-autor">Lucas Andrei Cancelier Marin</span>:
+                    <span><span class="sinal-menor" aria-hidden="true"></span>lucas23marin<span class="at font-weight-bold"></span>gmail.com<span class="sinal-maior" aria-hidden="true"></span></span>
                 </div>
                 <span class="address-title">Contribuidores:</span>
                 <div class="contato nome-contrib">
@@ -330,6 +330,9 @@ $eh_firefox = strpos($_SERVER['HTTP_USER_AGENT'], 'Firefox') !== false;
                 </div>
                 <div class="contato nome-contrib">
                     <span>Henrique Arnicheski Dalposso</span>
+                </div>
+                <div class="contato nome-contrib">
+                    <span>João Vitor Espig</span>
                 </div>
                 <div class="contato nome-contrib">
                     <span>Lucas Vargas</span>
